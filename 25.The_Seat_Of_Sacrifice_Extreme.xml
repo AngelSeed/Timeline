@@ -12,6 +12,13 @@
   <entry>前半</entry>
   <start>0039:戦闘開始！</start>
 
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+<!--x秒前通知のデフォルトをセット-->
+
+
   <!-- 全体トリガ start -->
   <t text="挑発確認"                sync="[nex]の「挑発」"                                                                              notice="挑発されたよ" />
   <t text="エンドオール"            sync="ウォーリア・オブ・ライトは「エンドオール」の構え。"                                           notice="タンク交代" />
