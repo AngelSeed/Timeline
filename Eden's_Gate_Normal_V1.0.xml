@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園 エデン 覚醒編（ノーマル１層）</name>
+  <rev></rev>
+  <description>
+    希望の園 エデンのノーマル向けTLです。
+  </description>
+  <zone>Eden's Gate: Resurrection</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-9" />
+  <default target-element="Activity" target-attr="sync-e" value="9" />
+
+<!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン１層" exec="scripts\ppas.ps1" args="Nエデン１層" exec-hidden="true" />
+<!--
+<t name="初期配置" sync="戦闘開始まで5秒！" exec="scripts\ppas.ps1" args="" exec-hidden="true" />
+<t name="安置解除" sync="解除A" exec="scripts\ppoff.ps1" args="A" exec-hidden="true" />
+<t name="安置解除" sync="解除B" exec="scripts\ppoff.ps1" args="B" exec-hidden="true" />
+<t name="安置解除" sync="解除C" exec="scripts\ppoff.ps1" args="C" exec-hidden="true" />
+<t name="安置解除" sync="解除D" exec="scripts\ppoff.ps1" args="D" exec-hidden="true" />
+<t name="安置解除" sync="解除1" exec="scripts\ppoff.ps1" args="1" exec-hidden="true" />
+<t name="安置解除" sync="解除2" exec="scripts\ppoff.ps1" args="2" exec-hidden="true" />
+-->
+
+        <!-- 各フェーズ移行用 -->
+	<t text="雑魚フェイズへ" sync="強制雑魚" goto="雑魚フェーズ" />
+  <t text="エデン・プライム後半へ" sync="強制後半" goto="エデン・プライム後半" />
+
+<!-- ノーマル・エデンの園・１層 -->
+<!-- １層・トリガー -->
+  <t text="スピア・オブ・パラダイス" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エデン・グラビデ" sync="エデン・プライムは「エデン・グラビデ」を唱えた。" notice="全体攻撃">
+    <v-notice 
+      order="-2"
+      duration="2" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エデン・フレア" sync="エデン・プライムは「エデン・フレア」を唱えた。" notice="">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="デルタアタック" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="全体攻撃">
+    <v-notice 
+      duration="2" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="パラダイスロスト" sync="エデン・プライムは「パラダイスロスト」を唱えた。" notice="パラダイスロスト、ビーム">
+    <v-notice 
+      duration="2" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="フラゴルマクシマス" sync="エデン・プライムは「フラゴルマクシマス」を唱えた。" notice="">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+
+  <t sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" text="V＆V">
+   <v-notice order="-2" duration-visible="false" duration="2" stack-visible="true" sync-to-hide="end"/>
+   </t>
+  <t notice="" sync="increments stacks of V＆V to 1." />
+  <t notice="" sync="increments stacks of V＆V to 2." />
+  <t notice="" sync="increments stacks of V＆V to 3." />
+  <t notice="" sync="increments stacks of V＆V to 4." />
+  <t notice="" sync="increments stacks of V＆V to 5." />
+<!-- １層・トリガーEND -->
+
+
+<!-- 前半フェーズ -->
+  <a time="001" text="【第１フェーズ】" sync="" notice="" />
+  <a time="007" text="スピア・オブ・パラダイス" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="MT大ダメージ" />
+  <a time="013" text="ヘヴンサンダー" sync="エデン・プライムの「ヘヴンサンダー」" notice="" />
+  <a time="018" text="エデン・グラビデ" sync="エデン・プライムは「エデン・グラビデ」を唱えた。" notice="" />
+  <a time="027" text="ヴァイス・アンド・ヴァーチュー" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="４人にランダムAOE散会" />
+  <a time="035" text="エデン・フレア" sync="エデン・プライムは「エデン・フレア」を唱えた。" notice="ボス集合" />
+  <a time="049" text="ヴァイス・アンド・ヴァーチュー" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="MT、STに直線大ダメージ" />
+  <a time="060" text="スピア・オブ・パラダイス" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="MT大ダメージ" />
+  <a time="067" text="ヘヴンサンダー" sync="エデン・プライムの「ヘヴンサンダー」" notice="" />
+  <a time="074" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="094" text="デルタアタック" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="ボス中心十字攻撃、AOE散会" />
+  <a time="095" text="【第２フェーズ】" sync="" notice="" />
+  <a time="108" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="" />
+  <a time="114" text="ピュアレイ" sync="エデン・プライムは「ピュアレイ」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="122" text="パラダイスロスト" sync="エデン・プライムは「パラダイスロスト」を唱えた。" notice="" />
+  <a time="130" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="146" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="" />
+  <a time="157" text="フラゴルマクシマス" sync="エデン・プライムは「フラゴルマクシマス」を唱えた。" notice="全体攻撃" />
+  <a time="174" text="パラダイスダイブ" sync="エデン・ガーデナーは「パラダイスダイブ」の構え。" notice="距離減衰攻撃" />
+  <a time="179" text="雑魚フェーズ" sync="" notice="" />
+  <a time="181" sync="エターナル・ブレスの発動準備が開始された……！" />
+	<t text="雑魚フェイズへ" sync="エターナル・ブレスの発動準備が開始された……！" goto="雑魚フェーズ" />
+  <a time="189" text="雑魚フェーズ" sync="" notice="" />
+  <a time="190" text="マナスラッシュ" sync="エデン・ガーデナーの「マナスラッシュ」" notice="" />
+  <a time="195" text="マナバースト" sync="エデン・ガーデナーは「マナバースト」の構え。" notice="" />
+  <a time="206" text="マナスラッシュ" sync="エデン・ガーデナーの「マナスラッシュ」" notice="" />
+  <a time="210" text="マナバースト" sync="エデン・ガーデナーは「マナバースト」の構え。" notice="" />
+  <a time="220" text="マナスラッシュ" sync="エデン・ガーデナーの「マナスラッシュ」" notice="" />
+  <a time="221" text="マナバースト" sync="エデン・ガーデナーは「マナバースト」の構え。" notice="" />
+  <a time="221" sync="エターナル・ブレスの発動準備が完了した！" />
+  <a time="278" text="【最終フェーズ】" sync="" notice="" />
+	<t text="【最終フェーズ】" sync="エターナル・ブレスの発動準備が完了した！" goto="【最終フェーズ】" />
+  <a time="279" text="【最終フェーズ】" sync="" notice="" />
+  <a time="280" text="ヴァイス・アンド・ヴァーチュー" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="MT、STに直線大ダメージ" />
+  <a time="291" text="スピア・オブ・パラダイス" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="MT大ダメージ" />
+  <a time="298" text="ヘヴンサンダー" sync="エデン・プライムの「ヘヴンサンダー」" notice="" />
+  <a time="305" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="326" text="デルタアタック" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="ボス中心十字攻撃、AOE散会" />
+  <a time="340" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="" />
+  <a time="347" text="ピュアレイ" sync="エデン・プライムは「ピュアレイ」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="355" text="パラダイスロスト" sync="エデン・プライムは「パラダイスロスト」を唱えた。" notice="" />
+  <a time="364" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="380" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="" />
+  <a time="390" text="ヴァイス・アンド・ヴァーチュー" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="MT、STに直線大ダメージ" />
+  <a time="399" text="エデン・フレア" sync="エデン・プライムは「エデン・フレア」を唱えた。" notice="ボス集合" />
+  <a time="410" text="エデン・グラビデ" sync="エデン・プライムは「エデン・グラビデ」を唱えた。" notice="" />
+  <a time="422" text="ヴァイス・アンド・ヴァーチュー" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="MT、STに直線大ダメージ" />
+  <a time="433" text="スピア・オブ・パラダイス" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="MT大ダメージ" />
+  <a time="440" text="ヘヴンサンダー" sync="エデン・プライムの「ヘヴンサンダー」" notice="" />
+  <a time="447" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="468" text="デルタアタック" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="ボス中心十字攻撃、AOE散会" />
+  <a time="482" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="" />
+  <a time="489" text="ピュアレイ" sync="エデン・プライムは「ピュアレイ」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="497" text="パラダイスロスト" sync="エデン・プライムは「パラダイスロスト」を唱えた。" notice="" />
+  <a time="506" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="四つ角ランダム安置" />
+  <a time="520" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="" />
+  <a time="531" text="フラゴルマクシマス" sync="エデン・プライムは「フラゴルマクシマス」を唱えた。" notice="全体攻撃" />
+  <a time="532" text="(時間切れ?)" />
+</timeline>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園 エデン 覚醒編（ノーマル４層）</name>
+  <rev></rev>
+  <description>
+    希望の園 エデンのノーマル向けTLです。
+  </description>
+  <zone>Eden's Gate: Sepulture</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-9" />
+  <default target-element="Activity" target-attr="sync-e" value="9" />
+
+  <!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン４層" exec="scripts\ppas.ps1" args="Nエデン４層" exec-hidden="true" />
+<!--
+<t name="初期配置" sync="戦闘開始まで5秒！" exec="scripts\ppas.ps1" args="" exec-hidden="true" />
+<t name="安置解除" sync="解除A" exec="scripts\ppoff.ps1" args="A" exec-hidden="true" />
+<t name="安置解除" sync="解除B" exec="scripts\ppoff.ps1" args="B" exec-hidden="true" />
+<t name="安置解除" sync="解除C" exec="scripts\ppoff.ps1" args="C" exec-hidden="true" />
+<t name="安置解除" sync="解除D" exec="scripts\ppoff.ps1" args="D" exec-hidden="true" />
+<t name="安置解除" sync="解除1" exec="scripts\ppoff.ps1" args="1" exec-hidden="true" />
+<t name="安置解除" sync="解除2" exec="scripts\ppoff.ps1" args="2" exec-hidden="true" />
+-->
+
+<!-- ノーマル・エデンの園・４層 -->
+
+<!-- ４層・トリガー -->
+
+  <t text="大地の叫び" sync="タイタンは「大地の叫び」の構え。" notice="全体攻撃">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="イビルアース" sync="タイタンは「イビルアース」の構え。" notice="広がる範囲、１個目安置。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="大地の重み" sync="タイタンは「大地の重み」の構え。" notice="ランダム床範囲攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="MT大ダメージ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="岩盤崩落" sync="タイタンは「岩盤崩落」の構え。" notice="距離減衰攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="サイズミックウェーブ" sync="タイタンは「サイズミックウェーブ」の構え。" notice="岩に隠れて～。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ジオクラッシュ" sync="タイタンは「ジオクラッシュ」の構え。" notice="床からノックバック注意。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="メガ・ランドスライド" sync="タイタンは「メガ・ランドスライド」の構え。" notice="ボス正面直線範囲攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ボムボルダー" sync="タイタンは「ボムボルダー」の構え。" notice="安置見つけて！">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="フォールトゾーン" sync="タイタンは「フォールトゾーン」の構え。" notice="ノックバック付き、直線範囲攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="マグニチュード5.0" sync="タイタンは「マグニチュード5.0」の構え。" notice="ボス足元集合。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+<!-- ４層・トリガーEND -->
+
+<!-- 前半フェーズ -->
+  <a time="000" sync="タイタン:聞け、大地の叫びを……感じよ、大地の重みを…… そして、沈め、大地の怒りによって……！" />
+  <a time="010" text="大地の叫び" sync="タイタンは「大地の叫び」の構え。" notice="" />
+  <a time="018" text="イビルアース" sync="タイタンは「イビルアース」の構え。" notice="" />
+  <a time="029" text="大地の重み" sync="タイタンは「大地の重み」の構え。" notice="" />
+  <a time="037" text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="" />
+  <a time="045" text="岩盤崩落" sync="タイタンは「岩盤崩落」の構え。" notice="" />
+  <a time="063" text="サイズミックウェーブ" sync="タイタンは「サイズミックウェーブ」の構え。" notice="" />
+  <a time="076" text="ジオクラッシュ" sync="タイタンは「ジオクラッシュ」の構え。" notice="" />
+  <a time="083" sync="タイタン:我が身を鎧いし堅き地殻よ……！ 手甲となりて、敵を潰せ！" />
+  <a time="084" text="大地の手甲" sync="タイタンの「大地の手甲」" notice="" />
+  <a time="088" sync="タイタン:逃れられると思うなよ……！" />
+  <a time="088" text="メガ・ランドスライド" sync="タイタンは「メガ・ランドスライド」の構え。" notice="メガ・ランドスライド。" />
+  <a time="099" text="大地の鎧" sync="タイタンの「大地の鎧」" notice="" />
+  <a time="104" text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="" />
+  <a time="112" text="ボムボルダー" sync="タイタンは「ボムボルダー」の構え。" notice="" />
+  <a time="116" text="衝撃" sync="ボムボルダーの「衝撃」" notice="" />
+  <a time="119" text="コバルトボム" sync="タイタンは「コバルトボム」の構え。" notice="" />
+  <a time="123" text="爆散" sync="ボムボルダーは「爆散」の構え。" notice="" />
+  <a time="133" text="大地の叫び" sync="タイタンは「大地の叫び」の構え。" notice="" />
+  <a time="145" text="ジオクラッシュ" sync="タイタンは「ジオクラッシュ」の構え。" notice="" />
+  <a time="152" sync="タイタン:我が身を鎧いし堅き地殻よ……！ 車輪となりて、大地を駆けよ！" />
+  <a time="153" text="大地の車輪" sync="タイタンの「大地の車輪」" notice="" />
+  <a time="157" sync="タイタン:轢き潰してくれようぞ……！" />
+  <a time="157" text="フォールトゾーン" sync="タイタンは「フォールトゾーン」の構え。" notice="" />
+  <a time="165" text="大地の鎧" sync="タイタンの「大地の鎧」" notice="" />
+  <a time="169" sync="タイタン:よくぞ、耐えてくれる……！ ならば見せよう、大地の力のすべてをッ！" />
+  <a time="174" sync="タイタン:大地の怒りに砕け散れ！！" />
+  <a time="174" text="大地の怒り" sync="タイタンは「大地の怒り」の構え。" notice="" />
+  <a time="190" text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="" />
+  <a time="198" text="ボムボルダー" sync="タイタンは「ボムボルダー」の構え。" notice="" />
+  <a time="203" text="衝撃" sync="ボムボルダーの「衝撃」" notice="" />
+  <a time="205" text="コバルトボム" sync="タイタンは「コバルトボム」の構え。" notice="" />
+  <a time="209" text="爆散" sync="ボムボルダーは「爆散」の構え。" notice="" />
+  <a time="211" text="爆散" sync="ボムボルダーは「爆散」の構え。" notice="" />
+  <a time="213" text="爆散" sync="ボムボルダーは「爆散」の構え。" notice="" />
+  <a time="217" text="大地の重み" sync="タイタンは「大地の重み」の構え。" notice="" />
+  <a time="225" text="大地の叫び" sync="タイタンは「大地の叫び」の構え。" notice="" />
+  <a time="233" text="岩盤崩落" sync="タイタンは「岩盤崩落」の構え。" notice="" />
+  <a time="239" text="イビルアース" sync="タイタンは「イビルアース」の構え。" notice="" />
+  <a time="250" text="サイズミックウェーブ" sync="タイタンは「サイズミックウェーブ」の構え。" notice="" />
+  <a time="259" text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="" />
+  <a time="267" text="ジオクラッシュ" sync="タイタンは「ジオクラッシュ」の構え。" notice="" />
+  <a time="276" text="大地の車輪" sync="タイタンの「大地の車輪」" notice="" />
+  <a time="280" text="フォールトゾーン" sync="タイタンは「フォールトゾーン」の構え。" notice="" />
+  <a time="287" text="フォールトゾーン" sync="タイタンは「フォールトゾーン」の構え。" notice="" />
+  <a time="295" text="フォールトゾーン" sync="タイタンは「フォールトゾーン」の構え。" notice="" />
+  <a time="300" text="マグニチュード5.0" sync="タイタンは「マグニチュード5.0」の構え。" notice=".0。" />
+<!-- 後半フェーズ -->
+  <a time="311" text="大地の鎧" sync="タイタンの「大地の鎧」" notice="" />
+  <a time="321" text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="" />
+  <a time="329" text="ボムボルダー" sync="タイタンは「ボムボルダー」の構え。" notice="" />
+  <a time="338" text="衝撃" sync="ボムボルダーの「衝撃」" notice="" />
+  <a time="340" text="爆散" sync="ボムボルダーは「爆散」の構え。" notice="" />
+  <a time="344" text="爆散" sync="ボムボルダーは「爆散」の構え。" notice="" />
+  <a time="344" text="イビルアース" sync="タイタンは「イビルアース」の構え。" notice="" />
+  <a time="355" text="大地の叫び" sync="タイタンは「大地の叫び」の構え。" notice="" />
+  <a time="364" text="イビルアース" sync="タイタンは「イビルアース」の構え。" notice="" />
+  <a time="376" text="大地の重み" sync="タイタンは「大地の重み」の構え。" notice="" />
+  <a time="383" text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="" />
+  <a time="393" text="ジオクラッシュ" sync="タイタンは「ジオクラッシュ」の構え。" notice="" />
+  <a time="402" text="大地の手甲" sync="タイタンの「大地の手甲」" notice="" />
+  <a time="406" text="メガ・ランドスライド" sync="タイタンは「メガ・ランドスライド」の構え。" notice="" />
+  <a time="412" text="ランドスライド" sync="タイタンは「ランドスライド」の構え。" notice="" />
+  <a time="420" text="ライト・ランドスライド" sync="タイタンは「ライト・ランドスライド」の構え。" notice="" />
+  <a time="427" text="ランドスライド" sync="タイタンは「ランドスライド」の構え。" notice="" />
+  <a time="500" text="(時間切れ?)" />
+
+</timeline>

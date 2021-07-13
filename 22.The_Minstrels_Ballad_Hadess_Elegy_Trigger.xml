@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極ハーデス用トリガー</name>
+  <rev>rev.2019110301</rev>
+  <description>
+    極ハーデスの注意箇所トリガーです。
+  </description>
+  <author>Shilver'a Jagd,RINGS</author>
+  <license>CC BY-SA</license>
+  <zone>The Minstrel's Ballad: Hades's Elegy</zone>
+  <locale>JA</locale>
+
+  <!--
+    Zone:885 The Minstrel's Ballad: Hades's Elegy
+  -->
+
+  <!-- トリガのみ -->
+  <t name="シャドウスプレッド"      sync="ハーデスは「シャドウスプレッド」を唱えた。"               notice="八方向散開"         />
+  <t name="バッドフェイス"          sync="14:47AC:ハーデス starts using バッドフェイス on ハーデス" notice="右から左に移動"     />
+  <t name="バッドフェイス"          sync="14:47AB:ハーデス starts using バッドフェイス on ハーデス" notice="左から右に移動"     />
+  <t name="ラヴェナスアサルト"      sync="ハーデスは「ラヴェナスアサルト」を唱えた。"               notice="タンク交代"         />
+  <t name="氷の烙印"                sync="[me]に「氷の烙印」の効果。"                               notice="ラハブレアを攻撃" notice-d="Main" />
+  <t name="火の烙印"                sync="[me]に「火の烙印」の効果。"                               notice="イゲオルムを攻撃" notice-d="Main" />
+  <t name="ターゲット確認"          sync="[me]の攻撃 ⇒ (イゲオルム|ラハブレア)の影は無効化した。"  notice="ターゲット違うよ" notice-d="Main" />
+  <t name="MT移動"                  sync="14:47D1:アシエン・プライムの影 starts using ハイト・オブ・カオス"  notice="MTはC側に移動" />
+  <t name="法則改変"                sync="アシエン・プライムの影は「法則改変」を唱えた。"           notice="十字散開、タンクヒラは外見る" />
+  <t name="ポリデグモンストライク"  sync="ハーデスは「ポリデグモンストライク」を唱えた。"           notice="中央安置" />
+  <t name="シャドウストリーム"      ync="ハーデスは「シャドウストリーム」を唱えた。"                notice="左右安置" />
+
+</timeline>

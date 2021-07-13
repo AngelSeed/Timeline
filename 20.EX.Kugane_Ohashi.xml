@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>真ヨウジンボウ討滅戦</name>
+  <rev></rev>
+  <description>
+    練習用試作タイムラインです。
+    これが最初にして最後の作品の可能性が非常に高い。
+  </description>
+  <author>GUILTEX</author>
+  <license>CC BY-SA</license>
+  <zone>Kugane Ohashi</zone>
+  <locale>JA</locale>
+
+  <entry>前半フェーズ</entry>
+  <start>0039:戦闘開始！</start>
+
+  <default target-element="Activity" target-attr="notice-d" value="Both" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+
+  <!-- 重要なアクティビティを通知するトリガ begin -->
+
+
+  <!-- 重要なアクティビティを通知するトリガ end -->
+
+  <s name="前半フェーズ">
+    <a time="000" sync="この時を待っていたぜ……！" />
+    <a time="006" text="脇差" sync="ヨウジンボウの「脇差」" />
+    <a time="011" text="猪鹿蝶" sync="ヨウジンボウは「猪鹿蝶」の構え。" />
+    <a time="016" sync="クッ……さすがに多勢に無勢か…… それにしても、なんだって7人も連れてくるんだよ！" />
+    <a time="025" text="居合滅多斬り" sync="ヨウジンボウは「居合滅多斬り」の構え。" notice="全体範囲"/>
+    <a time="031" sync="こうなったら奥の手だ……！ 「真の姿」で、思う存分、暴れてやる！" />
+    <a time="033" text="真ギルガメッシュチェンジ" sync="ヨウジンボウは「真ギルガメッシュチェンジ」の構え。" notice="真ギルガメッシュチェンジ。" />
+    <a time="035" sync="真ギルガメッシュ・チェーーーーーーンジ！！" />
+    <a time="049" text="真ギルガメッシュチェンジ" sync="ギルガメッシュの「真ギルガメッシュチェンジ」" />
+    <a time="049" sync="装い新たに、ここに復活！ 真ギルガメッシュたぁ、俺のことよぉ～！！" />
+    <a time="055" sync="それよっと！　我流・雪月花！" />
+    <a time="056" text="雪風" sync="ヨウジンボウ starts using 雪風 on ヨウジンボウ." />
+    <a time="059" text="月光" sync="ギルガメッシュの「月光」" />
+    <a time="064" text="花車" sync="ギルガメッシュ starts using 花車 on Unknown." />
+    <a time="074" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="079" text="小さなメロディ" sync="ギルガメッシュは「小さなメロディ」の構え。" notice="背面集合"/>
+    <a time="089" text="雲蒸竜変" sync="ギルガメッシュの「雲蒸竜変」" />
+    <a time="097" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="104" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="107" text="竜星撃" sync="竜頭の「竜星撃」" notice="竜星撃。" />
+    <a time="117" text="小さなメロディ" sync="ギルガメッシュは「小さなメロディ」の構え。" notice="背面集合"/>
+    <a time="129" text="雪風" sync="ヨウジンボウ starts using 雪風 on ヨウジンボウ." />
+    <a time="133" text="月光" sync="ギルガメッシュの「月光」" notice="月光。" />
+    <a time="137" text="花車" sync="ギルガメッシュ starts using 花車 on Unknown." />
+    <a time="148" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="152" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="200" sync="驚きやがれ！　分身の術～！！" goto="分身待機フェーズ" sync-s="-40"/>
+  </s>
+
+  <s name="分身待機フェーズ">
+    <a time="100" text="分身まで待機1" />
+    <a time="200" text="分身まで待機2" />
+    <a time="300" text="分身まで待機3" />
+    <a time="400" text="分身まで待機4" />
+    <a time="000" sync="東方で覚えた術を見せてやるぜ！" goto="分身フェーズ" />
+  </s>
+
+  <s name="分身フェーズ">
+
+    <a time="006" text="分身の術" sync="ギルガメッシュの「分身の術」" notice="分身の術" />
+    <a time="009" sync="次はこいつだ！　巨身の術～！！" notice="きょしんの術" />
+    <a time="016" text="ヒット・ジ・エンド" sync="ギルガメッシュの分身の「ヒット・ジ・エンド」" />
+    <a time="021" text="月光" sync="ギルガメッシュの分身の「月光」" />
+    <a time="021" text="ヒット・ジ・エンド" sync="ギルガメッシュの分身の「ヒット・ジ・エンド」"/>
+    <a time="026" text="花車" sync="ギルガメッシュ starts using 花車 on Unknown."/>
+    <a time="028" text="ヒット・ジ・エンド" sync="ギルガメッシュの分身の「ヒット・ジ・エンド」" />
+    <a time="034" text="ヒット・ジ・エンド" sync="ギルガメッシュの分身の「ヒット・ジ・エンド」" />
+    <a time="034" text="ヒット・ジ・エンド" sync="ギルガメッシュの分身の「ヒット・ジ・エンド」" />
+    <a time="041" text="花車" sync="ヨウジンボウ starts using 花車 on Unknown." />
+    <a time="045" text="月光" sync="ギルガメッシュの分身の「月光」" />
+    <a time="052" text="ヒット・ジ・エンド" sync="ギルガメッシュの分身の「ヒット・ジ・エンド」" />
+    <a time="056" text="ヒット・ジ・エンド" sync="ギルガメッシュの分身の「ヒット・ジ・エンド」" />
+    <a time="059" sync="ついに神器を使う時がきたか……！ そ～ら、アメノムラクモだ！" />
+    <a time="060" text="アメノムラクモ" sync="ギルガメッシュ starts using アメノムラクモ on ギルガメッシュ." notice="アメノムラクモ。" goto="最終待機フェーズ" />
+  </s>
+
+
+  <s name="最終待機フェーズ">
+    <a time="100" text="最終まで待機1" />
+    <a time="200" text="最終まで待機2" />
+    <a time="300" text="最終まで待機3" />
+    <a time="400" text="最終まで待機4" />
+    <t sync="なかなかやるじゃねぇか！ だが……オレ達の戦いは、まだ始まったばかりだ！" goto="最終フェーズ" />
+  </s>
+
+  <s name="最終フェーズ">
+    <a time="001" text="電撃" sync="ギルガメッシュの「電撃」" />
+    <a time="008" text="雷撃" sync="電撃 starts using 雷撃 on 電撃." />
+    <a time="014" sync="やっかいな連中め、動きを縛るっきゃねぇか！ そぉら、大捕物！" />
+    <a time="014" text="大捕物" sync="ギルガメッシュは「大捕物」の構え。" notice="対象者離れる" />
+    <a time="022" text="獄門" sync="ギルガメッシュは「獄門」の構え。" notice="鎖を壊す"/>
+    <a time="042" sync="派手に舞い上がれぃ！" />
+    <a time="043" text="獄門" sync="ギルガメッシュの「獄門」" />
+    <a time="050" sync="じ、上等じゃないか……！ こっからは、お互い出し惜しみはナシだぜ！！" />
+    <a time="053" text="マサムネ" sync="ギルガメッシュは「マサムネ」の構え。" />
+    <a time="058" text="斬魔三昧" sync="ギルガメッシュは「斬魔三昧」の構え。" />
+    <a time="064" text="我流海嵐斬" sync="ギルガメッシュは「我流海嵐斬」の構え。" notice="我流かいらんざん" />
+    <a time="068" text="海割り" sync="ヨウジンボウ starts using 海割り on ヨウジンボウ." notice="中央あんち" />
+    <a time="078" text="雲蒸竜変" sync="ギルガメッシュの「雲蒸竜変」" />
+    <a time="081" text="電撃" sync="ギルガメッシュの「電撃」" />
+    <a time="086" text="激突" sync="竜頭の「激突」" />
+    <a time="096" text="竜星撃" sync="竜頭の「竜星撃」" />
+    <a time="098" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="104" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="111" sync="アイタタタタタ…… こうなったら、やけっぱちの大暴れだッ～！" />
+    <a time="116" text="雪風" sync="ヨウジンボウ starts using 雪風 on ヨウジンボウ." />
+    <a time="119" text="月光" sync="ギルガメッシュの「月光」" />
+    <a time="124" text="花車" sync="ヨウジンボウ starts using 花車 on Unknown." />
+    <a time="128" text="雲蒸竜変" sync="ギルガメッシュの「雲蒸竜変」" />
+    <a time="133" text="小さなメロディ" sync="ギルガメッシュは「小さなメロディ」の構え。" notice="背面集合"/>
+    <a time="151" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="157" text="雪風" sync="ヨウジンボウ starts using 雪風 on ヨウジンボウ." />
+    <a time="160" text="月光" sync="ギルガメッシュの「月光」" />
+    <a time="160" text="雪風" sync="ヨウジンボウ starts using 雪風 on ヨウジンボウ." />
+    <a time="165" text="花車" sync="ギルガメッシュ starts using 花車 on Unknown." />
+    <a time="172" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="184" text="マサムネ" sync="ギルガメッシュは「マサムネ」の構え。" />
+    <a time="189" text="斬魔三昧" sync="ギルガメッシュは「斬魔三昧」の構え。" />
+    <a time="195" text="我流海嵐斬" sync="ギルガメッシュは「我流海嵐斬」の構え。" notice="我流かいらんざん" />
+    <a time="199" text="海割り" sync="ヨウジンボウ starts using 海割り on ヨウジンボウ." notice="中央あんち" />
+    <a time="209" text="雲蒸竜変" sync="ギルガメッシュの「雲蒸竜変」" />
+    <a time="212" text="電撃" sync="ギルガメッシュの「電撃」" />
+    <a time="214" text="激突" sync="竜頭の「激突」" />
+    <a time="219" text="雷撃" sync="電撃 starts using 雷撃 on 電撃." />
+    <a time="227" text="竜星撃" sync="竜頭の「竜星撃」" />
+    <a time="229" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+    <a time="235" text="ヒット・ジ・エンド" sync="ギルガメッシュの「ヒット・ジ・エンド」" />
+  </s>
+</timeline>

@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：共鳴編2</name>
+  <rev></rev>
+  <description>
+    希望の園エデン零式： 共鳴編2
+  </description>
+  <author>anoyetta</author>
+  <license>CC BY-SA</license>
+  <zone>Eden's Verse: Furor (Savage)</zone>
+  <locale>JA</locale>
+  <entry>PHASE1 Garuda</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Both" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Trigger" target-attr="notice-o" value="-3" />
+  <!--
+  <default target-element="Activity" target-attr="sync-s" value="-5" />
+  <default target-element="Activity" target-attr="sync-e" value="4" />
+  -->
+
+<!--DPSの散開位置担当をセットする-->
+@{
+	var dps_1="[DRG]";
+	var dps_2="[SAM]";
+	var dps_3="[BRD]";
+	var dps_4="[SMN]";
+}
+<s name="コンフラ以降">
+	<!--コンフラ開始-->
+	<a time="00:00" sync="(ラクタパクシャは「コンフラグレーションストライク」の構え。)|(ラクタパクシャ starts using コンフラグレーションストライク)"/>
+	<a time="00:03">
+		<expressions>
+			<set name="bump_D1" value="false"/><!--変数の初期化-->
+			<set name="bump_D2" value="false"/>
+			<set name="bump_D3" value="false"/>
+			<set name="bump_D4" value="false"/>
+		</expressions>
+	</a>
+	<!--コンフラ中のバンプ判定　　　D1とD4、D2とD3が初期散開位置でペアとなることを想定（前提）としています。D1とD3、D2とD4がペアの場合は変更する必要があります。-->
+	<a time="00:29" notice="そのまま、そのまま" notice-o="0">
+		<expressions>
+			<pre name="bump_D1" value="true"/>
+			<pre name="bump_D2" value="true"/>
+		</expressions>
+	</a>
+	<a time="00:29" notice="そのまま、そのまま" notice-o="0">
+		<expressions>
+			<pre name="bump_D1" value="true"/>
+			<pre name="bump_D3" value="true"/>
+		</expressions>
+	</a>
+	<a time="00:29" notice="いれかえ、いれかえ" notice-o="0">
+		<expressions>
+			<pre name="bump_D1" value="true"/>
+			<pre name="bump_D4" value="true"/>
+		</expressions>
+	</a>
+	<a time="00:29" notice="いれかえ、いれかえ" notice-o="0">
+		<expressions>
+			<pre name="bump_D2" value="true"/>
+			<pre name="bump_D3" value="true"/>
+		</expressions>
+	</a>
+	<a time="00:29" notice="そのまま、そのまま" notice-o="0">
+		<expressions>
+			<pre name="bump_D2" value="true"/>
+			<pre name="bump_D4" value="true"/>
+		</expressions>
+	</a>
+	<a time="00:29" notice="そのまま、そのまま" notice-o="0">
+		<expressions>
+			<pre name="bump_D3" value="true"/>
+			<pre name="bump_D4" value="true"/>
+		</expressions>
+	</a>
+	<!--コンフラ中のバンプ判定-->
+	<t sync="ラクタパクシャ starts using エアーバンプ on @dps_1">
+		<expressions>
+			<set name="bump_D1" value="true"/>
+		</expressions>
+	</t>
+	<t sync="ラクタパクシャ starts using エアーバンプ on @dps_2">
+		<expressions>
+			<set name="bump_D2" value="true"/>
+		</expressions>
+	</t>
+	<t sync="ラクタパクシャ starts using エアーバンプ on @dps_3">
+		<expressions>
+			<set name="bump_D3" value="true"/>
+		</expressions>
+	</t>
+	<t sync="ラクタパクシャ starts using エアーバンプ on @dps_4">
+		<expressions>
+			<set name="bump_D4" value="true"/>
+		</expressions>
+	</t>
+</s>
+
+  <!-- トリガ -->
+  <t name="フィアスストーム"    sync="(ラクタパクシャ|ガルーダ)は「フィアスストーム」の構え。"  notice="フィアス注意" />
+  <t name="業炎拳"              sync="(ラクタパクシャ|イフリート)は「業炎拳」の構え。"          notice="線出たよ"     />
+  <t name="火炎拳"              sync="(ラクタパクシャ|イフリート)は「火炎拳」の構え。"          notice="タンク交代"    >
+    <expressions>
+      <pre name="flag_2boss" value="false" />
+    </expressions>
+  </t>
+
+  <!-- ファイアスパークフラグ -->
+  <t sync="(イフリート|ラクタパクシャ)は「ファイアスパーク」の構え。" >
+    <expressions>
+      <set name="flag_fs" value="true" ttl="20" />
+    </expressions>
+  </t>
+  <!-- サッカー判定 -->
+  <t text="北" notice="えー、えー、えー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.28" Y="23.20" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="東" notice="びー、びー、びー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.72" Y="23.42" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="南" notice="しー、しー、しー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.58" Y="23.72" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="西" notice="でー、でー、でー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.28" Y="23.58" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="北東" notice="えーびー、えーびー、えーびー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.72" Y="23.20" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="南東" notice="びーしー、びーしー、びーしー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.72" Y="23.80" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="南西" notice="しーでー、しーでー、しーでー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.50" Y="23.80" tolerance="0.00" />
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.80" Y="23.28" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="北西" notice="えーでー、えーでー、えーでー" >
+    <expressions>
+      <pre name="flag_fs" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.20" Y="23.28" tolerance="0.00" />
+      <combatant name="^(イフリート|ラクタパクシャ)$" X="23.28" Y="23.80" tolerance="0.00" />
+    </p-sync>
+  </t>
+
+  <!--変数の初期化-->
+  <t sync="0039:戦闘開始！">
+    <expressions>
+      <set name="flag_fs"    value="false" />
+      <set name="flag_2boss" value="false" />
+    </expressions>
+  </t>
+
+  <!--変数の初期化-->
+  <t sync="0039:戦闘開始！">
+    <expressions>
+      <set name="flag_fs" value="false"/>
+    </expressions>
+  </t>
+
+  <!-- ファイアスパークを使ったかどうか -->
+  <t sync="((イフリート|ラクタパクシャ)は「ファイアスパーク」の構え。)|((イフリート|ラクタパクシャ) starts using ファイアスパーク)">
+    <expressions>
+      <set name="is_firespark" value="true" ttl="20"/>
+    </expressions>
+  </t>
+
+  <t text="火炎拳" sync="は「火炎拳」の構え。" notice="火炎ケン">
+    <v-notice
+      icon="Fire.png"
+      duration="4"
+      duration-visible="false"
+      order="-1" />
+  </t>
+  <t text="爆裂炎" sync="は「爆裂炎」の構え。" notice="爆裂エン" />
+  <t text="メテオ" sync="は「メテオストライク」の構え。" notice="メテオ" />
+
+  @{ var origin = 0.0; }
+
+  <s name="PHASE1 Garuda">
+    <a time="012.0" text="スーパーストーム" sync="ガルーダは「スーパーストーム」の構え。" notice="次は、全体攻撃。" />
+    <a time="023.0" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="032.0" text="フューリア" sync="ガルーダは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
+    <a time="046.8" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、Xペア処理" />
+    <a time="058.0" text="フィアス" sync="ガルーダは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+    <a time="069.7" text="ダウンバースト" notice="次は、ノックバックとペア処理" />
+    <a time="083.0" text="バキュームスラッシュ" sync="ガルーダは「バキュームスラッシュ」の構え。" notice="次は、ギロチン" />
+    <a time="091.0" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="次は、安置に移動" />
+    <a time="096.0" text="フューリア" sync="ガルーダは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
+    <a time="105.0" text="フィアス" sync="ガルーダは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+
+    <a time="112.0" text="NEXT" sync="ガルーダ:おのれ……ちょこまかとッ……！" goto="PHASE2 Ifrit" notice="スタンス忘れない" />
+  </s>
+
+  <s name="PHASE2 Ifrit">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 112.0; }
+
+    <a time="@(117.0 - origin)" sync="イフリート:神色自若……下がるがいい……！" />
+    <a time="@(117.7 - origin)" text="タッチダウン" sync="イフリート starts using タッチダウン on Unknown." notice="次は、タッチダウン。" />
+    <a time="@(130.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(138.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="" />
+    <a time="@(145.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="" />
+    <a time="@(154.0 - origin)" text="灼熱の咆哮" sync="イフリートは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
+    <a time="@(164.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り、ヒーラー、遠隔" />
+    <a time="@(182.0 - origin)" text="ファイアスパーク" sync="イフリートは「ファイアスパーク」の構え。" notice="次は、サッカー" />
+    <a time="@(207.0 - origin)" text="業炎拳" sync="イフリートは「業炎拳」の構え。" notice="次は、線取り、ヒーラー、遠隔" />
+    <a time="@(219.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(228.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="" />
+    <a time="@(234.0 - origin)" text="メテオストライク" sync="イフリートは「メテオストライク」の構え。" notice="次は、背面集合" />
+
+    <a time="@(240.0 - origin)" text="NEXT" sync="イフリート:才気煥発……認めよう、その力……！ だがしかしッ！" goto="PHASE3 Pair" />
+  </s>
+
+  <s name="PHASE3 Pair">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 240.0; }
+
+    <a time="@(246.0 - origin)" sync="ガルーダ:火と風を喚びしこと、 その愚行を後悔させてくれる……！" />
+    <a time="@(246.0 - origin)" text="焔神の呪い" sync="イフリートは「焔神の呪い」の構え。" notice="次は、呪い。" />
+    <a time="@(251.0 - origin)" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(260.0 - origin)" text="火炎拳" sync="イフリートは「火炎拳」の構え。" notice="次は、ST無敵受け。" />
+    <a time="@(268.0 - origin)" text="爆裂炎" sync="イフリートは「爆裂炎」の構え。" notice="" />
+    <a time="@(273.0 - origin)" text="バキュームスラッシュ" sync="ガルーダは「バキュームスラッシュ」の構え。" notice="次は、ギロチン" />
+    <a time="@(282.0 - origin)" text="オクルーデッドフロント" sync="ガルーダは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(290.0 - origin)" text="エラプション" sync="イフリートは「エラプション」の構え。" notice="次は、エラプ" />
+    <a time="@(294.0 - origin)" text="フィアスストーム" sync="ガルーダは「フィアスストーム」の構え。" notice="次は、DPSに線" />
+
+    <a time="@(300.0 - origin)" text="NEXT" goto="PHASE4 Fusion" />
+  </s>
+
+  <s name="PHASE4 Fusion">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 300.0; }
+
+    <a time="@(301.0 - origin)" sync="イフリート:魂飛魄散……まだ抗おうとは……！" />
+    <a time="@(306.0 - origin)" sync="ガルーダ:ならば、わたくしの風の力…… 燃え上がる焔神の炎に注ぐまで！" />
+    <a time="@(317.0 - origin)" sync="？？？？:ウオォォォォォッ！！" />
+    <a time="@(327.0 - origin)" sync="ラクタパクシャ:我が名はラクタパクシャ…… 「赤き翼」を持つ者なり……！" />
+
+    <a time="@(336.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、タンクとヒーラー" />
+    <a time="@(354.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、DPS" />
+    <a time="@(372.0 - origin)" text="灼熱の咆哮" sync="ラクタパクシャは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
+    <a time="@(380.3 - origin)" text="ペア処理＋フィアス" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、Xペア処理、離れ気味でー" />
+    <a time="@(393.0 - origin)" text="ファイアスパーク" sync="ラクタパクシャは「ファイアスパーク」の構え。" notice="次は、サッカー" />
+    <a time="@(406.0 - origin)" text="火炎拳" sync="ラクタパクシャは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(415.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="" />
+    <a time="@(421.0 - origin)" text="メテオストライク" sync="ラクタパクシャは「メテオストライク」の構え。" notice="次は、背面集合" />
+
+    <a time="@(427.0 - origin)" text="NEXT" goto="PHASE5 Sword" />
+  </s>
+
+  <s name="PHASE5 Sword">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 427.0; }
+
+    @{
+      // コンフラのときのDPSのエアーバンプの東西優先順位を表示する
+
+      // 優先順位の定義
+      // 若いほうがより東に陣取る
+      var bumps = new[] { "DRG", "BRD", "SAM", "SMN" };
+
+      foreach (var job in bumps) {
+      <text>
+        <t text="${_@(job)}" sync="^1B:[id8]:[@(job)]:0000:[id4]:00D3:0000:0000:0000:">
+          <expressions>
+            <set name="bump_@(job)" value="➔ AOE" />
+          </expressions>
+        </t>
+      </text>
+      }
+    }
+
+    <a time="@(442.0 - origin)" sync="ラクタパクシャ:風を得て、猛る炎よ、渦を巻け！" />
+
+    <a time="@(442.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャは「コンフラグレーションストライク」の構え。" notice="次は、コンフラ、左右に散開">
+      <expressions>
+        @foreach (var job in bumps) {
+        <text>
+          <set name="bump_@(job)" value="　" />
+        </text>
+        }
+      </expressions>
+    </a>
+    <a time="@(469.0 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、十字ペア処理" />
+    <a time="@(471.0 - origin)" name="BUMP表示" notice-o="0">
+      @{
+        var i = 0;
+        foreach (var job in bumps) {
+          <text>
+            <v-notice icon="@(job).png" text="VAR['bump_@(job)']" duration="6" duration-visible="false" order="@(i)" />
+          </text>
+          i++;
+        }
+      }
+    </a>
+
+    <a time="@(477.0 - origin)" sync="ラクタパクシャ:大火の一撃、灰燼に帰せッ！" />
+    <a time="@(478.0 - origin)" text="コンフラ・ストライク" sync="ラクタパクシャの「コンフラグレーションストライク」" notice-o="-6" notice="次は、北側に集合">
+      <v-notice
+        icon="Arrow1.png"
+        duration="6"
+        duration-visible="false"
+        order="-1" />
+    </a>
+
+    <a time="@(488.0 - origin)" text="オクルーデッドフロント" sync="ラクタパクシャは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(490.8 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、Xペア処理、近づけてー" />
+    <a time="@(497.0 - origin)" text="フューリア" sync="ラクタパクシャは「フューリアスストーム」の構え。" notice="次は、DPSに線" />
+    <a time="@(505.0 - origin)" text="灼熱の咆哮" sync="ラクタパクシャは「灼熱の咆哮」の構え。" notice="次は、全体攻撃。" />
+
+    <a time="@(518.0 - origin)" text="オクルーデッドフロント" sync="ラクタパクシャは「オクルーデッドフロント」の構え。" notice="" />
+    <a time="@(523.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、タンクとヒーラー" />
+    <a time="@(541.0 - origin)" text="業炎拳" sync="ラクタパクシャは「業炎拳」の構え。" notice="次は、線取り、DPS" />
+    <a time="@(542.9 - origin)" text="エアーバンプ" sync="ラクタパクシャ starts using エアーバンプ" notice="次は、Xペア処理" />
+    <a time="@(553.0 - origin)" text="火炎拳" sync="ラクタパクシャは「火炎拳」の構え。" notice="次は、スイッチ" />
+    <a time="@(561.0 - origin)" text="爆裂炎" sync="ラクタパクシャは「爆裂炎」の構え。" notice="" />
+    <a time="@(567.0 - origin)" text="メテオストライク" sync="ラクタパクシャは「メテオストライク」の構え。" notice="次は、背面集合" />
+    <a time="@(581.0 - origin)" text="フィアス" sync="ラクタパクシャは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+    <a time="@(589.0 - origin)" text="フィアス" sync="ラクタパクシャは「フィアスストーム」の構え。" notice="次は、牙から扇範囲" />
+
+    <a time="@(608.0 - origin)" sync="ラクタパクシャ:地をうごめく者どもよ……！ 燃え尽き灰となりて、風に散れッ！" />
+    <a time="@(608.0 - origin)" text="ワイプ攻撃" sync="ラクタパクシャは「コンフラグレーションストライク」の構え。" notice="次は、時間切れ" />
+  </s>
+</timeline>

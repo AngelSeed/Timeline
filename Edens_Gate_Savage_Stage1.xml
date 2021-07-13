@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：覚醒編1</name>
+  <rev></rev>
+  <description>
+    希望の園エデン零式：覚醒編１
+    ログ提供: AquaCat
+  </description>
+  <author>anoyetta, RINGS</author>
+  <license>CC BY-SA</license>
+  <zone>853</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t name="初期配置" sync="" exec="scripts\ppas.ps1" args="" exec-hidden="true" />
+
+  <t text="マーカー" sync="[mex]に「マーキング」の効果。" notice="">
+    <v-notice 
+      duration="5" 
+      duration-visible="false" 
+      order="-1" 
+      job-icon="true" />
+  </t>
+
+  <t text="沈黙" sync="エデン・ガーデナーは「マナブースター」の構え。" notice="沈黙">
+    <v-notice 
+      duration="5" 
+      duration-visible="false" 
+      icon="True"
+      order="-1" />
+  </t>
+
+    <!--イクシオンPOP位置判定-->
+<t text="北西" notice="右に回避">
+	<p-sync interval="60">
+		<combatant name="^イクシオン・ミラージュ$" X="23.15" Y="23.10" tolerance="0.00"/>
+	</p-sync>
+</t>
+
+<t text="南西" notice="右に回避">
+	<p-sync interval="60">
+		<combatant name="^イクシオン・ミラージュ$" X="23.15" Y="23.90" tolerance="0.00"/>
+	</p-sync>
+</t>
+
+<t text="北東" notice="左に回避">
+	<p-sync interval="60">
+		<combatant name="^イクシオン・ミラージュ$" X="23.55" Y="23.10" tolerance="0.00"/>
+	</p-sync>
+</t>
+
+<t text="南東" notice="左に回避">
+	<p-sync interval="60">
+		<combatant name="^イクシオン・ミラージュ$" X="23.55" Y="23.90" tolerance="0.00"/>
+	</p-sync>
+</t>
+
+  <a time="007" text="エデン・グラビデ" sync="エデン・プライムは「エデン・グラビデ」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="017" text="V&amp;V AOE" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、外にAOE捨てる" />
+  <a time="027" text="エデン・フレア" sync="エデン・プライムは「エデン・フレア」を唱えた。" notice="次は、中央えー。" />
+
+  <a time="042" text="V&amp;V ビーム" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、タンクビーム" />
+  <a time="052" text="スピア" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="次は、無敵受け" />
+  <a time="060" text="V&amp;V 受渡し" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、タンクに受け渡す。" />
+  <a time="073" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="次は、ピュアライト。" />
+
+  <!-- 前半の白玉のくだり -->
+  <a time="086" text="外側デルタ" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="次は、散開。" />
+  <a time="100" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="106" text="パラダイスロスト" sync="エデン・プライムは「パラダイスロスト」を唱えた。" notice="次は、連続AOE。" />
+  <a time="112" text="ピュアレイ" sync="エデン・プライムは「ピュアレイ」を唱えた。" notice="次は、ビームの誘導。" />
+  <a time="126" text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="次は、ピュアライト。" />
+
+  <a time="137" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="146" text="フラゴルマクシマス" sync="エデン・プライムは「フラゴルマクシマス」を唱えた。" notice="次は、全体攻撃。" />
+
+  <a time="162" text="パラダイスダイブ" sync="エデン・ガーデナーは「パラダイスダイブ」の構え。" notice="次は、雑魚。" />
+
+  <!-- 雑魚フェーズ -->
+  <a time="169" sync="エターナル・ブレスの発動準備が開始された……！" />
+  <a time="175" text="マナブースター" sync="エデン・ガーデナーは「マナブースター」の構え。" notice="次は、沈黙。" />
+  <a time="183" text="マナスラッシュ" sync="エデン・ガーデナーの「マナスラッシュ」" />
+  <a time="187" text="マナバースト" sync="エデン・ガーデナーは「マナバースト」の構え。" notice="次は、全体攻撃。" />
+  <a time="197" text="マナスラッシュ" sync="エデン・ガーデナーの「マナスラッシュ」" />
+  <a time="201" text="マナバースト" sync="エデン・ガーデナーは「マナバースト」の構え。" notice="次は、全体攻撃。" />
+  <a time="211" text="マナスラッシュ" sync="エデン・ガーデナーの「マナスラッシュ」" />
+  <a time="211" sync="エターナル・ブレスの発動準備が完了した！" />
+
+  <!-- パラダイスモード start -->
+  <a time="275" name="パラダイスモード" text="パラダイスリゲイン" sync="エデン・プライムは「パラダイスリゲイン」を唱えた。" />
+  <a time="280" text="V&amp;V ビーム" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、左右で頭割り" />
+  <a time="294" text="V&amp;V AOE" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、ペア散開" />
+  <a time="309" text="内側デルタ" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="次は、タンク前面、他は背面。" />
+  <a time="319" text="V&amp;V 受渡し" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、DPSに受け渡す。" />
+  <a time="330" text="スピア" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="次は、無敵受け" />
+  <a time="344" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="351" text="ピュアレイ" sync="エデン・プライムは「ピュアレイ」を唱えた。" notice="次は、ピュアレイ。" />
+  <!-- パラダイスモード end -->
+
+  <!-- 通常モード start -->
+  <a time="384" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="396" text="エデン・グラビデ" sync="エデン・プライムは「エデン・グラビデ」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="408" text="エデン・フレア" sync="エデン・プライムは「エデン・フレア」を唱えた。" notice="次は、中央えー。" />
+  <a time="419" text="V&amp;V ビーム" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、タンクビーム" />
+  <a time="429" text="スピア" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="次は、無敵受け" />
+  <a time="437" text="V&amp;V AOE" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、外にAOE捨てる" />
+
+  <a time="452" text="外側デルタ" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="次は、散開デルタ。" />
+  <a time="463" text="V&amp;V 受渡し" sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" notice="次は、タンクに受け渡す。" />
+  <a time="480" text="ディメンションシフト" sync="エデン・プライム starts using ディメンションシフト on エデン・プライム." notice="次は、全体攻撃。" />
+  <a time="485" text="ピュアレイ" sync="エデン・プライムは「ピュアレイ」を唱えた。" notice="次は、ビームの誘導。" />
+  <a time="518" text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="530" text="エデン・グラビデ" sync="エデン・プライムは「エデン・グラビデ」を唱えた。" notice="次は、全体攻撃。" />
+  <a time="542" text="エデン・フレア" sync="エデン・プライムは「エデン・フレア」を唱えた。" notice="次は、中央えー。" />
+  <!-- 通常モード end -->
+
+  <!-- パラダイスモードに戻る -->
+  <a time="570" text="パラダイスリゲイン" sync="エデン・プライムは「パラダイスリゲイン」を唱えた。" sync-s="-60" goto="パラダイスモード" />
+</timeline>

@@ -1,0 +1,787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>次元の狭間オメガ零式：アルファ編 4層
+アタゴオル式:134式    (AngelSeedバージョン)</name>
+  <zone>Alphascape V4.0 (Savage)</zone>
+  <rev></rev>
+  <description>次元の狭間オメガ零式：アルファ編4タイムライン
+  ハロー・ワールド処理方法は通称"アタゴオル式"と呼ばれる方法をトレースして組み込んでいます。
+  v-noticeによる通知が不必要な場合には関連部分のトリガを適宜削除してください。
+  通知が多いのでスタイルに応じてv-notice領域を大きめに確保することを推奨します。
+  </description>
+  <author>
+　　Angel Seed　(with RINGS)
+    sheeva
+    aqua cat
+    anoyetta
+  </author>
+  <license>CC BY-SA</license>
+  <!-- revisions
+  rev.20181017 (rev3) sheeva
+    ・トリガ処理のパフォーマンス改善のため大部分のトリガをサブルーチン内に移動
+    ・後半タイムラインのアクティビティ定義およびnoticeをより実用的なものに修正
+    ・アーカイブオールが苦手な人用のトリガを仮定義
+  rev2 sheeva
+    ・debug
+  rev1 sheeva
+    ・AquaCatさんのタイムラインをベースに各種アイコン定義やトリガ定義など追加
+  -->
+  <!-- caution
+    このファイルに記載された内容、および付随するデータを利用することによって起こるあらゆる事象について、Hojoring 作者、及びデータの作者は一切の責任を負いません。
+    あなたのPCにダウンロードした時点であなたの責任によって管理されたあなたの設定ファイルとなります。
+　　例えば、通知内容の変更やトリガの不調などは原則的にあなた自身でメンテナンスを行う必要があります。
+    DISCORDの#helpで質問をするのは構いませんが回答は回答者の善意によるものであることをご理解ください。
+  -->
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t text="標的識別\n ➜ ${_pc}" sync="オメガ starts using 標的識別 on [pc]">
+    <v-notice duration="5" icon="単体強攻撃" job-icon="true" />
+  </t>
+
+  <!-- 拡散波動砲の安置を通知するトリガ begin -->
+  <t text="ボス前後が安全" sync="3368:オメガ starts using 拡散波動砲 on オメガ." notice="前後に移動">
+    <v-notice duration="4" icon="AOEHorizontal" duration-visible="false" />
+  </t>
+
+  <t text="ボス側面が安全" sync="3367:オメガ starts using 拡散波動砲 on オメガ." notice="側面に移動">
+    <v-notice duration="4" icon="AOEVertical" duration-visible="false" />
+  </t>
+  <!-- 拡散波動砲の安置を通知するトリガ end -->
+
+  <!-- 前半/後半の識別用エントリフェーズ -->
+  <s name="ENTRY">
+    <!-- 前半/後半識別 -->
+    <t sync="オメガMは「シールドオプション」の構え。" sync-count="1">
+      <load target="前半" truncate="true" />
+    </t>
+
+    <t sync="オメガは「標的識別」の構え。" sync-count="1">
+      <load target="PHASE1 後半開幕" truncate="true" />
+    </t>
+
+    <a time="10" text="前半後半の判別" icon="分岐" />
+  </s>
+
+  <!--前半ここから-->
+  <s name="前半">
+    <!-- シールドコンボS対象者を通知するトリガ begin -->
+    <t text="シールドコンボS\n ➜ ${_pc}" sync="^15:[id8]:オメガM:[id4]:シールドコンボs:[id8]:[pc]">
+      <v-notice duration="4" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="頭割り不参加" sync="^15:[id8]:オメガM:[id4]:シールドコンボs:[id8]:[mex]">
+      <v-notice duration="4" icon="DontMove" duration-visible="false" />
+    </t>
+    <!-- シールドコンボS対象者を通知するトリガ end -->
+
+    <!--Mフェーズ-->
+    <a time="000" text="オメガのセリフ" />
+    <a time="009" text="シールドオプション" sync="オメガMは「シールドオプション」の構え。" notice="次は、シールドオプション。" sync-s="-20" />
+    <a time="016" text="援護プログラムF" sync="オメガMは「援護プログラムF」の構え。" sync-s="-30" />
+    <a time="020" text="オプチカルレーザーf" sync="オプチカルユニット starts using オプチカルレーザーf" icon="縦範囲攻撃" />
+    <a time="021" text="シールドコンボS" sync="オメガMは「シールドコンボS」の構え。" notice="シールドコンボS。" icon="対象範囲攻撃01" />
+    <a time="030" text="パイルピッチ" sync="オメガMの「パイルピッチ」" notice="頭割り" icon="頭割り" />
+    <!--Fフェーズ-->
+    <a time="047" text="トランスフォームF" sync="オメガMは「トランスフォームF」の構え。" notice="トランスフォームF。" />
+    <a time="062" text="ディスチャージャー" sync="オメガFの「ディスチャージャー」" notice="ノックバック" icon="ノックバック" />
+    <a time="072" text="ブレードオプション" sync="オメガFは「ブレードオプション」の構え。" />
+    <a time="083" text="オプチカルレーザーs" sync="オプチカルユニット starts using オプチカルレーザーs" notice="半円レーザー" icon="上12安置" />
+    <a time="085" text="ブレードコンボF" sync="オメガFは「ブレードコンボF」の構え。" notice="後方安置" icon="背面集合" />
+    <a time="092" text="ファイラ・オメガ" sync="オメガFの「ファイラ・オメガ」" notice="散開" icon="散開A" />
+    <a time="110" text="フェーズ移行" sync="オメガFは「トランスフォームM」の構え。" goto="2体フェーズ" sync-s="-40" icon="集合" />
+  </s>
+
+  <s name="2体フェーズ">
+    <!-- 2体フェーズ開始時の頭割り判定 begin -->
+    <t text="頭割り位置にM\n ➜ 反対側へ" sync="^16:[id8]:オメガM:[id4]:オメガスライド:[id8]:[mex]" notice="反対がF">
+      <v-notice duration="8" icon="AOE" duration-visible="false" />
+    </t>
+
+    <t text="頭割り位置にF\n ➜ 吹き飛ばし" sync="^16:[id8]:オメガ:[id4]:オメガスライド:[id8]:[mex]" notice="こっちがF">
+      <v-notice duration="8" icon="KnockBack" duration-visible="false" />
+    </t>
+    <!--  2体フェーズ開始時の頭割り判定 end -->
+
+    <!-- ターゲット判定 begin -->
+    <t text="➔ M" sync="[mex]に「ガードプログラムF」の効果。">
+      <v-notice duration="10" icon="Marker" duration-visible="false" />
+    </t>
+
+    <t text="➔ F" sync="[mex]に「ガードプログラムM」の効果。">
+      <v-notice duration="10" icon="Marker" duration-visible="false" />
+    </t>
+    <!-- ターゲット判定 end -->
+
+    <!-- レゾナンスプログラム処理の通知トリガ begin -->
+    <t text="レゾナンス：ニアー\n ➜ 離す" notice="離して離してえ"  sync="^1A:オメガ gains the effect of レゾナンスプログラム：ニアー from  for 50.00 Seconds.">
+      <v-notice duration="8" icon="Pair" duration-visible="false" />
+    </t>
+
+    <t text="レゾナンス：ファー\n ➜ 近づける" notice="近づけて近づけてえ"  sync="^1A:オメガ gains the effect of レゾナンスプログラム：ファー from  for 50.00 Seconds.">
+      <v-notice duration="8" icon="Pair" duration-visible="false" />
+    </t>
+    <!-- レゾナンスプログラム処理の通知トリガ end -->
+
+    <a time="014" text="オメガスライド" sync="オメガの「オメガスライド」" notice="頭割り" sync-s="-20" icon="頭割り" />
+    <a time="022" text="ディスチャージャー" sync="オメガFの「ディスチャージャー」" notice="ノックバック" icon="ノックバック" />
+    <a time="028" text="ガードプログラム" sync="オメガFは「ガードプログラム」の構え。" notice="ガードプログラム。" />
+    <a time="037" text="レゾナンス" sync="オメガFは「レゾナンス」の構え。" notice="レゾナンス。" icon="ペア処理" />
+    <a time="049" text="連携プログラムC" sync="オメガFは「連携プログラムC」の構え。" notice="連携プログラムC。" icon="対象範囲攻撃02" />
+
+    <!-- 連携プログラムCの処理を通知するトリガ begin -->
+    <t text="1番\n ➜ ターゲット反対側、前" sync="^1B:[id8]:[mex]:0000:[id4]:(0091|0095)" notice="いちばん">
+      <v-notice duration="10" icon="1" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+
+    <t text="2番\n ➜ ターゲット側、前" sync="^1B:[id8]:[mex]:0000:[id4]:(0092|0096)" notice="にばん">
+      <v-notice duration="10" icon="2" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+
+    <t text="3番\n ➜ ターゲット反対側、後ろ" sync="^1B:[id8]:[mex]:0000:[id4]:(0093|0097)" notice="さんばん">
+      <v-notice duration="10" icon="3" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+
+    <t text="4番\n ➜ ターゲット側、後ろ" sync="^1B:[id8]:[mex]:0000:[id4]:(0094|0098)" notice="よんばん">
+      <v-notice duration="10" icon="4" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+    <!-- 連携プログラムCの処理を通知するトリガ end -->
+
+    <a time="060" text="オプチカルレーザーs" sync="オプチカルユニット starts using オプチカルレーザーs" notice="半円レーザー" icon="上12安置" />
+    <a time="074" text="レーザーシャワー" sync="オメガFは「レーザーシャワー」の構え。" notice="レーザーシャワー。" icon="全体強攻撃" />
+    <a time="082" text="ソーラレイ" sync="オメガFは「ソーラレイ」の構え。" notice="次は、ソーラレイ。" icon="対象範囲攻撃" />
+    <!--分岐試作品-->
+    <a time="100" text="分岐待ち" icon="分岐" />
+    <t text="分岐＞ブレード" sync="オメガFは「ブレードオプション」の構え。" notice="ブレードスタート">
+      <load target="ブレード" truncate="true" />
+      <load target="連携2回目" />
+      <load target="シールド" />
+      <load target="前半最終" />
+    </t>
+    <t text="分岐＞シールド" sync="オメガMは「シールドオプション」の構え。" notice="シールドスタート">
+      <load target="シールド" truncate="true" />
+      <load target="連携2回目" />
+      <load target="ブレード" />
+      <load target="前半最終" />
+    </t>
+  </s>
+
+  <s name="ブレード">
+    <!--1回目は7秒-->    <!--2回目は14秒-->
+    <a time="020" text="ブレード開始" sync="オメガFは「連携プログラムW」の構え。" sync-s="-20" />
+    <a time="027" text="ブレードコンボB" sync="オメガFは「ブレードコンボB」の構え。" notice="右下に集合" icon="集合" />
+    <a time="028" text="パイルピッチ" sync="オメガMは「パイルピッチ」の構え。" notice="頭割り" icon="頭割り" />
+    <a time="034" text="ブリザガ・オメガ" sync="オメガFの「ブリザガ・オメガ」" notice="十字レーザー" icon="十字範囲攻撃" />
+    <a time="036" text="ブレードコンボF" sync="オメガFは「ブレードコンボF」の構え。" notice="後方安置" icon="背面集合" />
+    <a time="039" text="ソードアクション" sync="オメガMは「ソードアクション」の構え。" icon="内周範囲攻撃" />
+    <a time="043" text="ファイラ・オメガ" sync="オメガFの「ファイラ・オメガ」" notice="散開" icon="散開B" />
+    <a time="047" text="レーザーシャワー" sync="オメガFは「レーザーシャワー」の構え。" notice="レーザーシャワー。" icon="全体攻撃" />
+  </s>
+
+  <s name="シールド">
+    <!-- シールドコンボS対象者を通知するトリガ begin -->
+    <t text="シールドコンボS\n ➜ ${_pc}" sync="^15:[id8]:オメガM:[id4]:シールドコンボs:[id8]:[pc]">
+      <v-notice duration="4" duration-visible="false" job-icon="true" />
+    </t>
+
+    <t text="頭割り不参加" sync="^15:[id8]:オメガM:[id4]:シールドコンボs:[id8]:[mex]">
+      <v-notice duration="4" icon="DontMove" duration-visible="false" />
+    </t>
+    <!-- シールドコンボS対象者を通知するトリガ end -->
+
+    <!--1回目は12秒後-->    <!--2回目は21秒-->
+    <a time="030" text="シールド開始" sync="オメガFは「連携プログラムW」の構え。" notice="連携攻撃シールド" sync-s="-30" />
+    <a time="037" text="シールドコンボS" sync="オメガMは「シールドコンボS」の構え。" notice="シールドコンボ" icon="対象範囲攻撃01" />
+    <a time="039" text="ブリザガ・オメガ" sync="オメガFは「ブリザガ・オメガ」の構え。" notice="十字ブリザガ" icon="十字範囲攻撃" notice-o="-3" />
+    <a time="045" text="ファイラ・オメガ" sync="オメガFは「ファイラ・オメガ」の構え。" notice="散開" icon="散開B" notice-o="-3" />
+    <a time="046" text="パイルピッチ" sync="オメガMの「パイルピッチ」" notice="頭割り" icon="頭割り" notice-o="-3" />
+    <a time="050" text="シールドコンボG" sync="オメガMは「シールドコンボG」の構え。" notice="チャリオット" icon="外周範囲攻撃" notice-o="-3" />
+    <a time="053" text="レーザーシャワー" sync="オメガFは「レーザーシャワー」の構え。" notice="レーザーシャワー。" icon="全体攻撃" notice-o="-3" />
+    <a time="057" text="ソードアクション" sync="オメガMの「ソードアクション」" notice="ソードアクション。" />
+    <a time="060" text="レーザーシャワー" sync="オメガFは「レーザーシャワー」の構え。" notice="レーザーシャワー。" icon="全体攻撃" />
+  </s>
+
+  <s name="連携2回目">
+    <!-- レゾナンスプログラム処理の通知トリガ begin -->
+    <t text="レゾナンス：ニアー\n ➜ 離して離してぇ" sync="^1A:オメガ gains the effect of レゾナンスプログラム：ニアー from  for 50.00 Seconds.">
+      <v-notice duration="8" icon="Pair" duration-visible="false" />
+    </t>
+
+    <t text="レゾナンス：ファー\n ➜ 近けて近づけてぇ" sync="^1A:オメガ gains the effect of レゾナンスプログラム：ファー from  for 50.00 Seconds.">
+      <v-notice duration="8" icon="Pair" duration-visible="false" />
+    </t>
+    <!-- レゾナンスプログラム処理の通知トリガ end -->
+
+    <!-- 連携プログラムCの処理を通知するトリガ begin -->
+    <t text="1番\n ➜ ターゲット反対側、前" sync="^1B:[id8]:[mex]:0000:[id4]:(0091|0095)" notice="いちばん">
+      <v-notice duration="10" icon="1" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+
+    <t text="2番\n ➜ ターゲット側、前" sync="^1B:[id8]:[mex]:0000:[id4]:(0092|0096)" notice="にばん">
+      <v-notice duration="10" icon="2" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+
+    <t text="3番\n ➜ ターゲット反対側、後ろ" sync="^1B:[id8]:[mex]:0000:[id4]:(0093|0097)" notice="さんばん">
+      <v-notice duration="10" icon="3" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+
+    <t text="4番\n ➜ ターゲット側、後ろ" sync="^1B:[id8]:[mex]:0000:[id4]:(0094|0098)" notice="よんばん">
+      <v-notice duration="10" icon="4" duration-visible="false" sync-to-hide="[mex] gains the effect of 被魔法ダメージ増加 from オメガ for 5.99 Seconds." />
+    </t>
+    <!-- 連携プログラムCの処理を通知するトリガ end -->
+
+    <a time="020" text="ガードプログラム" sync="オメガFは「ガードプログラム」の構え。" notice="ガードプログラム。" sync-s="-20" icon="スイッチ" />
+    <a time="029" text="レゾナンス" sync="オメガFは「レゾナンス」の構え。" notice="レゾナンス。" icon="ペア処理" />
+    <a time="041" text="連携プログラムC" sync="オメガFは「連携プログラムC」の構え。" notice="連携プログラムC。" icon="対象範囲攻撃02" />
+    <a time="052" text="オプチカルレーザーs" sync="オプチカルユニット starts using オプチカルレーザーs on オプチカルユニット." notice="半円レーザー" icon="上12安置" />
+    <a time="066" text="レーザーシャワー" sync="オメガFは「レーザーシャワー」の構え。" notice="レーザーシャワー。" icon="全体攻撃" />
+    <a time="075" text="ソーラレイ" sync="オメガFは「ソーラレイ」の構え。" notice="ソーラレイ。" icon="対象範囲攻撃" />
+  </s>
+
+  <s name="前半最終">
+    <!--ブレードから15秒後-->    <!--シールドからは19秒後-->
+    <a time="020" text="援護プログラムF" sync="オメガMは「援護プログラムF」の構え。" notice="援護プログラムF。" sync-s="-20" />
+    <a time="024" text="オプチカルレーザーf" sync="オプチカルユニット starts using オプチカルレーザーf" notice="直線レーザー" icon="縦範囲攻撃" />
+    <a time="025" text="オメガLB" sync="オメガFは「メテオ・オメガ」の構え。" notice="メテオとアロー" icon="距離減衰" />
+    <a time="036" text="コスモメモリー" sync="オメガFは「コスモメモリー」の構え。" notice="コスモメモリー。" icon="全体攻撃" />
+    <a time="045" text="レーザーシャワー" sync="オメガFは「レーザーシャワー」の構え。" notice="レーザーシャワー。" icon="全体攻撃" />
+    <a time="053" text="ブレードダンス・オメガ" sync="オメガFは「ブレードダンス・オメガ」の構え。" notice="ブレードダンス・オメガ。" />
+    <a time="065" notice="目玉の位置に注意" />
+    <!--2回目-->
+    <a time="073" text="援護プログラムS" sync="オメガFは「援護プログラムS」の構え。" notice="半円レーザー" />
+    <a time="077" text="オプチカルレーザーs" sync="オプチカルユニット starts using オプチカルレーザーs" icon="上12安置" />
+    <a time="078" text="オメガLB" sync="オメガFは「メテオ・オメガ」の構え。" notice="メテオとアロー" icon="距離減衰" />
+    <a time="089" text="コスモメモリー" sync="オメガFは「コスモメモリー」の構え。" notice="コスモメモリー。" icon="全体攻撃" />
+    <a time="098" text="レーザーシャワー" sync="オメガFは「レーザーシャワー」の構え。" notice="レーザーシャワー。" icon="全体攻撃" />
+    <a time="106" text="ブレードダンス・オメガ" sync="オメガFは「ブレードダンス・オメガ」の構え。" notice="ブレードダンス" icon="単体強攻撃" />
+    <a time="122" sync="新機能の実装完了を承認、検証は終了です。 サヨウナラ、アルファグループ……。" />
+    <a time="128" text="時間切れ" notice="時間切れ" />
+  </s>
+
+  <!--ここまで前半/ここから後半-->
+  <s name="PHASE1 後半開幕">
+    <a time="000" text="標的識別" sync="オメガは「標的識別」の構え。" notice="標的識別、零式波動砲。" icon="Marker" />
+    <a time="035" text="零式波動砲" sync="オメガの「零式波動砲」" sync-s="-30" icon="TankShare" />
+    <a time="038" text="エンバグ" sync="オメガは「エンバグ」の構え。" notice="エンバグ。" icon="Pair" />
+    <a time="044" text="拡散波動砲" sync="オメガは「拡散波動砲」の構え。" notice="拡散波動砲。" icon="Thunder" />
+    <a time="052" text="検知式波動砲" sync="オメガは「検知式波動砲」の構え。" notice="検知式波動砲。" icon="Targetaoe01" />
+    <a time="063" text="イオンエフラクス" sync="オメガは「イオンエフラクス」の構え。" notice="次は、全体攻撃" icon="HardAllRangeAttack" />
+    <a time="075" text="ハロー・ワールド" notice="ハローワールド。" icon="AllRangeAttack" goto="PHASE2 ハロワ1" />
+  </s>
+
+  <s name="PHASE2 ハロワ1">
+    <!-- ハロー・ワールドの処理を通知するトリガ begin -->
+    <!-- 変数を初期化する -->
+    <t sync="オメガは「ハロー・ワールド」の構え。">
+      <expressions>
+        <set name="share1" value="false" />      <!-- true:8秒シェア -->
+        <set name="share2" value="false" />      <!-- true:13秒シェア -->
+        <set name="is_no_debuff" value="true" />      <!-- true:デバフなし -->
+        <set name="debuff_origin" value="true" />      <!-- true:プレイヤー間の感染でなくボスにより直接付与されたデバフ -->
+      </expressions>
+    </t>
+
+    <!-- レイテントバグの処理 begin -->
+    <t text="レイテントバグ" sync="^1A:[mex] gains the effect of レイテントバグ from" notice="レイテント">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+    @if (Model.Player.InRole("TANK")) {
+      <v-notice text="レイテント：シェア1" duration="8" icon="Aマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ 中央サークル受け" duration="15" icon="Aマーカー" order="2" duration-visible="false" />
+    } else if (Model.Player.InRole("Healer")) {
+      <v-notice text="レイテント：シェア2" duration="8" icon="Bマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ 中央サークル受け" duration="15" icon="Bマーカー" order="2" duration-visible="false" />
+    } else {
+      <v-notice text="レイテント：シェア3" duration="8" icon="Dマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ 中央サークル受け" duration="14" icon="Dマーカー" order="2" duration-visible="false" />
+    }
+    </t>
+    <!-- レイテントバグの処理 end -->
+
+    <!-- クリティカルバグ：サークルの処理 begin -->
+    @if (Model.Player.InRole("TANK")) {
+    <t text="クリティカルバグ：サークル" sync="^1A:[mex] gains the effect of クリティカルバグ：サークル" notice="サークル">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="サークル：シャークしてA" duration="8" icon="Aマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ Aでサークル爆発" duration="13" icon="Aマーカー" order="2" duration-visible="false" />
+      <v-notice text="➜ スイッチ後:Cで:シェア1人受け" duration="16" order="3" duration-visible="false" />
+    </t>
+    }
+    <t text="クリティカルバグ：サークル" sync="^1A:[mex] gains the effect of クリティカルバグ：サークル" notice="サークルついたよ">
+      <v-notice text="サークル所持" duration="8" order="-1" />
+    </t>
+    <!-- クリティカルバグ：サークルの処理 end -->
+
+    <!-- クリティカルバグ：シェアの処理 begin -->
+    @if (Model.Player.InRole("DPS")) {
+    <t text="クリティカルバグ：シェア1" sync="^1A:[mex] gains the effect of クリティカルバグ：シェア from  for 8.00 Seconds." notice="シェア早い方8秒後方右マーカー">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="share1" value="true" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="シェア1：2で頭割り" duration="8" icon="南・右マーカー" order="1" duration-visible="false" />
+    </t>
+
+    <t text="クリティカルバグ：シェア2" sync="^1A:[mex] gains the effect of クリティカルバグ：シェア from  for 13.00 Seconds." notice="シェア遅い方13秒後方左マーカー">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="share2" value="true" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="シェア2：1で頭割り" duration="13" icon="南・左マーカー" order="1" duration-visible="false" />
+    </t>
+    }
+    <!-- クリティカルバグ：シェアの処理 end -->
+
+    <!-- デバフなしの処理 begin -->
+    <t text="デバフなし" sync="282b:オメガの「ハロー・ワールド」" notice="デバフなし">
+      <expressions>
+        <pre name="is_no_debuff" value="true" />
+        <set name="debuff_origin" value="false" />
+      </expressions>
+    @if (Model.Player.InRole("Healer")) {
+      <v-notice text="デバフなし:中央サークル受け" duration="13" icon="Bマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ Bでサークル爆発" duration="15" icon="Bマーカー" order="2" duration-visible="false" />
+    } else {
+      <v-notice text="デバフなし：1側へ" duration="10" icon="南・左マーカー" order="1" duration-visible="false" />
+    }
+    </t>
+    <!-- デバフなしの処理 end -->
+
+    <!-- ハロワ後クリティカルエラーのDPS散開位置 begin -->
+    @if (Model.Player.InRole("DPS")) {
+    <t text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="Aマーカーに移動" notice-o="5">
+      <expressions>
+        <pre name="share1" value="false" />
+        <pre name="share2" value="false" />
+        <pre name="is_no_debuff" value="true" />
+      </expressions>
+      <v-notice text="Aでサークル爆発" duration="8" icon="Aマーカー" order="4" duration-visible="false" />
+    </t>
+
+    <t text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="Bマーカーに移動" notice-o="5">
+      <expressions>
+        <pre name="share1" value="true" />
+        <pre name="share2" value="false" />
+        <pre name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="Bでサークル爆発" duration="8" icon="Bマーカー" order="4" duration-visible="false" />
+    </t>
+
+    <t text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="中央待機後・Dマーカーに移動" notice-o="5">
+      <expressions>
+        <pre name="share1" value="false" />
+        <pre name="share2" value="true" />
+        <pre name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="Dでサークル爆発" duration="8" icon="Dマーカー" order="4" duration-visible="false" />
+    </t>
+    }
+    <!-- ハロワ後クリティカルエラーのDPS散開位置 end -->
+    <!-- ハロー・ワールドの処理を通知するトリガ end -->
+    <a time="000" text="ハロー・ワールド" sync="オメガは「ハロー・ワールド」の構え。" icon="Virus" />
+    <a time="030" text="デバフ付与" sync="オメガの「ハロー・ワールド」" icon="Virus" sync-s="-30" />
+    <a time="038" text="サークル1回目爆発" />
+    <a time="046" text="サークル2回目爆発" />
+    <a time="052" text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="サークル範囲に注意して、残りのサークル処理" notice-o="-3" icon="AllRangeAttack" />
+    <a time="054" text="サークル3回目爆発" />
+    <a time="068" text="サークル4回目爆発" />
+    <a time="069" text="イオンエフラクス" sync="オメガは「イオンエフラクス」の構え。" notice="次は、全体攻撃" icon="HardAllRangeAttack" />
+    <a time="084" text="アーカイブフェーズ" sync="オメガは「アーカイブアーム」の構え。" notice="次は、アーカイブアーム。" sync-s="-10" icon="Attention" goto="アーカイブアーム" />
+  </s>
+
+  <s name="アーカイブアーム">
+    <!-- アーカイブアームの処理を通知するトリガ begin -->
+    <!--
+      v5.20.5 以降で正常に動作します
+
+      用語の定義
+      Y = Yellow = TurnR (009C)
+      B = Blue   = TurnL (009D)
+      を示す
+    -->
+    <!-- 変数を初期化する -->
+    <t no="0" sync="オメガは「アーカイブアーム」の構え。">
+      <expressions>
+        <set name="arm_no" count="0" />
+        <set name="is_arm1_Y" value="false" />
+        <set name="is_arm2_Y" value="false" />
+        <set name="is_arm3_Y" value="false" />
+      </expressions>
+    </t>
+
+    <!-- アーム1 -->
+    <t no="1" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:009C:" text="アーム1➔ Ｙ">
+      <expressions>
+        <pre name="arm_no" count="0" />
+        <set name="is_arm1_Y" value="true" />
+      </expressions>
+      <v-notice order="-5" icon="TurnR" duration="8" duration-visible="false" />
+    </t>
+    <t no="2" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:009D:" text="アーム1➔ Ｂ">
+      <expressions>
+        <pre name="arm_no" count="0" />
+        <set name="is_arm1_Y" value="false" />
+      </expressions>
+      <v-notice order="-5" icon="TurnL" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- アーム2 -->
+    <t no="3" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:009C:" text="アーム2➔ Ｙ">
+      <expressions>
+        <pre name="arm_no" count="1" />
+        <set name="is_arm2_Y" value="true" />
+      </expressions>
+      <v-notice order="-4" icon="TurnR" duration="8" duration-visible="false" />
+    </t>
+    <t no="4" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:009D:" text="アーム2➔ Ｂ">
+      <expressions>
+        <pre name="arm_no" count="1" />
+        <set name="is_arm2_Y" value="false" />
+      </expressions>
+      <v-notice order="-4" icon="TurnL" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- アーム3 -->
+    <t no="5" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:009C:" text="アーム3➔ Ｙ">
+      <expressions>
+        <pre name="arm_no" count="2" />
+        <set name="is_arm3_Y" value="true" />
+      </expressions>
+      <v-notice order="-3" icon="TurnR" duration="8" duration-visible="false" />
+    </t>
+    <t no="6" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:009D:" text="アーム3➔ Ｂ">
+      <expressions>
+        <pre name="arm_no" count="2" />
+        <set name="is_arm3_Y" value="false" />
+      </expressions>
+      <v-notice order="-3" icon="TurnL" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- カウントアップ -->
+    <t no="20" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:(009C|009D):">
+      <expressions>
+        <set name="arm_no" count="+1" />
+      </expressions>
+    </t>
+
+    <!-- 最終判定 begin -->
+    <!-- オールB -->
+    <t no="31" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:(009C|009D):" text="西へ" notice="西えー。">
+      <expressions>
+        <pre name="arm_no" count="3" />
+        <pre name="is_arm1_Y" value="false" />
+        <pre name="is_arm2_Y" value="false" />
+        <pre name="is_arm3_Y" value="false" />
+      </expressions>
+      <v-notice icon="Arrow7" order="-1" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- オールY -->
+    <t no="32" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:(009C|009D):" text="東へ" notice="東えー。">
+      <expressions>
+        <pre name="arm_no" count="3" />
+        <pre name="is_arm1_Y" value="true" />
+        <pre name="is_arm2_Y" value="true" />
+        <pre name="is_arm3_Y" value="true" />
+      </expressions>
+      <v-notice icon="Arrow3" order="-1" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- BBY -->
+    <t no="33" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:(009C|009D):" text="南西へ" notice="南西えー。">
+      <expressions>
+        <pre name="arm_no" count="3" />
+        <pre name="is_arm1_Y" value="false" />
+        <pre name="is_arm2_Y" value="false" />
+        <pre name="is_arm3_Y" value="true" />
+      </expressions>
+      <v-notice icon="Arrow6" order="-1" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- BYY -->
+    <t no="34" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:(009C|009D):" text="南東へ" notice="南東えー。">
+      <expressions>
+        <pre name="arm_no" count="3" />
+        <pre name="is_arm1_Y" value="false" />
+        <pre name="is_arm2_Y" value="true" />
+        <pre name="is_arm3_Y" value="true" />
+      </expressions>
+      <v-notice icon="Arrow4" order="-1" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- YBB -->
+    <t no="35" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:(009C|009D):" text="北西へ" notice="北西えー。">
+      <expressions>
+        <pre name="arm_no" count="3" />
+        <pre name="is_arm1_Y" value="true" />
+        <pre name="is_arm2_Y" value="false" />
+        <pre name="is_arm3_Y" value="false" />
+      </expressions>
+      <v-notice icon="Arrow8" order="-1" duration="8" duration-visible="false" />
+    </t>
+
+    <!-- YYB -->
+    <t no="36" sync="^1B:[id8]:ライトアームユニット:0000:[id4]:(009C|009D):" text="北東へ" notice="北東えー。">
+      <expressions>
+        <pre name="arm_no" count="3" />
+        <pre name="is_arm1_Y" value="true" />
+        <pre name="is_arm2_Y" value="true" />
+        <pre name="is_arm3_Y" value="false" />
+      </expressions>
+      <v-notice icon="Arrow2" order="-1" duration="8" duration-visible="false" />
+    </t>
+    <!-- 最終判定 end -->
+
+    <a time="000" text="アーカイブアーム" sync="オメガは「アーカイブアーム」の構え。" icon="Attention" />
+    <a time="010" text="ビーム開始" sync="ライトアームユニット starts using ハイパーパルス" notice="ビーム開始" notice-o="-3" icon="Targetaoe02" />
+    <a time="020" text="標的識別" sync="オメガは「標的識別」の構え。" notice="標的識別。" icon="Marker" />
+    <a time="028" text="零式波動砲" sync="オメガの「零式波動砲」" notice="零式波動砲。" icon="TankShare" />
+    <a time="034" text="拡散波動砲" sync="オメガは「拡散波動砲」の構え。" notice="拡散波動砲。" icon="Thunder" />
+    <a time="042" text="検知式波動砲" sync="オメガは「検知式波動砲」の構え。" notice="検知式波動砲。" icon="Targetaoe01" />
+
+    <!--アーカイブX-->
+    <a time="060" text="アーカイブアームX" sync="オメガは「アーカイブアームX」の構え。" notice="アーカイブアームX。" sync-s="-20" icon="Attention" />
+    <a time="070" text="対象確定" sync="オメガは「波動砲」の構え。" notice="線を確認" icon="SpreadB" notice-o="0" />
+    <a time="078" text="波動砲" notice="波動砲" icon="Distance" />
+    <a time="081" text="標的識別" sync="オメガは「標的識別」の構え。" notice="標的識別。ボスの向きに注意" icon="Marker" />
+    <a time="090" text="零式波動砲" sync="オメガの「零式波動砲」" notice="零式波動砲。" icon="TankShare" />
+    <a time="110" text="エンバグ" sync="オメガは「エンバグ」の構え。" notice="エンバグ。" icon="Pair" />
+    <a time="116" text="拡散波動砲" sync="オメガは「拡散波動砲」の構え。" notice="拡散波動砲。" icon="Thunder" />
+    <a time="124" text="検知式波動砲" sync="オメガは「検知式波動砲」の構え。" notice="検知式波動砲。" icon="Targetaoe01" />
+    <a time="135" text="イオンエフラクス" sync="オメガは「イオンエフラクス」の構え。" notice="次は、全体攻撃" icon="HardAllRangeAttack" />
+    <a time="145" text="アーカイブオール" sync="オメガは「アーカイブオール」の構え。" notice="アーカイブオール" goto="アーカイブオール" />
+  </s>
+
+  <s name="アーカイブオール">
+    <!-- アーカイブオールの処理を通知するトリガ begin -->
+    <t text="時計回り" sync="^1B:[id8]:リアユニット:[id4]:[id4]:009C" notice="右後ろえー">
+      <v-notice duration="6" icon="TurnR" duration-visible="false" />
+      <v-notice text="ボス右後ろ" duration="6" icon="Arrow4" duration-visible="false" />
+    </t>
+
+    <t text="反時計回り" sync="^1B:[id8]:リアユニット:[id4]:[id4]:009D" notice="左後ろえー">
+      <v-notice duration="6" icon="TurnL" duration-visible="false" />
+      <v-notice text="ボス左後ろ" duration="6" icon="Arrow6" duration-visible="false" />
+    </t>
+
+    <t text="ユニット自爆" sync="^14:3360:レフトアームユニット starts using コロッサスブロー on レフトアームユニット.">
+      <v-notice duration="21" icon="Bomb" />
+    </t>
+
+    <t text="距離減衰" sync="^14:3363:オメガ starts using オメガスライド on Unknown." notice-o="1">
+      <v-notice duration="6" icon="Distance" />
+    </t>
+
+    <t text="ファイラ" sync="(オメガ|Unknown) starts using ファイラ・オメガ on [mex]" notice="自分にマーカー" notice-o="1">
+      <v-notice duration="5" icon="Targetaoe01" />
+    </t>
+
+    <!-- 自分以外の4人にファイラがついた場合は頭割り参加確定 -->
+    <t text="頭割り" sync="(オメガ|Unknown) starts using ファイラ・オメガ on [nex]" notice="頭割り" notice-o="1" sync-count="4">
+      <v-notice duration="5" icon="DamageShare" order="1" />
+    </t>
+
+    <t text="→ [mex]" sync="(オメガ|Unknown) starts using スポットライト on [mex]">
+      <v-notice duration="5" icon="Marker" order="2" />
+    </t>
+   <!-- アーカイブオールの処理を通知するトリガ end -->
+
+    <a time="000" text="アーカイブオール" sync="オメガは「アーカイブオール」の構え。" notice="ボスの向きを確認" icon="Attention" />
+    <a time="011" text="レーザー＋距離減衰" sync="リアユニット starts using リアレーザー" notice="" icon="Attention" />
+    <a time="012" text="オメガスライド" sync="オメガ starts using オメガスライド" notice="範囲出るまで一箇所に集まる" notice-o="-1" icon="Stack" />
+    <a time="024" text="デルタアタック" sync="^15:[id8]:オメガ:3378:デルタアタック" notice="範囲が出たら散開" icon="StackAOE" />
+    <a time="025" text="ファイラ＋頭割り" icon="Leave" />
+    <a time="032" text="ユニット自爆" notice="爆発に注意" icon="Bomb" />
+    <a time="036" text="拡散波動砲" sync="オメガは「拡散波動砲」の構え。" notice="拡散波動砲。" icon="Thunder" />
+    <a time="056" text="ハロー・ワールド" sync="オメガは「ハロー・ワールド」の構え。" notice="フェーズ移行。" icon="AllRangeAttack" />
+    <a time="056" text="分岐：2回目なら最終へ" icon="Branch"/>
+
+    <t text="ハロー・ワールド2回目" sync="オメガは「ハロー・ワールド」の構え。" goto="PHASE4 ハロワ2" />
+    <t text="最終フェーズへ" sync="オメガは「プログラム・オメガ」の構え。" goto="PHASE6 最終" />
+  </s>
+
+  <s name="PHASE4 ハロワ2">
+    <!-- ハロー・ワールドの処理を通知するトリガ begin -->
+    <!-- 変数を初期化する -->
+    <t sync="オメガは「ハロー・ワールド」の構え。">
+      <expressions>
+        <set name="share1" value="false" />      <!-- true:8秒シェア -->
+        <set name="share2" value="false" />      <!-- true:13秒シェア -->
+        <set name="is_no_debuff" value="true" />      <!-- true:デバフなし -->
+        <set name="debuff_origin" value="true" />      <!-- true:プレイヤー間の感染でなくボスにより直接付与されたデバフ -->
+      </expressions>
+    </t>
+
+    <!-- レイテントバグの処理 begin -->
+    <t text="レイテントバグ" sync="^1A:[mex] gains the effect of レイテントバグ from" notice="レイテント">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+    @if (Model.Player.InRole("TANK")) {
+      <v-notice text="レイテント：シェア1" duration="8" icon="Cマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ スイッチ、Cサークル受け" duration="15" icon="Cマーカー" order="2" duration-visible="false" />
+    } else if (Model.Player.InRole("Healer")) {
+      <v-notice text="レイテント：Bサークル受け" duration="8" icon="Bマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ Bでサークル爆発" duration="15" icon="Bマーカー" order="2" duration-visible="false" />
+    } else {
+      <v-notice text="レイテント：Bサークル受け" duration="8" icon="Bマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ Bデグレ受取サークル爆発" duration="15" icon="Bマーカー" order="2" duration-visible="false" />
+      <v-notice text="➜ DPSデグレ渡し" duration="20" icon="背面集合" order="3" duration-visible="false" />
+      <v-notice text="➜ AoE側面捨て" duration="23" icon="Arrow7" order="4" duration-visible="false" />
+    }
+    </t>
+    <!-- レイテントバグの処理 end -->
+
+    <!-- クリティカルバグ：サークルの処理 begin -->
+    @if (Model.Player.InRole("TANK")) {
+    <t text="クリティカルバグ：サークル" sync="^1A:[mex] gains the effect of クリティカルバグ：サークル" notice="サークル">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="サークル：シャークしてA" duration="8" icon="Aマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ スイッチしてA" duration="13" icon="Aマーカー" order="2" duration-visible="false" />
+      <v-notice text="➜ Aでシェア1人受け" duration="18" order="3" duration-visible="false" />
+    </t>
+    }
+    <t text="クリティカルバグ：サークル" sync="^1A:[mex] gains the effect of クリティカルバグ：サークル" notice="サークルついたよ">
+      <v-notice text="サークル所持" duration="8" icon="注意" order="-1" />
+    </t>
+    <!-- クリティカルバグ：サークルの処理 end -->
+
+    <!-- クリティカルバグ：デグレードの処理 begin -->
+    @if (Model.Player.InRole("Healer")) {
+    <t text="クリティカルバグ：デグレード" sync="^1A:[mex] gains the effect of クリティカルバグ：デグレード" notice="デグレード">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="デグレード：B側デグレ受渡" duration="15" icon="Bマーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ サークル受け" duration="15" icon="Bマーカー" order="2" duration-visible="false" />
+      <v-notice text="➜ Cサークル爆発" duration="23" icon="2マーカー" order="3" duration-visible="false" />
+    </t>
+    }
+    <t text="クリティカルバグ：デグレード" sync="^1A:[mex] gains the effect of クリティカルバグ：デグレード" notice="デグレついたよ">
+      <expressions>
+        <pre name="debuff_origin" value="false" />
+      </expressions>
+      <v-notice text="デグレード所持" duration="15" icon="注意" order="-1" />
+    </t>
+    <!-- クリティカルバグ：デグレードの処理 end -->
+
+    <!-- クリティカルバグ：シェアの処理 begin -->
+    @if (Model.Player.InRole("DPS")) {
+    <!-- ハロワ2回目のシェア1 -->
+    <t text="クリティカルバグ：シェア1" sync="^1A:[mex] gains the effect of クリティカルバグ：シェア from  for 8.00 Seconds." notice="シェア早い方8秒">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="share1" value="true" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="シェア1：2で頭割り" duration="8" icon="2マーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ 背面デグレ受取" duration="20" icon="背面集合" order="2" duration-visible="false" />
+    </t>
+
+    <!-- ハロワ2回目のシェア2 -->
+    <t text="クリティカルバグ：シェア2" sync="^1A:[mex] gains the effect of クリティカルバグ：シェア from  for 13.00 Seconds." notice="シェア遅い方13秒">
+      <expressions>
+        <pre name="debuff_origin" value="true" />
+        <set name="debuff_origin" value="false" />
+        <set name="share2" value="true" />
+        <set name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="シェア2：1で頭割り" duration="13" icon="1マーカー" order="1" duration-visible="false" />
+      <v-notice text="➜ 背面デグレ受取" duration="15" icon="背面集合" order="2" duration-visible="false" />
+    </t>
+    }
+    <!-- クリティカルバグ：シェアの処理 end -->
+
+    <!-- デバフなしの処理 begin -->
+    @if (Model.Player.InRole("DPS")) {
+    <t text="デバフなし" sync="282b:オメガの「ハロー・ワールド」" notice="デバフなし">
+      <expressions>
+        <pre name="is_no_debuff" value="true" />
+        <set name="debuff_origin" value="false" />
+      </expressions>
+      <v-notice text="デバフなし：1：2で頭割り" duration="8" icon="1マーカー" order="1" duration-visible="false" />
+      <v-notice text="背面デグレ受取" duration="15" icon="背面集合" order="2" duration-visible="false" />
+    </t>
+    }
+    <!-- デバフなしの処理 end -->
+
+    <!-- ハロワ後クリティカルエラーのDPS散開位置 begin -->
+    @if (Model.Player.InRole("DPS")) {
+    <t text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="中央え" notice-o="5">
+      <expressions>
+        <pre name="share1" value="false" />
+        <pre name="share2" value="false" />
+        <pre name="is_no_debuff" value="true" />
+      </expressions>
+      <v-notice text="中央の塔" duration="7" icon="FallingObject" order="3" duration-visible="false" />
+      <v-notice text="➜ Cでサークル爆発" duration="12" icon="Cマーカー" order="4" duration-visible="false" />
+    </t>
+
+    <t text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="びー側え" notice-o="5">
+      <expressions>
+        <pre name="share1" value="true" />
+        <pre name="share2" value="false" />
+        <pre name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="B側の塔" duration="7" icon="FallingObject" order="3" duration-visible="false" />
+      <v-notice text="➜ Bでサークル爆発" duration="12" icon="Bマーカー" order="4" duration-visible="false" />
+    </t>
+
+    <t text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="でー側え" notice-o="5">
+      <expressions>
+        <pre name="share1" value="false" />
+        <pre name="share2" value="true" />
+        <pre name="is_no_debuff" value="false" />
+      </expressions>
+      <v-notice text="D側の塔" duration="7" icon="FallingObject" order="3" duration-visible="false" />
+      <v-notice text="➜ Dでサークル爆発" duration="12" icon="Dマーカー" order="4" duration-visible="false" />
+    </t>
+    }
+    <!-- ハロワ後クリティカルエラーのDPS散開位置 end -->
+    <!-- ハロー・ワールドの処理を通知するトリガ end -->
+    <a time="000" text="ハロー・ワールド" sync="オメガは「ハロー・ワールド」の構え。" icon="Virus" />
+    <a time="030" text="デバフ付与" sync="オメガの「ハロー・ワールド」" icon="Virus" sync-s="-30" />
+    <a time="038" text="サークル1回目爆発" />
+    <a time="046" text="サークル2回目爆発" />
+    <a time="051" text="DPSデグレ受け渡し" />
+    <a time="052" text="クリティカルエラー" sync="オメガは「クリティカルエラー」の構え。" notice="サークル範囲に注意して、残りのサークル処理" notice-o="-3" icon="AllRangeAttack" />
+    <a time="054" text="サークル3回目爆発" />
+    <a time="068" text="サークル4回目爆発" />
+    <a time="069" text="イオンエフラクス" sync="オメガは「イオンエフラクス」の構え。" notice="次は、全体攻撃" icon="HardAllRangeAttack" />
+    <a time="084" text="アーカイブフェーズ" sync="オメガは「アーカイブアーム」の構え。" notice="アーカイブアーム。" sync-s="-10" icon="Attention" goto="アーカイブアーム" />
+  </s>
+
+  <s name="PHASE6 最終">
+    <a time="000" text="プログラム・オメガ" sync="オメガは「プログラム・オメガ」の構え。" notice="プログラム・オメガ" sync-s="-20" />
+    <a time="007" text="イオンエフラクス" sync="オメガの「イオンエフラクス」" notice="次は、全体攻撃" icon="HardAllRangeAttack" />
+    <a time="054" text="最終詠唱開始" notice="がんばれー" icon="HardAllRangeAttack" />
+    <a time="064" text="時間切れ" notice="もうすぐ時間切れ" icon="Timeout" />
+  </s>
+</timeline>

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+@{
+  // 最初にデータモデルをキャストしておく
+  var data = Model;
+}
+
+@{
+  /*
+  タイムライン内で使用するロール別コール内容を定義
+  */
+
+  var notice_dps_sankai = "" ; // ほのお散開コール
+  var notice_th_sankai = "" ;
+  if (Model.Player.InRole("DPS")) {
+    notice_dps_sankai = "散開" ;
+    notice_th_sankai = "中央集合" ;
+  }else{
+    notice_dps_sankai = "中央集合" ;
+    notice_th_sankai = "散開" ;
+  }
+
+  var notice_wind_direction = "" ; // たつまき時の向きコール
+  if (Model.Player.InRole("DPS")) {
+    notice_wind_direction = "内側を向く" ;
+  }else{
+    notice_wind_direction = "外側を向く" ;
+  }
+
+  var notice_eq_implosion = "" ; // じしん時の動きコール1
+  var notice_eq_bigbang = "" ; // じしん時の動きコール2
+  if (Model.Player.InRole("DPS")) {
+    notice_eq_implosion = "範囲攻撃に2回当たる" ;
+    notice_eq_bigbang = "頭割り位置で待機" ;
+  }else{
+    notice_eq_implosion = "" ;
+    notice_eq_bigbang = "回避してタンクヒラ全回復" ;
+  }
+
+  var notice_bowels_of_agony = "" ; // 履行技フェーズのコール
+  if (Model.Player.InRole("DPS")) {
+    notice_bowels_of_agony = "" ;
+  }else{
+    notice_bowels_of_agony = "外を向く、水を当てる" ;
+  }
+}
+<timeline>
+  <name>次元の狭間オメガ零式：アルファ編 1層</name>
+  <rev></rev>
+  <zone>Alphascape V1.0 (Savage)</zone>
+  <description>
+  次元の狭間オメガ零式：アルファ編1タイムライン
+Angel Seed版デラックスバージョン with RINGS
+(C)RINGS, CC BY-SA
+  </description>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t text="ボス左右に移動\n ➜ ボス前後に移動" sync="カオスは「ヴァーティカルインプロージョン」の構え" notice="たてからよこ" >
+    <v-notice duration="6" icon="全体強攻撃.png" />
+  </t>
+
+  <t text="ボス前後に移動\n ➜ ボス左右に移動" sync="カオスは「ホリゾンタルインプロージョン」の構え" notice="よこからたて" >
+    <v-notice duration="6" icon="全体強攻撃.png" />
+  </t>
+
+  <t text="カオティックディスパーション\n ➜ ${_pc}" sync="オメガ starts using カオティックディスパーション on [pc]" notice="背面集合" >
+    <v-notice duration="6" icon="単体強攻撃.png" />
+  </t>
+
+  <t text="DPS：内側を向く\n ➜ ヒラタンク：外側を向く" sync="カオスは「たつまき」の構え" >
+    <v-notice duration="6" icon="ノックバック.png" />
+  </t>
+
+  <!-- 識別用エントリフェーズ -->
+  <s name="ENTRY" >
+    <a time="15" text="分岐待ち" icon="分岐.png" />
+    <t text="分岐＞ほのお" sync="カオスは「ダミングイーディクト」の構え" notice="中央集合" icon="背面集合.png" sync-count="1" >
+      <load target="ほのお＞たつまき" truncate="true" />
+      <load target="履行技" />
+      <load target="つなみ＞じしん" />
+    </t>
+
+    <t text="分岐＞つなみ" sync="インプロージョン」の構え" sync-count="1" >
+      <load target="つなみ＞じしん" truncate="true" />
+      <load target="履行技" />
+      <load target="ほのお＞たつまき" />
+    </t>
+  </s>
+  <!-- 識別用エントリフェーズ end -->
+
+  <s name="ほのお＞たつまき">
+    <a time="14" text="ほのお" sync="カオスは「ほのお」の構え" notice="次は、全体攻撃。" icon="ファイア系.png" />
+    <a time="31" text="タンクヒラ爆発" notice="@notice_th_sankai" icon="爆発系.png" />
+    <a time="31" text="インプロージョン" sync="インプロージョン」の構え" icon="避ける.png" />
+    <a time="43" text="DPS爆発" notice="@notice_dps_sankai" icon="爆発系.png" />
+    <a time="51" text="カオティックディスパーション" sync="カオスは「カオティックディスパーション」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png" />
+    <a time="63" text="ほのお" sync="カオスは「ほのお」の構え"  notice="次は、全体攻撃。" icon="ファイア系.png" />
+    <a time="82" text="タンクヒラ爆発" notice="@notice_th_sankai" icon="爆発系.png" />
+    <a time="82" text="着弾せよ" icon="頭割り.png" />
+    <a time="95" text="DPS爆発" notice="@notice_dps_sankai" icon="爆発系.png" />
+    <a time="95" text="突出せよ" icon="避ける.png" />
+    <a time="105" text="追尾せよ" icon="避ける.png" />
+    <a time="124" text="たつまき" sync="カオスは「たつまき」の構え" notice="タンクゆうどう" icon="ツイスター.png" />
+    <a time="136" text="アンブラスマッシュ" sync="カオスは「アンブラスマッシュ」の構え" icon="距離減衰.png" />
+    <a time="146" text="ダミングイーディクト" icon="背面集合.png" />
+    <a time="149" text="吹き飛ばし" notice="@notice_wind_direction" icon="ノックバック.png" notice-o="-6" />
+    <a time="165" text="カオティックディスパーション" sync="カオスは「カオティックディスパーション」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png" />
+    <a time="177" text="たつまき" sync="カオスは「たつまき」の構え" />
+    <a time="189" text="着弾せよ" icon="対象範囲攻撃01.png" />
+    <a time="195" text="吹き飛ばし" notice="@notice_wind_direction" icon="ノックバック.png" notice-o="-6" />
+    <a time="197" text="突出せよ" icon="避ける.png" />
+    <a time="209" text="追尾せよ（タンク線取り）" sync="カオスは「追尾せよ」の構え" icon="マーカー.png" />
+    <a time="223" text="ローディング" />
+  </s>
+
+  <s name="つなみ＞じしん" >
+    <a time="15" text="つなみ" sync="カオスは「つなみ」の構え" notice="次は、全体攻撃。" icon="全体攻撃.png" />
+    <a time="24" text="アンブラスマッシュ" sync="カオスは「アンブラスマッシュ」の構え" icon="距離減衰.png" />
+    <a time="33" text="ダミングイーディクト" sync="カオスは「ダミングイーディクト」の構え" icon="背面集合.png" />
+    <a time="52" text="カオティックディスパーション" sync="カオスは「カオティックディスパーション」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png" />
+    <a time="64" text="つなみ" sync="カオスは「つなみ」の構え" notice="次は、全体攻撃。"  icon="全体攻撃.png" />
+    <a time="74" text="着弾せよ" sync="カオスは「着弾せよ」の構え" icon="対象範囲攻撃01.png" />
+    <a time="82" text="突出せよ" icon="避ける.png" />
+    <a time="94" text="追尾せよ(タンク線取り)" sync="カオスは「追尾せよ」の構え" icon="マーカー.png" />
+    <a time="116" text="じしん" sync="カオスは「じしん」の構え" notice="次は、全体攻撃。" icon="全体攻撃.png" />
+    <a time="130" text="インプロージョン" sync="インプロージョン」の構え" notice="@notice_eq_implosion" notice-o="-6" />
+    <a time="149" text="カオティックディスパーション" sync="カオスは「カオティックディスパーション」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png" />
+    <a time="161" text="じしん" sync="カオスは「じしん」の構え" notice="次は、全体攻撃。" icon="全体攻撃.png" />
+    <a time="173" text="着弾せよ" icon="頭割り.png" />
+    <a time="180" text="突出せよ" icon="避ける.png" notice="@notice_eq_bigbang" notice-o="-6" />
+    <a time="191" text="追尾せよ(玉)" icon="避ける.png" />
+    <a time="204" text="ローディング" />
+  </s>
+
+  <s name="履行技" >
+    <a time="0" text="バウル・オブ・アゴニー" />
+    <a time="19" text="DPS爆発" icon="爆発系.png" />
+    <a time="21" text="タンクヒラ爆発" notice="@notice_bowels_of_agony" notice-o="-6" icon="爆発系.png" />
+    <a time="49" text="ソウル・オブ・カオス" sync="カオスの「ソウル・オブ・カオス" notice="次は、全体攻撃。" icon="全体強攻撃.png"/>
+    <a time="65" text="ローディング" />
+  </s>
+
+</timeline>

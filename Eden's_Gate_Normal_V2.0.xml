@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園 エデン 覚醒編（ノーマル２層）</name>
+  <rev></rev>
+  <description>
+    希望の園 エデンのノーマル向けTLです。
+  </description>
+  <zone>Eden's Gate: Descent</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-9" />
+  <default target-element="Activity" target-attr="sync-e" value="9" />
+
+  <!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン２層" exec="scripts\ppas.ps1" args="Nエデン２層" exec-hidden="true" />
+<!--
+<t name="初期配置" sync="戦闘開始まで5秒！" exec="scripts\ppas.ps1" args="" exec-hidden="true" />
+<t name="安置解除" sync="解除A" exec="scripts\ppoff.ps1" args="A" exec-hidden="true" />
+<t name="安置解除" sync="解除B" exec="scripts\ppoff.ps1" args="B" exec-hidden="true" />
+<t name="安置解除" sync="解除C" exec="scripts\ppoff.ps1" args="C" exec-hidden="true" />
+<t name="安置解除" sync="解除D" exec="scripts\ppoff.ps1" args="D" exec-hidden="true" />
+<t name="安置解除" sync="解除1" exec="scripts\ppoff.ps1" args="1" exec-hidden="true" />
+<t name="安置解除" sync="解除2" exec="scripts\ppoff.ps1" args="2" exec-hidden="true" />
+-->
+
+<!-- ノーマル・エデンの園・２層 -->
+<!-- ２層・トリガー -->
+  <t text="ドゥームヴォイド・ギロチン" sync="ヴォイドウォーカーは「ドゥームヴォイド・ギロチン」の構え。" notice="ボス前後直線範囲攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ニュクス出現" sync="次元の裂け目が開いた……！" notice="触れるな危険">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ドゥームヴォイド・スライサー" sync="ヴォイドウォーカーは「ドゥームヴォイド・スライサー」の構え。" notice="ボス集合">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="シャドーフレイム" sync="ヴォイドウォーカーは「シャドーフレイム」の構え。" notice="MT、STに大ダメージ">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ダークファイガ" sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。" notice="ランダム４名、円形範囲攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ダークホーリー" sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。" notice="頭割り">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エントロピー" sync="ヴォイドウォーカーは「エントロピー」を唱えた。" notice="全体攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エレボスの巨腕" sync="次元の裂け目より、エレボスの巨腕が現れた・・・！" notice="外周ノックバック注意">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <!-- 未実装始まり -->
+  <t text="シャドウアイ" sync="[pc] gains effect of シャドウアイ" notice="対象者見るな！">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      job-icon="true" />
+  </t>
+
+  <t text="ダークファイガ" sync="[mex] gains effect of ディレイスペル：ダークファイガ" notice="ディレイ・ファイガ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ダークホーリー" sync="[mex] gains effect of ディレイスペル：ダークホーリー" notice="ディレイ・ホーリー。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ヘルウィンド" sync="[mex] gains effect of ディレイスペル：ヘルウィンド" notice="ディレイ・ヘルウィンド。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="シャドウアイ" sync="[pc] gains effect of ディレイスペル：シャドウアイ" notice="ディレイ・シャドウアイ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      job-icon="true" />
+  </t>
+  <!-- 未実装終わり -->
+<!-- ２層・トリガーEND -->
+
+
+<!-- 第1フェーズ -->
+　<a time="001" text="【第１フェーズ】" sync="" notice="" />
+  <a time="001" sync="ヴォイドウォーカー:忌々しい光の力……星を喰らう化け物め……！ ここで終わりなき戦いに終止符を打つ！" />
+  <a time="007" sync="ヴォイドウォーカー:我が力を以てすれば、世を隔てる境界など薄皮に等しい！ その傷口より、開け……昏き深淵よ！" />
+  <a time="007" text="ドゥームヴォイド・ギロチン" sync="ヴォイドウォーカーは「ドゥームヴォイド・ギロチン」の構え。" notice="" />
+  <a time="012" sync="次元の裂け目が開いた……！" />
+  <a time="024" sync="ヴォイドウォーカー:さあ、もう一度だ……深淵へと通じ得る境界を斬り裂かん！" />
+  <a time="024" text="ドゥームヴォイド・スライサー" sync="ヴォイドウォーカーは「ドゥームヴォイド・スライサー」の構え。" notice="" />
+  <a time="030" sync="次元の裂け目が開いた……！" />
+  <a time="043" text="シャドーフレイム" sync="ヴォイドウォーカーは「シャドーフレイム」の構え。" notice="" />
+  <a time="054" text="ダークファイガ" sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。" notice="" />
+  <a time="062" text="ダークホーリー" sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。" notice="" />
+<!-- 第2フェーズ -->
+　<a time="070" text="【第２フェーズ】" sync="" notice="" />
+  <a time="070" sync="ヴォイドウォーカー:我が魔法を遅延させよう…… 死の言霊は、睦言のように甘く、密やかに忍び寄るのだ……。" />
+  <a time="070" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="076" text="ダークファイガ" sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。" notice="" />
+  <a time="090" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="096" text="ダークホーリー" sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。" notice="" />
+  <a time="110" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="116" text="ダークファイガ" sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。" notice="" />
+  <a time="124" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="130" text="ダークホーリー" sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。" notice="" />
+<!-- 第3フェーズ -->
+　<a time="150" text="【第３フェーズ】" sync="" notice="" />
+  <a time="150" sync="ヴォイドウォーカー:混沌を司るは闇の力…… 昏き魔力よ、限りなく増大し、終末をも覆いつくせ！" />
+  <a time="150" text="エントロピー" sync="ヴォイドウォーカーは「エントロピー」を唱えた。" notice="" />
+  <a time="156" sync="ヴォイドウォーカー:嗚呼、昏き深淵よ！ 世を隔てる悪しき境界を引き裂け！" />
+  <a time="159" sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+  <a time="170" text="ドゥームヴォイド・ギロチン" sync="ヴォイドウォーカーは「ドゥームヴォイド・ギロチン」の構え。" notice="" />
+  <a time="176" sync="次元の裂け目が開いた……！" />
+  <a time="176" sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+  <a time="187" text="ドゥームヴォイド・スライサー" sync="ヴォイドウォーカーは「ドゥームヴォイド・スライサー」の構え。" notice="" />
+  <a time="193" sync="次元の裂け目が開いた……！" />
+  <a time="202" text="シャドーフレイム" sync="ヴォイドウォーカーは「シャドーフレイム」の構え。" notice="" />
+  <a time="210" text="エントロピー" sync="ヴォイドウォーカーは「エントロピー」を唱えた。" notice="" />
+<!-- 第4フェーズ -->
+  <a time="218" text="【第４フェーズ】" sync="" notice="" />
+  <a time="218" sync="ヴォイドウォーカー:その昏き虚ろより、魔力を引き出さん……！" />
+  <a time="220" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="226" text="ダークホーリー" sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。" notice="" />
+  <a time="238" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="244" text="ダークファイガ" sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。" notice="" />
+  <a time="262" sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+  <a time="280" text="エントロピー" sync="ヴォイドウォーカーは「エントロピー」を唱えた。" notice="" />
+<!-- 最終フェーズ -->
+  <a time="280" text="【最終フェーズ】" sync="" notice="" />
+  <a time="293" text="シャドウアイ" sync="ヴォイドウォーカーは「シャドウアイ」を唱えた。" notice="シャドウアイ。" />
+  <a time="301" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="308" text="シャドウアイ" sync="ヴォイドウォーカーは「シャドウアイ」を唱えた。" notice="シャドウアイ。" />
+  <a time="316" text="ドゥームヴォイド・ギロチン" sync="ヴォイドウォーカーは「ドゥームヴォイド・ギロチン」の構え。" notice="" />
+  <a time="321" sync="次元の裂け目が開いた……！" />
+  <a time="331" text="ドゥームヴォイド・スライサー" sync="ヴォイドウォーカーは「ドゥームヴォイド・スライサー」の構え。" notice="" />
+  <a time="337" sync="次元の裂け目が開いた……！" />
+  <a time="349" text="エントロピー" sync="ヴォイドウォーカーは「エントロピー」を唱えた。" notice="" />
+  <a time="361" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="362" sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+  <a time="362" text="ディレイスペル" sync="ヴォイドウォーカー starts using ディレイスペル on ヴォイドウォーカー." notice="ディレイスペル。" />
+  <a time="369" text="ダークホーリー" sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。" notice="" />
+  <a time="385" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="391" text="ダークファイガ" sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。" notice="" />
+  <a time="409" text="シャドーフレイム" sync="ヴォイドウォーカーは「シャドーフレイム」の構え。" notice="" />
+  <a time="417" text="ドゥームヴォイド・ギロチン" sync="ヴォイドウォーカーは「ドゥームヴォイド・ギロチン」の構え。" notice="" />
+  <a time="423" sync="次元の裂け目が開いた……！" />
+  <a time="423" sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+  <a time="432" text="ドゥームヴォイド・スライサー" sync="ヴォイドウォーカーは「ドゥームヴォイド・スライサー」の構え。" notice="" />
+  <a time="438" sync="次元の裂け目が開いた……！" />
+  <a time="440" text="シャドウアイ" sync="ヴォイドウォーカーは「シャドウアイ」を唱えた。" notice="シャドウアイ。" />
+  <a time="452" text="シャドーフレイム" sync="ヴォイドウォーカーは「シャドーフレイム」の構え。" notice="" />
+  <a time="461" text="エントロピー" sync="ヴォイドウォーカーは「エントロピー」を唱えた。" notice="" />
+  <a time="473" text="ディレイスペル" sync="ヴォイドウォーカーは「ディレイスペル」の構え。" notice="ディレイスペル。" />
+  <a time="474" sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+  <a time="350" text="(時間切れ?)" />
+
+</timeline>

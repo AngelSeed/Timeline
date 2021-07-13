@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>テストタイムライン</name>
+  <rev>test</rev>
+  <zone>TEST</zone>
+  <description>
+    もろもろのテスト用タイムライン
+  </description>
+  <author>
+    anoyetta
+  </author>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+<!-- 音声通知何秒前 -->
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+<!-- ログの通知間隔 -->
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+<t name="初期配置" sync="テスト" exec="scripts\ppas.ps1" args="個人宅木人テスト" exec-hidden="true" />
+<t name="初期配置" sync="戦闘開始まで5秒！" exec="scripts\ppas.ps1" args="個人宅木人テスト" exec-hidden="true" />
+<t name="安置解除" sync="解除A" exec="scripts\ppoff.ps1" args="A" exec-hidden="true" />
+<t name="安置解除" sync="解除B" exec="scripts\ppoff.ps1" args="B" exec-hidden="true" />
+<t name="安置解除" sync="解除C" exec="scripts\ppoff.ps1" args="C" exec-hidden="true" />
+<t name="安置解除" sync="解除D" exec="scripts\ppoff.ps1" args="D" exec-hidden="true" />
+<t name="安置解除" sync="解除1" exec="scripts\ppoff.ps1" args="1" exec-hidden="true" />
+<t name="安置解除" sync="解除2" exec="scripts\ppoff.ps1" args="2" exec-hidden="true" />
+
+  <s name="ENTRY">
+    <a time="016" text="音量1.0" notice="音量100%です。" notice-vol="1.0" />
+    <a time="021" text="音量0.2" notice="音量10%です。" notice-vol="0.1" />
+    <a time="027" text="音量0.5" notice="音量50%です。" notice-vol="0.5" />
+
+    <a time="035" text="同時に発声します1" notice="私は太郎です。" />
+    <a time="035" text="同時に発声します2" notice="私は次郎です。" />
+    <a time="035" text="同時に発声します3" notice="私は三郎です。" />
+
+    <a time="045" text="今度は順番に喋ります1" notice="私は太郎です。" notice-sync="true" />
+    <a time="045" text="今度は順番に喋ります2" notice="私は次郎です。" notice-sync="true" />
+    <a time="045" text="今度は順番に喋ります3" notice="私は三郎です。" notice-sync="true" />
+  </s>
+</timeline>

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>次元の狭間オメガ零式：デルタ編 4層</name>
+  <rev></rev>
+  <description>
+    デルタ4層向けのタイムラインです。
+  </description>
+  <zone>Deltascape V4.0 (Savage)</zone>
+  <locale>JA</locale>
+  <entry>前半後半判断</entry>
+  <start>戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t text="中核の暗黒光"              sync="14:240E"                             notice="中央ビーム、外周安置" />
+  <t text="外縁の暗黒光"              sync="14:240F"                             notice="外周ビーム、中央安置" />
+  <t text="生者の暗黒光"              sync="14:2411"                             notice="左、紫、右、青"       />
+  <t text="死者の暗黒光"              sync="14:2411"                             notice="左、青、右、紫"       />
+  <t text="強化ファイガ"              sync="14:23FB"                             notice="動作停止"             />
+  <t text="強化ブリザガ"              sync="14:23FC"                             notice="動き続けて"           />
+  <t text="強化サンダガ"              sync="14:23FD"                             notice="ボスから離れて"       />
+  <t text="グランドクロス・アルファ"  sync="「グランドクロス・アルファ」の構え"  notice="中央に移動"           />
+  <t text="グランドクロス・オメガ"    sync="「グランドクロス・オメガ」の構え"    notice="中央に移動"           />
+  <t text="無の暴走"                  sync="「無の暴走」の構え"                  notice="床の確認"             />
+
+  <t text="分岐＞エクスデス" sync="連続魔" sync-count="1">
+    <load target="エクスデス" truncate="true" />
+  </t>
+
+  <t text="分岐＞ネオエクスデス" sync="アルマゲスト" notice="全体範囲ドット注意" sync-count="1">
+    <load target="ネオエクスデス" truncate="true" />
+  </t>
+
+  <s name="前半後半判断">
+    <a time="1" text="アルマゲスト" icon="分岐128px.png" />
+    <a time="9" text="連続魔" icon="分岐128px.png" />
+    <a time="30" text="分岐待ち" />
+  </s>
+
+  <s name="エクスデス">
+    <a time="5" text="ブリザガ" sync="「ブリザガ」を唱えた" notice="ブリザガ AoE2連続" />
+    <a time="13" text="連続魔" />
+    <a time="18" text="サンダガ" sync="「サンダガ」を唱えた" notice="サンダガ MT大ダメ" />
+    <a time="26" text="連続魔" />
+    <a time="30" text="ファイガ" sync="「ファイガ」を唱えた" notice="ファイガ 2回周辺範囲" />
+    <a time="37" text="ホワイトホール" sync="「ホワイトホール」の構え" notice="HP戻して" notice-o="-6" />
+    <a time="51" text="決戦" sync="「決戦」の構え" notice="決戦、方向注意" />
+    <a time="62" text="吹き飛ばし＋頭割" notice="全員集合" />
+    <a time="67" text="フレア" notice="対象者散開" />
+    <a time="75" text="強化魔法※ランダム" notice="ランダム魔法注意" />
+    <a time="75" text="強サンダガ" />
+    <a time="75" text="強ブリザガ" />
+    <a time="75" text="強ファイガ" />
+    <a time="81" text="真空波" sync="「真空波」の構え" notice="ノックバック注意" />
+    <a time="89" text="ホワイトホール" sync="「ホワイトホール」の構え" notice="HP戻して" notice-o="-6" />
+    <a time="104" text="ブラックホール" sync="「ブラックホール」の構え" />
+    <a time="111" text="連続魔" sync="「連続魔」の構え" />
+    <a time="115" text="ファイガ" sync="「ファイガ」を唱えた" notice="ファイガ 2回周辺範囲" />
+    <a time="119" text="ホーリー" sync="「ホーリー」を唱えた" notice="頭割り集合" />
+    <a time="126" text="ホワイトホール" sync="「ホワイトホール」の構え" notice="HP戻して" notice-o="-6" />
+    <a time="139" text="タンク交代" notice="タンク交代" />
+    <a time="140" text="連続魔" />
+    <a time="144" text="サンダガ" sync="「サンダガ」を唱えた" notice="サンダガ MT大ダメ" />
+    <a time="150" text="メテオ" sync="「メテオ」を唱えた" notice="全体範囲" />
+    <a time="151" text="タンク交代" notice="タンク交代" />
+    <a time="164" text="決戦" sync="「決戦」の構え" notice="決戦、方向注意" />
+    <a time="175" text="吹き飛ばし＋頭割" notice="全員集合" />
+    <a time="181" text="フレア" notice="対象者散開" />
+    <a time="189" text="強化魔法※ランダム" notice="ランダム魔法注意" />
+    <a time="189" text="強サンダガ" />
+    <a time="189" text="強ブリザガ" />
+    <a time="189" text="強ファイガ" />
+    <a time="195" text="真空波" sync="「真空波」の構え" notice="ノックバック注意" />
+    <a time="202" text="ホワイトホール" sync="「ホワイトホール」の構え" notice="HP戻して" notice-o="-6" />
+    <a time="218" text="ブラックホール" sync="「ブラックホール」の構え" />
+    <a time="224" text="連続魔" />
+    <a time="228" text="ブリザガ" sync="「ブリザガ」を唱えた" notice="ブリザガ AoE2連続" />
+    <a time="233" text="フレア" sync="「フレア」を唱えた" notice="対象者散開" />
+    <a time="240" text="ホワイトホール" sync="「ホワイトホール」の構え" notice="HP戻して" notice-o="-6" />
+    <a time="254" text="連続魔" />
+    <a time="258" text="サンダガ" sync="「サンダガ」を唱えた" notice="サンダガ MT大ダメ" />
+    <a time="259" text="タンク交代" notice="タンク交代" />
+    <a time="264" text="メテオ(ラスト)" sync="「メテオ」を唱えた" notice="全体範囲" />
+    <a time="271" text="時間切れ" />
+    <a time="400" text="後半待ち" />
+  </s>
+
+  <s name="ネオエクスデス">
+    <a time="10" text="エアロガ" sync="ネオエクスデスは「エアロガ」を唱えた。" notice="エアロガ MT大ダメ" />
+    <a time="20" text="デルタアタック" sync="ネオエクスデスは「デルタアタック」を唱えた。" notice="ブリザガ範囲注意" />
+    <a time="25" text="ブリザガAoE" />
+    <a time="25" text="MTサンダガx2" />
+    <a time="25" text="DPSファイガx4" />
+    <a time="36" text="グランドクロス・アルファ" sync="「グランドクロス・アルファ」の構え" />
+    <a time="48" text="無の氾濫(順番並び)" notice="アラガンフィールド付きは後ろに" />
+    <a time="56" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="57" text="ヘイトリセット" notice="ヘイトリセットされたよ" />
+    <a time="67" text="挑発" notice="ST挑発" notice-o="-6" />
+    <a time="68" text="ダブルアタック" sync="「ダブルアタック」の構え" notice="ST無敵受け" />
+    <a time="82" text="無の暴走" />
+    <a time="87" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="98" text="エアロガ" sync="ネオエクスデスは「エアロガ」を唱えた。" notice="エアロガ MT大ダメ" />
+    <a time="111" text="グランドクロス・デルタ" sync="「グランドクロス・デルタ」の構え" notice="グランドクロス・デルタ" />
+    <a time="124" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="125" text="ヘイトリセット" notice="ヘイトリセットされたよ" />
+    <a time="133" text="アルマゲスト" sync="14:2417:ネオエクスデス starts using アルマゲスト" notice="全体範囲ドット注意" />
+    <a time="146" text="エアロガ" sync="ネオエクスデスは「エアロガ」を唱えた。" notice="エアロガ MT大ダメ" />
+    <a time="155" text="挑発" notice="ST挑発" notice-o="-8" />
+    <a time="156" text="アースシェーカー" sync="「アースシェーカー」の構え" notice="アースシェイカー STヘイト注意" />
+    <a time="163" text="真空波" sync="「真空波」の構え" notice="ノックバック注意" />
+    <a time="178" text="無の暴走" sync="「無の暴走」の構え" />
+    <a time="184" text="ライト・アンド・ダークネス" sync="「ライト・アンド・ダークネス」を唱えた" />
+    <a time="189" text="頭割＋フレア" notice="頭割りとフレア散開" />
+    <a time="194" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="209" text="メテオ＋魔法陣" sync="「メテオ」を唱えた" notice="魔法陣壊して" />
+    <a time="222" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="236" text="ミールストーム" sync="「ミールストーム」の構え" notice="ミールストーム5秒前" notice-o="-5" />
+    <a time="244" text="ダブルアタック" sync="「ダブルアタック」の構え" notice="中央でタンクふたりうけ" />
+    <a time="258" text="アルマゲスト" sync="14:2417:ネオエクスデス starts using アルマゲスト" notice="全体範囲ドット注意" />
+    <a time="267" text="真空波" sync="「真空波」の構え" notice="ノックバック注意" />
+    <a time="272" text="エアロガ" sync="ネオエクスデスは「エアロガ」を唱えた。" notice="エアロガ MT大ダメ" />
+    <a time="279" text="無の暴走" sync="「無の暴走」の構え" />
+    <a time="285" text="グランドクロス・アルファ" sync="「グランドクロス・アルファ」の構え" />
+    <a time="286" text="ヘイトリセット" notice="ヘイトリセットされたよ" />
+    <a time="296" text="無の氾濫(順番並び)" notice="アラガンフィールド付きは後ろに" />
+    <a time="304" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="321" text="デルタアタック" sync="ネオエクスデスは「デルタアタック」を唱えた。" notice="ブリザガ範囲注意" />
+    <a time="329" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="338" text="グランドクロス・オメガ" sync="「グランドクロス・オメガ」の構え" />
+    <a time="346" text="最後の闘い" sync="「最後の闘い」の構え" />
+    <a time="353" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="358" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="364" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="376" text="無の氾濫(順番並び)" notice="アラガンフィールド付きは後ろに" />
+    <a time="387" text="アルマゲスト" sync="14:2417:ネオエクスデス starts using アルマゲスト" notice="全体範囲ドット注意" />
+    <a time="399" text="無の暴走" sync="「無の暴走」の構え" />
+    <a time="404" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="415" text="エアロガ" sync="ネオエクスデスは「エアロガ」を唱えた。" notice="エアロガ MT大ダメ" />
+    <a time="430" text="グランドクロス・デルタ" sync="「グランドクロス・デルタ」の構え" notice="グランドクロス・デルタ" />
+    <a time="441" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="449" text="アルマゲスト" sync="14:2417:ネオエクスデス starts using アルマゲスト" notice="全体範囲ドット注意" />
+    <a time="462" text="エアロガ" sync="ネオエクスデスは「エアロガ」を唱えた。" notice="エアロガ MT大ダメ" />
+    <a time="471" text="挑発" notice="ST挑発" notice-o="-8" />
+    <a time="472" text="アースシェーカー" sync="「アースシェーカー」の構え" notice="アースシェイカー STヘイト注意" />
+    <a time="479" text="真空波" sync="「真空波」の構え" notice="ノックバック注意" />
+    <a time="494" text="無の暴走" />
+    <a time="500" text="ライト・アンド・ダークネス" sync="「ライト・アンド・ダークネス」を唱えた" />
+    <a time="508" text="頭割＋フレア" notice="頭割りとフレア散開" />
+    <a time="511" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="525" text="メテオ＋魔法陣" sync="「メテオ」を唱えた" notice="魔法陣壊して" />
+    <a time="538" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="552" text="ミールストーム" sync="「ミールストーム」の構え" notice="ミールストーム5秒前" notice-o="-5" />
+    <a time="559" text="挑発" notice="ST挑発" notice-o="-6" />
+    <a time="560" text="ダブルアタック" sync="「ダブルアタック」の構え" notice="ST無敵受け" />
+    <a time="574" text="アルマゲスト" sync="14:2417:ネオエクスデス starts using アルマゲスト" notice="全体範囲ドット注意" />
+    <a time="585" text="真空波" sync="「真空波」の構え" notice="ノックバック注意" />
+    <a time="588" text="エアロガ" sync="ネオエクスデスは「エアロガ」を唱えた。" notice="エアロガ MT大ダメ" />
+    <a time="595" text="無の暴走" />
+    <a time="602" text="グランドクロス・アルファ" sync="「グランドクロス・アルファ」の構え" />
+    <a time="613" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="621" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="638" text="デルタアタック" sync="ネオエクスデスは「デルタアタック」を唱えた。" notice="ブリザガ範囲注意" />
+    <a time="646" text="無の氾濫" notice="範囲よくみろ" />
+    <a time="656" text="法則崩壊" sync="「法則崩壊」の構え" notice="全力で攻撃" />
+    <a time="658" text="最終フェーズ" />
+    <a time="664" text="ミールストーム" sync="「ミールストーム」の構え" notice="ミールストーム5秒前" notice-o="-5" />
+    <a time="672" text="8:狂乱の拳" />
+    <a time="679" text="狂乱の極地" />
+    <a time="682" text="7:狂乱の拳" />
+    <a time="689" text="狂乱の極地" />
+    <a time="692" text="6:狂乱の拳" />
+    <a time="699" text="狂乱の極地" />
+    <a time="702" text="5:狂乱の拳" />
+    <a time="709" text="狂乱の極地" />
+    <a time="712" text="4:狂乱の拳" />
+    <a time="719" text="狂乱の極地" />
+    <a time="722" text="3:狂乱の拳" />
+    <a time="729" text="狂乱の極地" />
+    <a time="732" text="2:狂乱の拳" />
+    <a time="739" text="狂乱の極地" />
+    <a time="742" text="1:狂乱の拳" />
+    <a time="749" text="狂乱の極地" />
+    <a time="750" text="時間切れ" />
+  </s>
+</timeline>

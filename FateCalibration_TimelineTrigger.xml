@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>絶アレキサンダー討滅戦（未来観測トリガー）</name>
+  <rev></rev>
+  <description>未来観測の処理用トリガー群です</description>
+  <author>sheeva</author>
+  <license>CC BY-SA</license>
+  <zone>887,The Epic Of Alexander (Ultimate)</zone>
+  <locale>JA</locale>
+  <entry></entry>
+  <start></start>
+
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+
+  <s name="P4 FINAL">
+    <!-- 試験的実装：テーブルのセット begin -->
+    <t name="Alpha-init" sync="00:282b:パーフェクト・アレキサンダーは「未来観測α」の構え。" >
+      <expressions>
+        <set name="current" value="alpha" />
+      </expressions>
+    </t>
+
+    <t name="Alpha-Tableset" sync="03:([0-9A-F]{8}):Added new combatant .  Job: (\w{3}) Level: 80 Max HP: 148000 Max MP: 0 Pos:" >
+      <expressions>
+        <pre name="current" value="alpha" />
+        <table>
+          {
+          "method" : "Insert",
+          "table" : "alpha",
+          "cols" : [
+              {
+                  "name" : "id",
+                  "val" : "$1",
+                  "key" : "true"
+              },
+              {
+                  "name" : "job",
+                  "val" : "$2",
+              }
+            ]
+          }
+        </table>
+      </expressions>
+    </t>
+
+    <t name="Beta-init" sync="00:282b:パーフェクト・アレキサンダーは「未来観測β」の構え。" sync-count="0" >
+      <expressions>
+        <set name="current" value="beta" />
+      </expressions>
+    </t>
+
+    <t name="Beta-Tableset" sync="03:([0-9A-F]{8}):Added new combatant .  Job: (\w{3}) Level: 80 Max HP: 148000 Max MP: 0 Pos:" sync-count="0" >
+      <expressions>
+        <pre name="current" value="beta" />
+        <table>
+          {
+          "method" : "Insert",
+          "table" : "beta",
+          "cols" : [
+              {
+                  "name" : "id",
+                  "val" : "$1",
+                  "key" : "true"
+              },
+              {
+                  "name" : "job",
+                  "val" : "$2",
+              }
+            ]
+          }
+        </table>
+      </expressions>
+    </t>
+    <!-- 試験的実装：テーブルのセット end -->
+
+    <!-- 未来観測alpha ソート順によるデバフ判定 begin -->
+    <t name="α：デバフ無し1" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][0]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="デバフ無、頭割り"
+        icon="Free.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+
+    <t name="α：デバフ無し2" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][1]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="デバフ無、頭割り"
+        icon="Free.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+
+    <t name="α：デバフ無し3" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][2]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="デバフ無、頭割り"
+        icon="Free.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+
+    <t name="α：加重罰1" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][3]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="加重罰"
+        icon="PunishmentHevy.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+
+    <t name="α：加重罰2" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][4]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="加重罰"
+        icon="PunishmentHevy.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+
+    <t name="α：加重罰3" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][5]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="加重罰"
+        icon="PunishmentHevy.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+
+    <t name="α：名誉罰" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][6]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="名誉罰"
+        icon="PunishmentGlory.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+
+    <t name="α：集団罰" sync="00:282b:パーフェクト・アレキサンダーは「未来確定α」の構え。" >
+      <expressions>
+        <pre name="TABLE['alpha'][7]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="集団罰"
+        icon="PunishmentGroup.png"
+        duration="30"
+        duration-visible="false" />
+    </t>
+    <!-- 未来観測alpha ソート順によるデバフ判定 end-->
+
+    <!-- 未来観測beta ソート順によるデバフ判定 begin -->
+    <t name="β：接触禁止＋接近禁止" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][0]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="接触＋接近禁止"
+        icon="DontTouch.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+
+    <t name="β：逃亡禁止＋接近禁止" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][1]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="逃亡＋接近禁止"
+        icon="DontEscape.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+
+    <t name="β：接触禁止＋接近強制" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][2]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="接触＋接近強制"
+        icon="DontTouch.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+
+    <t name="β：逃亡禁止＋接近強制" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][3]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="逃亡＋接近強制"
+        icon="DontEscape.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+
+    <t name="β：接触禁止＋集団罰" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][4]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="接触＋集団罰"
+        icon="DontTouch.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+
+    <t name="β：逃亡禁止のみ" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][5]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="逃亡禁止"
+        icon="DontEscape.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+
+    <t name="β：接触保護" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][6]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="接触保護"
+        icon="Touch.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+
+    <t name="β：逃亡監察" sync="00:282b:パーフェクト・アレキサンダーは「未来確定β」の構え。" >
+      <expressions>
+        <pre name="TABLE['beta'][7]['job']" value="@Model.Player.Job" />
+      </expressions>
+      <v-notice
+        text="逃亡監察"
+        icon="ObserveEscape.png"
+        duration="26"
+        duration-visible="false" />
+    </t>
+    <!-- 未来観測beta ソート順によるデバフ判定 end -->
+
+  </s>
+</timeline>

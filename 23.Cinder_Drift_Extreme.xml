@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+<name>極ルビーウェポン破壊作戦</name>
+<rev></rev>
+<zone>Cinder Drift (Extreme)</zone>
+<description></description>
+<author></author>
+<locale>JA</locale>
+<entry>ENTRY</entry>
+<start>0039:戦闘開始！</start>
+
+<default target-element="Activity" target-attr="notice-d" value="Both"/>
+<default target-element="Activity" target-attr="notice-o" value="-6"/>
+<default target-element="Activity" target-attr="sync-s" value="-5"/>
+<default target-element="Activity" target-attr="sync-e" value="4"/>
+
+<!--各種トリガ-->
+<t text="ストンピング" sync="ルビーウェポンは「ストンピング」の構え。" notice="タンクスイッチ">
+	<v-notice
+	duration="5"
+	duration-visible="false"
+	icon="HardAttack.png"
+	order="-1" />
+</t>
+<t text="線の上" sync="ルビーウェポンは「リクェファクション」の構え。" notice="線の上">
+	<v-notice
+	duration="5"
+	duration-visible="false"
+	icon="Arrow1.png"
+	order="-1" />
+</t>
+<t text="線から降りる" sync="ルビーウェポンは「クローマイン」の構え。" notice="線から降りる">
+	<v-notice
+	duration="5"
+	duration-visible="false"
+	icon="Arrow6.png"
+	order="-1" />
+</t>
+<t text="青を殴る" sync="^1A:[id8]:[mex] gains the effect of 憤怒" notice="青を殴るー">
+	<v-notice
+	duration="5"
+	duration-visible="false"
+	icon="Arrow3.png"
+	order="-1" />
+</t>
+<t text="赤を殴る" sync="^1A:[id8]:[mex] gains the effect of 悲嘆" notice="赤を殴るー">
+	<v-notice
+	duration="5"
+	duration-visible="false"
+	icon="Arrow7.png"
+	order="-1" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CA:0000:0000:0000:" notice="北、北、北">
+	<v-notice icon="Arrow1.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CB:0000:0000:0000:" notice="北東、北東、北東">
+	<v-notice icon="Arrow2.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CC:0000:0000:0000:" notice="東、東、東">
+	<v-notice icon="Arrow3.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CD:0000:0000:0000:" notice="南東、南東、南東">
+	<v-notice icon="Arrow4.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CE:0000:0000:0000:" notice="南、南、南">
+	<v-notice icon="Arrow5.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00CF:0000:0000:0000:" notice="南西、南西、南西">
+	<v-notice icon="Arrow6.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D0:0000:0000:0000:" notice="西、西、西">
+	<v-notice icon="Arrow7.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="${_mex}" sync="^1B:[id8]:[mex]:0000:[id4]:00D1:0000:0000:0000:" notice="北西、北西、北西">
+	<v-notice icon="Arrow8.png" duration="10" duration-visible="false" order="-1" style="NOTICE_NORMAL" />
+</t>
+<t text="自分にビーム" sync="^1B:[id8]:[mex]:0000:[id4]:0017:0000:0000:0000:" notice="ビーム対象注意。">
+	<v-notice icon="True.png" duration="5" duration-visible="false" order="-1" />
+</t>
+
+<!--各種トリガ-->
+<t sync="ルビーウェポンは「魔導アルテマ」を唱えた。" notice="全体範囲攻撃"/>
+<t sync="ルビーウェポンは「ルビーレイ」を唱えた。" notice="ボス側面に移動"/>
+
+<t sync="(「ルナダイナモ」を唱えた。)|(「アイアンチャリオット」の構え。)" notice="寄るか、離れるか" sync-count="1"/>
+<t sync="(「ルナダイナモ」を唱えた。)|(「アイアンチャリオット」の構え。)" notice="寄るか、離れるか" sync-count="3"/>
+<t sync="ルビーウェポンは「ネガティブオーラ」を唱えた。" notice="視線注意。視線注意"/>
+<t sync="ルビーウェポンは「叫声」の構え。" notice="ノックバック。ノックバック"/>
+<t sync="ルビーウェポンは「魔導コメットII」を唱えた。" notice="コメットを破壊"/>
+<t sync="ルビーウェポンは「アウトレイジ」を唱えた。" notice="全体範囲攻撃"/>
+
+  <!-- 時計式 1234ABCDのマーカー -->
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00CA:0000:0000:0000:"  notice="1に移動" />
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00CB:0000:0000:0000:"  notice="2に移動" />
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00CC:0000:0000:0000:"  notice="3に移動" />
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00CD:0000:0000:0000:"  notice="4に移動" />
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00CE:0000:0000:0000:"  notice="Aに移動" />
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00CF:0000:0000:0000:"  notice="Bに移動" />
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00D0:0000:0000:0000:"  notice="Cに移動" />
+  <t text="${_mex}"             sync="^1B:[id8]:[mex]:0000:[id4]:00D1:0000:0000:0000:"  notice="Dに移動" />
+
+  <!-- 固定式 -->
+  <!--
+  <t text="${_nex}に8"          sync="^1B:[id8]:[nex]:0000:[id4]:00D1:0000:0000:0000:"  notice="$1がはち" />
+  -->
+
+  <!-- トリガのみ -->
+
+  <t text="色デバフ"            sync="ルビーウェポンは「ネガティブペルソナ」を唱えた。" notice="色に注意" />
+  <t text="感情変化"            sync="ルビーウェポンは「感情変化」の構え。"             notice="色変わるよ" />
+
+  <t text="ルビークロー"        sync="ネールの幻影は「ルビークロー」の構え。"           notice="タンク大ダメ" />
+
+  <t text="ダラガブ"            sync="ダラガブ着弾まで　5"                              notice="全体攻撃注意" />
+  <t text="アウトレイジ"        sync="ルビーウェポンは「アウトレイジ」を唱えた。"       notice="全体攻撃注意" />
+
+
+<!--分岐トリガ-->
+<t sync="ルビーウェポンは「魔導アルテマ」を唱えた。" sync-count="1">
+	<load target="前半戦" truncate="true"/>
+</t>
+<t sync="ルビーウェポンは「メテオ計劃」を唱えた。" sync-count="1">
+	<load target="後半戦（雑魚フェーズ）" truncate="true"/>
+</t>
+<s name="ENTRY">
+	<a time="00:10" text="分岐待ち"/>
+</s>
+
+<!--アクティビティ-->
+<s name="前半戦">
+	<a time="00:15" text="ビット射出" sync="ルビーウェポンは「ビット射出」の構え。"/>
+	<a time="00:23" sync="フレキシブルクロー起動……！"/>
+	<a time="00:29" text="スパイラルクロー" sync="ルビーウェポンは「スパイラルクロー」の構え。"/>
+	<a time="00:37" text="スパイラルクロー" sync="ルビーウェポンは「スパイラルクロー」の構え。"/>
+	<a time="00:58" text="単体強攻撃" sync="ルビーウェポンは「ストンピング」の構え。"/>
+	<a time="01:13" sync="この爪は、こんな使い方だって……！"/>
+	<a time="01:19" text="地割れ散開" sync="ルビーウェポンは「レイヴェンクロー」の構え。"/>
+	<a time="01:28" text="線の上/外" sync="ルビーウェポンは「(リクェファクション|クローマイン)」の構え。"/>
+	<a time="01:53" text="前方広範囲攻撃" sync="ルビーウェポンは「ルビーレイ」を唱えた。"/>
+	<a time="02:30" text="突進" sync="バインダーを展開……強襲形態に移行する！"/>
+	<a time="03:03" text="全体範囲攻撃" sync="ルビーウェポンは「魔導アルテマ」を唱えた。"/>
+	<a time="03:10" text="単体強攻撃" sync="ルビーウェポンは「ストンピング」の構え。"/>
+	<a time="03:25" text="頭割り" sync="ルビーウェポンは「ルビーダイナモ」の構え。"/>
+	<a time="03:34" text="散開" sync="ルビーウェポンは「クロースラッシュ」の構え。"/>
+	<a time="03:51" text="前方広範囲攻撃" sync="ルビーウェポンは「ルビーレイ」を唱えた。"/>
+	<a time="03:59" text="全体範囲攻撃" sync="ルビーウェポンは「魔導アルテマ」を唱えた。"/>
+	<a time="04:20" text="地割れ散開" sync="ルビーウェポンは「レイヴェンクロー」の構え。"/>
+	<a time="04:29" text="線の上/外" sync="ルビーウェポンは「(リクェファクション|クローマイン)」の構え。"/>
+	<a time="04:51" text="全体範囲攻撃" sync="ルビーウェポンは「魔導アルテマ」を唱えた。"/>
+</s>
+
+<s name="後半戦（雑魚フェーズ）">
+	<a time="00:06" text="青or赤" sync="ルビーウェポンは「ネガティブペルソナ」を唱えた。"/>
+	<a time="00:16" text="小円形範囲マーカー" sync="ルビーウェポンは「メテオストリーム」の構え。"/>
+	<a time="00:27" text="ダイナモandチャリオット"/>
+	<a time="00:36" text="小円形範囲マーカー" sync="ルビーウェポンは「メテオストリーム」の構え。"/>
+	<a time="00:44" text="単体強攻撃" sync="ネールの幻影は「ルビークロー」の構え。"/>
+	<a time="00:52" text="青赤交換" sync="ルビーウェポンの「感情変化」"/>
+	<a time="01:03" text="小円形範囲マーカー" sync="ルビーウェポンは「メテオストリーム」の構え。"/>
+	<t sync="ルビーウェポンは「ネガティブオーラ」を唱えた。" goto="後半戦（隕石フェーズ）"/>
+</s>
+<s name="後半戦（隕石フェーズ）">
+	<a time="00:22" sync="なぜだ、余の美しき凶星は落ちたはず！ 余の計劃が、失敗したというのか！？"/>
+	<a time="00:35" text="隕石マーカー散開" sync="ルビーウェポンは「メテオマイン」を唱えた。"/>
+	<a time="01:03" text="ノックバック" sync="ルビーウェポンは「叫声」の構え。"/>
+	<a time="01:20" text="コメット" sync="ルビーウェポンは「魔導コメットII」を唱えた。"/>
+	<a time="01:40" text="直線範囲攻撃" sync="ルビーウェポンは「ブラダマンテ」を唱えた。"/>
+	<a time="01:49" text="直線範囲攻撃" sync="ルビーウェポンは「ブラダマンテ」を唱えた。"/>
+	<t sync="確かに……ガガガ……凶星は落ちた…… ガガ……認めない……決して失敗など認められぬ……！" goto="後半戦（最終フェーズ）"/>
+</s>
+<s name="後半戦（最終フェーズ）">
+	<a time="00:06" sync="ルビーウェポンは「メテオ計劃」を唱えた。"/>
+	<a time="00:16" text="全体範囲攻撃" sync="ルビーウェポンは「アウトレイジ」を唱えた。"/>
+	<a time="00:26" text="全体範囲攻撃" sync="ルビーウェポンは「アウトレイジ」を唱えた。"/>
+	<a time="00:38" text="小円形範囲マーカー" sync="ルビーウェポンは「メテオストリーム」の構え。"/>
+</s>
+</timeline>

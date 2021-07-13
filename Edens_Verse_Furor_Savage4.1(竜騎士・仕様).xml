@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：共鳴編4層</name>
+  <rev>(竜騎士・仕様)</rev>
+  <description>
+    希望の園エデン零式： 共鳴編4(竜騎士・仕様)
+  </description>
+  <author>anoyetta, sheeva</author>
+  <license>CC BY-SA</license>
+  <zone>Eden's Verse: Refulgence (Savage)</zone>
+  <locale>JA</locale>
+  <entry>PHASE1</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Both" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Trigger" target-attr="notice-o" value="-3" />
+  <!--
+  <default target-element="Activity" target-attr="sync-s" value="-5" />
+  <default target-element="Activity" target-attr="sync-e" value="4" />
+  -->
+
+<!--自分が竜騎士（DRG）で、D2担当であることを前提にしています-->
+
+<s name="前半" >
+  <!--DD外周捨て-->
+  <!--アイスストーン対象者を判定-->
+  <t sync="^1B:[id8]:([MNK]|[SAM]|[NIN]):0000:0000:0060:0000:0000:0000:$">
+  	<expressions>
+  		<set name="is_dd_another" value="true"/>
+  	</expressions>
+  </t>
+  <t sync="^1B:[id8]:[mex]:0000:0000:0060:0000:0000:0000:$">
+  	<expressions>
+  		<set name="is_dd_me" value="true"/>
+  	</expressions>
+  </t>
+  <t sync="^1B:[id8]:[nex]:0000:0000:0060:0000:0000:0000:" notice="連続AOE捨て、連続AOE捨て" sync-count="4"><!--アイスエラプション対象-->
+    <i-notice image="C.png" scale="1.0" enabled="false"/>
+  </t>
+  <!--アイシクルインパクトの初期位置を判定-->
+  <t text="東西">
+  	<p-sync interval="30">
+  		<combatant name="シヴァ" X="23.14" Y="23.50" tolerance="0.00"/>
+  		<combatant name="シヴァ" X="23.86" Y="23.50" tolerance="0.00"/>
+  	</p-sync>
+	<expressions>
+	 	<set name="is_horizontal" value="true"/>
+	</expressions>
+  </t>
+  <t text="南北">
+  	<p-sync interval="30">
+  		<combatant name="シヴァ" X="23.50" Y="23.14" tolerance="0.00"/>
+  		<combatant name="シヴァ" X="23.50" Y="23.86" tolerance="0.00"/>
+  	</p-sync>
+	<expressions>
+	 	<set name="is_vertical" value="true"/>
+	</expressions>
+  </t>
+  <!--光の鎖の判定-->
+  <t sync="[mex] gains the effect of 光の鎖"><!--自分-->
+	<expressions>
+	  <set name="is_chained_me" value="True"/>
+	</expressions>
+  </t>
+  <t sync="([MNK]|[SAM]|[NIN]) gains the effect of 光の鎖"><!--もうひとりの近接-->
+	<expressions>
+	  <set name="is_chained_another" value="True"/>
+	</expressions>
+  </t>
+  <!--変数の初期化-->
+  <a time="005" name="初期化">
+    <expressions>
+      <set name="is_chained_another" value="False"/><!--もうひとりの近接が、鎖でつながれてるかどうか-->
+      <set name="is_chained_me" value="False"/><!--光暴走フェーズ時、他PCと鎖で繋がれたかどうか-->
+      <set name="is_dd_another" value="false"/>
+      <set name="is_dd_me" value="false"/>
+      <set name="is_horizontal" value="false"/><!--アイシクルインパクト円位置-->
+      <set name="is_vertical" value="false"/><!--アイシクルインパクト円位置-->
+    </expressions>
+  </a>
+  <!--マーカー捨て位置判定-->
+  <a time="067.5" notice="南西、南西" notice-o="0">
+  	<expressions>
+  		<pre name="is_dd_another" value="false"/>
+  		<pre name="is_dd_me" value="true"/>
+  	</expressions>
+  </a>
+  <a time="067.5" notice="南東、南東" notice-o="0">
+  	<expressions>
+  		<pre name="is_dd_another" value="true"/>
+  		<pre name="is_dd_me" value="true"/>
+  	</expressions>
+  </a>
+  <!--DD中の散開位置判定-->
+  <a time="070" notice="よこ、よこ" notice-o="0"><!--3連AOEかつ、円が南北-->
+  	<expressions>
+  		<pre name="is_vertical" value="true"/>
+  		<pre name="is_dd_me" value="false"/>
+  	</expressions>
+  </a>
+  <a time="070" notice="背面、背面" notice-o="0"><!--3連AOEかつ、円が東西-->
+  	<expressions>
+  		<pre name="is_horizontal" value="true"/>
+  		<pre name="is_dd_me" value="false"/>
+  	</expressions>
+  </a>
+  <a time="070" notice="たて、たて" notice-o="0"><!--マーカー捨てかつ、円が南北-->
+  	<expressions>
+  		<pre name="is_vertical" value="true"/>
+  		<pre name="is_dd_me" value="true"/>
+  	</expressions>
+  </a>
+  <a time="070" notice="よこ、よこ" notice-o="0"><!--マーカー捨てかつ、円が東西-->
+  	<expressions>
+  		<pre name="is_horizontal" value="true"/>
+  		<pre name="is_dd_me" value="true"/>
+  	</expressions>
+  </a>
+  <!--鎖に繋がれた場合の散開位置-->
+  <a time="138.5" notice="右下、右下" notice-o="0">
+  	<expressions>
+  		<pre name="is_chained_another" value="True"/>
+  		<pre name="is_chained_me" value="True"/>
+  	</expressions>
+  </a>
+  <a time="138.5" notice="左下、左下" notice-o="0">
+  	<expressions>
+  		<pre name="is_chained_another" value="False"/>
+  		<pre name="is_chained_me" value="True"/>
+  	</expressions>
+  </a>
+</s>
+
+  <!-- 光の鎖 自分と繋がった人を表示 begin -->
+  <t text="鎖 ➜${_pc}" sync="^23:[id8]:@Model.Player.Name:[id8]:[pc]:0000:0000:006E:[id8]:000F:0000:$" notice="" >
+    <v-notice
+      order="-1"
+      duration="10"
+      job-icon="true" />
+  </t>
+
+  <t text="鎖 ➜${_pc}" sync="^23:[id8]:[pc]:[id8]:@Model.Player.Name:0000:0000:006E:[id8]:000F:0000:$" notice="" >
+    <v-notice
+      order="-1"
+      duration="10"
+      job-icon="true" />
+  </t>
+  <!-- 光の鎖 自分と繋がった人を表示 end-->
+
+  <t name="バニシュガ：頭割り" sync="^14:4D80:シヴァ starts using バニシュガ on シヴァ." notice="次は、頭割り。">
+    <v-notice
+      text="頭割り"
+      duration="6"
+      icon="DamageShare.png" />
+  </t>
+
+  <t name="バニシュガ：散開" sync="^14:4D81:シヴァ starts using バニシュガ on シヴァ." notice="次は、散開。">
+    <v-notice
+      text="散開"
+      duration="6"
+      icon="SpreadB.png" />
+  </t>
+
+  <t name="バニシュ：頭割り" sync="^14:4D7E:シヴァ starts using バニシュ on シヴァ." notice="頭割り。">
+    <v-notice
+      text="頭割り"
+      duration="4.7"
+      icon="DamageShare.png" />
+  </t>
+
+  <t name="バニシュ：散開" sync="^14:4D7F:シヴァ starts using バニシュ on シヴァ." notice="散開。">
+    <v-notice
+      text="散開"
+      duration="4.7"
+      icon="SpreadB.png" />
+  </t>
+
+  <s name="PHASE1">
+    <t name="フラグ：フロストスラスト" sync="^14:4D67:シヴァ starts using フロストスラスト on シヴァ." notice="正面えー。" />
+    <t name="フラグ：フロストスラッシュ" sync="^14:4D66:シヴァ starts using フロストスラッシュ on シヴァ." notice="背面えー。" />
+
+    <t name="フラグ：サイスキック" sync="^14:4D6E:シヴァ starts using サイスキック on シヴァ." notice="近寄るー。">
+      <expressions>
+        <set name="NEXT_KICK_NOTICE" count="次は、離れるー。" />
+      </expressions>
+    </t>
+
+    <t name="フラグ：アクスキック" sync="^14:4D6D:シヴァ starts using アクスキック on シヴァ." notice="離れるー。">
+      <expressions>
+        <set name="NEXT_KICK_NOTICE" count="次は、近寄るー。" />
+      </expressions>
+    </t>
+
+    <a time="016" text="絶対零度" sync="^00:282b:シヴァの「絶対零度」" icon="HardAllRangeAttack.png" />
+    <a time="027" text="鏡の国" sync="^00:282b:シヴァの「鏡の国」" icon="Dialog.png" />
+    <a time="039" text="ボスAoE" sync="^00:282b:シヴァの「フロスト(スラスト|スラッシュ)」" icon="Branch.png" />
+    <a time="044" text="鏡AoE×2" />
+    <a time="049" text="鏡AoE" />
+    <a time="064" text="ダイヤモンドダスト" sync="^00:282b:シヴァの「ダイヤモンドダスト」" icon="AllRangeAttack.png" />
+    <a time="077" text="ヘヴンリーストライク" sync="^00:282b:シヴァの「ヘヴンリーストライク」" icon="Knockback.png" />
+    <a time="082" text="アイスエラプション1" icon="AOE.png" />
+    <a time="084" text="アイスエラプション2" icon="AOE.png" />
+    <a time="086" text="アイスエラプション3" icon="AOE.png" />
+    <a time="088" text="フロストX" sync="" />
+
+    @if (Model.Player.InRole("TANK")) {
+      <a time="096" text="ダブルスラップ" sync="^00:282b:シヴァは「ダブルスラップ」の構え。" notice="次は、ターゲット確認。" notice-o="-5" icon="Switch.png" />
+    } else {
+      <a time="096" text="ダブルスラップ" sync="^00:282b:シヴァは「ダブルスラップ」の構え。" notice="次は、タンクスイッチ" icon="Switch.png" />
+    }
+
+    <a time="110" sync="^00:0044:シヴァ:光によりて、静寂を！" />
+    <a time="114.7" text="視線スタン" notice="次は、視線。" icon="Eye.png" />
+    <a time="117" text="Xキック" sync="^00:282b:シヴァは「(アクス|サイス)キック」の構え。" icon="Branch.png" />
+    <a time="131" text="光の暴走" sync="^00:282b:シヴァは「光の暴走」の構え。" icon="AllRangeAttack.png" />
+
+    <a time="169" text="鏡の国" sync="^00:282b:シヴァは「鏡の国」の構え。" icon="Dialog.png" />
+    <a time="185" text="Xキック" icon="Branch.png" notice="VAR['NEXT_KICK_NOTICE']" />
+
+    <a time="190" text="鏡キック" sync="^00:282b:氷面鏡の「ミラーリング・(サイス|アクス)キック」" icon="Branch.png" />
+    <a time="194" text="バニシュガ" sync="^00:282b:シヴァの「バニシュガ」" icon="DamageShare.png" />
+
+    <a time="203.0" sync="^00:0044:シヴァ:嗚呼、強き光よ、そのすべてを凍てつかせ……" />
+    <a time="213.0" text="シャッタード・ワールド" sync="^00:282b:シヴァの「シャッタード・ワールド」" goto="PHASE2" icon="Dialog.png" />
+  </s>
+
+  <s name="PHASE2" >
+    <a time="015" sync="^00:0044:シヴァ:世界から闇を消し去る……！" />
+
+    @{
+      // 各ウェーブの冒頭で通知するコメント
+      // 東タンク仕様
+      var WAVE1_NOTICE = "アース注意";
+      var WAVE2_NOTICE = "ライトニング";
+      var WAVE3_NOTICE = "ウォーター、ライン";
+      var WAVE4_NOTICE = "アース注意";
+    }
+
+    <a time="016" text="全体攻撃" icon="AllRangeAttack.png" notice-o="0.2" notice="@WAVE1_NOTICE" />
+    <a time="021" text="東：ストンスキン" notice-o="-5" icon="Dialog.png" />
+    <a time="026" text="線取り １回目" icon="Targetaoe01.png" notice-o="-2" notice="ライン1" />
+
+    <a time="030" text="全体攻撃" icon="AllRangeAttack.png" notice-o="0.2" notice="@WAVE2_NOTICE" />
+    <a time="035" text="西：ストンスキン" notice-o="-5" icon="Dialog.png" />
+    <a time="040" text="線取り ２回目" icon="Targetaoe01.png" notice-o="-2" notice="ライン2" />
+
+    <a time="044" text="全体攻撃" icon="AllRangeAttack.png" notice-o="0.2" notice="@WAVE3_NOTICE" />
+    <a time="048" text="西：ストンスキン" notice-o="-5" icon="Dialog.png" />
+    <a time="054" text="線取り ３回目" icon="Targetaoe01.png" notice-o="-2" notice="ライン3" />
+
+    <a time="058" text="全体攻撃" icon="AllRangeAttack.png" notice-o="0.2" notice="@WAVE4_NOTICE" />
+    <a time="063" text="東：ストンスキン" notice-o="-5" icon="Dialog.png" />
+    <a time="068" text="線取り ４回目" icon="Targetaoe01.png" notice-o="-2" notice="ライン4" />
+
+    <a time="078" text="フェーズ移行" sync="^16:[id8]:シヴァ:4DAD:世界消滅:" goto="PHASE3" />
+  </s>
+
+  <s name="PHASE3">
+    <t text="モーン・アファー" sync="^14:4D7B:シヴァ starts using モーン・アファー" notice="モーン・アファー">
+      <v-notice
+        duration="5.7"
+        icon="HardAttack.png" />
+    </t>
+
+    <t text="ウィング\n➜ ボスの右手側" sync="14:4D75:シヴァ starts using ホーリーウィング on シヴァ." notice="右側えー">
+      <v-notice
+        duration="6"
+        icon="East.png" />
+    </t>
+
+    <t text="ウィング\n➜ ボスの左手側" sync="14:4D76:シヴァ starts using ホーリーウィング on シヴァ." notice="左側えー">
+      <v-notice
+        duration="6"
+        icon="West.png" />
+    </t>
+
+    <!-- 聖竜の爪デバフ通知 begin -->
+    <t name="頭1回目" text="１回目に当たる" sync="^1A:[id8]:[mex] gains the effect of 聖竜の爪 from  for 14" sync-count="1" notice="1回目に頭">
+      <v-notice
+        duration="14"
+        icon="Explosion.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の爪 from ." />
+    </t>
+
+    <t name="頭2回目" text="２回目に当たる" sync="^1A:[id8]:[mex] gains the effect of 聖竜の爪 from  for 22" sync-count="1" notice="2回目に頭">
+      <v-notice
+        duration="22"
+        icon="Explosion.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の爪 from ." />
+    </t>
+
+    <t name="頭3回目" text="３回目に当たる" sync="^1A:[id8]:[mex] gains the effect of 聖竜の爪 from  for 30" sync-count="1" notice="3回目に頭">
+      <v-notice
+        duration="30"
+        icon="Explosion.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の爪 from ." />
+    </t>
+
+    <t name="頭4回目" text="４回目に当たる" sync="^1A:[id8]:[mex] gains the effect of 聖竜の爪 from  for 38" sync-count="1" notice="4回目に頭">
+      <v-notice
+        duration="38"
+        icon="Explosion.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の爪 from ." />
+    </t>
+    <!-- 聖竜の爪デバフ通知 end -->
+
+    <!-- 聖竜の牙デバフ通知 begin -->
+    <t name="円1回目" text="１回目に解呪" sync="^1A:[id8]:[mex] gains the effect of 聖竜の牙 from  for 20" sync-count="1" notice="1回目に踏むー">
+      <v-notice
+        duration="20"
+        icon="AOE.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の牙 from ." />
+    </t>
+
+    <t name="円2回目" text="２回目に解呪" sync="^1A:[id8]:[mex] gains the effect of 聖竜の牙 from  for 28" sync-count="1" notice="2回目に踏むー">
+      <v-notice
+        duration="28"
+        icon="AOE.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の牙 from ." />
+    </t>
+
+    <t name="円3回目" text="３回目に解呪" sync="^1A:[id8]:[mex] gains the effect of 聖竜の牙 from  for 36" sync-count="1" notice="3回目に踏むー">
+      <v-notice
+        duration="36"
+        icon="AOE.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の牙 from ." />
+    </t>
+
+    <t name="円4回目" text="４回目に解呪" sync="^1A:[id8]:[mex] gains the effect of 聖竜の牙 from  for 44" sync-count="1" notice="4回目に踏むー">
+      <v-notice
+        duration="44"
+        icon="AOE.png"
+        sync-to-hide="^1E:[id8]:[mex] loses the effect of 聖竜の牙 from ." />
+    </t>
+    <!-- 聖竜の牙デバフ通知 end -->
+
+    <!-- 双剣技カンペ begin -->
+    <!-- 閑寂：フロストスラスト（背面攻撃） → フロストスラッシュ（270°範囲攻撃） -->
+    <t text="閑寂の双剣技 \n➜ 正面から背面へ" sync="シヴァは「閑寂の双剣技」の構え。" notice="正面から背面えー。" sync-count="1">
+      <v-notice
+        duration="10"
+        duration-visible="false"
+        icon="Attention.png" />
+    </t>
+
+    <!-- 静寂：フロストスラッシュ（270°範囲攻撃）→ フロストスラスト（背面攻撃） -->
+    <t text="静寂の双剣技\n➜ 背面から正面へ" sync="シヴァは「静寂の双剣技」の構え。" notice="背面から正面えー。" sync-count="1">
+      <v-notice
+        duration="10"
+        duration-visible="false"
+        icon="Attention.png" />
+    </t>
+    <!-- 双剣技カンペ end -->
+
+    <t text="ホーリー\n➜ 外周へ" sync="14:4D82:シヴァ starts using ホーリー" notice="外周えー。" sync-count="1">
+      <v-notice
+        duration="9"
+        duration-visible="false"
+        icon="Leave.png" />
+    </t>
+
+    <t text="ホーリー\n➜ 中央へ" sync="14:4D83:シヴァ starts using ホーリー" notice="中央えー。" sync-count="1">
+      <v-notice
+        duration="9"
+        duration-visible="false"
+        icon="DamageShare.png" />
+    </t>
+
+    <!-- 舞踏技カンペ begin -->
+    <!-- 冷厳：アクスキック（チャリオット） → サイスキック（ダイナモ） -->
+    <t text="冷厳の舞踏技\n➜ 離れて近づく" sync="シヴァは「冷厳の舞踏技」の構え。" notice="離れて近づくー。" sync-count="1">
+      <v-notice
+        duration="10"
+        duration-visible="false"
+        icon="Attention.png" />
+    </t>
+
+    <!-- 峻厳：サイスキック（ダイナモ）→ アクスキック（チャリオット） -->
+    <t text="峻厳の舞踏技\n➜ 近づいて離れる" sync="シヴァは「峻厳の舞踏技」の構え。" notice="近づいて離れるー。" sync-count="1">
+      <v-notice
+        duration="10"
+        duration-visible="false"
+        icon="Attention.png" />
+    </t>
+    <!-- 舞踏技カンペ end -->
+
+    <t name="過剰光カウント" sync="^1A:[id8]:[mex] gains the effect of 過剰光 from" sync-count="0" >
+      <expressions>
+        <set name="light_debuff" count="+1" />
+      </expressions>
+    </t>
+
+    <a time="017" sync="^00:0044:シヴァ:愛しき聖竜よ" />
+    <a time="031" sync="^00:0044:シヴァ:今ここに、真なる融和を……" />
+    <a time="050" sync="^00:0044:シヴァ:久遠の愛で 我らが敵を滅ぼさん！" />
+
+    <a time="058" text="ターゲット可能" icon="Dialog.png" />
+    <a time="075" text="アク・モーン×３" sync="^00:282b:シヴァの「アク・モーン」" notice="左右で頭割り。" icon="DamageShare.png" />
+    <a time="085" text="モーン・アファー" sync="^00:282b:シヴァの「モーン・アファー」" icon="DamageShare.png" />
+
+    <a time="096" text="鏡の国" sync="シヴァの「鏡の国」" icon="Dialog.png">
+      <v-notice duration="6" duration-visible="false" icon="TurnR.png" text="透明:西 → 時計回り" />
+      <v-notice duration="6" duration-visible="false" icon="TurnL.png" text="透明:東 → 反時計周り" />
+    </a>
+    <a time="111" text="ホーリーウィング" sync="^00:282b:シヴァの「ホーリーウィング」" icon="East.png" />
+    <a time="120" text="ホーリーウィング" icon="East.png" />
+    <a time="135" text="聖竜の咆哮" sync="^00:282b:シヴァの「聖竜の咆哮」" />
+    <a time="149" text="ホーリーウィング１" icon="East.png" />
+    <a time="157" text="ホーリーウィング２" icon="East.png" />
+    <a time="165" text="ホーリーウィング３" icon="West.png" />
+    <a time="173" text="ホーリーウィング４" icon="West.png" />
+
+    <a time="175" sync="^00:0044:シヴァ:氷の輝きを力に……！" />
+    <a time="181" text="氷床" notice="次は、氷床。動かない。" icon="Slip.png" />
+    <a time="189" text="双剣技" icon="Branch.png" />
+    <a time="192" text="ダブルスラップ" sync="^00:282b:シヴァは「ダブルスラップ」の構え。" notice="スイッチ。" notice-o="0" icon="Switch.png" />
+
+    <a time="206" sync="^00:0044:シヴァ:聖竜よ、来たれ……！" notice-o="0" notice="背面えー">
+      <v-notice
+        text="背面へ"
+        duration="3.9"
+        icon="Arrow5.png" />
+    </a>
+    <a time="212" text="アク・ラーイ" sync="14:4D99:シヴァ starts using アク・ラーイ" icon="StackAOE.png" notice-o="-0.7" notice="正面えー">
+      <v-notice
+        text="正面へ"
+        duration="3"
+        duration-visible="false"
+        icon="Arrow1.png" />
+    </a>
+
+    <a time="224" text="鏡の国" sync="シヴァの「鏡の国」" icon="Dialog.png" />
+    <a time="238" text="ホーリーウィング" notice="背面えー。" icon="StackBack.png" />
+    <a time="238" name="ノックバック無効通知" notice="アンチノックバック！" notice-o="0" />
+    <a time="244" text="ノックバック１" sync="^00:282b:氷面鏡の「ミラーリング・ホーリーウィング」" notice="" icon="Knockback.png" />
+    <a time="249" text="ノックバック２" icon="Knockback.png" />
+
+    <a time="264" text="鏡の国" sync="シヴァの「鏡の国」" icon="Dialog.png" />
+    <a time="269" sync="00:0044:シヴァ:光によりて、静寂を！" />
+    <a time="274" text="ボス＋透明鏡を見ない" notice="次は、視線に注意。" icon="Eye.png" />
+    <a time="279" text="黄色鏡を見ない" notice="" notice-o="-3" icon="Eye.png" />
+    <a time="284" text="赤い鏡を見ない" notice="" notice-o="-3" icon="Eye.png" />
+    <a time="285" text="ホーリー" sync="シヴァの「ホーリー」" icon="Distance.png" />
+
+    <a time="289" text="舞踏技" icon="Branch.png" />
+
+    <a time="310" text="鏡の国" sync="^00:282b:シヴァの「鏡の国」" icon="Dialog.png" />
+
+    <a time="311" sync="^00:0044:シヴァ:聖竜よ、来たれ……！" notice-o="0" notice="背面えー">
+      <v-notice
+        text="背面へ"
+        duration="3.9"
+        icon="Arrow5.png" />
+    </a>
+    <a time="316.6" text="アク・ラーイ1" icon="StackAOE.png" notice-o="-0.7" notice="正面えー。">
+      <v-notice
+        text="正面へ"
+        duration="3"
+        duration-visible="false"
+        icon="Arrow1.png" />
+    </a>
+    <a time="326.6" text="アク・ラーイ2" icon="StackAOE.png" notice-o="-0.7" notice="左右えー。">
+      <v-notice
+        text="左右へ"
+        duration="3"
+        duration-visible="false"
+        icon="Arrow3.png" />
+    </a>
+
+    <a time="331" text="アク・モーン×４" sync="^00:282b:シヴァの「アク・モーン」" icon="DamageShare.png" />
+    <a time="338" text="モーン・アファー" sync="^00:282b:シヴァの「モーン・アファー」" icon="DamageShare.png" />
+
+    <a time="356" sync="^00:282b:シヴァは「氷と光の竜詩」の構え。" >
+      <expressions>
+        <set name="light_debuff" count="0" />
+      </expressions>
+    </a>
+
+    @{
+      var NOTICE_BYROLE = Model.Player.InRole("DPS") ?
+        "散開。" :
+        "";
+    }
+
+    <a time="362" text="氷と光の竜詩" notice="@NOTICE_BYROLE" notice-o="0" icon="FallingObject.png" />
+    <a time="376" text="ドラコニックストライク" icon="Knockback.png" />
+
+    @{
+      var NOTICE_ICE_ERUPTION = Model.Player.InRole("DPS") ?
+        "移動開始。" :
+        "";
+    }
+
+    <a time="382" text="アイスエラプション" notice="@NOTICE_ICE_ERUPTION" notice-o="-1" icon="Targetaoe01.png" />
+
+    <a time="386" name="デバフ判定タイミング" notice-o="0" notice="塔に入るー" >
+      <expressions>
+        <pre name="light_debuff" count="2" />
+      </expressions>
+    </a>
+    <a time="386" name="デバフ判定タイミング" notice-o="0" notice="塔から出るー" >
+      <expressions>
+        <pre name="light_debuff" count="3" />
+      </expressions>
+    </a>
+
+    <a time="390" text="デバフ２が塔に入る" icon="FallingObject.png" />
+    <a time="395" text="光の津波" notice="次は、8方向" icon="SpreadB.png" />
+
+    <a time="406" text="鏡の国" sync="^00:282b:シヴァの「鏡の国」" notice="次は、北に集合。" icon="Dialog.png" />
+    <a time="417" text="氷床２回" notice="" icon="DontMove.png" />
+
+    <a time="425" sync="^00:0044:シヴァ:聖竜よ、来たれ……！" notice-o="4.3" notice="南えー">
+      <v-notice
+        text="南へ\n➔ その後動かない"
+        duration="3"
+        duration-visible="false"
+        icon="Arrow5.png" />
+    </a>
+    <a time="430" text="アク・ラーイ" icon="Slip.png" />
+
+    <a time="445" text="聖竜の咆哮" sync="^00:282b:シヴァの「聖竜の咆哮」" icon="AllRangeAttack" />
+
+    <a time="452" text="アク・モーン×５" notice-o="@(-3.7 - 1.5)" notice="左右えー" icon="DamageShare.png" />
+    <a time="460" text="爪処理１回目" icon="Explosion.png" />
+    <a time="464" text="モーン・アファー" sync="^00:282b:シヴァの「モーン・アファー」" notice-o="@(-5.7 - 5.0)" notice="次は、MT無敵" icon="DamageShare.png" />
+    <a time="470" text="牙処理１回目" icon="True.png" />
+    <a time="471" text="アク・モーン×６" notice-o="@(-3.7 - 1.5)" notice="左右えー" icon="DamageShare.png" />
+    <a time="479" text="爪処理２回目" icon="Explosion.png" />
+    <a time="484" text="モーン・アファー" sync="^00:282b:シヴァの「モーン・アファー」" notice-o="@(-5.7 - 5.0)" notice="次は、ST無敵" icon="DamageShare.png" />
+    <a time="489" text="牙処理２回目" icon="True.png" />
+    <a time="491" text="アク・モーン×７" notice-o="@(-3.7 - 1.5)" notice="左右えー" icon="DamageShare.png" />
+    <a time="505" text="モーン・アファー" sync="^00:282b:シヴァの「モーン・アファー」" notice-o="@(-5.7 - 5.0)" notice="次は、頭割り" icon="DamageShare.png" />
+
+    <a time="523" text="鏡の国" sync="^00:282b:シヴァの「鏡の国」" notice="次は、背面えー。" icon="Dialog.png" />
+    <a time="537" text="ホーリーウィング" sync="^00:282b:シヴァの「ホーリーウィング」" notice="もうすぐ時間切れ。" icon="Attention.png" />
+    <a time="550" text="時間切れ" icon="Timeout.png" />
+  </s>
+</timeline>

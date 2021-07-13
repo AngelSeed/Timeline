@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>次元の狭間オメガ零式：デルタ編 3層</name>
+  <rev></rev>
+  <description>
+    デルタ3層向けのタイムラインです。
+  </description>
+  <zone>Deltascape V3.0 (Savage)</zone>
+  <locale>JA</locale>
+  <entry>ハリカルナッソス</entry>
+  <start>戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t text="アパンダ"         sync="Added new combatant アパンダ"               notice="アパンダポップ"         />
+  <t text="ドラゴングレイト" sync="Added new combatant ドラゴングレイト"       notice="ドラゴンポップ"         />
+  <t text="ホワイトフレイム" sync="Added new combatant ホワイトフレイム"       notice="たまポップ"             />
+  <t text="女王の舞い"       sync="14:2306"                                    notice="剣の舞い、ボス周囲散会" />
+  <t text="女王の舞い"       sync="14:2308"                                    notice="いばら"                 />
+  <t text="女王の舞い"       sync="14:230A"                                    notice="あおゆか"               />
+  <t text="女王の舞い"       sync="14:230E"                                    notice="本落下、各パネル散会"   />
+  <t text="ポーキー"         sync="ハリカルナッソスは「ポルルルル！」の構え"   notice="ポーキー、集合"         />
+  <t text="カエル"           sync="ハリカルナッソスは「クルルルル！」の構え"   notice="カエル、前方範囲"       />
+  <t text="カッパ"           sync="ハリカルナッソスは「カルルルル！」の構え"   notice="カッパ、後ろ向いて"     />
+  <t text="魔法剣サンダガ"   sync="ハリカルナッソスは「魔法剣サンダガ」の構え" notice="サンダガ前方注意"       />
+  <t text="魔法剣ファイガ"   sync="ハリカルナッソスは「魔法剣ファイガ」の構え" notice="ファイガ中央"           />
+  <t text="魔法剣ブリザガ"   sync="ハリカルナッソスは「魔法剣ブリザガ」の構え" notice="ブリザガ散開"           />
+
+  <s name="ハリカルナッソス">
+    <a time="1"   text="フェーズ1" />
+    <a time="5"   text="クリティカル" sync="ハリカルナッソスは「クリティカル」の構え" notice="クリティカル注意" />
+    <a time="15"  text="魔法剣ホーリー" />
+    <a time="20"  text="磁場転換" />
+    <a time="32"  text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" notice="次は散開" />
+    <a time="42"  text="魔法剣" />
+    <a time="47"  text="次元波動" notice="全体攻撃5秒前" />
+    <a time="56"  text="ゲームボード" />
+    <a time="60"  text="ポルルルル！" sync="ハリカルナッソスは「ポルルルル！」の構え" />
+    <a time="67"  text="ゲームスタート" />
+
+    <a time="78"  text="フェーズ2" />
+    <a time="84"  text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" notice="線切って" />
+    <a time="91"  text="魔法剣ファイガ" />
+    <a time="96"  text="ヘイスト" sync="ハリカルナッソスは「ヘイスト」の構え" />
+    <a time="100" text="魔法剣" />
+    <a time="104" text="クリティカル" notice="クリティカル注意" />
+    <a time="110" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="116" text="サモントークン" sync="ハリカルナッソスは「サモントークン」の構え。" notice="ホワイトフレイムポップ5秒前" />
+    <a time="128" text="ヘイスト" sync="ハリカルナッソスは「ヘイスト」の構え" />
+    <a time="131" text="魔法剣ブリザガ" />
+    <a time="138" text="マインドジャック" sync="ハリカルナッソスは「マインドジャック」の構え" notice="移動準備" />
+    <a time="148" text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" notice="線切って" />
+    <a time="155" text="魔法剣ファイガ" />
+    <a time="160" text="次元波動" notice="全体攻撃5秒前" />
+
+    <a time="169" text="フェーズ3" />
+    <a time="174" text="サモントークン" sync="ハリカルナッソスは「サモントークン」の構え。" notice="ドラゴンポップ5秒前" />
+    <a time="183" text="女王の舞い" notice="青床探して" />
+    <a time="189" text="ドラゴン：フロストブレス" />
+    <a time="190" text="クルルルル！" sync="ハリカルナッソスは「クルルルル！」の構え" />
+    <a time="196" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="202" text="ドラゴン：フロストブレス" />
+    <a time="209" text="クリティカル" notice="クリティカル注意" />
+    <a time="221" text="サモンデストークン" />
+    <a time="226" text="「ソウルリーパー」ポップ" />
+    <a time="231" text="女王の舞い" notice="青床探して" />
+    <a time="238" text="ヘイスト" sync="ハリカルナッソスは「ヘイスト」の構え" />
+    <a time="241" text="魔法剣" />
+    <a time="245" text="次元波動" notice="全体攻撃5秒前" />
+
+    <a time="252" text="フェーズ4" />
+    <a time="257" text="女王の舞い" sync="「女王の舞い」の構え" notice="散開散開" />
+    <a time="265" text="ポルルルル！" sync="ハリカルナッソスは「ポルルルル！」の構え" />
+    <a time="271" text="サモントークン" sync="ハリカルナッソスは「サモントークン」の構え。" notice="アパンダポップ5秒前" />
+    <a time="282" text="女王の舞い" notice="本処理散開" />
+    <a time="283" text="アパンダ：殴打" />
+    <a time="289" text="カルルルル！" sync="ハリカルナッソスは「カルルルル！」の構え" />
+    <a time="294" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="297" text="アパンダ：殴打" />
+    <a time="302" text="クリティカル" sync="ハリカルナッソスは「クリティカル」の構え" notice="クリティカル注意" />
+    <a time="305" text="アパンダ：殴打" />
+    <a time="312" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="319" text="魔法剣ホーリー" />
+    <a time="325" text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" notice="本処理散開" />
+    <a time="336" text="次元波動" notice="全体攻撃5秒前" />
+
+    <a time="350" text="フェーズ6" />
+    <a time="350" text="ゲームボード" sync="ハリカルナッソスは「ゲームボード」の構え" />
+    <a time="359" text="どうぶつルル！" />
+    <a time="365" text="どうぶつルル！" />
+    <a time="371" text="どうぶつルル！" />
+    <a time="376" text="ゲームスタート" sync="ハリカルナッソスは「ゲームスタート」の構え" />
+
+    <a time="389" text="最終フェーズ" />
+    <a time="389" text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" />
+    <a time="400" text="魔法剣ホーリー" />
+    <a time="405" text="磁場転換" />
+    <a time="416" text="クリティカル" sync="ハリカルナッソスは「クリティカル」の構え" notice="クリティカル注意" />
+    <a time="426" text="マインドジャック" sync="ハリカルナッソスは「マインドジャック」の構え" notice="中央に移動して準備" />
+    <a time="431" text="サモンデストークン" />
+    <a time="436" text="「ソウルリーパー」ポップ" />
+    <a time="450" text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" />
+    <a time="464" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="475" text="ヘイスト" />
+    <a time="478" text="魔法剣2連" />
+    <a time="488" text="次元波動" sync="ハリカルナッソスは「次元波動」の構え" notice="全体攻撃5秒前" />
+    <a time="497" text="サモントークン" notice="鉄巨人ポップ5秒前" />
+    <a time="500" text="「ニンジャ,鉄巨人」ポップ" />
+    <a time="507" text="ヘイスガ" />
+    <a time="507" text="次元波動" sync="ハリカルナッソスは「次元波動」の構え" notice="全体攻撃5秒前" />
+    <a time="512" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="517" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="522" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="535" text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" notice="次はすぐ移動" />
+    <a time="541" text="魔法剣" />
+    <a time="550" text="次元波動" notice="全体攻撃5秒前" />
+    <a time="556" text="クリティカル" notice="クリティカル注意" />
+    <a time="565" text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" />
+    <a time="578" text="魔法剣ホーリー" />
+    <a time="582" text="磁場転換" />
+    <a time="593" text="クリティカル" notice="クリティカル注意" />
+    <a time="603" text="マインドジャック" sync="ハリカルナッソスは「マインドジャック」の構え" notice="中央に移動して準備" />
+    <a time="606" text="サモンデストークン" />
+    <a time="626" text="女王の舞い" sync="ハリカルナッソスは「女王の舞い」の構え" />
+    <a time="641" text="次元波動" sync="ハリカルナッソスは「次元波動」の構え" notice="全体攻撃5秒前" />
+    <a time="650" text="ヘイスト" />
+    <a time="654" text="魔法剣" />
+    <a time="659" text="魔法剣" />
+    <a time="663" text="次元波動" sync="ハリカルナッソスは「次元波動」の構え" notice="全体攻撃5秒前" />
+    <a time="674" text="ゲームボード" sync="ハリカルナッソスは「ゲームボード」の構え" />
+    <a time="679" text="ゲームスタート(時間切れ)" sync="ハリカルナッソスは「ゲームスタート」の構え" />
+  </s>
+</timeline>

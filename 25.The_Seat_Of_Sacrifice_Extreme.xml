@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極ウォーリア・オブ・ライト討滅戦</name>
+  <rev></rev>
+  <description>
+    極ウォーリア・オブ・ライト討滅戦のタイムライン
+  </description>
+  <author></author>
+  <license>CC BY-SA</license>
+  <zone>The Seat Of Sacrifice (Extreme),923</zone>
+  <locale>JA</locale>
+  <entry>前半</entry>
+  <start>0039:戦闘開始！</start>
+
+  <!-- 全体トリガ start -->
+  <t text="挑発確認"                sync="[nex]の「挑発」"                                                                              notice="挑発されたよ" />
+  <t text="エンドオール"            sync="ウォーリア・オブ・ライトは「エンドオール」の構え。"                                           notice="タンク交代" />
+  <t text="LB1:北に移動"            sync="^14:4F34:" > <v-notice duration="40" /> </t>
+  <t text="LB2:左右に散会"          sync="^14:4F35:" > <v-notice duration="40" /> </t>
+  <t text="LB3:四隅に移動"          sync="^14:4F36:" > <v-notice duration="40" /> </t>
+  <t text="LB1:ブレイバー"          sync="14:515C:ウォーリア・オブ・ライト starts using リミットブレイク"                               notice="LB、北に移動" />
+  <t text="LB2:デスペラード"        sync="14:53CB:ウォーリア・オブ・ライト starts using リミットブレイク"                               notice="LB、左右に散会" />
+  <t text="LB3:メテオ"              sync="14:4EFB:ウォーリア・オブ・ライト starts using リミットブレイク"                               notice="LB、四隅えー" />
+  <!-- 魔法剣 -->
+  <t text="ストンガ（散開）"        sync="^14:4EF6:ウォーリア・オブ・ライト starts using 魔法剣 on ウォーリア・オブ・ライト."           notice="八方向散会" >
+    <expressions>
+      <set name="flag_delay" value="true" ttl="70" />
+    </expressions>
+    <v-notice
+      duration="70"
+      sync-to-hide="ウォーリア・オブ・ライトの「魔法剣技：ブライトセイバー」"
+      duration-visible="false"
+      icon="SpreadB.png"
+      order="-1" />
+  </t>
+  <t text="ホーリー（頭割り）"      sync="^14:4EF5:ウォーリア・オブ・ライト starts using 魔法剣 on ウォーリア・オブ・ライト."           notice="ホーリー、頭割り" >
+    <expressions>
+      <set name="flag_delay" value="true" ttl="70" />
+    </expressions>
+    <v-notice
+      duration="70"
+      sync-to-hide="ウォーリア・オブ・ライトの「魔法剣技：ブライトセイバー」"
+      duration-visible="false"
+      icon="DamageShare.png"
+      order="-1" />
+  </t>
+  <t text="ファイガ（止まる）"      sync="^14:4EF3:ウォーリア・オブ・ライト starts using 魔法剣 on ウォーリア・オブ・ライト."           notice="ファイガ、止まる" >
+    <expressions>
+      <set name="flag_delay" value="true" ttl="70" />
+    </expressions>
+    <v-notice
+      duration="70"
+      sync-to-hide="ウォーリア・オブ・ライトの「魔法剣技：ブライトセイバー」"
+      duration-visible="false"
+      icon="DontMove.png"
+      order="-1" />
+  </t>
+  <t text="ブリザガ（動く）"        sync="^14:4EF4:ウォーリア・オブ・ライト starts using 魔法剣 on ウォーリア・オブ・ライト."           notice="ブリザガ、動く" >
+    <expressions>
+      <set name="flag_delay" value="true" ttl="70" />
+    </expressions>
+    <v-notice
+      duration="70"
+      sync-to-hide="ウォーリア・オブ・ライトの「魔法剣技：ブライトセイバー」"
+      duration-visible="false"
+      icon="Avoid.png"
+      order="-1" />
+  </t>
+  <!-- ブライトセイバー -->
+  <t text="近づく"                  sync="^14:4F4A:ウォーリア・オブ・ライト starts using 魔法剣技：ブライトセイバー"                    notice="近づくー、遅延処理" >
+    <expressions>
+      <pre name="flag_delay" value="true" />
+    </expressions>
+  </t>
+  <t text="離れる"                  sync="^14:4F49:ウォーリア・オブ・ライト starts using 魔法剣技：ブライトセイバー"                    notice="離れるー、遅延処理" >
+    <expressions>
+      <pre name="flag_delay" value="true" />
+    </expressions>
+  </t>
+  <t text="近づく"                  sync="^14:4F4A:ウォーリア・オブ・ライト starts using 魔法剣技：ブライトセイバー"                    notice="近づくー" >
+    <expressions>
+      <pre name="flag_delay" value="false" />
+    </expressions>
+  </t>
+  <t text="離れる"                  sync="^14:4F49:ウォーリア・オブ・ライト starts using 魔法剣技：ブライトセイバー"                    notice="離れるー" >
+    <expressions>
+      <pre name="flag_delay" value="false" />
+    </expressions>
+  </t>
+  <t text="近づく"                  sync="^14:4EF2:ウォーリア・オブ・ライト starts using ブライトセイバー"                              notice="近づくー" />
+  <t text="離れる"                  sync="^14:4EF1:ウォーリア・オブ・ライト starts using ブライトセイバー"                              notice="離れるー" />
+  <!-- 五連魔トリガ -->
+  <t text="ストンガ（散開）"        sync="^1B:[id8]:[mex]:0000:[id4]:00DE:0000:0000:0000:"                                              notice=""                   sync-count="1" />
+  <t text="ホーリー（頭割り）"      sync="^1B:[id8]:[mex]:0000:[id4]:00DD:0000:0000:0000:"                                              notice=""                   sync-count="1" />
+  <t text="フラッシュ（視線）"      sync="^1B:[id8]:[mex]:0000:[id4]:00DF:0000:0000:0000:"                                              notice=""                   sync-count="1" />
+  <t text="ファイガ（止まる）"      sync="^1B:[id8]:[mex]:0000:[id4]:00E4:0000:0000:0000:"                                              notice="ファイガ、止まる"   sync-count="1" >
+    <v-notice
+      duration="20"
+      duration-visible="false"
+      icon="DontMove.png"
+      order="-1" />
+  </t>
+  <t text="ブリザガ（動く）"        sync="^1B:[id8]:[mex]:0000:[id4]:00E2:0000:0000:0000:"                                              notice="ブリザガ、動く"     sync-count="1" >
+    <v-notice
+      duration="20"
+      duration-visible="false"
+      icon="Avoid.png"
+      order="-1" />
+  </t>
+  <!-- カータライズ -->
+  <!--
+  <t text="カータライズ"            sync="ウォーリア・オブ・ライトは「サモン・ウィルム」を唱えた。" >
+    <expressions>
+      <set name="flag_cauterize" value="true" />
+    </expressions>
+  </t>
+  <t text="カータライズ"            sync="14:4F07:ウィルム・オブ・ライト starts using カータライズ" >
+    <expressions>
+      <set name="flag_cauterize" value="false" />
+    </expressions>
+  </t>
+  <t text="カータライズ：西" notice="東が安置" >
+    <expressions>
+      <pre name="flag_cauterize" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="ウィルム・オブ・ライト" X="23.30" Y="23.10" tolerance="0.00" />
+    </p-sync>
+  </t>
+  <t text="カータライズ：東" notice="西が安置" >
+    <expressions>
+      <pre name="flag_cauterize" value="true" />
+    </expressions>
+    <p-sync interval="60">
+      <combatant name="ウィルム・オブ・ライト" X="23.70" Y="23.10" tolerance="0.00" />
+    </p-sync>
+  </t>
+  -->
+  <!-- 視線対象 -->
+  <t text="視線対象" sync="^1B:[id8]:[pc]:0000:[id4]:00B3:0000:0000:0000:" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      job-icon="true"
+      order="-1" />
+  </t>
+  <!-- 全体トリガ end -->
+
+  <s name="前半" >
+    <a time="010" text="全体HP1"                        sync="ウォーリア・オブ・ライトの「アンリーシュ・テラー」"                                                       icon="ForceHP1.png" />
+    <a time="012"                                       sync="ウォーリア・オブ・ライト:全霊をもってお前を超える……ッ！" />
+    <a time="016" text="リミットチャージ"               sync="ウォーリア・オブ・ライトの「リミットチャージ」"                                                           icon="Dialog.png" />
+    <a time="025" text="ソーレムコンフィテオル"         sync="ウォーリア・オブ・ライト starts using ソーレムコンフィテオル on Unknown"                                  icon="StackAOE.png" />
+    <a time="027" text="ストンガ"                       sync="ウォーリア・オブ・ライトは「アブソリュートストンガ」を唱えた。"           notice="八方向散会"             icon="SpreadB.png"/>
+    <a time="035" text="LB（メテオ）"                   sync="ウォーリア・オブ・ライトは「リミットブレイク」を唱えた。"                 notice=""                       icon="Leave.png"/>
+    <a time="051" text="魔法剣１"                       sync="ウォーリア・オブ・ライトは「魔法剣」を唱えた。"                           notice=""                       icon="SpreadB.png" />
+    <a time="060" text="魔法剣２"                       sync="ウォーリア・オブ・ライトは「魔法剣」を唱えた。"                           notice=""                       icon="Branch.png" />
+    <a time="069" text="ブライトセイバー"               sync="ウォーリア・オブ・ライトは「魔法剣技：ブライトセイバー」の構え。"         notice=""                       icon="Branch.png" />
+    <a time="081" text="リミットチャージ"               sync="ウォーリア・オブ・ライトは「リミットチャージ」を唱えた。"                 notice=""                       icon="Dialog.png" />
+    <a time="089" text="ソード・オブ・ライト"           sync="ウォーリア・オブ・ライトは「ソード・オブ・ライト」を唱えた。"             notice="次は、あんちを探す"     icon="AOECross.png" />
+    <a time="104" text="頭割り"                         sync="ウォーリア・オブ・ライトは「アブソリュートホーリー」を唱えた。"           notice=""                       icon="DamageShare.png" />
+    <a time="112" text="リミットブレイク"               sync="ウォーリア・オブ・ライトは「リミットブレイク」の構え。"                   notice=""                       icon="Stack.png" />
+    <a time="120" text="デスペラード１"                 sync="ウォーリア・オブ・ライトの「ブライトデスペラード」"                       notice=""                       icon="DamageShare.png" />
+    <a time="125" text="デスペラード２"                 sync="ウォーリア・オブ・ライトの「ブライトデスペラード」"                       notice=""                       icon="DamageShare.png" />
+    <a time="129" text="リミットチャージ"               sync="ウォーリア・オブ・ライトは「リミットチャージ」を唱えた。"                 notice=""                       icon="Dialog.png" />
+    <a time="137" text="魔法剣１"                       sync="ウォーリア・オブ・ライトは「魔法剣」を唱えた。"                           notice=""                       icon="DamageShare.png" />
+    <a time="146" text="魔法剣２"                       sync="ウォーリア・オブ・ライトは「魔法剣」を唱えた。"                           notice=""                       icon="Branch.png" />
+    <a time="156" text="ブライトセイバー"               sync="ウォーリア・オブ・ライトは「魔法剣技：ブライトセイバー」の構え。"         notice=""                       icon="Branch.png" />
+    <a time="167" text="LB（ブレイバー）"               sync="ウォーリア・オブ・ライトは「リミットブレイク」の構え。"                   notice=""                       icon="Targetaoe03.png" notice-o="-2"/>
+    <a time="181" text="エンドオール"                   sync="ウォーリア・オブ・ライトは「エンドオール」の構え。"                       notice=""                       icon="HardAttack.png" />
+    <a time="189" text="サモン・ウィルム"               sync="ウォーリア・オブ・ライトは「サモン・ウィルム」を唱えた。"                 notice=""                       icon="East.png" />
+    <a time="195" text="フラッシュ（視線）"             sync="ウォーリア・オブ・ライトは「アブソリュートフラッシュ」を唱えた。"         notice=""                       icon="Eye.png" />
+    <a time="196" text="ソーレムコンフィテオル"         sync="ウォーリア・オブ・ライト starts using ソーレムコンフィテオル on Unknown"  notice="AOEが出たら移動"        icon="StackAOE.png" />
+    <a time="199" text="カータライズ"                   sync="14:4F07:ウィルム・オブ・ライト starts using カータライズ"                 notice="カータ注意" />
+    <a time="204" text="エンシェントドラゴンダイブ"     sync="ウォーリア・オブ・ライトは「エンシェントドラゴンダイブ」を唱えた。"       notice="全体強攻撃注意"         icon="HardAllRangeAttack.png" />
+    <a time="230" text="フェーズ移行待機"               sync="^00:0044:ウォーリア・オブ・ライト:さあ集え、「光の戦士」たちよ！"         goto="中継"                     sync-s="-60" />
+  </s>
+
+  <s name="中継" >
+    <a time="000" text="幻光召喚"                       sync="ウォーリア・オブ・ライトは「幻光召喚」の構え。"                           notice="" />
+    <a time="017" text="DPS散開"                        sync="幻光の吟遊詩人 starts using ヘビーレイン・オブ・デス on 幻光の吟遊詩人."  notice=""                       icon="Leave.png" />
+    <a time="021" text="TH頭割り"                       sync="幻光の忍者 starts using 火遁の術：参 on 幻光の忍者."                                                      icon="DamageShare.png" />
+    <a time="022" text="タンク強攻撃"                   sync="幻光の狂戦士は「フェイタルクリーヴ」の構え。"                             notice="タンク大ダメ"           icon="HardAttack.png" />
+    <a time="022" text="DPS塔踏み"                      sync="幻光の黒魔道士の「ふたりがけ」"                                                                           icon="Nail.png" />
+    <a time="024" text="バハ召喚"                       sync="幻光の召喚士 starts using 召喚 on 幻光の召喚士."                          notice=""                       icon="" />
+    <a time="034" text="真暗黒・バーサク"               sync="幻光の暗黒騎士は「真暗黒」の構え。"                                       notice=""                       icon="Dialog.png" />
+    <a time="034" text="フレアブレス"                   sync="幻光の召喚士は「フレアブレス」を唱えた。"                                 notice=""                       icon="Targetaoe03" />
+    <a time="049" text="タンク強攻撃"                   sync="幻光の暗黒騎士は「漆黒の魔剣」の構え。"                                   notice=""                       icon="HardAttack.png" />
+    <a time="049" text="タンク強攻撃"                   sync="幻光の狂戦士は「フェイタルクリーヴ」の構え。"                             notice="タンク大ダメ"           icon="HardAttack.png" />
+    <a time="090"                                       sync="ウォーリア・オブ・ライト:窮すれど敗せず、我こそが第一の「救い」……"      goto="後半分岐"                 sync-s="-60" />
+  </s>
+
+  <s name="後半分岐" >
+    <!-- 五連魔 -->
+    <t text="五連魔"                                    sync="^14:4EEF:ウォーリア・オブ・ライト starts using 五連魔 on ウォーリア・オブ・ライト." >
+      <load target="五連魔" truncate="true" />
+    </t>
+    <!-- 召喚士・狂戦士 -->
+    <t text="召喚士・狂戦士"                            sync="^14:4EF(3|4):ウォーリア・オブ・ライト starts using 魔法剣 on ウォーリア・オブ・ライト." >
+      <load target="召喚士・狂戦士" truncate="true" />
+    </t>
+    <!-- 忍者 -->
+    <t text="忍者"                                      sync="^14:4EF(5|6):ウォーリア・オブ・ライト starts using 魔法剣 on ウォーリア・オブ・ライト." >
+      <load target="忍者" truncate="true" />
+    </t>
+    <!-- 暗黒騎士 -->
+    <t text="暗黒騎士"                                  sync="^14:[id4]:ウォーリア・オブ・ライト starts using リミットチャージ on ウォーリア・オブ・ライト."            sync-count="1" >
+      <load target="暗黒騎士" truncate="true" />
+    </t>
+    <!-- 白黒魔道士 -->
+    <t text="白黒魔道士"                                sync="^14:4F37:ウォーリア・オブ・ライト starts using 幻光召喚 on ウォーリア・オブ・ライト."                     sync-count="1" >
+      <load target="白黒魔道士" truncate="true" />
+    </t>
+    <!-- 時間切れ -->
+    <t text="時間切れ"                                  sync="ウォーリア・オブ・ライト:願いは満ちた……終わりのときだ。" >
+      <load target="時間切れ" truncate="true" />
+    </t>
+
+    <a time="001" name="分岐待ち_START" icon="Branch.png" />
+    <a time="020" text="分岐待ち_END"   icon="Branch.png" goto="分岐待ち_START" />
+  </s>
+
+  <s name="五連魔" >
+    <a time="000" text="五連魔"                         sync="ウォーリア・オブ・ライトは「五連魔」を唱えた。"                           notice="五連魔くるよ"           sync-s="-20" />
+    <a time="013" text="シンク"                         sync="ウォーリア・オブ・ライトの「五連魔」"                                     notice="発動するよ"             notice-o="-2" />
+    <a time="015" text="発動1" />
+    <a time="018" text="発動2" />
+    <a time="022" text="発動3" />
+    <a time="025" text="発動4" />
+    <a time="028" text="発動5" />
+    <a time="035" text="ソード・オブ・ライト"                                                                                           notice="あんち探して"           icon="AOECross.png" />
+    <a time="038" text="エンシェントドラゴンダイブ"     sync="ウォーリア・オブ・ライトは「エンシェントドラゴンダイブ」を唱えた。"       notice="全体攻撃注意"           goto="後半分岐" sync-s="-20" />
+  </s>
+
+  <s name="召喚士・狂戦士" >
+    <a time="000" text="魔法剣"                         sync="ウォーリア・オブ・ライト starts using 魔法剣"                             notice=""                       icon="Branch.png" />
+    <a time="008" text="幻光召喚(召喚士/戦士)"          sync="ウォーリア・オブ・ライトは「幻光召喚」の構え。"                           notice="" />
+    <a time="027" text="デシメート"                     sync="幻光の狂戦士は「パーフェクトデシメート」の構え。"                         notice="" />
+    <a time="027" text="フレアブレス"                   sync="幻光の召喚士は「フレアブレス」を唱えた。" />
+    <a time="028" text="ソーレムコンフィテオル"         sync="ウォーリア・オブ・ライトは「ソーレムコンフィテオル」を唱えた。"           notice=""                       icon="StackAOE.png" />
+    <a time="039" text="デシメート"                     sync="幻光の狂戦士は「パーフェクトデシメート」の構え。"                         notice="" />
+    <a time="039" text="フレアブレス"                   sync="幻光の召喚士は「フレアブレス」を唱えた。" />
+    <a time="040" text="ソーレムコンフィテオル"         sync="ウォーリア・オブ・ライトは「ソーレムコンフィテオル」を唱えた。"           notice=""                       icon="StackAOE.png" />
+    <a time="049" text="サモン・ウィルム"               sync="ウォーリア・オブ・ライトは「サモン・ウィルム」を唱えた。"                 notice=""                       icon="East.png" />
+    <a time="058" text="ブライトセイバー"               sync="ウォーリア・オブ・ライトは「魔法剣技：ブライトセイバー」の構え。"                                         icon="East.png"/>
+    <a time="059" text="カータライズ"                   sync="ウィルム・オブ・ライト starts using カータライズ"                         notice="カータ注意" />
+    <a time="069" text="エンシェントドラゴンダイブ"     sync="ウォーリア・オブ・ライトは「エンシェントドラゴンダイブ」を唱えた。"       notice="全体攻撃注意" />
+    <a time="082" text="エンドオール"                   sync="ウォーリア・オブ・ライトは「エンドオール」の構え。"                       notice=""                       icon="HardAttack.png" goto="後半分岐" sync-s="-20" />
+  </s>
+
+  <s name="忍者" >
+    <a time="000" text="魔法剣"                         sync="ウォーリア・オブ・ライト starts using 魔法剣"                             notice=""                       icon="Branch.png" />
+    <a time="008" text="幻光召喚(忍者)"                 sync="ウォーリア・オブ・ライトは「幻光召喚」の構え。"                           notice="" />
+    <a time="018" text="水遁の術：参"                   sync="幻光の忍者 starts using 水遁の術：参 on 幻光の忍者."                      notice=""                       icon="KnockBack.png"/>
+    <a time="024" text="ソーレムコンフィテオル"         sync="ウォーリア・オブ・ライトは「ソーレムコンフィテオル」を唱えた。"           notice="範囲捨てて"             sync-s="-20" />
+    <a time="025" text="火遁の術：参"                   sync="幻光の忍者 starts using 火遁の術：参 on 幻光の忍者."                      notice=""                       icon="DamageShare.png" />
+    <a time="039" text="魔法剣技：ブライトセイバー"     sync="ウォーリア・オブ・ライトは「魔法剣技：ブライトセイバー」の構え。"         notice="" />
+    <a time="051" text="エンシェントドラゴンダイブ"     sync="ウォーリア・オブ・ライトは「エンシェントドラゴンダイブ」を唱えた。"       notice="全体攻撃注意"           icon="HardAllRangeAttack" />
+    <a time="063" text="エンドオール"                   sync="ウォーリア・オブ・ライトは「エンドオール」の構え。"                       notice=""                       icon="HardAttack.png" goto="後半分岐" sync-s="-20" />
+  </s>
+
+  <s name="暗黒騎士" >
+    <t text="北に移動"                                  sync="^1B:[id8]:[mex]:0000:[id4]:0057:0000:0000:0000:"                          notice="北に移動"                sync-count="1" />
+    <t text="頭割り"                                    sync="^1B:[id8]:[mex]:0000:[id4]:00A1:0000:0000:0000:"                          notice="頭割り"                  sync-count="1" />
+
+    <a time="000" text="リミットチャージ"               sync="ウォーリア・オブ・ライトは「リミットチャージ」を唱えた。"                 notice="" icon="Branch.png" />
+    <a time="008" text="幻光召喚(暗黒)"                 sync="ウォーリア・オブ・ライトは「幻光召喚」の構え。"                           notice="次は、暗黒騎士" />
+    <a time="014" text="ソーレムコンフィテオル"         sync="ウォーリア・オブ・ライト:4F43:ソーレムコンフィテオル"                     notice=""                       icon="StackAOE.png" />
+    <a time="017" text="ブリムストーンアース"           sync="幻光の暗黒騎士 starts using ブリムストーンアース on 幻光の暗黒騎士."      notice="範囲は四隅に"           icon="Leave.png"/>
+    <a time="026" text="ヘビーレイン・オブ・デス"       sync="幻光の吟遊詩人 starts using ヘビーレイン・オブ・デス on 幻光の吟遊詩人."  notice="" />
+    <a time="032" text="ホーリー（頭割り）"             sync="ウォーリア・オブ・ライトは「アブソリュートホーリー」を唱えた。"           notice="頭割り集合" />
+    <a time="046" text="リミットブレイク"               sync="ウォーリア・オブ・ライトは「リミットブレイク」を唱えた。"                 notice="" />
+    <a time="065" text="エンドオール"                   sync="ウォーリア・オブ・ライトは「エンドオール」の構え。"                       notice=""                       icon="HardAttack.png" goto="後半分岐" sync-s="-20" />
+  </s>
+
+  <s name="白黒魔道士" >
+    <a time="000" text="幻光召喚(白黒)"                 sync="ウォーリア・オブ・ライトは「幻光召喚」の構え。"                           notice="" />
+    <a time="006" text="リミットチャージ"               sync="ウォーリア・オブ・ライトは「リミットチャージ」を唱えた。"                 notice=""                       icon="Branch.png" />
+    <a time="009" text="ふたりがけ"                     sync="幻光の黒魔道士の「ふたりがけ」"                                           notice="塔踏み準備"             icon="Pair.png" sync-s="-20" />
+    <a time="027" text="塔1"                                                                                                                                            icon="FallingObject.png" />
+    <a time="029" text="塔2"                                                                                                                                            icon="FallingObject.png" />
+    <a time="031" text="塔3"                                                                                                                                            icon="FallingObject.png" />
+    <a time="033" text="塔4"                                                                                                                                            icon="FallingObject.png" />
+    <a time="035" text="塔5"                                                                                                                                            icon="FallingObject.png" />
+    <a time="037" text="塔6"                                                                                                                                            icon="FallingObject.png" />
+    <a time="039" text="塔7"                                                                                                                                            icon="FallingObject.png" />
+    <a time="041" text="塔8"                                                                                                                                            icon="FallingObject.png" />
+    <a time="042" text="ブライトセイバー"               sync="ウォーリア・オブ・ライト starts using ブライトセイバー" />
+    <a time="045" text="カータライズ"                   sync="ウィルム・オブ・ライト starts using カータライズ"                         notice="カータ注意"             icon="East.png"/>
+    <a time="055" text="リミットブレイク"               sync="ウォーリア・オブ・ライトは「リミットブレイク」を唱えた。"                 notice=""                       icon="Branch.png" />
+    <a time="074" text="エンドオール"                   sync="ウォーリア・オブ・ライトは「エンドオール」の構え。"                       notice=""                       icon="HardAttack.png" goto="後半分岐" sync-s="-20" />
+  </s>
+
+  <s name="時間切れ">
+    <a time="007"                                       sync="ウォーリア・オブ・ライト:まだだ……まだ終わりではない……ッ！" />
+    <a time="012" text="クロスオーバー(時間切れ)"                                                                                       notice="時間切れよー" />
+  </s>
+</timeline>

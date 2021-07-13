@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極神竜討滅戦</name>
+  <rev></rev>
+  <description>
+    極神竜討滅戦のタイムラインです。
+    notice, notice-o などは自分の好みに合せて使用してください。
+  </description>
+  <zone>The Minstrel's Ballad: Shinryu's Domain</zone>
+  <locale>JA</locale>
+  <entry>--- Phase 1 ---</entry>
+  <start>戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3"   />
+  <default target-element="Activity" target-attr="sync-s"   value="-10"  />
+  <default target-element="Activity" target-attr="sync-e"   value="10"   />
+
+  <t text="心核復活"           sync="Added new combatant 神龍の心核"                                       notice="しんかくポップ 壊して"  />
+  <t text="尻尾"               sync=".*:007E:0000:0000:0000:"                                              notice="尻尾マーク付いたよ"     />
+  <t text="アクモーン"         sync="14:25F3:神龍 starts using アク・モーン"                               notice="アクモーン バフ注意"    />
+  <t text="アイシクル"         sync="14:25EE:レフトウィング starts using サモン・アイシクル"               notice="氷ポップ 後ろ注意"      />
+  <t text="タイダルウェイブ"   sync="14:25F9:神龍 starts using タイダルウェイブ on 神龍"                   notice="外周からのノックバック" />
+  <t text="アースブレス"       sync="14:25EC:神龍 starts using アースブレス on 神龍"                       notice="ブレス 左右分かれて"    />
+  <t text="ダイアモンドダスト" sync="14:25FC:神龍 starts using ダイアモンドダスト on 神龍"                 notice="移動注意"               />
+  <t text="地獄の火炎"         sync="14:25FA:神龍 starts using 地獄の火炎 on 神龍"                         notice="火炎 水の上に移動"      />
+  <t text="エリアルブラスト"   sync="14:25FE:神龍 starts using エリアルブラスト on 神龍"                   notice="中央からのノックバック" />
+  <t text="稲妻"               sync="14:25EA:ライトウィング starts using 稲妻 on ライトウィング"           notice="稲妻 散開"              />
+  <t text="スーパーノヴァ"     sync="14:25E8:ライトウィング starts using スーパーノヴァ on ライトウィング" notice="ノヴァ 集合"            />
+  <t text="テールスラップ"     sync="14:25E2:神龍の尾 starts using テールスラップ on 神龍の尾"             notice="尻尾壊して"             />
+  <t text="テラスラッシュ"     sync="神龍は「テラスラッシュ」の構え。"                                     notice="タンク交代"             />
+
+  <s name="--- Phase 1 ---" >
+    <a time="1"   text="--- Phase 1 ---" sync="神龍は「ダークマター」の構え。" />
+    <a time="10"  text="大地の怒り" sync="神龍は「大地の怒り」の構え" />
+    <a time="33"  text="タイダルウェイブ+鎖" sync="神龍は「タイダルウェイブ」の構え" />
+    <a time="48"  text="緑マーカー確認(ヒラ)" notice="ヒーラーマーカー注意" />
+    <a time="61"  text="つらら＆テール" />
+    <a time="71"  text="稲妻 or スーパーノヴァ" notice="稲妻かノヴァ注意" />
+    <a time="79"  text="心核復活" sync="Added new combatant 神龍の心核.  Job: 0 Level: 70 Max HP: 170376 Max MP: 12000." />
+    <a time="91"  text="吹雪" />
+    <a time="103" text="アク・モーン" sync="神龍は「アク・モーン」の構え。" notice="アクモーン 1回目 タンクふたり受け" />
+    <a time="112" text="地獄の火炎 or 裁きの雷" sync="神龍は「(裁きの雷|地獄の火炎)」の構え。" />
+    <a time="116" text="アイシクルスパイク" />
+    <a time="137" text="緑マーカー確認(DPS)" notice="DPSマーカー注意" />
+    <a time="141" text="稲妻 or 吹雪" />
+    <a time="151" text="テールスラップ" sync="神龍の尾は「テールスラップ」の構え。" />
+    <a time="158" text="吹雪" sync="レフトウィングは「吹雪」の構え" />
+    <a time="162" text="心核復活" sync="Added new combatant 神龍の心核.  Job: 0 Level: 70 Max HP: 198772 Max MP: 12000." />
+    <a time="168" text="鎖(タンクヒラ)" />
+    <a time="174" text="アースブレス" sync="神龍は「アースブレス」の構え。" />
+    <a time="184" text="アク・モーン" sync="神龍は「アク・モーン」の構え。" notice="アクモーン 2回目 MT無敵" />
+    <a time="188" text="吹雪" />
+    <a time="198" text="ダイヤモンドダスト" sync="神龍は「ダイヤモンドダスト」の構え" />
+    <a time="225" text="霊龍" />
+    <a time="233" text="緑マーカー確認(タンク)" notice="タンクマーカー注意" />
+    <a time="246" text="テールスラップ" sync="神龍の尾は「テールスラップ」の構え。" />
+    <a time="245" text="心核復活" sync="Added new combatant 神龍の心核.  Job: 0 Level: 70 Max HP: 227168 Max MP: 12000." />
+    <a time="255" text="挑発" notice="ST挑発" />
+    <a time="264" text="アイシクルインパクト" sync="レフトウィングは「サモン・アイシクル」の構え。" />
+    <a time="268" text="アク・モーン" sync="神龍は「アク・モーン」の構え。" notice="アクモーン 3回目 ST無敵" />
+    <a time="282" text="エリアルブラスト" sync="神龍は「エリアルブラスト」の構え" />
+    <a time="285" text="エリアルブラスト" />
+    <a time="287" text="エリアルブラスト" />
+    <a time="289" text="エリアルブラスト(大)+鎖" />
+    <a time="313" text="アースブレス" sync="神龍は「アースブレス」の構え" />
+    <a time="316" text="吹雪" />
+    <a time="330" text="ジャイヤチャージ" sync="神龍 starts using ジャイヤチャージ on 神龍" />
+    <a time="335" text="心核復活" sync="Added new combatant 神龍の心核.  Job: 0 Level: 70 Max HP: 255564 Max MP: 12000." />
+    <a time="343" text="稲妻orスーパーノヴァ" notice="稲妻かノヴァ注意" />
+    <a time="359" text="アク・モーン" sync="神龍は「アク・モーン」の構え。" notice="アクモーン 4回目 タンクふたり受け" />
+    <a time="368" text="稲妻or吹雪" />
+    <a time="372" text="タイダルウェイブ" />
+    <t text="--- Phase 2 ---" sync="神龍は「ダークマター」の構え。" sync-count="2" goto="--- Phase 2 ---" />
+ </s>
+
+  <s name="--- Phase 2 ---" >
+    <a time="1"   text="ACTIVE TIME MANEUVER" />
+    <a time="13"  text="連打" />
+    <a time="33"  text="神話決戦" sync="神龍に「神話決戦」の効果。" />
+    <a time="47"  text="メテオ" sync="神龍が凶星を創造しようとしている" />
+    <a time="54"  text="雑魚ポップ(1)" sync="Added new combatant 白金龍" />
+    <a time="62"  text="デスセンテンス" notice="デスセンテンス注意" />
+    <a time="64"  text="メテオ" />
+    <a time="73"  text="雑魚ポップ(2)" sync="Added new combatant 白金龍" />
+    <a time="79"  text="デスセンテンス" notice="デスセンテンス注意" />
+    <a time="88"  text="黒AoE捨て" />
+    <a time="93"  text="メテオ着弾" />
+    <a time="102" text="雑魚ポップ(3)" sync="Added new combatant 銀龍" />
+    <a time="108" text="デスセンテンス" notice="デスセンテンス注意" />
+    <a time="119" text="プロトスター" sync="プロトスター発動まで　6　秒！" />
+    <a time="131" text="テールスピット" sync="いいぞ、いいぞ……" />
+    <a time="137" text="尻尾" sync="我が尾を伝い、来い、友よ！" />
+    <t text="--- Phase 3 ---" sync="神龍の「破砕」" goto="--- Phase 3 ---" />
+ </s>
+
+  <s name="--- Phase 3 ---" >
+    <a time="17"  text="テラスラッシュ" sync="神龍は「テラスラッシュ」の構え" />
+    <a time="27"  text="アトミックレイ" />
+    <a time="41"  text="吹雪" sync="レフトウィングは「吹雪」の構え" />
+    <a time="41"  text="稲妻orスーパーノヴァ" notice="稲妻かノヴァ注意" />
+    <a time="56"  text="ダークネスブレスor咆哮" notice="範囲注意" />
+    <a time="66"  text="テラスラッシュ" sync="神龍は「テラスラッシュ」の構え" />
+    <a time="74"  text="霊龍" sync="Added new combatant 霊龍.  Job: 0 Level: 70 Max HP: 50380 Max MP: 0." />
+    <a time="116" text="テラスラッシュ" sync="神龍は「テラスラッシュ」の構え" />
+    <a time="127" text="アトミックレイ" />
+    <a time="141" text="吹雪" sync="レフトウィングは「吹雪」の構え" />
+    <a time="141" text="稲妻orスーパーノヴァ" notice="稲妻かノヴァ注意" />
+    <a time="156" text="ダークネスブレスor咆哮" notice="範囲注意" />
+    <a time="166" text="テラスラッシュ" sync="神龍は「テラスラッシュ」の構え" />
+    <a time="174" text="霊龍" sync="Added new combatant 霊龍.  Job: 0 Level: 70 Max HP: 50380 Max MP: 0." />
+    <a time="242" text="タイダルウェイブ" sync="いいぞ、いいぞ、貴様が限界を超えるというのなら" />
+    <a time="246" text="裁きの雷or地獄の火炎" />
+  </s>
+</timeline>

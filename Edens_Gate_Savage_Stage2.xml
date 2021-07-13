@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：覚醒編2</name>
+  <rev></rev>
+  <description>
+    希望の園エデン零式：覚醒編2
+  </description>
+  <author>
+    Aqua Cat (Original)
+    sheeva
+    enhanced by anoyetta
+    iris#6179
+    mixed by Shilver'a Jagd
+    RINGS
+  </author>
+  <license>CC BY-SA</license>
+  <zone>854</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+  <!--
+  Eden's_Gate_Resurrection_Savage 853
+  Eden's_Gate_Descent_Savage      854
+  Eden's_Gate_Inundation_Savage   855
+  Eden's_Gate_Sepulture_Savage    856
+  -->
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o"     value="-3"   />
+  <default target-element="Activity" target-attr="sync-s"       value="-10"  />
+  <default target-element="Activity" target-attr="sync-e"       value="10"   />
+  <default target-element="Activity" target-attr="notice-sync"  value="true" />
+
+<t name="初期配置" sync="" exec="scripts\ppas.ps1" args="" exec-hidden="true" />
+
+  <!-- グローバルトリガ start -->
+  <t text="マーカー設置"     sync=":マーカー設置$" exec="scripts\ppas.ps1" args="@Model.ZoneID" exec-hidden="true" />
+  <t name="赤玉"             sync="[pc]に「マーキング」の効果。"                                            notice="$1に赤玉"           notice-sync="true" />
+  <t name="目"               sync="[pc]:.*:00B3:0000:0000:0000:"                                            notice="$1にシャドウアイ"   notice-sync="true" />
+  <t text="スライサー"       sync="14:3E50:ヴォイドウォーカー starts using ドゥームヴォイド・スライサー"    notice="ボスに集合" />
+  <t text="ギロチン"         sync="14:3E4F:ヴォイドウォーカー starts using ドゥームヴォイド・ギロチン"      notice="左右に散開" />
+
+  <!-- フラグ初期化 begin -->
+
+  <t text="フラグ初期化" sync="0039:戦闘開始！" notice="" >
+    <expressions>
+      <set name="disable_flag"  value="false" />
+      <set name="arm_left"      value="false" />
+      <set name="arm_right"     value="false" />
+    </expressions>
+  </t>
+  <!-- フラグ初期化 end -->
+
+  <t no="1" sync="Added new combatant. name=エレボスの巨腕 X=22.50 Y=23.50" text="">
+    <expressions>
+      <set name="arm_left"  value="true" />
+      <set name="arm_right" value="false" />
+    </expressions>
+  </t>
+  <t no="2" sync="Added new combatant. name=エレボスの巨腕 X=24.50 Y=23.50" text="">
+    <expressions>
+      <set name="arm_left"  value="false" />
+      <set name="arm_right" value="true" />
+    </expressions>
+  </t>
+  <t no="3" sync="Removing combatant エレボスの巨腕" text="">
+    <expressions>
+      <set name="arm_left"  value="false" />
+      <set name="arm_right" value="false" />
+    </expressions>
+  </t>
+
+  <t text="虚ろなる悪意" sync="エレボスの巨腕 starts using 虚ろなる悪意." notice="ノックバック、西側移動、アームズレングス" >
+    <expressions>
+      <pre name="arm_left"  value="true" />
+    </expressions>
+    <v-notice text="左側移動" duration="6" duration-visible="false" icon="pull.png" />
+  </t>
+  <t text="虚ろなる悪意" sync="エレボスの巨腕 starts using 虚ろなる悪意." notice="ノックバック、東側移動、アームズレングス" >
+    <expressions>
+      <pre name="arm_right"  value="true" />
+    </expressions>
+    <v-notice text="右側移動" duration="6" duration-visible="false" icon="pull.png" />
+  </t>
+
+  <t text="虚ろなる害意" sync="エレボスの巨腕 starts using 虚ろなる害意." notice="東側移動" >
+    <expressions>
+      <pre name="arm_left"  value="true" />
+    </expressions>
+    <v-notice text="右側移動" duration="6" duration-visible="false" icon="B.png" />
+  </t>
+  <t text="虚ろなる害意" sync="エレボスの巨腕 starts using 虚ろなる害意." notice="西側移動" >
+    <expressions>
+      <pre name="arm_right"  value="true" />
+    </expressions>
+    <v-notice text="左側移動" duration="6" duration-visible="false" icon="D.png" />
+  </t>
+
+  <t text="復讐の連続剣" sync="ヴォイドウォーカーは「復讐の連続剣」の構え。" notice="中央・散開・直線">
+   <v-notice
+    duration="5"
+    duration-visible="false"
+    icon="True"
+    order="-1" />
+  </t>
+
+  <t text="混沌の連続剣" sync="ヴォイドウォーカーは「混沌の連続剣」の構え。" notice="直線・中央・散開">
+    <v-notice
+    duration="5"
+    duration-visible="false"
+    icon="True"
+    order="-1" />
+  </t>
+  <!-- グローバルトリガ end -->
+
+  @{ var origin = 0; }
+  <s name="ENTRY">
+    <a time="005" text="クリーバー"                                     sync="ヴォイドウォーカーは「ドゥームヴォイド・クリーバー」の構え。" notice="八方向散開"     icon="SpreadB.png" />
+    <a time="011"                                                       sync="次元の裂け目が開いた……！" />
+    <a time="019" text="ダークホーリー"                                 sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。"             notice="背面で頭割り"   icon="DamageShare.png" />
+    <a time="027"                                                       sync="ヴォイドウォーカー:さあ、もう一度だ……深淵へと通じ得る境界を斬り裂かん！" />
+    <a time="027" text="ギロチン(前後) or スライサー(中央)"             sync="ヴォイドウォーカーは「ドゥームヴォイド・(ギロチン|スライサー)」の構え。"              icon="AOEVertical.png" />
+    <a time="033"                                                       sync="次元の裂け目が開いた……！" />
+    <a time="037" text="ダークファイガ"                                 sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。"             notice="ダークファイガ" icon="Targetaoe01.png" />
+    <t sync="ヴォイドウォーカー:我が魔法を遅延させよう…… 死の言霊は、睦言のように甘く、密やかに忍び寄るのだ……。"                        name="ディレイ1回目"    goto="DELAY 1" />
+  </s>
+
+  <!-- ディレイスペル1 begin -->
+  <s name="DELAY 1">
+    <t text="シャドウアイ  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：シャドウアイ from .* for (?!9999)[_duration]" sync-iterval="15" sync-count="1" notice="ディレイアイ">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：シャドウアイ from ."
+        order="-3" />
+    </t>
+
+    <t text="頭割り  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークホーリー from .* for (?!9999)[_duration]" sync-iterval="45" notice="ディレイホーリー">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：ダークホーリー from ."
+        order="-2" />
+    </t>
+
+    <t text="フレア  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：フレア from .* for (?!9999)[_duration]" sync-iterval="25" sync-count="1" notice="ディレイフレア">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：フレア from ."
+        order="-1" />
+    </t>
+
+    @* このフェーズの基点秒数 *@
+    @{ origin = 56; }
+    <a time="@(056 - origin)"                                           sync="ヴォイドウォーカー:我が魔法を遅延させよう…… 死の言霊は、睦言のように甘く、密やかに忍び寄るのだ……。" />
+    <a time="@(056 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice=""                   icon="Timer.png" />
+    <a time="@(061 - origin)" text="ダークホーリー"                     sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。"             notice=""                   icon="Timer.png" />
+    <a time="@(064 - origin)" text="床踏み"                                                                                                                             icon="FallingObject.png" />
+    <a time="@(069 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice=""                   icon="Timer.png" />
+    <a time="@(075 - origin)" text="ダークファイガ"                     sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。"             notice=""                   icon="Timer.png" />
+    <a time="@(083 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice=""                   icon="Timer.png" />
+    <a time="@(088 - origin)" text="シャドウアイ"                       sync="ヴォイドウォーカーは「シャドウアイ」を唱えた。"               notice="ファイガが先"       icon="Timer.png" />
+    <a time="@(098 - origin)" text="ヘルウィンド"                       sync="ヴォイドウォーカーは「ヘルウィンド」を唱えた。"               notice="頭割り、目は後ろ"   icon="ForceHP1.png" />
+    <a time="@(101 - origin)" text="頭割り＋ペトリ発動"                                                                                                                 icon="Attention.png" />
+    <a time="@(115 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"             notice="タンク大ダメ"       icon="TankShare.png" goto="腕フェーズ" sync-s="-30" />
+  </s>
+  <!-- ディレイスペル1 end -->
+
+  <s name="腕フェーズ">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 115; }
+    <a time="@(115 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"                                         icon="TankShare.png" />
+    <a time="@(126 - origin)" text="エントロピー"                       sync="ヴォイドウォーカーは「エントロピー」を唱えた。"               notice="全体攻撃注意"       icon="AllRangeAttack.png" />
+    <a time="@(132 - origin)"                                           sync="ヴォイドウォーカー:嗚呼、昏き深淵よ！ 世を隔てる悪しき境界を引き裂け！" />
+    <a time="@(134 - origin)"                                           sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+    <a time="@(137 - origin)" text="虚ろなる害意 or 悪意"               sync="エレボスの巨腕は「虚ろなる(害意|悪意)」の構え。"              notice="腕の位置確認"       icon="Avoid.png" >
+      <expressions>
+        <set name="disable_flag" value="true" ttl="25" />
+      </expressions>
+    </a>
+    <a time="@(143 - origin)" text="ギロチン（前後）"                   sync="ヴォイドウォーカーは「ドゥームヴォイド・ギロチン」の構え。"                               icon="AOEVertical.png" />
+    <a time="@(149 - origin)"                                           sync="次元の裂け目が開いた……！" />
+    <a time="@(151 - origin)" text="スライサー"                         sync="ヴォイドウォーカーは「ドゥームヴォイド・スライサー」の構え。" notice=""                   icon="AOEOutside.png" />
+    <a time="@(155 - origin)"                                           sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+    <a time="@(157 - origin)"                                           sync="次元の裂け目が開いた……！"                                   notice="" />
+    <!-- <a time="@(157 - origin)"                                           sync="次元の裂け目が開いた……！"                                   notice="アームズレングス" /> -->
+    <a time="@(158 - origin)" text="虚ろなる害意 or 悪意"               sync="エレボスの巨腕は「虚ろなる(害意|悪意)」の構え。"              notice="" />
+    <a time="@(170 - origin)" text="クリーバー"                         sync="ヴォイドウォーカーは「ドゥームヴォイド・クリーバー」の構え。" notice="八方向散開"         icon="SpreadB.png" />
+    <a time="@(175 - origin)"                                           sync="次元の裂け目が開いた……！" />
+    <a time="@(185 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"             notice="タンク大ダメ"       icon="TankShare.png" />
+    <a time="@(195 - origin)" text="エントロピー"                       sync="ヴォイドウォーカーは「エントロピー」を唱えた。"               notice="全体攻撃注意"       icon="AllRangeAttack.png" />
+    <a time="@(205 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice="ディレイ2回目"      icon="Timer.png" goto="DELAY 2" sync-s="-30" />
+  </s>
+
+  <!-- ディレイスペル2 begin -->
+  <s name="DELAY 2">
+    <t text="シャドウアイ  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：シャドウアイ from .* for (?!9999)[_duration]" sync-iterval="15" sync-count="1" notice="ディレイアイ">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：シャドウアイ from ."
+        order="-3" />
+    </t>
+
+    <t text="頭割り  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークホーリー from .* for (?!9999)[_duration]" sync-iterval="45" notice="ディレイホーリー">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：ダークホーリー from ."
+        order="-2" />
+    </t>
+
+    <t text="フレア  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：フレア from .* for (?!9999)[_duration]" sync-iterval="25" sync-count="1" notice="ディレイフレア">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：フレア from ."
+        order="-1" />
+    </t>
+
+    @* このフェーズの基点秒数 *@
+    @{ origin = 205; }
+    <a time="@(205 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice=""                   icon="Timer.png" />
+    <a time="@(210 - origin)" text="ヘルウィンド"                       sync="ヴォイドウォーカーは「ヘルウィンド」を唱えた。"               notice=""                   icon="ForceHP1.png" />
+    <a time="@(218 - origin)" text="フレア"                             sync="ヴォイドウォーカーは「フレア」を唱えた。"                     notice="フレア処理"         icon="Distance.png" />
+    <a time="@(226 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice=""                   icon="Timer.png" />
+    <a time="@(231 - origin)" text="シャドウアイ"                       sync="ヴォイドウォーカーは「シャドウアイ」を唱えた。"               notice="回復後、塔の処理"   icon="Timer.png" />
+    <a time="@(245 - origin)" text="床踏み＋ペトリ発動"                                                                                     notice="石化注意"           icon="FallingObject.png" />
+    <a time="@(255 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"             notice="タンク大ダメ"       icon="TankShare.png" goto="白黒フェーズ1" sync-s="-30" />
+  </s>
+  <!-- ディレイスペル2 end -->
+
+  <s name="白黒フェーズ1">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 255; }
+    <a time="@(255 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"             notice=""                   icon="TankShare.png" />
+    <a time="@(265 - origin)" text="エントロピー"                       sync="ヴォイドウォーカーは「エントロピー」を唱えた。"               notice="全体攻撃注意"       icon="AllRangeAttack.png" />
+    <a time="@(276 - origin)"                                           sync="ヴォイドウォーカー:光に目を焼かれた者どもめ…… 貴様たちに、定めを示してみせよう！" />
+    <a time="@(277 - origin)" text="白黒 ペア処理"                                                                                          notice="ペア処理"           icon="Pair.png" />
+    <a time="@(280 - origin)" text="クリーバー"                         sync="ヴォイドウォーカーは「ドゥームヴォイド・クリーバー」の構え。" notice="八方向散開"         icon="SpreadB.png" />
+    <a time="@(286 - origin)"                                           sync="次元の裂け目が開いた……！" />
+    <a time="@(289 - origin)" text="ダークホーリー"                     sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。"             notice="頭割り"             icon="DamageShare.png" />
+    <a time="@(299 - origin)" text="ギロチン(前後) or スライサー(中央)" sync="ヴォイドウォーカーは「ドゥームヴォイド・(ギロチン|スライサー)」の構え。"                  icon="AOEVertical.png" />
+    <a time="@(305 - origin)"                                           sync="次元の裂け目が開いた……！" />
+    <a time="@(324 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"             notice="タンク大ダメ"       icon="TankShare.png" />
+    <a time="@(335 - origin)" text="エントロピー"                       sync="ヴォイドウォーカーは「エントロピー」を唱えた。"               notice="全体攻撃注意"       icon="AllRangeAttack.png" />
+    <a time="@(345 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice="ディレイ3回目"      icon="Timer.png" goto="DELAY 3" sync-s="-30" />
+  </s>
+
+  <s name="DELAY 3">
+    <t text="シャドウアイ  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：シャドウアイ from .* for (?!9999)[_duration]" sync-iterval="15" sync-count="1" notice="ディレイアイ">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：シャドウアイ from ."
+        order="-3" />
+    </t>
+
+    <t text="頭割り  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：ダークホーリー from .* for (?!9999)[_duration]" sync-iterval="45" notice="ディレイホーリー">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：ダークホーリー from ."
+        order="-2" />
+    </t>
+
+    <t text="フレア  →${_pc}" sync="^1A:[id8]:[pc] gains the effect of ディレイスペル：フレア from .* for (?!9999)[_duration]" sync-iterval="25" sync-count="1" notice="ディレイフレア">
+      <v-notice
+        duration="20"
+        duration-visible="true"
+        job-icon="true"
+        sync-to-hide="^1E:[id8]:[pc] loses the effect of ディレイスペル：フレア from ."
+        order="-1" />
+    </t>
+
+    @* このフェーズの基点秒数 *@
+    @{ origin = 345; }
+
+    <!-- ディレイスペル3 begin -->
+    <a time="@(345 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"                                           icon="Timer.png" />
+    <a time="@(349 - origin)"                                           sync="次元の裂け目より、エレボスの巨腕が現れた……！" />
+    <a time="@(350 - origin)" text="フレア"                             sync="ヴォイドウォーカーは「フレア」を唱えた。"                     notice="腕が先"             icon="Timer.png" />
+    <a time="@(352 - origin)" text="虚ろなる害意 or 悪意"               sync="エレボスの巨腕は「虚ろなる(害意|悪意)」の構え。"              notice="フレアの後に頭割り" />
+    <a time="@(358 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"                                           icon="Timer.png" />
+    <a time="@(363 - origin)" text="ダークホーリー"                     sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。"             notice="" />
+    <a time="@(371 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice=""                   icon="Timer.png" />
+    <a time="@(376 - origin)" text="フレア"                             sync="ヴォイドウォーカーは「フレア」を唱えた。"                     notice="最初のフレア移動" />
+    <a time="@(382 - origin)" text="頭割り"                             sync=""                                                             notice="頭割り集合"         notice-o="0" /> -->
+    <a time="@(394 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"             notice="タンク大ダメ"       icon="TankShare.png" />
+    <a time="@(405 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"                                           icon="Timer.png" />
+    <a time="@(410 - origin)" text="シャドウアイ"                       sync="ヴォイドウォーカーは「シャドウアイ」を唱えた。"               notice="視線、フレア先" />
+    <a time="@(418 - origin)" text="ディレイスペル"                     sync="ヴォイドウォーカーは「ディレイスペル」の構え。"               notice="次のフレア移動"     notice-o="1"  icon="Timer.png" />
+    <a time="@(423 - origin)" text="ダークファイガ"                     sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。"             notice="後ろ向いて"         notice-o="1" />
+    <!-- ディレイスペル3 end -->
+
+    <!-- ついでに白黒 -->
+    <a time="@(439 - origin)" text="白黒 ペア処理"                                                                                          notice="ペア処理後、床踏み" icon="Pair.png" />
+    <a time="@(445 - origin)" text="床踏み"                                                                                                                             icon="FallingObject.png" />
+    <a time="@(449 - origin)" text="クリーバー"                         sync="ヴォイドウォーカーは「ドゥームヴォイド・クリーバー」の構え。" notice="八方向散開"         icon="SpreadB.png" />
+    <a time="@(455 - origin)"                                           sync="次元の裂け目が開いた……！" />
+    <a time="@(463 - origin)" text="シャドーフレイム"                   sync="ヴォイドウォーカーは「シャドーフレイム」の構え。"             notice="タンク大ダメ"       icon="TankShare.png" />
+    <a time="@(491 - origin)" sync="ヴォイドウォーカー:混沌を司るは闇の力…… 昏き魔力よ、限りなく増大し、終末をも覆いつくせ！"             notice="次は、最終フェーズ" goto="FINAL" sync-s="-30" />
+  </s>
+
+  <!--最終フェーズ -->
+  <s name="FINAL">
+    <t text="復讐の連続剣" sync="ヴォイドウォーカーは「復讐の連続剣」の構え。" notice="中央・散開・左右">
+      <v-notice text="ボス下"    duration="7"  order="1" icon="AOEOutside"  duration-visible="false" />
+      <v-notice text="➜ 散開"   duration="10" order="2" icon="SpreadB"     duration-visible="false" />
+      <v-notice text="➜ 左右"   duration="14" order="3" icon="AOEVertical" duration-visible="false" />
+    </t>
+
+    <t text="混沌の連続剣" sync="ヴォイドウォーカーは「混沌の連続剣」の構え。" notice="左右・中央・散開">
+      <v-notice text="左右"      duration="7"  order="1" icon="AOEVertical" duration-visible="false" />
+      <v-notice text="➜ ボス下" duration="10" order="2" icon="AOEOutside"  duration-visible="false" />
+      <v-notice text="➜ 散開"   duration="14" order="3" icon="SpreadB"     duration-visible="false" />
+    </t>
+
+    @* このフェーズの基点秒数 *@
+    @{ origin = 491; }
+    <a time="@(491 - origin)"                                           sync="ヴォイドウォーカー:混沌を司るは闇の力…… 昏き魔力よ、限りなく増大し、終末をも覆いつくせ！" />
+    <a time="@(491 - origin)" text="クワイタス(20%目安)"                sync="ヴォイドウォーカーは「クワイタス」を唱えた。"                 notice="次は、全体攻撃。"   icon="HardAllRangeAttack.png" />
+    <a time="@(501 - origin)"                                           sync="ヴォイドウォーカー:光に溺れた愚者どもめ……その首を断ち斬ってくれるッ！" notice="連続剣くるよ" />
+    <a time="@(502 - origin)" text="ランダム連続剣"                                                                                                                     icon="Branch.png" />
+    <a time="@(526 - origin)" text="ランダム連続剣"                                                                                                                     icon="Branch.png" />
+    <a time="@(550 - origin)" text="クワイタス"                         sync="ヴォイドウォーカーは「クワイタス」を唱えた。"                 notice="全体攻撃注意"       icon="HardAllRangeAttack.png" />
+    <a time="@(562 - origin)" text="ランダム連続剣"                                                                                                                     icon="Branch.png" />
+    <a time="@(584 - origin)" text="クワイタス準備"                                                                                         notice="全体攻撃3連発"      icon="HardAllRangeAttack.png" />
+    <a time="@(586 - origin)" text="クワイタス1/3"                      sync="ヴォイドウォーカーは「クワイタス」を唱えた。"                 notice="1回目"              icon="HardAllRangeAttack.png" sync-s="-3" sync-o="3" />
+    <a time="@(595 - origin)" text="クワイタス2/3"                      sync="ヴォイドウォーカーは「クワイタス」を唱えた。"                 notice="2回目"              icon="HardAllRangeAttack.png" sync-s="-3" sync-o="3" />
+    <a time="@(604 - origin)" text="クワイタス3/3"                      sync="ヴォイドウォーカーは「クワイタス」を唱えた。"                 notice="3回目"              icon="HardAllRangeAttack.png" sync-s="-3" sync-o="3" />
+    <a time="@(618 - origin)" text="クワイタス"                         sync="ヴォイドウォーカーは「クワイタス」を唱えた。"                 notice="全体攻撃注意"       icon="HardAllRangeAttack.png" />
+    <a time="@(626 - origin)" text="時間切れ詠唱"                       sync="ヴォイドウォーカー:もはや、これ以上、戦い続ける意味はなし……。 その魂を無に帰すべき時が来た……！"  notice="次で時間切れ、がんばえー" />
+  </s>
+</timeline>
+ 

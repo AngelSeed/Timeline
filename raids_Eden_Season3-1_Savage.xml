@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園エデン零式：再生編1</name>
+  <rev>rev4</rev>
+  <description>
+    希望の園エデン零式： 再生編1 のスペスペたいむ定義です。
+  </description>
+  <author>anoyetta, Aqua Cat, sheeva</author>
+  <license>CC BY-SA</license>
+  <zone>946,Eden's Promise: Umbra (Savage)</zone>
+  <locale>JA</locale>
+  <start>0039:戦闘開始！</start>
+  <entry>タイムライン</entry>
+
+  <default target-element="Activity" target-attr="notice-o" value="-4" />
+
+  <t name="闇の戦技：ペア" sync="^14:5B46:暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="ペアー受け。" >
+    <v-notice
+      text="ペア受け"
+      duration="6"
+      duration-visible="false"
+      icon="Pair.png" />
+  </t>
+
+  <t name="闇の戦技：散開" sync="^14:5B45:暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="八方散開。" >
+    <v-notice
+      text="８方向散開"
+      duration="6"
+      duration-visible="false"
+      icon="SpreadB.png" />
+  </t>
+
+  <t name="波動の呪詛" sync="^1A:[id8]:[mex] gains the effect of 波動の呪詛 from 暗闇の雲 for 15.00 Seconds." notice="/wait 11, 外を向く。" >
+    <v-notice
+      text="波動の呪詛"
+      duration="15"
+      icon="Eye.png" />
+  </t>
+
+  <t name="戦技：ボス左が安全" sync="^14:5A95:暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="左側えー。" >
+    <v-notice
+      text="ボス左へ"
+      duration="12"
+      duration-visible="false"
+      order="-1"
+      icon="West.png" />
+  </t>
+
+  <t name="戦技：ボス右が安全" sync="^14:5A96:暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="右側えー。" >
+    <v-notice
+      text="ボス右へ"
+      duration="12"
+      duration-visible="false"
+      order="-1"
+      icon="East.png" />
+  </t>
+
+  <t name="天空：散開" sync="^14:55FB:暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="八方散開。" >
+    <v-notice
+      text="８方向散開"
+      duration="12"
+      duration-visible="false"
+      order="-1"
+      icon="SpreadB.png" />
+  </t>
+
+  <t name="天空：ペア受け" sync="^14:55FE:暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="ペアー受け。" >
+    <v-notice
+      text="ペア受け"
+      duration="12"
+      duration-visible="false"
+      order="-1"
+      icon="Pair.png" />
+  </t>
+
+  <!-- 闇の戦技:二重/三重 ID不定のため一旦封印 begin -->
+  <!--
+  <t name="連続：右が安全" sync="^1B:[id8]:暗闇の雲:0000:[id4]:0177:0000:0000:0000:" notice="右側えー。" >
+    <v-notice
+      text="右へ"
+      duration="10"
+      duration-visible="false"
+      order="-1"
+      icon="East.png" />
+  </t>
+
+  <t name="連続：左が安全" sync="^1B:[id8]:暗闇の雲:0000:[id4]:0178:0000:0000:0000:" notice="左側えー。" >
+    <v-notice
+      text="左へ"
+      duration="10"
+      duration-visible="false"
+      order="-1"
+      icon="West.png" />
+  </t>
+
+  <t name="連続：ペア受け" sync="^1B:[id8]:暗闇の雲:0000:[id4]:0179:0000:0000:0000:" notice="ペアー受け。" >
+    <v-notice
+      text="ペア受け"
+      duration="10"
+      duration-visible="false"
+      order="-1"
+      icon="Pair.png" />
+  </t>
+
+  <t name="連続：散開"     sync="^1B:[id8]:暗闇の雲:0000:[id4]:017A:0000:0000:0000:" notice="八方散開。" >
+    <v-notice
+      text="８方向散開"
+      duration="10"
+      duration-visible="false"
+      order="-1"
+      icon="SpreadB.png" />
+  </t>
+  -->
+  <!-- 闇の戦技:二重/三重 end -->
+
+  <!-- 闇の戦技:二重/三重 シンプルな注意勧告 begin -->
+  <t no="0" name="闇の戦技 予兆クリア1" sync="暗闇の雲 starts using 闇の戦技：二重" notice="2連予兆">
+    <expressions>
+      <set name="shadow_skill_no" count="0" />
+    </expressions>
+  </t>
+
+  <t no="0" name="闇の戦技 予兆クリア2" sync="暗闇の雲 starts using 闇の戦技：三重" notice="3連予兆">
+    <expressions>
+      <set name="shadow_skill_no" count="0" />
+    </expressions>
+  </t>
+
+  <t no="1" name="闇の戦技 予兆++" sync="^1B:[id8]:暗闇の雲:0000:[id4]:[id4]:0000:0000:0000:">
+    <expressions>
+      <set name="shadow_skill_no" count="+1" />
+    </expressions>
+  </t>
+
+  <t no="11" name="闇の戦技 予兆1" sync="^1B:[id8]:暗闇の雲:0000:[id4]:[id4]:0000:0000:0000:" notice="予兆1">
+    <expressions>
+      <pre name="shadow_skill_no" count="1" />
+    </expressions>
+    <v-notice text="予兆1 左／右" duration="5" duration-visible="false" order="-1" icon="Check.png" />
+  </t>
+
+  <t no="12" name="闇の戦技 予兆2" sync="^1B:[id8]:暗闇の雲:0000:[id4]:[id4]:0000:0000:0000:" notice="予兆2">
+    <expressions>
+      <pre name="shadow_skill_no" count="2" />
+    </expressions>
+    <v-notice text="予兆2 散開／ペア" duration="5" duration-visible="false" order="-1" icon="Check.png" />
+  </t>
+
+  <t no="13" name="闇の戦技 予兆3" sync="^1B:[id8]:暗闇の雲:0000:[id4]:[id4]:0000:0000:0000:" notice="予兆3">
+    <expressions>
+      <pre name="shadow_skill_no" count="3" />
+    </expressions>
+    <v-notice text="予兆3 左／右" duration="5" duration-visible="false" order="-1" icon="Check.png" />
+  </t>
+  <!-- 闇の戦技:二重/三重 シンプルな注意勧告 end -->
+
+  <!-- 跳躍式波動砲 begin -->
+  if (Model.Player.InRole("TANK")) {
+    <t name="高射式" sync="「高射式 跳躍波動砲：零式」を唱えた。" notice="離れる、近寄るー">
+      <v-notice
+        text="離れる → 近寄る"
+        duration="10"
+        duration-visible="false"
+        order="-1"
+        icon="Leave.png" />
+    </t>
+  
+    <t name="広角式" sync="「広角式 跳躍波動砲：零式」を唱えた。" notice="近寄るー、離れるー">
+      <v-notice
+        text="近寄る → 離れる\n→ 円範囲注意"
+        duration="10"
+        duration-visible="false"
+        order="-1"
+        icon="DamageShare.png" />
+    </t>
+  } else {
+    <t name="高射式" sync="「高射式 跳躍波動砲：零式」を唱えた。" notice="円形ＡＯＥ">
+      <v-notice
+        text="円形ＡＯＥ"
+        duration="10"
+        duration-visible="false"
+        order="-1"
+        icon="Targetaoe01.png" />
+    </t>
+  
+    <t name="広角式" sync="「広角式 跳躍波動砲：零式」を唱えた。" notice="ボスから扇形">
+      <v-notice
+        text="ボスから扇形"
+        duration="10"
+        duration-visible="false"
+        order="-1"
+        icon="Targetaoe03.png" />
+    </t>
+  }
+  <!-- 跳躍式波動砲 begin -->
+
+  <s name="タイムライン">
+    <a time="001.0" sync="暗闇の雲:光など、わしには届かん！ 闇に覆われよ……！" />
+    <a time="011.0" text="放射式 波動砲" sync="暗闇の雲は「放射式 波動砲」を唱えた。" notice="次、全体攻撃" />
+    <a time="021.0" text="闇の戦技1" sync="暗闇の雲は「闇の戦技」の構え。" notice="次、闇の戦技、2回" />
+    <a time="031.0" text="闇の戦技2" notice="" />
+    <a time="042.0" text="闇の浸食" sync="暗闇の雲は「闇の浸食」を唱えた。" notice="次、タンク強攻撃" />
+
+    <!-- 暗黒森林1 -->
+    <a time="058.0" sync="暗闇の雲:活性の闇よ、沸き立ちて暗黒森林となれ……！" notice="次、いばらフェーズ、ノックバック注意。" />
+    <a time="058.0" text="暗黒森林" sync="暗闇の雲は「暗黒森林」を唱えた。" />
+    <a time="069.0" sync="暗闇の雲:均衡を取り戻す……！ 活性の闇よ、闇の大樹に注げ！" />
+    <a time="069.0" sync="暗闇の雲は「闇の氾濫：暗黒森林」を唱えた。" />
+    <a time="077.0" text="活性弾" sync="暗闇の雲は「活性弾」の構え。" />
+    <a time="084.5" sync="闇の大樹 starts using 強振動 on 闇の大樹." />
+    <a time="084.8" text="いばら" notice="次、いばら" />
+  
+    <!-- 広角 or 高射分岐 -->
+    <a time="095.0" text="跳躍波動砲" sync="暗闇の雲は「(高射式|広角式) 跳躍波動砲：零式」を唱えた。" notice="次、跳躍波動砲。" />
+
+    <!-- 中間 全体から二重 -->
+    <a time="121.0" text="放射式 波動砲" sync="暗闇の雲は「放射式 波動砲」を唱えた。" notice="次、全体攻撃。" />
+    <a time="134.0" text="闇の戦技：二重" sync="暗闇の雲は「闇の戦技：二重」の構え。" notice="次、闇の戦技ダブル。" />
+
+    <!-- 残りの跳躍 -->
+    <a time="153.0" text="跳躍波動砲" sync="暗闇の雲は「(高射式|広角式) 跳躍波動砲：零式」を唱えた。" notice="次、跳躍波動砲。" />
+    <a time="177.0" text="闇の浸食" sync="暗闇の雲は「闇の浸食」を唱えた。" notice="次、タンク強攻撃" />
+
+    <!-- 落とし穴フェーズ -->
+    <a time="193.0" sync="暗闇の雲:世界を闇で包み込もう……！" notice="次、天空フェーズ。" />
+    <a time="193.0" text="暗黒天空" sync="暗闇の雲は「暗黒天空」を唱えた。" />
+    <a time="203.0" text="雲POP" sync="暗闇の雲:寄り添う命が、滅びを加速させる……！ もろとも沈め……！" />
+    <a time="209.0" text="闇の氾濫：暗黒天空" sync="暗闇の雲の「闇の氾濫：暗黒天空」" />
+    <a time="212.0" sync="暗闇の雲:希望も絶望も、わしの糧だ……！ 暗雲ごと喰らってやる！" />
+    <a time="216.0" text="波動雲吸引" sync="暗闇の雲の「波動雲吸引」" notice-o="-1" notice="雲、移動開始" />
+    <a time="224.0" text="掃射式 波動砲" sync="暗闇の雲は「掃射式 波動砲」を唱えた。" notice="次、中央えー。" />
+    <a time="239.0" text="闇の戦技1" sync="暗闇の雲は「闇の戦技」の構え。" notice="次、闇の戦技、2回" />
+    <a time="255.0" text="闇の戦技2" sync="暗闇の雲は「闇の戦技」の構え。" />
+    <a time="274.0" sync="暗闇の雲:さらなる闇を生むために…… 無から生まれ、無へと消えろ！" />
+    <a time="274.0" text="闇の大氾濫" sync="暗闇の雲は「闇の大氾濫」を唱えた。" notice="次、全体攻撃。" />
+
+    <!-- 落とし穴終了 -->
+    <a time="283.0" text="召喚" sync="暗闇の雲は「召喚」の構え。" notice="次、分身注意。" />
+    <a time="292.0" text="闇の戦技" sync="暗闇の雲は「闇の戦技」の構え。" notice="次、闇の戦技。" />
+    <a time="311.0" text="闇の浸食" sync="暗闇の雲は「闇の浸食」を唱えた。" notice="次、タンク強攻撃" />
+    <a time="325.0" text="闇の戦技：三重" sync="暗闇の雲は「闇の戦技：三重」の構え。" notice="次、闇の戦技トリプル。" />
+
+    <!-- 暗黒森林2 -->
+    <a time="354.0" text="暗黒森林" sync="暗闇の雲は「暗黒森林」を唱えた。" notice="次、いばらフェーズ、ノックバック注意。" notice-o="-8" />
+    <a time="365.0" text="闇の氾濫：暗黒森林" sync="暗闇の雲は「闇の氾濫：暗黒森林」を唱えた。" />
+    <a time="375.0" text="波動球" sync="暗闇の雲は「波動球」の構え。" />
+    <a time="381.5" text="いばら" notice="次、いばらから塔えー" />
+    <a time="389.0" text="波動爆発" />
+
+    <a time="391.0" text="高射式 跳躍波動砲：零式" sync="暗闇の雲は「(高射式|広角式) 跳躍波動砲：零式」を唱えた。" notice="次、跳躍波動砲。" />
+    <a time="415.0" text="放射式 波動砲" sync="暗闇の雲は「放射式 波動砲」を唱えた。" notice="次、全体攻撃" />
+
+    <a time="430.0" text="活性弾" sync="暗闇の雲は「活性弾」の構え。" notice="次、活性弾。" />
+    <a time="435.0" text="闇の戦技：二重" sync="暗闇の雲は「闇の戦技：二重」の構え。" notice="次、闇の戦技ダブル。" />
+
+    <a time="457.0" text="闇の浸食" sync="暗闇の雲は「闇の浸食」を唱えた。" notice="次、タンク強攻撃" />
+
+    <!-- 暗黒天空2 -->
+    <a time="473.0" text="暗黒天空" sync="暗闇の雲は「暗黒天空」を唱えた。" notice="次、天空フェーズ。" />
+    <a time="489.0" text="闇の氾濫：暗黒天空" sync="暗闇の雲の「闇の氾濫：暗黒天空」" />
+    <a time="496.0" text="波動雲吸引" sync="暗闇の雲の「波動雲吸引」" notice-o="-1" notice="雲、移動開始" />
+    <a time="505.2" text="掃射式 波動砲" sync="暗闇の雲 starts using 掃射式 波動砲 on 暗闇の雲." notice="次、中央えー。" />
+
+    <a time="519.4" text="闇の戦技" sync="暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="次、闇の戦技。" />
+    <a time="535.2" text="闇の戦技" sync="暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="次、闇の戦技。" />
+    <a time="551.0" text="闇の戦技" sync="暗闇の雲 starts using 闇の戦技 on 暗闇の雲." notice="次、闇の戦技。" />
+  </s>
+</timeline>

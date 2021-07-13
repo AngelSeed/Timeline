@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極ティターニア討滅戦</name>
+  <rev></rev>
+  <description>
+  </description>
+  <author>RINGS</author>
+  <license>CC BY-SA</license>
+  <zone>The Dancing Plague (Extreme)</zone>
+  <locale>JA</locale>
+  <entry>P1</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3"   />
+
+
+  <!-- トリガ スペスペに登録してもいい TLロード時のみ有効 -->
+  <t text="離れる"      sync="14:3D4C:ティターニア starts using 幻のルーン"         notice="離れる" />
+  <t text="中央安置"    sync="14:3D4D:ティターニア starts using 幻のルーン"         notice="中央安置" />
+  <t text="殴打"        sync="14:3D37:パック starts using 殴打"                     notice="MT大ダメ" />
+  <t text="殴打"        sync="14:3D36:ピーズブロッサム starts using ハードスワイプ" notice="ST大ダメ" />
+  <t text="茨"          sync="[me]に「茨の蔓」の効果。"                             notice="移動" />
+  
+<s name="P1">
+  <a time="000" sync="アソビ、マショ……夜ノ、ナイ朝…… 眠リモ、忘レテ、ズット……" />
+  <a time="008" text="ブライトサバト" sync="ティターニアは「ブライトサバト」を唱えた。" notice="" />
+  <a time="021" sync="ドッチ、コッチ……ワカル、カナ……？" />
+  <a time="021" text="幻のルーン" sync="ティターニアは「幻のルーン」を唱えた。" notice="" />
+  <a time="034" text="水のルーン" sync="ティターニアは「水のルーン」を唱えた。" notice="散開" />
+  <a time="034" sync="グルグル、巡ル……水ヨ、オイデ……！" />
+  <a time="052" text="火のルーン" sync="ティターニアは「火のルーン」を唱えた。" notice="3時9時、散開" />
+  <a time="070" text="フレイムハンマー" notice="頭割り2回" />
+  <a time="072" text="フレイムハンマー" />
+  <a time="074" text="魔のルーン" sync="ティターニアは「魔のルーン」を唱えた。" notice="正面範囲" />
+  <a time="084" text="ブランブルチェーン" sync="ティターニアは「ブランブルチェーン」を唱えた。" notice="茨、中央集合" />
+  <a time="100" text="幻のルーン" sync="ティターニアは「幻のルーン」を唱えた。" notice="" />
+  <a time="150" text="フェーズ移行" sync="狭イ、オ城……モウ、イヤ……！ 森ノ、中デ……アソビマショ……！" goto="P2" sync-s="-50"/>
+</s>
+
+<!--エリア変更演出後-->
+<s name="P2">
+  <a time="000" text="ミッドサマー・ナイツドリーム" sync="ティターニアは「ミッドサマー・ナイツドリーム」を唱えた。" notice="ミッドサマー・ナイツドリーム。" />
+  <a time="014" sync="ビリビリ、カミナリ……ダレ、ト、アソブ……？" notice="線を交代で処理" />
+  <a time="024" text="雷のルーン1(ST)" sync="ティターニアの「雷のルーン」" />
+  <a time="029" text="雷のルーン2(D1)" />
+  <a time="035" text="雷のルーン3(D2)" />
+  <a time="040" text="雷のルーン4(D3)" />
+  <a time="046" text="雷のルーン5(D4)" />
+  <a time="052" text="雷のルーン6(H1)" />
+  <a time="057" text="妖精光" sync="ティターニアは「妖精光」を唱えた。" notice="タンク2受け" />
+  <a time="057" sync="ピカピカ、光ル……キレイ、ナ、オ空……！" />
+  <a time="075" sync="ウネウネ、伸ビテ……ドコマデモ……！" />
+  <a time="075" text="根のルーン" sync="ティターニアは「根のルーン」を唱えた。" notice="根っこ" />
+  <a time="081" text="ブランブルチェーン" sync="ティターニアは「ブランブルチェーン」を唱えた。" notice="茨、中央集合" />
+  <a time="087" sync="ティターニアの魔力を受けて、根が伸び始めた……！" />
+  <a time="099" text="魔のルーン" sync="ティターニアは「魔のルーン」を唱えた。" notice="正面範囲" />
+  <a time="109" text="氷のルーン" sync="ティターニアは「氷のルーン」を唱えた。" notice="氷のルーン。" />
+  <a time="109" sync="ツブレテ、ペッチャン……赤イ、オ花……！" />
+  <a time="125" text="AoE" notice="足元範囲" />
+  <a time="131" text="幻のルーン" sync="ティターニアは「幻のルーン」を唱えた。" notice="" />
+  <a time="131" sync="ドッチ、コッチ……ワカル、カナ……？" />
+  <a time="180" text="フェーズ移行" sync="アノ子モ、コノ子モ……ミンナ"  goto="P3" sync-s="-50"/>
+</s>
+
+<!--3体出現-->
+<s name="P3">
+  <a time="010" text="ビーズボム" sync="ピーズブロッサムは「ビーズボム」を唱えた。" notice="複数の範囲攻撃" />
+  <a time="010" text="リーフストーム"  />
+  <a time="010" text="上風" />
+  <a time="019" text="殴打(MT大ダメ)" sync="パックは「殴打」の構え。" notice="" />
+  <a time="022" text="ハードスワイプ(ST大ダメ)" sync="ピーズブロッサムは「ハードスワイプ」の構え。" notice="" />
+  <a time="031" text="殴打(MT大ダメ)" sync="パックは「殴打」の構え。" notice="" />
+  <a time="034" text="ビーズボム" sync="ピーズブロッサムは「ビーズボム」を唱えた。" notice="ビーズボム" />
+  <a time="037" text="ハードスワイプ(ST大ダメ)" sync="ピーズブロッサムは「ハードスワイプ」の構え。" notice="" />
+  <a time="100" text="フェーズ移行" sync="アノ子モ、コノ子モ……大キク" goto="P4" sync-s="-50" />
+</s>
+
+<!--巨大化-->
+<s name="P4">
+  <a time="016" text="ビーズボム" sync="ピーズブロッサムは「ビーズボム」を唱えた。" notice="散開" />
+  <a time="016" text="リーフストーム"/>
+  <!--a time="016" text="リーフストーム" sync="マスタードシードは「リーフストーム」を唱えた。" notice="リーフストーム。" /-->
+  <a time="023" text="パック・ブレス" sync="パックは「パック・ブレス」を唱えた。" notice="パック・ブレス。" />
+  <a time="032" text="ウィスパリング・ウィンド" sync="マスタードシードは「ウィスパリング・ウィンド」を唱えた。" notice="中央ノックバック注意" />
+  <a time="045" text="叩きつけ" notice="ノックバック" />
+  <a time="047" text="リーフストーム" sync="マスタードシードは「リーフストーム」を唱えた。" notice="リーフストーム。" />
+  <a time="055" text="パック・ブレス" sync="パックは「パック・ブレス」を唱えた。" notice="パック・ブレス。" />
+  <a time="055" text="ビーズボム" sync="ピーズブロッサムは「ビーズボム」を唱えた。" notice="ビーズボム。" />
+  <a time="065" text="パック・カプリース" sync="パックは「パック・カプリース」を唱えた。" notice="パック・カプリース。" />
+  <a time="080" text="ビーズボム" sync="ピーズブロッサムは「ビーズボム」を唱えた。" notice="ビーズボム。" />
+  <a time="080" text="リーフストーム" sync="マスタードシードは「リーフストーム」を唱えた。" notice="リーフストーム。" />
+  <a time="120" text="移行P5" sync="踊レ、踊レ、木ノ葉ト、踊レ……！" goto="P5" sync-s="-80" />
+  <!--P3に関して、もっと多数の攻撃があると思われます。判明次第追記します。-->
+</s>
+
+<s name="P5">
+  <a time="014" sync="アハハ、楽シイ……！ モット、モット……アソビ、マショ！" />
+  <a time="023" text="水のルーン" sync="ティターニアは「水のルーン」を唱えた。" notice="範囲よけてから散会" />
+  <a time="029" text="幻のルーン" sync="ティターニアは「幻のルーン」を唱えた。" notice="" />
+  <a time="044" text="火のルーン" sync="ティターニアは「火のルーン」を唱えた。" notice="3時9時、散開" />
+  <a time="050" text="根のルーン" sync="ティターニアは「根のルーン」を唱えた。" notice="根っこ" />
+  <a time="062" text="フレイムハンマー" />
+  <a time="064" text="フレイムハンマー" />
+  <a time="076" text="幻のルーン" sync="ティターニアは「幻のルーン」を唱えた。" notice="" />
+  <a time="088" text="ブライトサバト" sync="ティターニアは「ブライトサバト」を唱えた。" notice="全体攻撃" />
+  <a time="099" text="妖精光" sync="ティターニアは「妖精光」を唱えた。" notice="タンク2受け" />
+  <a time="117" text="氷のルーン" sync="ティターニアは「氷のルーン」を唱えた。" notice="氷のルーン。" />
+  <a time="131" text="隆起" notice="隆起。" />
+  <a time="139" text="ブライトサバト" sync="ティターニアは「ブライトサバト」を唱えた。" notice="全体攻撃" />
+  <a time="148" sync="ビリビリ、カミナリ……ダレ、ト、アソブ……？" notice="線を交代で処理" />
+  <a time="158" text="雷のルーン1(ST)" sync="ティターニアの「雷のルーン」" />
+  <a time="163" text="雷のルーン2(D1)" />
+  <a time="168" text="雷のルーン3(D2)" />
+  <a time="173" text="雷のルーン4(D3)" />
+  <a time="179" text="雷のルーン5(D4)" />
+  <a time="184" text="雷のルーン6(H1)" />
+  <a time="193" text="根のルーン" sync="ティターニアは「根のルーン」を唱えた。" notice="根っこ" />
+  <a time="199" text="ブランブルチェーン" sync="ティターニアは「ブランブルチェーン」を唱えた。" notice="茨、中央集合" />
+  <a time="220" text="幻のルーン" sync="ティターニアは「幻のルーン」を唱えた。" notice="" />
+  <a time="241" text="ブライトサバト" sync="ティターニアは「ブライトサバト」を唱えた。" notice="" />
+  <a time="247" text="ブライトサバト" sync="ティターニアは「ブライトサバト」を唱えた。" notice="DPSたりなあああああい" />
+  <a time="260" sync="ティターニアを倒した。" />
+</s>
+</timeline>

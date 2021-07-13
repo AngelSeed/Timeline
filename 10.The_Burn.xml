@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>ザ・バーン</name>
+  <rev></rev>
+  <description>ザ・バーン向けのトリガー定義</description>
+  <author>TamanegiMage</author>
+  <license>Public Domain</license>
+  <zone>The Burn</zone>
+  <locale>JA</locale>
+  <entry></entry>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+  
+  <t text="北" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.50 Y=13.11" notice="北">
+    <v-notice duration="6" order="-5"/>
+  </t>
+  <t text="北東" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.78 Y=13.22" notice="北東">
+    <v-notice duration="6" order="-5"/>
+  </t>
+  <t text="東" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.89 Y=13.50" notice="東">
+    <v-notice duration="6" order="-5"/>
+  </t>
+  <t text="南東" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.78 Y=13.78" notice="南東">
+    <v-notice duration="6" order="-5"/>
+  </t>
+  <t text="南" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.50 Y=13.89" notice="南">
+    <v-notice duration="6" order="-5"/>
+  </t>
+  <t text="南西" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.22 Y=13.78" notice="南西">
+    <v-notice duration="6" order="-5"/>
+  </t>
+  <t text="西" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.11 Y=13.50" notice="西">
+    <v-notice duration="6" order="-5"/>
+  </t>
+  <t text="北西" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.22 Y=13.22" notice="北西">
+    <v-notice duration="6" order="-5"/>
+  </t>
+</timeline>

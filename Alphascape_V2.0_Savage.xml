@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>次元の狭間オメガ零式：アルファ編 2層</name>
+  <rev></rev>
+  <zone>Alphascape V2.0 (Savage)</zone>
+  <description>
+  次元の狭間オメガ零式：アルファ編2タイムライン
+Angel Seed版デラックスバージョン with RINGS
+(C)RINGS, CC BY-SA
+  </description>
+  <locale>JA</locale>
+  <entry>前半</entry>
+  <start>0039:戦闘開始！</start>
+
+  <!--
+   <start>我こそはミドガルズオルム……  竜の中の竜にして、龍の中の龍たる者……！</start>
+  -->
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+ <!-- タンク交代トリガ begin -->
+  <t text="天の力" sync="ミドガルズオルム gains the effect of 天の力" notice="" >
+    <expressions>
+      <set name="flag_AE_Mid" value="true"   />
+    </expressions>
+  </t>
+
+  <t text="地の力" sync="ミドガルズオルム gains the effect of 地の力" notice="" >
+    <expressions>
+      <set name="flag_AE_Mid" value="false"  />
+    </expressions>
+  </t>
+
+  <!-- ミドが天の場合 -->
+  <!-- MT中 -->
+  <t text="天の災厄" sync="[me]:0000:0000:008E:0000:0000:0000:" notice="タンク交代" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="true"  />
+      <pre name="IS_TOT_ME"    value="true"  />
+    </expressions>
+  </t>
+  <t text="地の災厄" sync="[me]:0000:0000:008F:0000:0000:0000:" notice="交代しない" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="true"  />
+      <pre name="IS_TOT_ME"    value="true"  />
+    </expressions>
+  </t>
+  <!-- ST中 -->
+  <t text="天の災厄" sync="[me]:0000:0000:008E:0000:0000:0000:" notice="交代しない" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="true"  />
+      <pre name="IS_TOT_ME"    value="false" />
+    </expressions>
+  </t>
+  <t text="地の災厄" sync="[me]:0000:0000:008F:0000:0000:0000:" notice="タンク交代" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="true"  />
+      <pre name="IS_TOT_ME"    value="false" />
+    </expressions>
+  </t>
+
+  <!-- ミドが地の場合 -->
+  <!-- MT中 -->
+  <t text="天の災厄" sync="[me]:0000:0000:008E:0000:0000:0000:" notice="交代しない" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="false" />
+      <pre name="IS_TOT_ME"    value="true"  />
+    </expressions>
+  </t>
+  <t text="地の災厄" sync="[me]:0000:0000:008F:0000:0000:0000:" notice="タンク交代" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="false" />
+      <pre name="IS_TOT_ME"    value="true"  />
+    </expressions>
+  </t>
+  <!-- ST中 -->
+  <t text="天の災厄" sync="[me]:0000:0000:008E:0000:0000:0000:" notice="タンク交代" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="false" />
+      <pre name="IS_TOT_ME"    value="false" />
+    </expressions>
+  </t>
+  <t text="地の災厄" sync="[me]:0000:0000:008F:0000:0000:0000:" notice="交代しない" >
+    <expressions>
+      <pre name="flag_AE_Mid"  value="false" />
+      <pre name="IS_TOT_ME"    value="false" />
+    </expressions>
+  </t>
+  <!-- タンク交代トリガ end -->
+
+  <!-- 火球トリガ begin -->
+  <t text="火球"         sync="name=ドラゴンファイア X=23.42 Y=23.42" notice="" >
+    <expressions>
+      <set name="flag_fire" value="false" />
+    </expressions>
+  </t>
+  <t text="火球"         sync="name=ドラゴンファイア X=23.66 Y=23.66" notice="北西に移動、横向き" >
+    <expressions>
+      <pre name="flag_fire" value="false" />
+      <set name="flag_fire" value="true" ttl="10" />
+    </expressions>
+  </t>
+  <t text="火球"         sync="name=ドラゴンファイア X=23.14 Y=23.66" notice="北東に移動、縦向き" >
+    <expressions>
+      <pre name="flag_fire" value="false" />
+      <set name="flag_fire" value="true" ttl="10" />
+    </expressions>
+  </t>
+  <t text="火球"         sync="name=ドラゴンファイア X=23.14 Y=23.14" notice="南東に移動、横向き" >
+    <expressions>
+      <pre name="flag_fire" value="false" />
+      <set name="flag_fire" value="true" ttl="10" />
+    </expressions>
+  </t>
+  <t text="火球"         sync="name=ドラゴンファイア X=23.66 Y=23.14" notice="南西に移動、縦向き" >
+    <expressions>
+      <pre name="flag_fire" value="false" />
+      <set name="flag_fire" value="true" ttl="10" />
+    </expressions>
+  </t>
+  <!-- 火球トリガ end -->
+
+  <!-- 重要なアクティビティを通知するトリガ スペスペに登録してもいい TLロード時のみ有効 begin -->
+  <t text="魔法障壁\n ➜ ${_pc}" sync="[pc]に「魔法障壁」の効果。">
+    <v-notice
+      duration="90"
+      sync-to-hide="${_pc}の「魔法障壁」が切れた。"
+      order="-3"
+      icon="注意.png" />
+  </t>
+
+  <t text="自分にマーカー" sync="^1B:........:[mex]:" notice="">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="Marker.png" />
+  </t>
+
+  <t text="マーカー\n ➜ ${_nex}" sync="^1B:........:[nex]:">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      style="NOTICE_NORMAL"
+      icon="Marker.png" />
+  </t>
+
+  <t text="自分にマーキング" sync="[mex]に「マーキング」の効果。" notice="ギミックマーキング">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="Marker.png" />
+  </t>
+
+  <t text="マーキング\n ➜ ${_nex}" sync="[nex]に「マーキング」の効果。">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      style="NOTICE_NORMAL"
+      icon="Marker.png" />
+  </t>
+  <!-- 重要なアクティビティを通知するトリガ end -->
+
+	<!-- 回転トリガ begin -->
+  <!-- 1回転目の定義 start -->
+  <t text="横回転" sync="^15:........:ミドガルズオルム:31AC" notice="1回目。中か外。">
+    <expressions>
+      <set name="take1_yoko" value="true" />
+    </expressions>
+    <v-notice
+      sync-to-hide="ミドガルズオルムは魔力を解き放った！"
+      order="-1"
+      icon="Arrow3.png"
+      duration="25"
+      duration-visible="false"
+      style="NOTICE_NORMAL" />
+  </t>
+
+  <t text="縦回転" sync="^15:........:ミドガルズオルム:31AD" notice="1回目。X字か十字。">
+    <expressions>
+      <set name="take1_yoko" value="false" />
+    </expressions>
+    <v-notice
+      sync-to-hide="ミドガルズオルムは魔力を解き放った！"
+      order="-1"
+      icon="Arrow1.png"
+      duration="25"
+      duration-visible="false"
+      style="NOTICE_NORMAL" />
+  </t>
+  <!-- 1回転目の定義 end -->
+
+  <!-- 2回転目の定義 start -->
+  <!-- 横→横 -->
+  <t text="横回転 ➔離れる" sync="^15:........:ミドガルズオルム:31AE" notice="離れる・離れる・離れる。">
+    <expressions>
+      <pre name="take1_yoko" value="true" />
+    </expressions>
+    <v-notice
+      sync-to-hide="ミドガルズオルムは魔力を解き放った！"
+      icon="Leave.png"
+      duration="25"
+      duration-visible="false"
+      style="NOTICE_NORMAL" />
+  </t>
+
+  <!-- 縦→横 -->
+  <t text="横回転 ➔東西南北へ" sync="^15:........:ミドガルズオルム:31AE" notice="十字・十字・十字。">
+    <expressions>
+      <pre name="take1_yoko" value="false" />
+    </expressions>
+    <v-notice
+      sync-to-hide="ミドガルズオルムは魔力を解き放った！"
+      icon="AOECross.png"
+      duration="25"
+      duration-visible="false"
+      style="NOTICE_NORMAL" />
+  </t>
+
+  <!-- 横→縦 -->
+  <t text="縦回転 ➔中央へ" sync="^15:........:ミドガルズオルム:31B0" notice="中央・中央・中央。">
+    <expressions>
+      <pre name="take1_yoko" value="true" />
+    </expressions>
+    <v-notice
+      sync-to-hide="ミドガルズオルムは魔力を解き放った！"
+      icon="DamageShare.png"
+      duration="25"
+      duration-visible="false"
+      style="NOTICE_NORMAL" />
+  </t>
+
+  <!-- 縦→縦 -->
+  <t text="縦回転 ➔四隅へ" sync="^15:........:ミドガルズオルム:31B0" notice="すみ、すみ、すみ。">
+    <expressions>
+      <pre name="take1_yoko" value="false" />
+    </expressions>
+    <v-notice
+      sync-to-hide="ミドガルズオルムは魔力を解き放った！"
+      icon="AOEPlus.png"
+      duration="25"
+      duration-visible="false"
+      style="NOTICE_NORMAL" />
+  </t>
+  <!-- 2回転目の定義 end -->
+	<!-- 回転トリガ end -->
+
+	<s name="前半">
+		<a time="14" text="回転（縦）" icon="1マーカー.png" />
+		<a time="26" text="回転（横）：×字攻撃" icon="2マーカー.png" />
+		<a time="37" text="回転（横）" icon="1マーカー.png" />
+		<a time="46" text="アクモーン" sync="ミドガルズオルムは「アク・モーン」の構え" icon="頭割り.png" />
+		<a time="55" text="回転（横）：中心攻撃" icon="2マーカー.png" />
+    <a time="68" text="テイルエンド" sync="ミドガルズオルムは「テイルエンド」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png"/>
+		<a time="78" text="回転（横）" icon="1マーカー.png" notice="ターゲットサークル内で散開。" />
+    <a time="90" text="回転（ランダム）" icon="2マーカー.png"  />
+		<a time="92" text="アースシェイカー" icon="散開B.png" />
+		<a time="101" text="回転（縦）" icon="1マーカー.png" />
+		<a time="108" text="テイルエンド" sync="ミドガルズオルムは「テイルエンド」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png"/>
+		<a time="110" text="サンダー" icon="サンダー系.png" />
+		<a time="114" text="回転（ランダム）" icon="2.png" />
+		<a time="128" text="天地開闢" sync="ミドガルズオルムは「天地開闢」の構え" notice="タンクはデバフちゅうい" />
+		<a time="138" text="テイルエンド" sync="ミドガルズオルムは「テイルエンド」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png"/>
+		<a time="148" text="回転（横）" icon="1マーカー.png" />
+		<a time="156" text="ノーザンクロス" icon="ブリザド系.png" notice="ターゲットサークル内で散開。" />
+		<a time="162" text="回転（ランダム）" icon="2マーカー.png" />
+		<a time="169" text="アク・ラーイ" icon="対象範囲攻撃01.png" />
+		<a time="178" text="回転（横）" icon="1マーカー.png" />
+		<a time="189" text="回転（ランダム）" icon="2マーカー.png" />
+		<t text="雑魚フェイズへ" sync="我が眷属よ……！ 奢りしヒトに、その牙を突き立てるがいい！" goto="雑魚フェイズ" />
+	</s>
+
+	<s name="雑魚フェイズ">
+  	<a time="13" text="フロストブレス" icon="対象範囲攻撃03.png" />
+    <a time="20" text="ライムリリース" icon="全体攻撃.png" />
+    <a time="24" text="フロストブレス" icon="対象範囲攻撃03.png" />
+    <a time="35" text="ライムリリース" icon="全体攻撃.png" />
+    <a time="38" text="フロストブレス" icon="対象範囲攻撃03.png" />
+    <a time="48" text="フロストブレス" icon="対象範囲攻撃03.png" />
+    <a time="52" text="ライムリリース" icon="全体攻撃.png" />
+    <a time="58" text="フロストブレス" icon="対象範囲攻撃03.png" />
+		<a time="80" text="待機" />
+		<t text="邪竜フェイズへ" sync="これぞ原初の星が抱く、滅びの光……！" goto="邪竜フェイズ" />
+		<!--トリガ-->
+		<t text="カータライズ" sync="「カータライズ」の構え。" notice="カータライズに注意。" />
+	</s>
+
+	<s name="邪竜フェイズ">
+		<a time="10" text="プロトスター"/>
+    <a time="23" text="AOE+サンダー" icon="重ね捨て.png"/>
+    <a time="24" text="カータライズ" sync="「カータライズ」の構え。" icon="避ける.png"/>
+    <a time="28" text="サンダー着弾" icon="サンダー系.png" />
+    <a time="33" text="AOE+サンダー" icon="重ね捨て.png" />
+    <a time="34" text="カータライズ" sync="「カータライズ」の構え。" icon="避ける.png"  />
+    <a time="38" text="サンダー着弾" icon="サンダー系.png" />
+    <a time="44" text="タッチダウン" icon="" notice="タンクはちゃくちごすぐ、てきのばふちゅうい" />
+		<a time="50" text="天地開闢" sync="ミドガルズオルムは「天地開闢」の構え" icon="スイッチ.png" />
+    <a time="62" text="クリムゾンブレス1" icon="マーカー.png" />
+		<a time="69" text="クリムゾンブレス2" icon="マーカー.png" />
+		<a time="76" text="クリムゾンブレス3" icon="マーカー.png" />
+		<a time="83" text="クリムゾンブレス4" icon="マーカー.png" />
+		<a time="95" text="火球1+線発生" icon="ファイア系.png" />
+    <a time="97" text="火球2発生" icon="ファイア系.png" />
+    <a time="99" text="火球3発生" icon="ファイア系.png" />
+    <a time="107" text="ホリッドロア" icon="重ね捨て.png" />
+    <a time="111" text="火球1爆発+AOE着弾" icon="十字範囲.png" />
+    <a time="113" text="火球2爆発" icon="避ける.png" />
+    <a time="115" text="火球3爆発" icon="避ける.png" />
+    <a time="118" text="ヒートテイル" icon="対象範囲攻撃02.png" />
+		<a time="127" text="カータ+AOE+エクサ" notice="カータライズ注意" icon="重ね捨て.png" />
+		<a time="137" text="カータ+AOE+エクサ" notice="タンクスイッチ" icon="重ね捨て.png" />
+		<a time="158" text="テイルエンド" sync="ミドガルズオルムは「テイルエンド」の構え" notice="MTだいだめーじ" icon="単体強攻撃.png" />
+		<t text="後半へ" sync="「テイルエンド」の構え。" goto="後半" />
+	</s>
+
+  <s name="後半">
+		<a time="4" text="テイルエンド" icon="単体強攻撃.png"  />
+		<a time="16" text="アク・モーン+雷+AOE"  icon="重ね捨て.png" notice="あたまわりのあとさんかい" />
+		<a time="26" text="サンダー着弾" icon="散開B.png" />
+		<a time="34" text="回転（ランダム）" icon="1マーカー.png" />
+		<a time="44" text="テイルエンド" sync="ミドガルズオルムは「テイルエンド」の構え" icon="単体強攻撃.png" notice="MTだいだめーじ" />
+		<a time="46" text="回転（ランダム）" icon="2マーカー.png" />
+		<a time="60" text="天地開闢" icon="スイッチ.png" notice="タンクはデバフちゅうい" />
+		<a time="67" text="エクサフレア" icon="床範囲.png" />
+		<a time="72" text="氷着弾" icon="ブリザド系.png" notice="氷対象者はすみへ" />
+		<a time="79" text="アク・モーン" sync="ミドガルズオルムは「アク・モーン」の構え" icon="頭割り.png" notice="さいしょのえくさのいちでしゅうごう" />
+		<a time="95" text="回転（横）" icon="1マーカー.png" />
+		<a time="103" text="ノーザンクロス" icon="ブリザド系.png" notice="ターゲットサークル内で散開。" />
+		<a time="109" text="回転（ランダム）" icon="2マーカー.png" />
+		<a time="116" text="ホリッドロア" icon="散開B.png" notice="AOE回避。" />
+		<a time="129" text="アク・ラーイ" icon="対象範囲攻撃01.png" />
+		<a time="136" text="テイルエンド" sync="ミドガルズオルムは「テイルエンド」の構え" icon="単体強攻撃.png" notice="MTだいだめーじ" />
+		<a time="145" text="回転（ランダム）" icon="1マーカー.png" />
+		<a time="154" text="テイルエンド"  icon="単体強攻撃.png" notice="MTだいだめーじ" />
+		<a time="167" text="回転（ランダム）" icon="2マーカー.png" />
+		<a time="172" text="天地開闢" icon="スイッチ.png" notice="タンクはデバフ注意" />
+		<a time="177" text="エクサフレア" icon="床範囲.png" />
+		<a time="182" text="氷着弾" icon="ブリザド系.png" notice="氷対象者はすみへ" />
+		<a time="190" text="アク・モーン" sync="ミドガルズオルムは「アク・モーン」の構え" icon="頭割り.png" />
+		<a time="202" text="時間切れ"  icon="時間切れ.png" notice="時間切れ。" />
+		<!--トリガ-->
+		<t text="カータライズ" sync="「カータライズ」の構え。" notice="カータライズに注意。" />
+	</s>
+</timeline>

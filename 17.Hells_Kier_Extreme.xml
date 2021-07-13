@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極朱雀征魂戦</name>
+  <rev></rev>
+  <description>極朱雀征魂戦向けのスペスペたいむ定義です。</description>
+  <zone>Hells' Kier (Extreme)</zone>
+  <locale>JA</locale>
+  <entry>メインフェーズ</entry>
+
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t text="誘引の旋律" sync="朱雀 starts using 誘引の旋律 on 朱雀." notice="誘引">
+    <v-notice duration="4" order="-5" icon="Magnet.png" />
+  </t>
+  <t text="拒絶の旋律" sync="朱雀 starts using 拒絶の旋律 on 朱雀." notice="拒絶">
+    <v-notice duration="4" order="-5" icon="KnockBack.png" />
+  </t>
+
+  <s name="メインフェーズ">
+
+  <a time="001" sync="テンゼン、なぜ刃を向けるのです！？ 私がわからないのですか！" />
+  <a time="007" text="叫喚地獄" sync="朱雀は「叫喚地獄」を唱えた。" notice="次は、叫喚地獄。" icon="AllRangeAttack.png" />
+  <a time="019" sync="あなたを失った悲しみが、 私に再生の炎を与えたのです！" />
+  <a time="020" text="猛進" sync="朱雀は「猛進」の構え。" notice="次は、猛進。" icon="SpreadB.png" />
+  <a time="031" text="翼宿撃" sync="朱雀は「翼宿撃」を唱えた。" notice="次は、翼宿撃。" icon="Targetaoe03.png" />
+  <a time="039" text="赤熱撃" sync="朱雀は「赤熱撃」を唱えた。" notice="次は、赤熱撃。" icon="HardAttack.png"/>
+  <a time="050" text="再生の羽根" sync="朱雀は「再生の羽根」の構え。" notice="次は、再生の羽根。" icon="SpreadB.png" />
+  <a time="059" enabled="false" text="再生の神通力" sync="朱雀の尾羽根は「再生の神通力」を唱えた。" notice="次は、再生の神通力。" />
+  <a time="075" text="赤熱撃" sync="朱雀は「赤熱撃」を唱えた。" notice="次は、赤熱撃。" icon="HardAttack.png"/>
+  <a time="079" enabled="false" text="再生の神通力" sync="朱雀の尾羽根の「再生の神通力」" notice="次は、再生の神通力。" />
+  <a time="089" text="叫喚地獄" sync="朱雀は「叫喚地獄」を唱えた。" notice="次は、叫喚地獄。" icon="AllRangeAttack.png" />
+  <a time="106" text="再生の大火" sync="朱雀は「再生の大火」を唱えた。" notice="次は、再生の大火。" icon="Flag.png" />
+  <a time="111" sync="これより、再生の儀を執り行います……！" />
+  <a time="115" sync="荒れ狂うアラミタマが、地脈に影響を及ぼし始めた！" />
+  <a time="123" sync="もう誰にもあなたを奪わせはしない……！" />
+  <a time="131" sync="矢印を踏み、指定の方向を向け！" />
+
+  <a time="162" sync="この姿を見せるのは、これが初めてですね……。" />
+  <a time="167" sync="あなたは私が守ってみせる！　この慈愛の炎で！" />
+  <a time="168" text="焼滅天火" sync="朱雀 starts using 焼滅天火 on 朱雀." notice="次は、焼滅天火。" icon="AllRangeAttack.png" />
+  <a time="179" sync="なぜ立ち上がるのです！？ あなたは私が守ると言っているのに！！" />
+  <a time="185" text="星宿波" sync="朱雀は「星宿波」を唱えた。" notice="次は、星宿波。" icon="AllRangeAttack.png" />
+  <a time="197" text="拒絶/誘引" notice="次は、拒絶誘引" icon="TorF.png" />
+  <a time="204" sync="私が願ったのは、ただ、あなたとともに……！" />
+  <a time="204" text="井宿焔" sync="朱雀は「井宿焔」を唱えた。" notice="次は、井宿焔。" icon="Targetaoe01.png" />
+  <a time="216" sync="正気に戻ってください！" />
+  <a time="216" text="鬼宿脚" sync="朱雀は「鬼宿脚」の構え。" notice="次は、鬼宿脚。" icon="Switch.png" />
+  <a time="231" sync="朱の想いを旋律に乗せて…… 我が半身よ……紅蓮の炎を奏るのです！" />
+  <a time="237" text="朱の旋律" sync="朱雀の「朱の旋律」" notice="次は、朱の旋律。" icon="Avoid.png" />
+  <a time="252" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="272" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="291" text="拒絶/誘引" notice="次は、拒絶誘引" icon="TorF.png" />
+  <a time="302" sync="抗わず、心を委ねればよいのです……。" />
+  <a time="302" text="傀儡の調べ" sync="朱雀は「傀儡の調べ」を唱えた。" notice="次は、傀儡の調べ。" icon="Pair.png" />
+  <a time="323" text="井宿焔" sync="朱雀は「井宿焔」を唱えた。" notice="次は、井宿焔。" icon="Targetaoe01.png" />
+  <a time="334" text="鬼宿脚" sync="朱雀は「鬼宿脚」の構え。" notice="次は、鬼宿脚。" icon="Switch.png" />
+  <a time="351" sync="朱の想いを旋律に乗せて…… 我が半身よ……紅蓮の炎を奏るのです！" />
+  <a time="356" text="朱の旋律" sync="朱雀の「朱の旋律」" notice="次は、朱の旋律。" icon="Avoid.png" />
+  <a time="362" text="拒絶/誘引" notice="次は、拒絶誘引" icon="TorF.png" />
+  <a time="372" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="382" text="星宿波" sync="朱雀は「星宿波」を唱えた。" notice="次は、星宿波。" icon="AllRangeAttack.png" />
+  <a time="391" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="410" text="鬼宿脚" sync="朱雀は「鬼宿脚」の構え。" notice="次は、鬼宿脚。" icon="Switch.png"/>
+  <a time="426" text="星宿波" sync="朱雀は「星宿波」を唱えた。" notice="次は、星宿波。" icon="AllRangeAttack.png" />
+  <a time="438" text="灼熱の調べ" sync="朱雀は「灼熱の調べ」を唱えた。" notice="次は、灼熱の調べ。" icon="SpreadB.png" />
+  <a time="448" text="拒絶/誘引" notice="次は、拒絶誘引" icon="TorF.png" />
+  <a time="456" text="井宿焔" sync="朱雀は「井宿焔」を唱えた。" notice="次は、井宿焔。" icon="Targetaoe01.png" />
+  <a time="467" sync="朱の想いを旋律に乗せて…… 我が半身よ……紅蓮の炎を奏るのです！" />
+  <a time="473" text="朱の旋律" sync="朱雀の「朱の旋律」" notice="次は、朱の旋律。" icon="Avoid.png" />
+  <a time="480" text="井宿焔" sync="朱雀は「井宿焔」を唱えた。" notice="次は、井宿焔。" icon="Targetaoe01.png" />
+  <a time="491" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="493" sync="抗わず、心を委ねればよいのです……。" />
+  <a time="493" text="傀儡の調べ" sync="朱雀は「傀儡の調べ」を唱えた。" notice="次は、傀儡の調べ。" icon="Pair.png" />
+  <a time="510" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="520" text="拒絶/誘引" notice="次は、拒絶誘引" icon="TorF.png" />
+  <a time="530" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="536" text="鬼宿脚" sync="朱雀は「鬼宿脚」の構え。" notice="次は、鬼宿脚。" icon="Switch.png" />
+  <a time="549" enabled="false" text="紅蓮炎" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Explosion.png" />
+  <a time="569" text="星宿波" sync="朱雀は「星宿波」を唱えた。" notice="次は、星宿波。" icon="AllRangeAttack.png" />
+  <a time="582" text="拒絶/誘引" notice="次は、拒絶誘引" icon="TorF.png" />
+  <a time="594" sync="私が願ったのは、ただ、あなたとともに……！" />
+  <a time="595" text="井宿焔" sync="朱雀は「井宿焔」を唱えた。" notice="次は、井宿焔。" icon="Targetaoe01.png" />
+  <a time="607" text="鬼宿脚" sync="朱雀は「鬼宿脚」の構え。" notice="次は、鬼宿脚。" icon="Switch.png" />
+  <a time="624" text="星宿波" sync="朱雀は「星宿波」を唱えた。" notice="次は、星宿波。" icon="AllRangeAttack.png" />
+  <a time="637" text="拒絶/誘引" notice="次は、拒絶誘引" icon="TorF.png" />
+  <a time="650" text="星宿波" sync="朱雀は「星宿波」を唱えた。" notice="次は、星宿波。" icon="AllRangeAttack.png" />
+  <a time="657" text="鬼宿脚" sync="朱雀は「鬼宿脚」の構え。" notice="次は、鬼宿脚。" icon="Switch.png" />
+  <a time="669" sync="朱の想いを旋律に乗せて…… 我が半身よ……紅蓮の炎を奏るのです！" />
+  <a time="682" text="星宿波" sync="朱雀は「星宿波」を唱えた。" notice="次は、星宿波。" icon="AllRangeAttack.png" />
+  <a time="692" text="紅蓮炎(時間切れ)" sync="朱雀 starts using 紅蓮炎 on 朱雀." notice="次は、紅蓮炎。" icon="Timeout.png" />
+  
+  </s>
+</timeline>

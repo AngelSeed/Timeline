@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>バルデシアンアーセナル</name>
+  <rev>Angel Seed版</rev>
+  <description>トリガー音声のみバージョン</description>
+  <author>anoth</author>
+  <license>CC BY-SA</license>
+  <zone>The Forbidden Land, Eureka Hydatos</zone>
+  <locale>JA</locale>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <!-- ライディーン start -->
+  <t text="英霊魂" sync="ライディーンは「英霊魂」の構え。" notice="全体攻撃">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="真眼撃" sync="ライディーンは「真眼撃」の構え。" notice="MT大ダメージ">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="招雷" sync="ライディーン starts using 招雷" notice="外周即死ダメージ">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="天逆鉾" sync="ライディーン starts using 天逆鉾" notice="ボス中心大型範囲">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="旋・斬鉄剣" sync="ライディーン starts using 旋・斬鉄剣" notice="ボスサークル内・・・安置">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+
+  <t text="片・斬鉄剣" sync="ライディーン starts using 片・斬鉄剣" notice="中央へ移動">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="雷槍" sync="ライディーンは「雷槍」の構え。" notice="槍ギミック">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="哀惜の雷鳴" sync="ライディーン starts using 哀惜の雷鳴" notice="範囲から離れて">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="襲雷" sync="ライディーン starts using 襲雷" notice="外周エクサフレア">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="罪の荊棘" sync="ライディーン starts using 罪の荊棘" notice="線を切る">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="渦雷" sync="ライディーン starts using 渦雷" notice="ボス中心大型範囲">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="戦死撃" sync="ライディーン starts using 戦死撃" notice="ボス周辺小範囲">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="片・斬鉄剣・右" sync="14:386B:ライディーン starts using 片・斬鉄剣 on ライディーン." notice="向かって右安置">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="片・斬鉄剣・左" sync="14:386C:ライディーン starts using 片・斬鉄剣 on ライディーン." notice="向かって左安置">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+  <!-- ライディーン end -->
+
+
+
+  <!-- アブソリュートヴァーチュー start -->
+  <t text="メテオ" sync="アブソリュートヴァーチュー starts using メテオ on アブソリュートヴァーチュー." notice="全体大ダメージ">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="変異" sync="アブソリュートヴァーチュー starts using 変異 on アブソリュートヴァーチュー." notice="ボスのバフ確認">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="極性波動" sync="アブソリュートヴァーチュー starts using 極性波動 on アブソリュートヴァーチュー." notice="半属性安置に移動">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="メデューサジャベリン" sync="アブソリュートヴァーチューは「メデューサジャベリン」の構え。" notice="前方扇範囲">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="インパクトストリーム" sync="アブソリュートヴァーチューは「インパクトストリーム」の構え。" notice="半属性マップに移動">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="オーロラルウィンド" sync="アブソリュートヴァーチューは「オーロラルウィンド」の構え。" notice="MT大ダメージ">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="エーテル乱流" sync="アブソリュートヴァーチューは「エーテル乱流」の構え。" notice="線繋がれたら半属性に入る">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="エクスプロシブインパルス" sync="アブソリュートヴァーチュー starts using エクスプロシブインパルス" notice="距離減衰攻撃">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="変異の色（黒）" sync=":3786:変異:........:" notice="黒・・・黒・・・黒かも？">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="変異の色（白）" sync=":3787:変異:........:" notice="白・・・白・・・白かも？">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+  <!-- アブソリュートヴァーチュー end -->
+
+
+
+  <!-- プロトオズマ start -->
+  <t text="変形：星型" sync="プロトオズマ gains the effect of 星形多面体状態" notice="内側危険、離れる">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="変形：立方体" sync="プロトオズマ gains the effect of 立方体状態" notice="内側安置、タンクから離れる">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="変形：三角錐" sync="プロトオズマ gains the effect of 三角錐状態" notice="直線ビーム、通路へ移動">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="外周：星型" sync="オズマの影 gains the effect of 星形多面体状態" notice="影から離れて">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="外周：立方体" sync="オズマの影 gains the effect of 立方体状態" notice="影に近づく">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="外周：三角錐" sync="オズマの影 gains the effect of 三角錐状態" notice="影からビーム、通路へ移動">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="ホーリー" sync="プロトオズマは「ホーリー」の構え" notice="ノックバック注意">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="メテオインパクト" sync="クラウドラーカー starts using メテオインパクト on クラウドラーカー" notice="通路か外周に移動。ざこ召喚">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="メテオ" sync="オズマ:....:メテオ:........:" notice="頭割り">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="ブラックホール" sync="プロトオズマ:....:ブラックホール:........:" notice="ブラックホール">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+
+  <t text="シューティングスター" sync="プロトオズマは「シューティングスター」の構え" notice="ノックバック注意">
+<v-notice 
+  duration="5" 
+  icon="LB.png" />
+</t>
+  <!-- プロトオズマ end -->
+</timeline>

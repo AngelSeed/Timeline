@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極イノセンス討滅戦</name>
+  <rev></rev>
+  <description>
+・マクロ：不要
+・マーカー：ABCDを東西南北
+・雑魚：南→西→東の順
+      
+  </description>
+  <zone>The Crown Of The Immaculate (Extreme)</zone>
+  <locale>JA</locale>
+  <entry>PHASE1</entry>
+  <start>そうか、これは神として再誕するための受難か……。</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+
+<t name="初期設定" sync="「極イノセンス討滅戦」の攻略を開始した。" exec="scripts\ppas.ps1" args="極イノセンス" exec-hidden="true" />
+<t name="初期設定" sync="レディチェックを開始しました。" exec="scripts\ppas.ps1" args="極イノセンス" exec-hidden="true" />
+
+<s name="PHASE1">
+    <a time="007" sync="ならば、全能者「イノセンス」は、この戦いを受け入れよう！" />
+    <a time="012" text="シャドウリーヴァー" sync="イノセンスは「シャドウリーヴァー」の構え。" notice="全体攻撃。" />
+    <a time="026" text="楔マーカー" sync="イノセンスは「断罪の飛翔」の構え。" notice="くさびマーカー。" />
+    <a time="043" text="ジャッジボルト" sync="イノセンスは「ジャッジボルト」の構え。" notice="タンクスイッチ。" />
+    <a time="056" text="楔マーカー＋扇範囲" sync="イノセンスは「断罪の飛翔」の構え。" notice="くさびマーカーとおうぎじょう範囲攻撃。" />
+    <!--
+  <a time="064" text="断罪の旋回" sync="イノセンスは「断罪の旋回」の構え。" notice="次は、断罪の旋回。" />
+    -->
+    <a time="080" text="扇風機＋頭上マーカー" sync="イノセンスは「断罪の飛翔」の構え。" notice="扇風機と頭上マーカー。" />
+    <a time="105" text="ジャッジボルト" sync="イノセンスは「ジャッジボルト」の構え。" notice="タンクスイッチ。" />
+    <a time="118" text="2種類の直線範囲" sync="イノセンスは「断罪の飛翔」の構え。" notice="直線範囲攻撃。" />
+    <!--
+    <a time="125" text="断罪の旋回" sync="イノセンスは「断罪の旋回」の構え。" notice="次は、断罪の旋回。" />
+    -->
+    <a time="135" text="直線頭割り" sync="イノセンスは「ライトピラー」の構え。" notice="直線頭割り攻撃。" />
+    <a time="142" text="シャドウリーヴァー" sync="イノセンスは「シャドウリーヴァー」の構え。" notice="全体攻撃。" />
+    <a time="156" text="扇風機＋楔マーカー" sync="イノセンスは「断罪の飛翔」の構え。" notice="扇風機とくさびマーカー。" />
+    <a time="183" sync="これより、裁きを執行する……！" />
+    <a time="188" text="スコルドブライダル" sync="フォーギヴン・シェイムは「スコルドブライダル」の構え。" notice="次は、スコルドブライダル。" />
+    <!--
+  <a time="222" sync="その罪ごと、断たれて消えよッ！" />
+    -->
+    <a time="250" text="フェーズ移行" sync="その罪ごと、断たれて消えよッ！" goto="PHASE2" sync-s="-60" />
+    <!--
+    <t sync="その罪ごと、断たれて消えよッ！" goto="PHASE2" />
+    -->
+</s>
+    
+<s name="PHASE2">
+    <a time="23" text="光の玉" sync="イノセンスは「スターバース」の構え。" notice="あんちに誘導。" />
+    <a time="34" text="シャドウリーヴァー" sync="イノセンスは「シャドウリーヴァー」の構え。" notice="全体攻撃。" />
+    <a time="48" text="扇風機" sync="イノセンスは「断罪の飛翔」の構え。" notice="扇風機。" />
+    <a time="64" text="直線範囲×2" sync="イノセンスは「断罪の旋回」の構え。" notice="直線範囲は2回。" />
+    <a time="73" text="突進" sync="イノセンスは「ビーティフィックビジョン」の構え。" notice="外周ダッシュ。" />
+    <a time="89" text="ジャッジボルト" sync="イノセンスは「ジャッジボルト」の構え。" notice="タンクスイッチ。" />
+    <a time="103" text="光の玉＋頭上マーカー" sync="イノセンスは「スターバース」の構え。" notice="光の玉と頭上マーカー。" />
+    <a time="120" text="直線頭割り" sync="イノセンスは「ライトピラー」の構え。" notice="直線頭割り。" />
+    <a time="129" text="突進＋玉爆発" sync="イノセンスは「ビーティフィックビジョン」の構え。" notice="外周ダッシュ。" />
+    <a time="149" text="扇範囲×2" sync="イノセンスは「断罪の旋回」の構え。" notice="扇範囲は2回。" />
+    <a time="155" text="内側範囲×3" sync="イノセンスは「ゴッドレイ」の構え。" notice="内側範囲は3回。" />
+    <a time="172" text="シャドウリーヴァー" sync="イノセンスは「シャドウリーヴァー」の構え。" notice="全体攻撃。" />
+    <a time="183" text="ジャッジボルト" sync="イノセンスは「ジャッジボルト」の構え。" notice="タンクスイッチ。" />
+    <a time="194" text="光の玉" sync="イノセンスは「スターバース」の構え。" notice="たまがよっつ。" />
+    <a time="199" text="直線範囲×3" sync="イノセンスは「断罪の飛翔」の構え。" notice="MTは外周に移動。" />
+    <a time="217" text="直線頭割り" sync="イノセンスは「ライトピラー」の構え。" notice="頭割りで光の玉ひとつ壊す。" />
+    <a time="226" text="シャドウリーヴァー" sync="イノセンスは「シャドウリーヴァー」の構え。" notice="安置で全体攻撃受け。" />
+    <a time="242" text="ジャッジボルト" sync="イノセンスは「ジャッジボルト」の構え。" notice="タンクスイッチ。" />
+    <a time="253" text="直線範囲＋楔マーカー" sync="イノセンスは「断罪の飛翔」の構え。" notice="直線範囲とクサビマーカー。" />
+    <a time="267" text="扇風機" sync="イノセンスは「断罪の飛翔」の構え。" notice="扇風機。" />
+    <a time="276" text="光の玉" sync="イノセンスは「スターバース」の構え。" notice="光の玉。" />
+    <a time="284" text="突進＋玉爆発" sync="イノセンスは「ビーティフィックビジョン」の構え。" notice="安置に逃げる。" />
+    <a time="304" text="扇範囲×2と頭上マーカー" sync="イノセンスは「断罪の旋回」の構え。" notice="扇範囲2回と頭上マーカー。" />
+    <a time="321" text="楔マーカー" sync="イノセンスは「断罪の飛翔」の構え。" notice="くさびマーカー。" />
+    <a time="329" text="ジャッジボルト" sync="イノセンスは「ジャッジボルト」の構え。" notice="タンクスイッチ。" />
+    <a time="342" text="光の玉＋頭上マーカー" sync="イノセンスは「スターバース」の構え。" notice="光の玉と頭上マーカー。" />
+    <a time="359" text="直線頭割り" sync="イノセンスは「ライトピラー」の構え。" notice="直線頭割り。" />
+    <a time="368" text="突進＋玉爆発" sync="イノセンスは「ビーティフィックビジョン」の構え。" notice="外周ダッシュ。" />
+    <a time="389" text="扇範囲×2" sync="イノセンスは「断罪の旋回」の構え。" notice="扇範囲は2回。" />
+    <a time="395" text="内側範囲×3" sync="イノセンスは「ゴッドレイ」の構え。" notice="内側範囲は3回。" />
+    <a time="412" text="シャドウリーヴァー" sync="イノセンスは「シャドウリーヴァー」の構え。" notice="全体攻撃。" />
+    <a time="423" text="ジャッジボルト" sync="イノセンスは「ジャッジボルト」の構え。" notice="タンクスイッチ。" />
+    <a time="434" text="時間切れ12秒前" sync="イノセンスは「スターバース」の構え。" notice="そろそろ時間切れ。" />
+    <a time="441" text="時間切れ" notice="時間切れ" />
+    <a time="446" sync="刻は来たれり！ 我は全能神「イノセンス」として再誕を果たすッ！" />
+</s>
+</timeline>
+

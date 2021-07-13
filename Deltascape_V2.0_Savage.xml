@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>次元の狭間オメガ零式：デルタ編 2層</name>
+  <rev></rev>
+  <description>
+    デルタ2層向けのタイムラインです。
+  </description>
+  <zone>Deltascape V2.0 (Savage)</zone>
+  <locale>JA</locale>
+  <entry>カタストロフィー</entry>
+  <start>戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t text="イビルスフィア"     sync="カタストロフィーは「イビルスフィア」の構え。" notice="タンク交代"       />
+  <t text="死神の瞳"           sync="カタストロフィーは「死神の瞳」の構え。"       notice="後ろ向いて"       />
+  <t text="グラビティウィング" sync="カタストロフィーの「グラビティウィング」"     notice="タンク、ヒラ散開" />
+  <t text="触手乱舞"           sync="カタストロフィーは「触手乱舞」の構え。"       notice="触手、散開"       />
+
+  <s name="カタストロフィー">
+    <a time="13"  text="大地震" sync="「大地震」の構え" notice="大地震、レビテトの準備" />
+    <a time="20"  text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="30"  text="暗黒光" sync="「暗黒光」の構え" notice="中央に移動" />
+    <a time="47"  text="重力波" sync="「重力波」の構え" notice="全体大ダメージ5秒前" />
+    <a time="55"  text="重力操作" sync="「重力操作」の構え" notice="タンク、ヒラは上、DPSは下" />
+    <a time="64"  text="重力歪曲" notice="DPS浮く準備" notice-o="-1" />
+    <a time="73"  text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="78"  text="呪詛波" />
+    <a time="83"  text="イビルスフィア" sync="「イビルスフィア」の構え" />
+    <a time="96"  text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="100" text="触手乱舞" sync="「触手乱舞」の構え" notice="タンク、ヒラの触手" />
+    <a time="111" text="死神の瞳" sync="「死神の瞳」の構え" />
+    <a time="118" text="震源生成" sync="「震源生成」の構え" />
+    <a time="125" text="重力波" sync="「重力波」の構え" notice="全体大ダメージ5秒前" />
+    <a time="128" text="震源確定" notice="安置確認" />
+    <a time="139" text="震源爆発" />
+    <a time="140" text="重力波" sync="「重力波」の構え" notice="全体大ダメージ5秒前" />
+    <a time="149" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="153" text="重力操作" sync="「重力操作」の構え" notice="タンク、ヒラは上、DPSは下" />
+    <a time="174" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="178" text="イビルスフィア" sync="「イビルスフィア」の構え" />
+    <a time="191" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="197" text="重力マイナス100" sync="「重力マイナス100」の構え" notice="南北に移動" />
+    <a time="216" text="死神の瞳" sync="カタストロフィーの「死神の瞳」" notice="視線注意" />
+    <a time="223" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="230" text="暗黒光" sync="「暗黒光」の構え" notice="中央に移動" />
+    <a time="236" text="グラビティウィング" sync="カタストロフィーの「グラビティウィング」" notice="タンク、ヒラ浮いてバースト準備" />
+    <a time="237" text="重力波" sync="「重力波」の構え" notice="全体大ダメージ5秒前" />
+    <a time="252" text="自由落下" notice="タンク、ヒラ散開" />
+    <a time="262" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="268" text="暗黒光" sync="「暗黒光」の構え" notice="次は大地震" />
+    <a time="282" text="大地震" sync="「大地震」の構え" notice="大地震、レビテトの準備" />
+    <a time="295" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="307" text="触手乱舞" sync="「触手乱舞」の構え" notice="DPSの触手" />
+    <a time="318" text="死神の瞳" sync="「死神の瞳」の構え" />
+    <a time="325" text="震源生成" sync="「震源生成」の構え" />
+    <a time="332" text="重力操作" sync="「重力操作」の構え" notice="タンク、ヒラは上、DPSは下" />
+    <a time="339" text="震源確定" notice="安置確認" />
+    <a time="344" text="暗黒光" sync="「暗黒光」の構え" notice="中央に移動" />
+    <a time="351" text="震源爆発" />
+    <a time="350" text="グラビティウィング" sync="カタストロフィーの「グラビティウィング」" notice="DPS浮いてバースト準備" />
+    <a time="366" text="自由落下" notice="DPS散開" />
+    <a time="376" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="381" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="385" text="イビルスフィア" sync="「イビルスフィア」の構え" />
+    <a time="398" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="404" text="暗黒光" sync="「暗黒光」の構え" />
+    <a time="414" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="420" text="触手乱舞" sync="「触手乱舞」の構え" notice="タンク、ヒラの触手" />
+    <a time="431" text="死神の瞳" sync="「死神の瞳」の構え" />
+    <a time="438" text="震源生成" sync="「震源生成」の構え" />
+    <a time="445" text="重力操作" sync="「重力操作」の構え" notice="タンク、ヒラは上、DPSは下" />
+    <a time="448" text="震源確定" notice="安置確認" />
+    <a time="457" text="暗黒光" sync="「暗黒光」の構え" notice="中央に移動" />
+    <a time="463" text="グラビティウィング" sync="カタストロフィーの「グラビティウィング」" notice="タンク、ヒラ浮いてバースト準備" />
+    <a time="466" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="480" text="自由落下" notice="タンク、ヒラ散開" />
+    <a time="480" text="重力歪曲" notice="DPS浮く準備" notice-o="-1" />
+    <a time="482" text="死神の瞳" sync="「死神の瞳」の構え" />
+    <a time="492" text="重力波" sync="「重力波」の構え" notice="全体大ダメージ5秒前" />
+    <a time="497" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="502" text="暗黒光" sync="「暗黒光」の構え" />
+    <a time="508" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="517" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="524" text="イビルスフィア" sync="「イビルスフィア」の構え" />
+    <a time="536" text="呪詛波" sync="カタストロフィーの「呪詛波」" />
+    <a time="541" text="重力操作" sync="「重力操作」の構え" notice="タンク、ヒラは上、DPSは下" />
+    <a time="549" text="重力歪曲" notice="DPS浮く準備" notice-o="-1" />
+    <a time="557" text="暗黒光" sync="「暗黒光」の構え" notice="次は大地震" />
+    <a time="562" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="572" text="大地震" sync="「大地震」の構え" notice="大地震、レビテトの準備" />
+    <a time="582" text="重力波" sync="「重力波」の構え" notice="全体大ダメージ5秒前" />
+    <a time="590" text="重力マイナス100" sync="「重力マイナス100」の構え" notice="南北に移動" />
+    <a time="609" text="死神の瞳" sync="カタストロフィーの「死神の瞳」" notice="視線注意" />
+    <a time="610" text="暗黒光" sync="「暗黒光」の構え" notice="次は大地震" />
+    <a time="615" text="重力操作" notice="タンク、ヒラは上、DPSは下" />
+    <a time="625" text="大地震" sync="「大地震」の構え" notice="大地震、レビテトの準備" />
+    <a time="632" text="重力波(時間切れ)" sync="カタストロフィーは「重力波」の構え" notice="時間切れ" />
+  </s>
+</timeline>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>次元の狭間オメガ零式：デルタ編 1層</name>
+  <rev></rev>
+  <description>
+    デルタ1層向けのタイムラインです。
+  </description>
+  <zone>Deltascape V1.0 (Savage)</zone>
+  <locale>JA</locale>
+  <entry>アルテ・ロイテ</entry>
+  <start>戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-5" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <t text="クランプ"     sync="アルテ・ロイテは「クランプ」の構え。"     notice="　前方範囲注意"   />
+  <t text="ツインボルト" sync="アルテ・ロイテは「ツインボルト」の構え。" notice="ツインボルト注意" />
+
+  <s name="アルテ・ロイテ">
+    <a time="6"   text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="12"  text="太古の龍尾" />
+    <a time="13"  text="ツインボルト" sync="「ツインボルト」の構え" notice="タンク二人受け" />
+    <a time="27"  text="クラシカルエレメント" sync="「クラシカルエレメント」の構え" />
+    <a time="36"  text="炎" sync="アルテ・ロイテの「炎」" />
+    <a time="40"  text="フラッシュフリーズ" sync="アルテ・ロイテの「フラッシュフリーズ」" />
+    <a time="44"  text="ダウンバースト" sync="「ダウンバースト」の構え" />
+    <a time="52"  text="中央に移動して散開" notice="中央に移動後、散開" notice-o="-2" />
+    <a time="59"  text="稲妻" sync="アルテ・ロイテの「稲妻」" />
+    <a time="60"  text="咆哮" sync="「咆哮」の構え" notice="全体攻撃5秒前" />
+    <a time="70"  text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="77"  text="太古の龍尾" />
+    <a time="82"  text="ツインボルト" sync="「ツインボルト」の構え" notice="タンク二人受け" />
+    <a time="89"  text="クランプ" sync="「クランプ」の構え" notice="クランプ、向き注意" notice-o="-5" />
+    <a time="95"  text="炎" sync="アルテ・ロイテの「炎」" />
+    <a time="107" text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="112" text="稲妻" sync="「稲妻」の構え" />
+    <a time="113" text="外側爆発" notice="外側爆発" />
+    <a time="115" text="稲妻散開" notice="稲妻散開" />
+    <a time="118" text="内側爆発" notice="内側爆発" />
+    <a time="119" text="ブレイズ" sync="「ブレイズ」の構え" notice="頭割り5秒前" />
+    <a time="132" text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="138" text="太古の龍尾" />
+    <a time="139" text="ツインボルト" sync="「ツインボルト」の構え" notice="タンク二人受け" />
+    <a time="150" text="咆哮" sync="「咆哮」の構え" notice="全体攻撃5秒前" />
+    <a time="156" text="咆哮" notice="全体攻撃5秒前" />
+    <a time="167" text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="168" text="ミールストーム" sync="「ミールストーム」の構え" notice="ミールストーム5秒前" />
+    <a time="176" text="咆哮" sync="「咆哮」の構え" notice="全体攻撃5秒前" />
+    <a time="185" text="クラシカルエレメント" sync="「クラシカルエレメント」の構え" />
+    <a time="194" text="炎" sync="アルテ・ロイテの「炎」" />
+    <a time="200" text="外周安置を探す" notice="安置探して" />
+    <a time="204" text="ダウンバースト" sync="「ダウンバースト」の構え" />
+    <a time="210" text="ボスの左に移動" notice="ボスの左に移動" />
+    <a time="213" text="稲妻" sync="「稲妻」の構え" />
+    <a time="220" text="炎" sync="アルテ・ロイテの「炎」" />
+    <a time="226" text="フラッシュフリーズ" sync="アルテ・ロイテの「フラッシュフリーズ」" />
+    <a time="230" text="ブレスウィング" sync="「ブレスウィング」の構え" />
+    <a time="238" text="クランプ" sync="「クランプ」の構え" notice="クランプ、向き注意" notice-o="-5" />
+    <a time="244" text="ブレイズ" sync="「ブレイズ」の構え" notice="頭割り5秒前" />
+    <a time="252" text="咆哮" sync="「咆哮」の構え" notice="全体攻撃5秒前" />
+    <a time="263" text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="269" text="太古の龍尾" />
+    <a time="275" text="ミールストーム" sync="「ミールストーム」の構え" notice="ミールストーム5秒前" />
+    <a time="283" text="ツインボルト" sync="「ツインボルト」の構え" notice="タンク二人受け" />
+    <a time="294" text="炎(内周)" sync="アルテ・ロイテの「炎」" />
+    <a time="303" text="炎(外周)" />
+    <a time="305" text="稲妻" sync="「稲妻」の構え" />
+    <a time="306" text="外周へ散開" notice="外周に散開、近接は攻撃" />
+    <a time="312" text="中央に移動" notice="中央に移動" notice-o="-2" />
+    <a time="316" text="クランプ" sync="「クランプ」の構え" notice="クランプ、向き注意" notice-o="-5" />
+    <a time="322" text="咆哮" sync="「咆哮」の構え" notice="全体攻撃5秒前" />
+    <a time="329" text="咆哮" notice="全体攻撃5秒前" />
+    <a time="337" text="クラシカルエレメント" sync="「クラシカルエレメント」の構え" />
+    <a time="346" text="炎(外周)" sync="アルテ・ロイテの「炎」" />
+    <a time="350" text="炎(内周)" />
+    <a time="354" text="フラッシュフリーズ" sync="アルテ・ロイテの「フラッシュフリーズ」" />
+    <a time="358" text="ダウンバースト" sync="「ダウンバースト」の構え" />
+    <a time="365" text="中央に移動" notice="中央に移動" notice-o="-2" />
+    <a time="367" text="ブレイズ" sync="「ブレイズ」の構え" notice="頭割り5秒前" />
+    <a time="376" text="咆哮" sync="「咆哮」の構え" notice="全体攻撃5秒前" />
+    <a time="386" text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="392" text="太古の龍尾" />
+    <a time="398" text="ツインボルト" sync="「ツインボルト」の構え" notice="タンク二人受け" />
+    <a time="405" text="クランプ" sync="「クランプ」の構え" notice="クランプ、向き注意" notice-o="-5" />
+    <a time="410" text="炎(外周)" sync="アルテ・ロイテの「炎」" />
+    <a time="416" text="炎(内周)" />
+    <a time="427" text="稲妻" sync="「稲妻」の構え" />
+    <a time="430" text="外側爆発" notice="外側爆発" />
+    <a time="431" text="稲妻散開" notice="稲妻散開" />
+    <a time="435" text="ブレイズ" sync="「ブレイズ」の構え" notice="頭割り5秒前" />
+    <a time="446" text="クラシカルエレメント" sync="「クラシカルエレメント」の構え" />
+    <a time="455" text="炎(内周)" sync="アルテ・ロイテの「炎」" />
+    <a time="464" text="ダウンバースト" sync="「ダウンバースト」の構え" />
+    <a time="469" text="中央に移動" notice="中央に移動" notice-o="-2" />
+    <a time="470" text="稲妻" sync="「稲妻」の構え" />
+    <a time="473" text="稲妻散開" notice="稲妻散開" />
+    <a time="479" text="咆哮" sync="「咆哮」の構え" notice="全体攻撃5秒前" />
+    <a time="490" text="太古の龍尾" sync="アルテ・ロイテの「太古の龍尾」" />
+    <a time="495" text="太古の龍尾" />
+    <a time="500" text="ミールストーム" sync="「ミールストーム」の構え" notice="ミールストーム5秒前" />
+    <a time="508" text="ツインボルト" sync="「ツインボルト」の構え" notice="タンク二人受け" />
+    <a time="520" text="炎(内周)" sync="アルテ・ロイテの「炎」" />
+    <a time="529" text="炎(外周)" />
+    <a time="532" text="稲妻" sync="「稲妻」の構え" />
+    <a time="534" text="稲妻散開" notice="稲妻散開" />
+    <a time="535" text="内側爆発" notice="内側爆発" />
+    <a time="542" text="クランプ" sync="「クランプ」の構え" notice="クランプ、向き注意" notice-o="-5" />
+    <a time="546" text="外側爆発" notice="外側爆発" />
+    <a time="600" text="燃焼(時間切れ)" />
+  </s>
+
+</timeline>
+

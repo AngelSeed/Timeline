@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>極ナイツ・オブ・ラウンド</name>
+  <rev></rev>
+  <description>
+これが限界です・・・・・Angel Seed
+  </description>
+  <author>anoth</author>
+  <license>CC BY-SA</license>
+  <zone>The Minstrel's Ballad: Thordan's Reign</zone>
+  <locale>JA</locale>
+  <entry>前半・騎神トールダン（HP70％まで）</entry>
+  <start>騎神トールダン:神に抗う光の使徒よ…… その異能の力を、我が光によって打ち消してくれるわ！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+<!-- 音声通知何秒前 -->
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+<!-- ログの通知間隔 -->
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+<!-- 各フェーズ移行用-->
+
+  @{ var revision = "rev8"; }
+  @{ var origin = 0; }
+
+  <!-- 各自ギミックマーカー -->
+  <t text="マーカー\n ➜ ${_mex}" sync="1B:[id8]:[mex]:">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      job-icon="true" />
+</t>
+
+  <t text="マーカー\n ➜ ${_nex}" sync="^1B:[id8]:[nex]:" notice="マーカー">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      order="0"
+      job-icon="true" />
+  </t>
+
+<!-- トリガーに登録しても良い物 -->
+<t text="竜の眼" sync="騎神トールダンは「竜の眼」を唱えた。" notice="眼の位置確認！" />
+<t text="竜の邪眼" sync="騎神トールダンは「竜の邪眼」を唱えた。" notice="視線注意！" />
+<t text="邪竜の魔炎" sync="騎神トールダンは「邪竜の魔炎」を唱えた。" notice="頭割り！" />
+<t text="百雷" sync="騎神トールダンは「百雷」を唱えた。" notice="散会！" />
+<t text="ヘヴンリーヒール" sync="騎神トールダンは「ヘヴンリーヒール」の構え。" notice="タンク強攻撃" />
+<!-- トリガーに登録しても良い物 end -->
+
+<!-- フェーズ１ -->
+<s name="前半・騎神トールダン（HP70％まで）">
+  <a time="001" sync="騎神トールダン:神に抗う光の使徒よ…… その異能の力を、我が光によって打ち消してくれるわ！" />
+  <a time="008" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="014" text="メテオレイン" sync="騎神トールダンは「メテオレイン」を唱えた。" notice="" />
+  <a time="020" text="アスカロンメルシー" sync="騎神トールダンは「アスカロンメルシー」の構え。" notice="" />
+  <a time="026" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="028" text="竜の眼" sync="騎神トールダンは「竜の眼」を唱えた。" notice="" />
+  <a time="038" text="竜の邪眼" sync="騎神トールダンは「竜の邪眼」を唱えた。" notice="" />
+  <a time="047" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="051" text="百雷" sync="騎神トールダンは「百雷」を唱えた。" notice="" />
+  <a time="058" text="邪竜の魔炎" sync="騎神トールダンは「邪竜の魔炎」を唱えた。" notice="" />
+  <a time="065" text="エンシェントクエイガ" sync="騎神トールダンは「エンシェントクエイガ」を唱えた。" notice="" />
+  <a time="075" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="077" text="ヘヴンリーヒール" sync="騎神トールダンは「ヘヴンリーヒール」の構え。" notice="" />
+  <a time="083" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="088" sync="騎神トールダン:「竜の眼」を喰らいし聖剣アスカロンよ…… この地に眠る、微睡みの神より力を引き出せ！" goto="ギミック＆DPS・フェーズ" sync-s="-30" />
+</s>
+
+<!-- フェーズ２ -->
+<s name="ギミック＆DPS・フェーズ">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 101; }
+  <a time="@(101 - origin)" text="へヴンフレイム" sync="聖騎士シャリベルは「へヴンフレイム」を唱えた。" notice="中央集合" />
+  <a time="@(103 - origin)" text="コンヴィクション" sync="聖騎士エルムノストは「コンヴィクション」の構え。" notice="AoE出たら散会" />
+  <a time="@(113 - origin)" text="セイクリッドクロス" sync="聖騎士ゼフィランは「セイクリッドクロス」の構え。" notice="線対象者と反対に散会後、棟を中へ！" />
+  <a time="@(133 - origin)" text="スパイラルスラスト" sync="聖騎士イニアセルは「スパイラルスラスト」の構え。" notice="スパイラルスラスト。" />
+  <a time="@(133 - origin)" text="スパイラルスラスト" sync="聖騎士ポールクランは「スパイラルスラスト」の構え。" notice="" />
+  <a time="@(133 - origin)" text="スパイラルスラスト" sync="聖騎士ヴェルギーンは「スパイラルスラスト」の構え。" notice="" />
+  <a time="@(134 - origin)" text="セイクリッドクロス" sync="聖騎士ゼフィランの「セイクリッドクロス」" notice="" />
+  <a time="@(157 - origin)" text="蒼天の構え" sync="聖騎士ジャンルヌは「蒼天の構え」を唱えた。" notice="蒼天の構え。バフ確認。" />
+  <a time="@(157 - origin)" text="蒼天の構え" sync="聖騎士アデルフェルは「蒼天の構え」を唱えた。" notice="" />
+  <a time="@(161 - origin)" text="ホーリーブレードダンス" sync="聖騎士ジャンルヌは「ホーリーブレードダンス」の構え。" notice="ホーリーブレードダンス。" />
+  <a time="@(161 - origin)" text="ホーリーブレードダンス" sync="聖騎士アデルフェルは「ホーリーブレードダンス」の構え。" notice="" />
+  <a time="@(185 - origin)" text="蒼天の構え" sync="聖騎士ジャンルヌは「蒼天の構え」を唱えた。" notice="蒼天の構え。バフ確認。" />
+  <a time="@(185 - origin)" text="蒼天の構え" sync="聖騎士アデルフェルは「蒼天の構え」を唱えた。" notice="" />
+  <a time="@(182 - origin)" text="スカイワードリープ" sync="聖騎士ヴェルギーンの「スカイワードリープ」" notice="青玉１回目12時移動。" />
+  <a time="@(185 - origin)" text="スカイワードリープ" sync="聖騎士ポールクランの「スカイワードリープ」" notice="青玉2回目6時移動。" />
+  <a time="@(187 - origin)" text="ヘヴンリースラッシュ" sync="聖騎士アデルフェルの「ヘヴンリースラッシュ」" notice="" />
+  <a time="@(187 - origin)" text="ヘヴンリースラッシュ" sync="聖騎士ジャンルヌの「ヘヴンリースラッシュ」" notice="" />
+  <a time="@(188 - origin)" text="スカイワードリープ" sync="聖騎士イニアセルの「スカイワードリープ」" notice="青玉3回目12時移動。" />
+  <a time="@(196 - origin)" text="ホリエストホーリー" sync="聖騎士ジャンルヌは「ホリエストホーリー」の構え。" notice="" />
+  <a time="@(196 - origin)" text="ホリエストホーリー" sync="聖騎士アデルフェルは「ホリエストホーリー」の構え。" notice="" />
+  <a time="@(201 - origin)" text="ホーリーブレードダンス" sync="聖騎士ジャンルヌは「ホーリーブレードダンス」の構え。" notice="ホーリーブレードダンス。" />
+  <a time="@(201 - origin)" text="ホーリーブレードダンス" sync="聖騎士アデルフェルは「ホーリーブレードダンス」の構え。" notice="" />
+  <a time="@(214 - origin)" text="蒼天の構え" sync="聖騎士ジャンルヌは「蒼天の構え」を唱えた。" notice="蒼天の構え。バフ確認。" />
+  <a time="@(214 - origin)" text="蒼天の構え" sync="聖騎士アデルフェルは「蒼天の構え」を唱えた。" notice="" />
+  <a time="@(216 - origin)" text="ホリエストホーリー" sync="聖騎士ジャンルヌは「ホリエストホーリー」の構え。" notice="" />
+  <a time="@(216 - origin)" text="ホリエストホーリー" sync="聖騎士アデルフェルは「ホリエストホーリー」の構え。" notice="" />
+  <a time="@(225 - origin)" text="ヘヴンリースラッシュ" sync="聖騎士アデルフェルの「ヘヴンリースラッシュ」" notice="" />
+  <a time="@(225 - origin)" text="ヘヴンリースラッシュ" sync="聖騎士ジャンルヌの「ヘヴンリースラッシュ」" notice="" />
+  <a time="@(238 - origin)" text="スパイラルピアス" sync="聖騎士イニアセルは「スパイラルピアス」の構え。" notice="次は、スパイラルピアス。" goto="メテオ・フェーズ" sync-s="-30" />
+</s>
+
+<!-- フェーズ３ -->
+<s name="メテオ・フェーズ">
+  @* このフェーズの基点秒数 *@
+  @{ origin = 240; }
+  <a time="@(240 - origin)" text="ディメンションクラッシュ" sync="聖騎士グリノーは「ディメンションクラッシュ」の構え。" notice="次は、ディメンションクラッシュ。" />
+  <a time="@(241 - origin)" text="ハイマルストーム" sync="聖騎士オムリクは「ハイマルストーム」を唱えた。" notice="次は、ハイマルストーム。" />
+  <a time="@(247 - origin)" text="ホーリーメテオ" sync="聖騎士ヌドゥネーは「ホーリーメテオ」を唱えた。" notice="次は、ホーリーメテオ。" />
+  <a time="@(249 - origin)" text="フェイスアンムーブ" sync="聖騎士グリノーの「フェイスアンムーブ」" notice="次は、フェイスアンムーブ。" />
+  <a time="@(260 - origin)" text="ヘヴィインパクト" sync="聖騎士ゲリックの「ヘヴィインパクト」" notice="次は、ヘヴィインパクト。" />
+  <a time="@(299 - origin)" sync="騎神トールダン:ほう、よく耐えおるわ…… だが、どこまで耐えていられるかな！？" goto="待機・フェーズ" sync-s="-30" />
+</s>
+
+<!-- フェーズ４ -->
+<s name="待機・フェーズ">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 310; }
+  <a time="@(310 - origin)" text="ライト・オブ・アスカロン" sync="聖剣アスカロンの「ライト・オブ・アスカロン」" notice="1" />
+  <a time="@(311 - origin)" text="ライト・オブ・アスカロン" sync="聖剣アスカロンの「ライト・オブ・アスカロン」" notice="2" />
+  <a time="@(313 - origin)" text="ライト・オブ・アスカロン" sync="聖剣アスカロンの「ライト・オブ・アスカロン」" notice="3" />
+  <a time="@(314 - origin)" text="ライト・オブ・アスカロン" sync="聖剣アスカロンの「ライト・オブ・アスカロン」" notice="4" />
+  <a time="@(315 - origin)" text="ライト・オブ・アスカロン" sync="聖剣アスカロンの「ライト・オブ・アスカロン」" notice="5" />
+  <a time="@(317 - origin)" text="ライト・オブ・アスカロン" sync="聖剣アスカロンの「ライト・オブ・アスカロン」" notice="終わり" />
+  <a time="@(328 - origin)" text="アルティメットエンド" sync="騎神トールダンの「アルティメットエンド」" notice="アルティメットエンド。" goto="後半・騎神トールダン・ナイツ・オブ・ラウンド1回目" sync-s="-30" />
+</s>
+
+<!-- フェーズ５ -->
+<s name="後半・騎神トールダン・ナイツ・オブ・ラウンド1回目">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 335; }
+  <a time="@(335 - origin)" sync="騎神トールダン:ほう、神が導く終焉に耐えてみせたか！ ならば、「眼」より究極の力を解放するまでよ！" />
+  <a time="@(335 - origin)" text="竜の眼" sync="騎神トールダンは「竜の眼」を唱えた。" notice="" />
+  <a time="@(345 - origin)" text="ナイツ・オブ・ラウンド" sync="騎神トールダンは「ナイツ・オブ・ラウンド」を唱えた。" notice="ナイツ・オブ・ラウンド。" />
+  <a time="@(354 - origin)" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="@(356 - origin)" text="ホーリーシールドバッシュ" sync="聖騎士ジャンルヌは「ホーリーシールドバッシュ」の構え。" notice="" />
+  <a time="@(356 - origin)" text="ホーリーシールドバッシュ" sync="聖騎士アデルフェルは「ホーリーシールドバッシュ」の構え。" notice="" />
+  <a time="@(363 - origin)" text="スピア・オブ・ハルオーネ" sync="聖騎士ゼフィランは「スピア・オブ・ハルオーネ」の構え。" notice="対象者基準に1列軽減頭割り！" />
+  <a time="@(367 - origin)" text="ヘヴンリーヒール" sync="騎神トールダンは「ヘヴンリーヒール」の構え。" notice="" />
+  <a time="@(373 - origin)" text="竜の邪眼" sync="騎神トールダンは「竜の邪眼」を唱えた。" notice="" goto="ナイツ・オブ・ラウンド2回目~3回目" sync-s="-30" />
+</s>
+
+<!-- フェーズ６ -->
+<s name="ナイツ・オブ・ラウンド2回目~3回目">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 374; }
+  <a time="@(374 - origin)" text="竜の邪眼" sync="騎神トールダンは「竜の邪眼」を唱えた。" notice="" />
+  <a time="@(386 - origin)" text="エンシェントクエイガ" sync="騎神トールダンは「エンシェントクエイガ」を唱えた。" notice="" />
+  <a time="@(391 - origin)" text="竜の眼" sync="騎神トールダンは「竜の眼」を唱えた。" notice="" />
+  <a time="@(401 - origin)" text="ナイツ・オブ・ラウンド" sync="騎神トールダンは「ナイツ・オブ・ラウンド」を唱えた。" notice="" />
+  <a time="@(412 - origin)" text="コンヴィクション" sync="聖騎士エルムノストは「コンヴィクション」の構え。" notice="" />
+  <a time="@(413 - origin)" text="竜の邪眼" sync="騎神トールダンは「竜の邪眼」を唱えた。" notice="" />
+  <a time="@(413 - origin)" text="ヘヴィインパクト" sync="聖騎士ゲリックの「ヘヴィインパクト」" notice="" />
+  <a time="@(420 - origin)" text="ディメンションクラッシュ" sync="聖騎士グリノーは「ディメンションクラッシュ」の構え。" notice="" />
+  <a time="@(426 - origin)" text="邪竜の魔炎" sync="騎神トールダンは「邪竜の魔炎」を唱えた。" notice="" />
+  <a time="@(429 - origin)" text="フェイスアンムーブ" sync="聖騎士グリノーの「フェイスアンムーブ」" notice="ノックバック注意！" />
+  <a time="@(437 - origin)" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" goto="ナイツ・オブ・ラウンド1回目~2回目" />
+  <a time="@(443 - origin)" text="竜の眼" sync="騎神トールダンは「竜の眼」を唱えた。" notice="" />
+  <a time="@(453 - origin)" text="ナイツ・オブ・ラウンド" sync="騎神トールダンは「ナイツ・オブ・ラウンド」を唱えた。" notice="ナイツ・オブ・ラウンド。" />
+  <a time="@(459 - origin)" text="百雷" sync="騎神トールダンは「百雷」を唱えた。" notice="" />
+  <a time="@(465 - origin)" text="スパイラルスラスト" sync="聖騎士ヴェルギーンは「スパイラルスラスト」の構え。" notice="" />
+  <a time="@(465 - origin)" text="スパイラルピアス" sync="聖騎士ポールクランは「スパイラルピアス」の構え。" notice="" />
+  <a time="@(468 - origin)" text="邪竜の魔炎" sync="騎神トールダンは「邪竜の魔炎」を唱えた。" notice="" />
+  <a time="@(472 - origin)" text="スカイワードリープ" sync="聖騎士イニアセルの「スカイワードリープ」" notice="" />
+  <a time="@(480 - origin)" text="ヘヴンリーヒール" sync="騎神トールダンは「ヘヴンリーヒール」の構え。" notice="" />
+  <a time="@(487 - origin)" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" goto="ナイツ・オブ・ラウンド4回目" sync-s="-30" />
+</s>
+
+<!-- フェーズ７ -->
+<s name="ナイツ・オブ・ラウンド4回目">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 493; }
+  <a time="@(494 - origin)" text="竜の眼" sync="騎神トールダンは「竜の眼」を唱えた。" notice="" />
+  <a time="@(504 - origin)" text="ナイツ・オブ・ラウンド" sync="騎神トールダンは「ナイツ・オブ・ラウンド」を唱えた。" notice="ナイツ・オブ・ラウンド。" />
+  <a time="@(514 - origin)" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="@(514 - origin)" text="ホーリーメテオ" sync="聖騎士ヌドゥネーは「ホーリーメテオ」を唱えた。" notice="" />
+  <a time="@(515 - origin)" text="竜の邪眼" sync="騎神トールダンは「竜の邪眼」を唱えた。" notice="" />
+  <a time="@(516 - origin)" text="へヴンフレイム" sync="聖騎士シャリベルは「へヴンフレイム」を唱えた。" notice="" />
+  <a time="@(519 - origin)" text="ハイマルストーム" sync="聖騎士オムリクは「ハイマルストーム」を唱えた。" notice="" />
+  <a time="@(521 - origin)" text="アスカロンメルシー" sync="騎神トールダンは「アスカロンメルシー」の構え。" notice="" />
+  <a time="@(529 - origin)" text="エンシェントクエイガ" sync="騎神トールダンは「エンシェントクエイガ」を唱えた。" notice="" />
+  <a time="@(534 - origin)" text="ヘヴンリーヒール" sync="騎神トールダンは「ヘヴンリーヒール」の構え。" notice="" />
+  <a time="@(541 - origin)" text="エンシェントクエイガ" sync="騎神トールダンは「エンシェントクエイガ」を唱えた。" notice="" goto="ナイツ・オブ・ラウンド5回目・最終フェーズ" sync-s="-30" />
+</s>
+
+<!-- 最終フェーズ -->
+<s name="ナイツ・オブ・ラウンド5回目・最終フェーズ">
+    @* このフェーズの基点秒数 *@
+    @{ origin = 546; }
+  <a time="@(546 - origin)" text="竜の眼" sync="騎神トールダンは「竜の眼」を唱えた。" notice="" />
+  <a time="@(556 - origin)" text="ナイツ・オブ・ラウンド" sync="騎神トールダンは「ナイツ・オブ・ラウンド」を唱えた。" notice="ナイツ・オブ・ラウンド。" />
+  <a time="@(565 - origin)" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="@(566 - origin)" text="ホリエストホーリー" sync="聖騎士ジャンルヌは「ホリエストホーリー」の構え。" notice="" />
+  <a time="@(566 - origin)" text="ホリエストホーリー" sync="聖騎士アデルフェルは「ホリエストホーリー」の構え。" notice="" />
+  <a time="@(575 - origin)" text="アスカロンマイト" sync="騎神トールダンの「アスカロンマイト」" notice="" />
+  <a time="@(581 - origin)" text="ヘヴンスリープ" sync="聖騎士ヴェルギーンの「ヘヴンスリープ」" notice="" />
+  <a time="@(584 - origin)" text="ヘヴンスリープ" sync="聖騎士ポールクランの「ヘヴンスリープ」" notice="" />
+  <a time="@(587 - origin)" text="ヘヴンスリープ" sync="聖騎士イニアセルの「ヘヴンスリープ」" notice="" />
+  <a time="@(594 - origin)" text="セイクリッドクロス" sync="聖騎士ゼフィランは「セイクリッドクロス」の構え。" notice="" />
+  <a time="@(597 - origin)" text="ピュア・オブ・ソウル" sync="聖騎士シャリベルは「ピュア・オブ・ソウル」を唱えた。" notice="" />
+  <a time="@(598 - origin)" text="ピュア・オブ・ソウル" sync="聖騎士ヌドゥネー starts using ピュア・オブ・ソウル on 聖騎士ヌドゥネー." notice="" />
+  <a time="@(598 - origin)" text="ピュア・オブ・ソウル" sync="聖騎士オムリク starts using ピュア・オブ・ソウル on 聖騎士オムリク." notice="" />
+  <a time="@(611 - origin)" text="アブソルートコンヴィクション" sync="聖騎士グリノーの「アブソルートコンヴィクション」" notice="" />
+  <a time="@(611 - origin)" text="アブソルートコンヴィクション" sync="聖騎士エルムノストの「アブソルートコンヴィクション」" notice="" />
+  <a time="@(611 - origin)" text="アブソルートコンヴィクション" sync="聖騎士ゲリックの「アブソルートコンヴィクション」" notice="" />
+  <a time="@(613 - origin)" text="竜の邪眼" sync="騎神トールダンは「竜の邪眼」を唱えた。" notice="" />
+  <a time="@(620 - origin)" text="セイクリッドクロス" sync="聖騎士ゼフィランの「セイクリッドクロス」" notice="" />
+  <a time="@(624 - origin)" text="エンシェントクエイガ" sync="騎神トールダンは「エンシェントクエイガ」を唱えた。" notice="" />
+  <a time="@(632 - origin)" text="ヘヴンリーヒール" sync="騎神トールダンは「ヘヴンリーヒール」の構え。" notice="" />
+  <a time="@(658 - origin)" text="エンシェントクエイガ" sync="騎神トールダンは「エンシェントクエイガ」を唱えた。" notice="連続エンシェントクエイガ。" />
+  <a time="@(670 - origin)" text="エンシェントクエイガ" sync="騎神トールダンは「エンシェントクエイガ」を唱えた。" notice="" />
+  <a time="@(683 - origin)" text="エンシェントクエイガ" sync="騎神トールダン starts using エンシェントクエイガ on 騎神トールダン." notice="最終エンシェントクエイガ・時間切れ！" />
+</s>
+</timeline>

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+<name>極青龍征魂戦</name>
+<description>
+</description>
+<license>
+</license>
+<zone>The Wreath Of Snakes (Extreme)</zone>
+<locale>JA</locale>
+<entry>P1</entry>
+<start>0039:戦闘開始！</start>
+
+  <t text="陰陽五行" sync="青龍は「陰陽五行」の構え。" notice="">
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+  <t text="呪怨の形代" sync="青龍は「呪怨の形代」の構え。" notice="">
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+  <t text="虚証弾" sync="青龍の「虚証弾」" notice="">
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+
+  <t text="鬼に金棒" sync="岩の式鬼は「鬼に金棒」の構え。" notice="">
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+
+  <t text="ストンスキン" sync="沼の式鬼は「ストンスキン」を唱えた。" notice="">
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+
+  <t text="蛇崩" sync="青のオロチは「蛇崩」の構え。" notice="" >
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+
+  <t text="刀禁呪" sync="青龍の「刀禁呪」" notice="" >
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+
+  <t text="登り龍" sync="青龍は「登り龍」の構え。" notice="" >
+      <v-notice 
+        duration="5" 
+        icon="LB.png" />
+    </t>
+
+<s name="P1">
+<!--P1開始-->
+  <a time="010" sync="彼との誓いを果たすためならば、僕は悪鬼にも成ろう！" />
+  <a time="018" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+  <a time="030" sync="逃がさないよ！" />
+  <a time="032" text="ランダムAoEマーカー" />
+  <a time="032" text="多重線状攻撃" sync="青龍は「九字切り」の構え。" notice="直線攻撃" />
+  <a time="050" text="デバフ付与" sync="青龍は「呪怨の形代」の構え。" notice="スイッチ準備" />
+  <a time="054" text="タンクスイッチ" notice="タンク交代"/>
+  <a time="059" text="強攻撃" sync="青龍の「虚証弾」" notice="タンクスイッチ" />
+  <a time="068" text="式鬼召喚" sync="青龍は「式鬼召喚」の構え。" notice="式鬼召喚" />
+  <a time="085" text="頭割りとノックバック" sync="蒼の式鬼の「青の突進」" notice="頭割り、ノックバック" />
+  <a time="087" text="外周に円形AoE" notice="外周の円に注意" />
+  <a time="090" text="線状AoE" sync="天の式鬼は「山神楽」の構え。" notice="線状攻撃、線取り注意" />
+  <a time="092" text="線対象に扇範囲" sync="岩の式鬼は「鬼に金棒」の構え。" notice="扇範囲" />
+<!--P2雑魚-->
+　<a time="100" text="雑魚湧きフェーズ" />
+  <t text="雑魚フェーズ" sync="青龍は「霊気」の構え。" goto="P3" />
+</s>
+
+<s name="P3">
+<!--P3履行後-->
+<a time="005" sync="邪魔だ！　その存在が！" />
+<a time="023" sync="この力で、キミたちの存在を抹消する！" />
+<a time="038" text="式鬼召喚(蛇)" sync="青龍は「式鬼召喚」の構え。" notice="式鬼召喚" />
+<a time="046" text="ノックバック" sync="青のオロチは「蛇崩」の構え。" notice="全体ノックバック" />
+<a time="050" text="式鬼召喚(巨人)" sync="青龍は「式鬼召喚」の構え。" notice="式鬼召喚" />
+<a time="069" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<a time="079" text="式鬼召喚(蛇)" sync="青龍は「式鬼召喚」の構え。" notice="式鬼召喚" />
+<a time="086" text="2連ノックバック準備" sync="我が半身よ、僕たちの敵を討て！" />
+<a time="087" text="連続ノックバック" sync="青のオロチは「蛇崩」の構え。" notice="ノックバック2連" />
+<a time="102" text="頭割り2連" sync="青龍の「刀禁呪」" notice="頭割り2連"  />
+<!--P4ギミック変化-->
+<a time="111" text="ギミック変化" sync="もっとだ……もっと力を寄越せ" notice="以後ギミックが変化" />
+<a time="140" sync="逃がさないよ！" />
+<a time="142" text="線状攻撃2連" sync="青龍は「九字切り」の構え。" notice="2連続、線攻撃" />
+<a time="163" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<a time="177" text="円踏み+AOE" sync="青龍は「登り龍」の構え。" notice="円踏みとえーおーいー" />
+<a time="199" text="頭割り2連(散開)" sync="青龍の「刀禁呪」" notice="分かれて頭割り" />
+<a time="204" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<a time="213" text="2連スイッチ準備" notice="もうすぐ2連続スイッチ" />
+<a time="215" text="デバフ付与" sync="青龍は「呪怨の形代」の構え。" notice="スイッチ準備" />
+<a time="224" text="強攻撃" sync="青龍の「虚証弾」" notice="タンク交代" />
+<a time="228" text="デバフ付与" sync="青龍は「呪怨の形代」の構え。" notice="スイッチ準備" />
+<a time="237" text="強攻撃" sync="青龍の「虚証弾」" notice="タンク交代" />
+<a time="239" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<!--P5式鬼-->
+<a time="253" sync="畏れよ、アラミタマを！" />
+<a time="253" text="式鬼召喚" sync="青龍は「式鬼召喚」の構え。" notice="式鬼召喚。" />
+<a time="264" text="外周に円形AoE" sync="岩の式鬼は「100トンズ・スイング」の構え。" notice="周の円に注意" />
+<a time="271" text="線対象に扇範囲" sync="岩の式鬼は「鬼に金棒」の構え。" notice="タンクの線取り" />
+<a time="288" text="頭割りとノックバック" sync="蒼の式鬼の「青の突進」" notice="頭割り、ノックバック" />
+<a time="289" sync="アラミタマの力を見せてやる！" />
+<a time="292" text="線状攻撃2連" sync="青龍は「九字切り」の構え。" notice="2連続、線状攻撃" />
+<a time="293" text="巨人出現" sync="ズズズズズズ…… フタタビ招カレ、幻出セルハ、山ノ式鬼……！" />
+<a time="304" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<a time="315" text="式鬼召喚(蛇)" sync="青龍は「式鬼召喚」の構え。" notice="式鬼召喚。" />
+<a time="322" text="2連ノックバック準備" sync="我が半身よ、僕たちの敵を討て！"  />
+<a time="323" text="連続ノックバック" sync="青のオロチは「蛇崩」の構え。" notice="ノックバック2連" />
+<a time="358" text="式鬼召喚(蛇)" sync="青龍は「式鬼召喚」の構え。" notice="式鬼召喚。" />
+<a time="365" text="2連ノックバック準備" sync="我が半身よ、僕たちの敵を討て！" />
+<a time="366" text="連続ノックバック" sync="青のオロチは「蛇崩」の構え。" notice="ノックバック2連" />
+<a time="382" text="頭割り2連(散開)" sync="青龍の「刀禁呪」" notice="分かれて頭割り" />
+<a time="386" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<a time="400" text="2連スイッチ準備" notice="もうすぐ2連続スイッチ" />
+<a time="402" text="デバフ付与" sync="青龍は「呪怨の形代」の構え。" notice="スイッチ準備" />
+<a time="411" text="強攻撃" sync="青龍の「虚証弾」" notice="タンク交代" />
+<a time="416" text="デバフ付与" sync="青龍は「呪怨の形代」の構え。" notice="スイッチ準備" />
+<a time="425" text="虚証弾" sync="青龍の「虚証弾」" notice="タンク交代" />
+<a time="426" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<a time="449" text="円踏み+AOE" sync="青龍は「登り龍」の構え。" notice="円踏みとえーおーいー" />
+<a time="453" sync="もっと強く……もっと強くあらねば……！" />
+<a time="457" sync="逃がさないよ！" />
+<a time="459" text="線状攻撃" sync="青龍は「九字切り」の構え。" notice="線状攻撃" />
+<a time="468" text="全体範囲" sync="青龍は「陰陽五行」の構え。" notice="全体範囲" />
+<!--P6攻撃乱打？-->
+  <a time="488" text="最終攻撃開始？" sync="邪魔だ！　その存在が！" />
+  <t text="時間切れまで全体範囲攻撃" />
+  <!--<a time="495" text="陰陽五行" sync="青龍は「陰陽五行」の構え。" notice="次は、陰陽五行。" />-->
+</s>
+</timeline>

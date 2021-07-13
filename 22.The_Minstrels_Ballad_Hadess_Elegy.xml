@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+    <name>極ハーデス討滅戦</name>
+    <rev></rev>
+    <description>
+    極ハーデス討滅戦
+    </description>
+    <author>Aqua Cat,RINGS</author>
+    <license>CC BY-SA</license>
+    <zone>The Minstrel's Ballad: Hades's Elegy</zone>
+    <locale>JA</locale>
+    <entry>ハーデスP1</entry>
+    <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger"  target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-4" />
+  <default target-element="Activity" target-attr="sync-s" value="-5" />
+  <default target-element="Activity" target-attr="sync-e" value="5" />
+
+
+  <t text="火→イゲオルム" sync="^1A:[id8]:[mex] gains the effect of 火の烙印 from  for 9999.00 Seconds." notice="ほのお。" icon="2.png" >
+    <v-notice
+      duration="25"
+      duration-visible="true"
+      order="1"
+      icon="Fire.png" />
+  </t>
+
+  <t text="氷→ラハブレア" sync="^1A:[id8]:[mex] gains the effect of 氷の烙印 from  for 9999.00 Seconds." notice="こおり。" icon="2.png" >
+    <v-notice
+      duration="25"
+      duration-visible="true"
+      order="2"
+      icon="Ice.png" />
+  </t>
+
+  <t text="マーカー" sync="[mex]に「マーキング」の効果。" notice="自分にマーカー">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      order="-1"
+      job-icon="true" />
+  </t>
+
+  <t text="ポリデグモンストライク" sync="starts using ポリデグモンストライク" notice="中央安置">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="AOEOutside.png" />
+  </t>
+
+  <t text="シャドウストリーム" sync="starts using シャドウストリーム" notice="左右安置">
+    <v-notice
+      duration="5"
+      duration-visible="false"
+      icon="AOEVertical.png" />
+  </t>
+
+    <!-- トリガのみ -->
+  <t name="シャドウスプレッド"      sync="ハーデスは「シャドウスプレッド」を唱えた。"               notice="八方向散開"         />
+  <t name="バッドフェイス"          sync="14:47AC:ハーデス starts using バッドフェイス on ハーデス" notice="右から左に移動"     />
+  <t name="バッドフェイス"          sync="14:47AB:ハーデス starts using バッドフェイス on ハーデス" notice="左から右に移動"     />
+  <t name="ラヴェナスアサルト"      sync="ハーデスは「ラヴェナスアサルト」を唱えた。"               notice="タンク交代"         />
+  <t name="氷の烙印"                sync="[me]に「氷の烙印」の効果。"                               notice="ラハブレアを攻撃" notice-d="Main" />
+  <t name="火の烙印"                sync="[me]に「火の烙印」の効果。"                               notice="イゲオルムを攻撃" notice-d="Main" />
+  <t name="ターゲット確認"          sync="[me]の攻撃 ⇒ (イゲオルム|ラハブレア)の影は無効化した。"  notice="ターゲット違うよ" notice-d="Main" />
+  <t name="MT移動"                  sync="14:47D1:アシエン・プライムの影 starts using ハイト・オブ・カオス"  notice="MTはC側に移動" />
+  <t name="法則改変"                sync="アシエン・プライムの影は「法則改変」を唱えた。"           notice="十字散開、タンクヒラは外見る" />
+  <t name="ポリデグモンストライク"  sync="ハーデスは「ポリデグモンストライク」を唱えた。"           notice="中央安置" />
+  <t name="シャドウストリーム"      ync="ハーデスは「シャドウストリーム」を唱えた。"                notice="左右安置" />
+
+
+<s name="ハーデスP1">
+  <a time="000" sync="ハーデス:全力で来い……！ 私もまた 在るべき姿で 迎え撃ってやろう……！" />
+  <a time="006" sync="ハーデス:多重詠唱……逃げ惑え！" />
+  <a time="007" text="エンシェントダブル" sync="ハーデス starts using エンシェントダブル" notice="エンシェントダブル" />
+  <a time="013" text="シャドウスプレッド2連" sync="ハーデス starts using シャドウスプレッド" notice="シャドウスプレッド2連" />
+  <a time="021" text="シャドウスプレッド2" />
+  <a time="022" text="シャドウスプレッド1" />
+  <a time="024" sync="ハーデス:これぞ闇の力！" />
+  <a time="025" text="バッドフェイス2連" sync="ハーデス starts using バッドフェイス" notice="バッドフェイス2連" />
+  <a time="030" text="バッドフェイス2" />
+  <a time="033" text="バッドフェイス1" />
+  <a time="036" text="ラヴェナスアサルト2連" sync="ハーデス starts using ラヴェナスアサルト" notice="タンクスイッチ" />
+  <a time="041" text="ラヴェナスアサルト2" />
+  <a time="045" text="ラヴェナスアサルト1" />
+  <a time="047" sync="ハーデス:我が魔力で圧倒しよう……！" />
+  <a time="048" text="魔法陣記述" sync="ハーデス starts using 魔法陣記述" notice="魔法陣記述" />
+  <a time="054" text="魔法陣起動" sync="ハーデス starts using 魔法陣起動" notice="魔法陣起動" />
+  <a time="059" text="魔法陣発動" notice="魔法陣発動" />
+  <a time="064" sync="ハーデス:魔法のなんたるかを知るがいい！" />
+  <a time="065" text="ブロークンフェイス" sync="ハーデス starts using ブロークンフェイス" notice="ブロークンフェイス2連" />
+  <a time="104" text="魔法陣記述" sync="ハーデス starts using 魔法陣記述" notice="魔法陣記述" />
+  <a time="110" text="魔法陣起動" sync="ハーデス starts using 魔法陣起動" notice="魔法陣起動" />
+  <a time="116" text="魔法陣発動" notice="魔法陣発動" />
+  <a time="124" text="シャドウスプレッド2連" sync="ハーデス starts using シャドウスプレッド" notice="シャドウスプレッド2連" />
+  <a time="129" text="シャドウスプレッド2" />
+  <a time="130" text="シャドウスプレッド1" />
+  <a time="135" text="バッドフェイス2連" sync="ハーデス starts using バッドフェイス" notice="バッドフェイス2連" />
+  <a time="140" text="バッドフェイス2" />
+  <a time="143" text="バッドフェイス1" />
+  <a time="146" text="ラヴェナスアサルト2連" sync="ハーデス starts using ラヴェナスアサルト" notice="タンクスイッチ" />
+  <a time="151" text="ラヴェナスアサルト2" />
+  <a time="155" text="ラヴェナスアサルト1" />
+  <a time="200" text="移行待ち" sync="ハーデス:来たれ、尊厳王……！" goto="尊厳王P" sync-s="-80"/>
+  <a time="205" text="強制移行" sync="ハーデス:気高き威厳で、大地を震わせるがいい……！" goto="尊厳王P" sync-s="-50"/>
+</s>
+
+<s name="尊厳王P">
+  <a time="004" sync="ハーデス:気高き威厳で、大地を震わせるがいい……！" />
+  <a time="012" text="クエイガ" sync="ナプリアレスの影 starts using クエイガ" notice="クエイガ。" />
+  <a time="013" text="ダーラ" sync="古代人の影 starts using ダーラ" notice="ダーラ。" />
+  <a time="029" text="ダーク＆ウォタガ" sync="古代人の影 starts using エンシェントウォタガ" notice="エンシェントウォタガ。" />
+  <a time="039" text="クエイガ" sync="ナプリアレスの影の「クエイガ」" notice="クエイガ。" />
+  <a time="044" sync="ハーデス:深淵の司祭よ、そして、死せる殉教者よ、立ち上がれ！" />
+  <a time="048" sync="ハーデス:決して揺るがぬ信念の炎と、冷徹なる決意の氷で、 抗う者どもに死をもたらせ……！" />
+  <a time="053" text="アナイアレイション" sync="ラハブレアとイゲオルム starts using アナイアレイション" notice="アナイアレイション。" />
+  <a time="072" text="ファイジャ＆ブリザジャ" sync="イゲオルムの影 starts using ブリザジャ" />
+  <a time="072" text="フレイム＆フリーズ" sync="古代人の影 starts using ダークフレイム" />
+  <a time="083" text="アナイアレイション" sync="ラハブレアとイゲオルム starts using アナイアレイション" notice="アナイアレイション。" />
+  <a time="097" text="ファイジャ＆ブリザジャ" sync="イゲオルムの影 starts using ブリザジャ" notice="ブリザジャ。" />
+  <a time="150" text="移行待ち" sync="ハーデス:その強き願いは、魂の境界さえ超えた……！" goto="プライムP" sync-s="-80" />
+  <a time="155" text="強制移行" sync="ハーデス:その何者よりも色濃き魂で、薄き魂を侵食せよ……！" goto="プライムP" sync-s="-80" />
+</s>
+
+<s name="プライムP">
+  <a time="004" sync="ハーデス:その何者よりも色濃き魂で、薄き魂を侵食せよ……！" />
+  <a time="008" text="法則改変" sync="アシエン・プライムの影 starts using 法則改変" notice="法則改変。" />
+  <a time="022" text="クラウダ" sync="アシエン・プライムの影 starts using クラウダ" notice="クラウダ。" />
+  <a time="039" text="クラウダ" sync="アシエン・プライムの影の「クラウダ」" notice="クラウダ。" />
+  <a time="045" text="ハイト・オブ・カオス" sync="アシエン・プライムの影 starts using ハイト・オブ・カオス" notice="タンクへ強範囲攻撃" />
+  <a time="056" text="メギドフレイム" sync="アシエン・プライムの影 starts using メギドフレイム" notice="メギドフレイム。" />
+  <a time="066" text="シャドウフレア" sync="アシエン・プライムの影 starts using シャドウフレア" notice="シャドウフレア。" />
+  <a time="120"  text="移行待ち" sync="ハーデス:さあ、ここからが想いの削り合いだ……！" goto="ハーデス2" sync-s="-80" />
+</s>
+
+<s name="ハーデス2">
+  <a time="004" sync="ハーデス:冥きに眠る同胞たちよ……夢に抱きし想いを我に……！" />
+  <a time="010" sync="ハーデス:その想い、その願い、その祈りのすべてを、私が背負おう！" />
+  <a time="020" sync="ハーデス:我が手が掴む……この星の未来を！" />
+  <a time="030" sync="ハーデス:友の祈りよ、明日への望みよ！" />
+  <a time="037" sync="ハーデス:これが最古の魔道士だ……！ 拝せよ、弱き命ども！" />
+  <a time="044" sync="ハーデス:同胞たちよ、想え……！" />
+  <a time="045" text="尊厳王の記憶" sync="ハーデス starts using 尊厳王の記憶" notice="尊厳王の記憶。" />
+  <a time="052" text="キャプティビティ" sync="ハーデス starts using キャプティビティ" notice="キャプティビティ。" />
+  <a time="058" text="スタン発動" />
+  <a time="065" text="コーラス・オブ・ザ・ロスト" sync="ハーデス starts using コーラス・オブ・ザ・ロスト" notice="コーラス・オブ・ザ・ロスト。" />
+  <a time="077" sync="ハーデス:同胞たちよ、強く願え……！" />
+  <a time="078" text="殉教者の記憶" sync="ハーデス starts using 殉教者の記憶" notice="殉教者の記憶。" />
+  <a time="087" text="ウエイル・オブ・ザ・ロスト" sync="ハーデス starts using ウエイル・オブ・ザ・ロスト" notice="ウエイル・オブ・ザ・ロスト。" />
+  <a time="096" sync="ハーデス:同胞たちよ、心束ねて祈れ……！" />
+  <a time="097" text="深淵の記憶" sync="ハーデス starts using 深淵の記憶" notice="深淵の記憶。" />
+  <a time="104" text="バイデント" sync="ハーデス starts using バイデント" notice="バイデント。" />
+  <a time="104" text="シャドウスプレッド" sync="ハーデス starts using シャドウスプレッド" notice="シャドウスプレッド。" />
+  <a time="119" text="ダークシール" sync="ハーデス starts using ダークシール" notice="ダークシール。" />
+  <a time="125" text="ランダムビーム" sync="ハーデス starts using ポリデグモンストライク" notice="ランダムビーム" />
+  <a time="133" text="ランダムビーム" sync="ハーデス starts using シャドウストリーム" notice="ランダムビーム" />
+  <a time="146" text="ダークシール" sync="ハーデス starts using ダークシール" notice="ダークシール。" />
+  <a time="152" text="ランダムビーム" sync="ハーデス starts using ポリデグモンストライク" notice="ランダムビーム" />
+  <a time="160" text="ランダムビーム" sync="ハーデス starts using ポリデグモンストライク" notice="ランダムビーム" />
+  <a time="180" sync="ハーデス:堕ちよ、絶望の底に……！" goto="ハーデス3" sync-s="-80" />
+</s>
+
+<s name="ハーデス3">
+  <a time="001" text="ライフ・オブ・キャプティビティ" sync="ハーデス starts using ライフ・オブ・キャプティビティ" notice="ライフ・オブ・キャプティビティ。" />
+  <a time="010" sync="ハーデス:戒律王ゾディアークの名において、我、ハーデスが命ず……！" />
+  <a time="016" sync="ハーデス:まどろみに沈む同胞よ、その力を果てなる漆黒と成せ……！" />
+  <a time="022" sync="ハーデス:虚栄の世界に終焉を！" />
+  <a time="022" text="ブラック・コルドロン" sync="ハーデスの「ブラック・コルドロン」" notice="ブラック・コルドロン。" />
+  <a time="044" sync="ハーデス:光の力が暴走……いや、違う……！" />
+  <a time="050" sync="ハーデス:なんという……なんという、忌々しき輝き……！" />
+  <a time="055" sync="ハーデス:だが、それでもなお、負けはしない……！" />
+  <a time="073" sync="ハーデス:救われるべきは、我々なのだ……！" />
+  <a time="083" sync="ハーデス:深き闇に呑まれよ……！" />
+  <a time="084" text="ダークストリーム" sync="ハーデス starts using ダークストリーム" notice="ダークストリーム。" />
+  <a time="107" text="ギガントマキア" sync="ハーデス starts using ギガントマキア" notice="ギガントマキア。" />
+  <a time="115" sync="ハーデス:この星は……我らのもの……！ 決して、手放すものか……！" />
+  <a time="116" text="クアドラストライク" sync="ハーデス starts using クアドラストライク" notice="クアドラストライク。" />
+  <a time="121" text="クアドラストライク" sync="ハーデス starts using クアドラストライク" notice="クアドラストライク。" />
+  <a time="130" sync="ハーデス:塵すら残さず、消え去るがいい……！" />
+  <a time="133" text="塔処理+ペイン" />
+  <a time="142" text="ダークストリーム" sync="ハーデス starts using ダークストリーム" notice="ダークストリーム。" />
+  <a time="165" text="ギガントマキア" sync="ハーデス starts using ギガントマキア" notice="ギガントマキア。" />
+  <a time="174" text="クアドラストライク" sync="ハーデス starts using クアドラストライク" notice="クアドラストライク。" />
+  <a time="191" text="塔処理+ペイン" />
+  <a time="202" sync="ハーデス:これで終わりだ……なりそこない……！" />
+  <a time="203" text="時間切れ詠唱開始" sync="ハーデス starts using ギガントマキア" notice="ギガントマキア。" />
+  <a time="223" text="時間切れ" />
+</s>
+</timeline>

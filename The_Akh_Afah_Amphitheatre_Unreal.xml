@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>幻シヴァ用トリガー</name>
+  <rev></rev>
+  <description>
+    幻シヴァ用のトリガーです。
+  </description>
+  <author></author>
+  <license>CC BY-SA</license>
+  <zone>The Akh Afah Amphitheatre (Unreal),930</zone>
+  <locale>JA</locale>
+  <start>0039:戦闘開始！</start>
+  <!-- ZoneID:930 -->
+
+  <default target-element="Activity" target-attr="notice-d" value="Both" />
+
+  <!-- トリガのみ -->
+  <t text="挑発確認"                sync="[nex]の「挑発」"                              notice="挑発されたよ" />
+  <t text="ヘイルストーム"          sync="シヴァは「ヘイルストーム」の構え。"           notice="散会、散会" />
+  <t text="グレイシャーバッシュ"    sync="シヴァは「グレイシャーバッシュ」の構え。"     notice="背面に移動" />
+  <t text="凍てつく杖"              sync="シヴァ:5367:凍てつく杖"                       notice="散会準備" />
+  <t text="凍てつく剣"              sync="シヴァ:5366:凍てつく剣"                       notice="頭割り、背面に移動" />
+  <t text="凍てつく弓"              sync="シヴァ:5368:凍てつく弓"                       notice="弓、背面に移動、タンク交代" />
+
+  <!-- マーカー -->
+  <t text="青マーカー"              sync="^1B:[id8]:[mex]:0000:[id4]:001A:0000:0000:0000:"  notice="マーカー、背面に" />
+  <t text="青マーカー"              sync="^1B:[id8]:[nex]:0000:[id4]:001A:0000:0000:0000:"  notice="横に移動。" />
+</timeline>

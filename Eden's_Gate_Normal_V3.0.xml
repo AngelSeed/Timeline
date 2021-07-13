@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園 エデン 覚醒編（ノーマル３層）</name>
+  <rev></rev>
+  <description>
+    希望の園 エデンのノーマル向けTLです。
+  </description>
+  <zone>Eden's Gate: Inundation</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+<!-- TL音声 -->
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+<!-- トリガー音声 -->
+  <default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-9" />
+  <default target-element="Activity" target-attr="sync-e" value="9" />
+
+  <!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン３層" exec="scripts\ppas.ps1" args="Nエデン３層" exec-hidden="true" />
+<!--
+<t name="初期配置" sync="戦闘開始まで5秒！" exec="scripts\ppas.ps1" args="" exec-hidden="true" />
+<t name="安置解除" sync="解除A" exec="scripts\ppoff.ps1" args="A" exec-hidden="true" />
+<t name="安置解除" sync="解除B" exec="scripts\ppoff.ps1" args="B" exec-hidden="true" />
+<t name="安置解除" sync="解除C" exec="scripts\ppoff.ps1" args="C" exec-hidden="true" />
+<t name="安置解除" sync="解除D" exec="scripts\ppoff.ps1" args="D" exec-hidden="true" />
+<t name="安置解除" sync="解除1" exec="scripts\ppoff.ps1" args="1" exec-hidden="true" />
+<t name="安置解除" sync="解除2" exec="scripts\ppoff.ps1" args="2" exec-hidden="true" />
+-->
+
+   <!-- ノーマル・エデンの園・３層 -->
+
+   <!--<t text="水毒" sync="1A:102833E6:[PC] gains the effect of 水毒 from リヴァイアサン for 15.00 Seconds." notice="デバフ水毒"> -->
+
+   <!-- ３層・トリガー -->
+    <t text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="全体攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="リップカレント" sync="リヴァイアサンは「リップカレント」の構え。" notice="MT直線範囲大ダメージ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="テンポラリーカレント" sync="リヴァイアサンは「テンポラリーカレント」の構え。" notice="広範囲斜め攻撃、安置に移動。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="タイダルウェイブ" sync="リヴァイアサンは「タイダルウェイブ」の構え。" notice="東か西のノックバック注意">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="アンダーシークエイク" sync="リヴァイアサンは「アンダーシークエイク」の構え。" notice="ボスの首確認">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+   <!-- 全体範囲 ⇒ 吹き飛ばし ⇒ 頭割り ⇒ 4人範囲(▼)+1人ドーナツ範囲 ⇒ 吹き飛ばし -->
+  <t text="大海嘯" sync="リヴァイアサンは「大海嘯」の構え。" notice="ギミック４種類。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="メイルシュトローム" sync="リヴァイアサンは「メイルシュトローム」を唱えた。" notice="外周よく見て。踏むな危険。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t sync="リヴァイアサンは「猛烈なる波動」を唱えた。" text="猛烈なる波動">
+   <v-notice order="-2" duration-visible="false" duration="250" stack-visible="true" sync-to-hide="end"/>
+   </t>
+  <t notice="AOE＆散会" sync="increments stacks of 猛烈なる波動 to 1." />
+  <t notice="円形範囲攻撃＆頭割り" sync="increments stacks of 猛烈なる波動 to 2." />
+   <!-- ３層・トリガーEND -->
+
+<!-- 前半フェーズ -->
+  <a time="001" sync="リヴァイアサン:我はリヴァイアサン…… 失われた水底より来たりし、渦巻く者……！" />
+  <a time="008" text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="" />
+  <a time="018" text="リップカレント" sync="リヴァイアサンは「リップカレント」の構え。" notice="" />
+  <a time="031" text="テンポラリーカレント" sync="リヴァイアサンは「テンポラリーカレント」の構え。" notice="" />
+  <a time="044" text="猛烈なる波動" sync="リヴァイアサンは「猛烈なる波動」を唱えた。" notice="マーカー対象者、散会" />
+  <a time="054" text="テンポラリーカレント" sync="リヴァイアサンは「テンポラリーカレント」の構え。" notice="" />
+  <a time="066" text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="" />
+  <a time="072" text="リップカレント" sync="リヴァイアサンは「リップカレント」の構え。" notice="" />
+  <a time="085" text="タイダルウェイブ" sync="リヴァイアサンは「タイダルウェイブ」の構え。" notice="" />
+  <a time="099" sync="リヴァイアサン:我がアギトは、岩をも砕く……！" />
+  <a time="099" sync="リヴァイアサンは力を溜めている……！" />
+  <a time="099" text="アンダーシークエイク" sync="リヴァイアサンは「アンダーシークエイク」の構え。" notice="床がなくなるよ" />
+  <a time="108" sync="リーンの声:“大丈夫ですか、Angelさん！？ エデンの力を使って、どうにか足場を再生してみます！”" />
+  <a time="111" text="激烈なる波動" sync="リヴァイアサンは「激烈なる波動」を唱えた。" notice="マーカー対象者、散会" />
+  <a time="124" text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="" />
+ <!-- 後半フェーズ -->
+  <a time="133" text="テンポラリーカレント" sync="リヴァイアサンは「テンポラリーカレント」の構え。" notice="" />
+  <a time="142" sync="リーンの声:“お、お待たせしました……！ 周囲のエーテルに干渉して、足場を再生します！”" />
+  <a time="150" sync="リヴァイアサン:大洋は氾濫し、すべてを洗い流す…… 命の水よ牙を剥け、大海嘯！" />
+  <a time="150" text="大海嘯" sync="リヴァイアサンは「大海嘯」の構え。" notice="" />
+  <a time="198" text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="" />
+  <a time="212" text="メイルシュトローム" sync="リヴァイアサンは「メイルシュトローム」を唱えた。" notice="" />
+  <a time="212" sync="リヴァイアサン:何者も海を統べること、叶わぬと知れ…… ヒトは、ただ揺られ、流され、翻弄されるのみ……！" />
+  <a time="226" text="スピニングダイブ" sync="リヴァイアサンの「スピニングダイブ」" notice="" />
+  <a time="261" text="タイダルウェイブ" sync="リヴァイアサンは「タイダルウェイブ」の構え。" notice="" />
+  <a time="275" sync="リヴァイアサンは力を溜めている……！" />
+  <a time="275" text="アンダーシークエイク" sync="リヴァイアサンは「アンダーシークエイク」の構え。" notice="床がなくなるよ" />
+  <a time="284" sync="リーンの声:何度、壊されたって、エデンの力で……！" />
+  <a time="317" sync="リーンの声:足場の再生を行います……！" />
+  <a time="353" text="猛烈なる波動" sync="リヴァイアサンは「猛烈なる波動」を唱えた。" notice="マーカー対象者、散会" />
+  <a time="362" sync="リヴァイアサンは力を溜めている……！" />
+  <a time="362" text="アンダーシークエイク" sync="リヴァイアサンは「アンダーシークエイク」の構え。" notice="床がなくなるよ" />
+  <a time="371" sync="リーンの声:何度、壊されたって、エデンの力で……！" />
+  <a time="371" text="大海嘯" sync="リヴァイアサンは「大海嘯」の構え。" notice="" />
+  <a time="375" sync="リヴァイアサン:寄せては返すが波の定め…… すべてを呑み込むまで、満ちよ、大海嘯！" />
+  <a time="419" text="テンポラリーカレント" sync="リヴァイアサンは「テンポラリーカレント」の構え。" notice="" />
+  <a time="428" text="テンポラリーカレント" sync="リヴァイアサンは「テンポラリーカレント」の構え。" notice="" />
+  <a time="440" text="リップカレント" sync="リヴァイアサンは「リップカレント」の構え。" notice="" />
+  <a time="447" text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="" />
+  <a time="453" text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="" />
+  <a time="459" sync="リーンの声:足場の再生を行います……！" />
+  <a time="469" text="メイルシュトローム" sync="リヴァイアサンは「メイルシュトローム」を唱えた。" notice="" />
+  <a time="483" text="スピニングダイブ" sync="リヴァイアサンの「スピニングダイブ」" notice="" />
+  <a time="490" text="スピニングダイブ" sync="リヴァイアサンの「スピニングダイブ」" notice="" />
+  <a time="499" text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="" />
+  <a time="505" text="リップカレント" sync="リヴァイアサンは「リップカレント」の構え。" notice="" />
+  <a time="518" text="タイダルウェイブ" sync="リヴァイアサンは「タイダルウェイブ」の構え。" notice="次は、タイルウェイブ。" />
+  <a time="532" sync="リヴァイアサンは力を溜めている……！" />
+  <a time="532" text="アンダーシークエイク" sync="リヴァイアサンは「アンダーシークエイク」の構え。" notice="床がなくなるよ" />
+  <a time="539" text="(時間切れ?)" />
+  <a time="541" sync="リーンの声:何度、壊されたって、エデンの力で……！" />
+
+</timeline>

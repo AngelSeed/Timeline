@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>人形タチノ軍事基地 トリガーのみ</name>
+  <rev></rev>
+  <description>人形タチノ軍事基地 トリガーのみ</description>
+  <author></author>
+  <license>CC BY-SA</license>
+  <zone>The Puppets' Bunker</zone>
+  <locale>JA</locale>
+
+  <!-- ボス1：813P:拠点防御ユニット装備 begin -->
+  <t text="➜ タンク強攻撃" sync="^14:508D:８１３Ｐ：拠点防衛ユニット装備 starts using 砲撃命令：対人レーザー on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Attack.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 動く扇状AoE" sync="^14:5073:８１３Ｐ：拠点防衛ユニット装備 starts using 攻撃：収束粒子砲 on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe03.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 回転扇状AoE" sync="^14:507C:８１３Ｐ：拠点防衛ユニット装備 starts using 攻撃：旋回粒子砲 on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Attention.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 対象に連続AoE" sync="^14:[id4]:８１３Ｐ：拠点防衛ユニット装備 starts using 砲撃命令：対地レーザー on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="StackAOE.png"
+      order="1" />
+  </t>
+
+  <t text="自分にマーカー" sync="^1B:[id8]:[mex]:0000:[id4]:0017:0000:0000:0000:" notice="はなれるー。" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Avoid.png"
+      order="-1" />
+  </t>
+
+  <t text="➜ ${_nex}" sync="^1B:[id8]:[nex]:0000:[id4]:0017:0000:0000:0000:" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      job-icon="true"
+      order="-1" />
+  </t>
+
+  <t text="➜ 外周近い人に直線AoE" sync="^14:50D2:８１３Ｐ：拠点防衛ユニット装備 starts using 航空支援：突撃 on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe02.png"
+      order="1" />
+  </t>
+
+  <t text="➜ ボス砲門から扇状AoE" sync="^14:5080:８１３Ｐ：拠点防衛ユニット装備 starts using 攻撃：偏向粒子砲 on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe02.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 全体攻撃" sync="^14:5099:８１３Ｐ：拠点防衛ユニット装備 starts using 攻撃：拡散粒子砲 on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AllRangeAttack.png"
+      order="1" />
+  </t>
+
+  <t text="➜ ユニット出現" sync="^14:50D3:８１３Ｐ：拠点防衛ユニット装備 starts using 航空支援：爆撃 on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      order="1" />
+  </t>
+
+  <t text="➜ 頭割り" sync="^14:508F:８１３Ｐ：拠点防衛ユニット装備 starts using 砲撃命令：高出力レーザー on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="DamageShare.png"
+      order="1" />
+  </t>
+
+  <t text="自分にマーカー" sync="^1B:[id8]:[mex]:0000:[id4]:003E:0000:0000:0000:" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      job-icon="true"
+      order="-1" />
+  </t>
+
+  <t text="➜ 可視範囲AoE" sync="^14:53B3:８１３Ｐ：拠点防衛ユニット装備 starts using 終焉ノ歌 on ８１３Ｐ：拠点防衛ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe03.png"
+      order="1" />
+  </t>
+  <!-- ボス1：813P:拠点防御ユニット装備 end -->
+
+  <!-- ボス2：724P:強化型飛行ユニット begin -->
+  <t text="➜ 全体攻撃３回" sync="starts using 攻撃：ミサイル全弾発射 on" sync-interval="10" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AllRangeAttack.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 対象にダメージ床AoE" sync="starts using 攻撃：焼尽ミサイル on" sync-interval="10" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+
+  <t text="自分にマーカー" sync="^1B:[id8]:[mex]:0000:[id4]:0017:0000:0000:0000:" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Avoid.png"
+      order="-1" />
+  </t>
+
+  <t text="➜ 直線頭割り\n 外側に向ける" sync="starts using 攻撃：高出力レーザー on ７" sync-interval="10" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="DamageShare.png"
+      order="1" />
+  </t>
+
+  <t text="剣が内側なら端へ\n剣が外側なら中央へ" sync="starts using 連携：転回斬撃 on" sync-interval="10" >
+    <v-notice
+      duration="15"
+      duration-visible="false"
+      icon="Branch.png"
+      order="1" />
+  </t>
+
+  <t text="➜ タンク強攻撃" sync="starts using 攻撃：高性能誘導ミサイル on" sync-interval="10" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Attack.png"
+      order="1" />
+  </t>
+
+  <t text="外周エクサフレア\n➜ 消えた場所に入る" sync="starts using 連携：急襲爆撃 on" sync-interval="10" >
+    <v-notice
+      duration="12"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 剣の方向にAoE" sync="starts using 連携：突進斬撃 on" sync-interval="10" >
+    <v-notice
+      duration="15"
+      duration-visible="false"
+      icon="Avoid.png"
+      order="1" />
+  </t>
+
+  <t text="➜ ダメージ床AoE" sync="starts using 攻撃：ミサイル乱射 on" sync-interval="10" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 爆発AoE" sync="starts using 攻撃：爆風効果弾頭 on" sync-interval="10" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+  <!-- ボス2：724P:強化型飛行ユニット end -->
+
+  <!-- ボス3：905P:重陸戦ユニット装備 begin -->
+  <t text="➜ 全体攻撃" sync="^14:5006:９０５Ｐ：重陸戦ユニット装備 starts using 攻撃：拡散ヴォルト on ９０５Ｐ：重陸戦ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AllRangeAttack.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 中央から扇状AoE" sync="^14:4FED:９０５Ｐ：重陸戦ユニット装備 starts using オペレート：レーザータレット on ９０５Ｐ：重陸戦ユニット装備." >
+    <v-notice
+      duration="8"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 対象者へ扇状AoE" sync="^14:5003:９０５Ｐ：重陸戦ユニット装備 starts using 攻撃：収束ヴォルト on ９０５Ｐ：重陸戦ユニット装備." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe03.png"
+      order="1" />
+  </t>
+
+  <t text="AoE3回 ➜ ボス足元安置" sync="^14:4FFD:９０５Ｐ：重陸戦ユニット装備 starts using 攻撃：地穿潰砕 on ９０５Ｐ：重陸戦ユニット装備." >
+    <v-notice
+      duration="12"
+      duration-visible="false"
+      icon="AOEOutside.png"
+      order="1" />
+  </t>
+
+  <t text="外周でパターン判断\n混合 ➜ 直線の間が安置" sync="^14:4FEA:９０５Ｐ：重陸戦ユニット装備 starts using オペレート：ポッドプログラム on ９０５Ｐ：重陸戦ユニット装備." >
+    <v-notice
+      duration="12"
+      duration-visible="false"
+      icon="AOECross.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 繋がった先で人数判断" sync="^14:4FEC:９０５Ｐ：重陸戦ユニット装備 starts using オペレート：爆発性化合物 on ９０５Ｐ：重陸戦ユニット装備." >
+    <v-notice
+      duration="15"
+      duration-visible="false"
+      icon="FallingObject.png"
+      order="1" />
+  </t>
+
+  <!-- ボス3：905P:重陸戦ユニット装備 end -->
+
+  <!-- ボス4-1：905P:融合シタ人形タチ begin -->
+  <t text="➜ 全体攻撃" sync="^14:51B8:融合シタ人形タチ starts using 制圧光撃 on 融合シタ人形タチ." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AllRangeAttack.png"
+      order="1" />
+  </t>
+
+  <t text="➜ ボス足元安置" sync="^14:51B4:融合シタ人形タチ starts using 斬機光撃 on 融合シタ人形タチ." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOEOutside.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 側面が安置" sync="^14:51B3:融合シタ人形タチ starts using 断機光撃 on 融合シタ人形タチ." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOEVertical.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 円形AoE＋ランダム対象AoE" sync="^14:51B5:融合シタ人形タチ starts using 砕機光撃 on 融合シタ人形タチ." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+
+  <t text="➜ 交差する場所が安置" sync="^14:51B(1|2):分裂シタ人形タチ starts using 逆断震回転 on 分裂シタ人形タチ." sync-interval="10" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+  <!-- ボス4-1：905P:融合シタ人形タチ end -->
+
+  <!-- ボス4-2：2P:融合体 begin -->
+  <t text="➜ 全体攻撃" sync="^14:51B0:２Ｐ：融合体 starts using 全面斬機 on ２Ｐ：融合体." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AllRangeAttack.png"
+      order="1" />
+  </t>
+
+  <t text="➜ ランタゲAoE３回" sync="^00:282b:２Ｐ：融合体は「渦状光維奔突」の構え。" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+
+  <t text="ボスから離れる" sync="^14:541F:２Ｐ：融合体 starts using 斬機撃：充填 on ２Ｐ：融合体." notice="はなれるー。">
+    <v-notice
+      duration="10"
+      duration-visible="false"
+      icon="AOEInside.png"
+      order="-1" />
+  </t>
+
+  <t text="直線攻撃" sync="^14:5420:２Ｐ：融合体 starts using 斬機撃：充填 on ２Ｐ：融合体." notice="正面から離れる。" >
+    <v-notice
+      duration="10"
+      duration-visible="false"
+      icon="AOEVertical.png"
+      order="-1" />
+  </t>
+
+  <t text="ボス足元が安全" sync="^14:5421:２Ｐ：融合体 starts using 斬機撃：充填 on ２Ｐ：融合体." notice="近づくー。" >
+    <v-notice
+      duration="10"
+      duration-visible="false"
+      icon="AOEOutside"
+      order="-1" />
+  </t>
+
+  <t text="頭割り＋ノックバック３回" sync="^00:282b:２Ｐ：融合体は「三連衝撃斬」の構え。" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="DamageShare.png"
+      order="1" />
+  </t>
+
+  <t text="タンク強攻撃\n➜ 円形AoE＋マーカーAoE" sync="^14:51AB:２Ｐ：融合体 starts using ポッド融合体：R012 on ２Ｐ：融合体." >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="AOE.png"
+      order="1" />
+  </t>
+
+  <t text="奇数 ➜ 円形範囲\n偶数 ➜ 直線範囲" sync="^00:282b:２Ｐ：融合体は「四連断重撃」の構え。" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      order="1" />
+  </t>
+
+  <t text="１番 ➜ 円形範囲" sync="^1B:[id8]:[mex]:0000:[id4]:004F:0000:0000:0000:" notice="いちばん" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe01.png"
+      order="-1" />
+  </t>
+
+  <t text="２番 ➜ 直線範囲" sync="^1B:[id8]:[mex]:0000:[id4]:0050:0000:0000:0000:" notice="にばん" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe02.png"
+      order="-1" />
+  </t>
+
+  <t text="３番 ➜ 円形範囲" sync="^1B:[id8]:[mex]:0000:[id4]:0051:0000:0000:0000:" notice="いちばん" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe01.png"
+      order="-1" />
+  </t>
+
+  <t text="４番 ➜ 直線範囲" sync="^1B:[id8]:[mex]:0000:[id4]:0052:0000:0000:0000:" notice="よんばん" >
+    <v-notice
+      duration="6"
+      duration-visible="false"
+      icon="Targetaoe02.png"
+      order="-1" />
+  </t>
+  <!-- ボス4-2：2P:融合体 end -->
+</timeline>

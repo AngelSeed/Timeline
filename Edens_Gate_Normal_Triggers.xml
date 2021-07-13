@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <name>希望の園 エデン 覚醒編（ノーマル・トリガー）</name>
+  <rev></rev>
+  <description>
+    希望の園 エデンのノーマル向けトリガ集です。
+  </description>
+  <zone>30078,30080,30082,30084</zone>
+  <locale>JA</locale>
+  <entry>ENTRY</entry>
+  <start>0039:戦闘開始！</start>
+
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-6" />
+  <default target-element="Activity" target-attr="sync-s" value="-9" />
+  <default target-element="Activity" target-attr="sync-e" value="9" />
+
+    <!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン１層" exec="scripts\ppas.ps1" args="Nエデン１層" exec-hidden="true" />
+
+  <!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン２層" exec="scripts\ppas.ps1" args="Nエデン２層" exec-hidden="true" />
+
+  <!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン３層" exec="scripts\ppas.ps1" args="Nエデン３層" exec-hidden="true" />
+
+  <!-- 自動マーカー設定 -->
+<t name="初期配置" sync="Nエデン４層" exec="scripts\ppas.ps1" args="Nエデン４層" exec-hidden="true" />
+
+  <!-- ノーマル・エデンの園・１層 -->
+
+  <t text="スピア・オブ・パラダイス" sync="エデン・プライムは「スピア・オブ・パラダイス」を唱えた。" notice="MT大ダメージ">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エデン・グラビデ" sync="エデン・プライムは「エデン・グラビデ」を唱えた。" notice="全体攻撃">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エデン・フレア" sync="エデン・プライムは「エデン・フレア」を唱えた。" notice="ボス集合">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ピュアライト" sync="エデン・プライムは「ピュアライト」を唱えた。" notice="四つ角ランダム安置">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="デルタアタック" sync="エデン・プライムは「デルタアタック」を唱えた。" notice="ボス中心十字攻撃、AOE散会">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ディメンションシフト" sync="エデン・プライムは「ディメンションシフト」を唱えた。" notice="全体攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="パラダイスロスト" sync="エデン・プライムは「パラダイスロスト」を唱えた。" notice="パラダイスロスト、ビーム">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="フラゴルマクシマス" sync="エデン・プライムは「フラゴルマクシマス」を唱えた。" notice="全体攻撃、距離減衰攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+
+  <t sync="エデン・プライムは「ヴァイス・アンド・ヴァーチュー」を唱えた。" text="V＆V">
+   <v-notice order="-2" duration-visible="false" duration="250" stack-visible="true" sync-to-hide="end"/>
+   </t>
+  <t notice="４人にランダムAOE散会"  sync="increments stacks of V＆V to 1." />
+  <t notice="MT、STに直線大ダメージ" sync="increments stacks of V＆V to 2." />
+  <t notice="MT、STに直線大ダメージ" sync="increments stacks of V＆V to 3." />
+  <t notice="MT、STに直線大ダメージ" sync="increments stacks of V＆V to 4." />
+  <t notice="MT、STに直線大ダメージ" sync="increments stacks of V＆V to 5." />
+
+
+
+  <!-- ノーマル・エデンの園・２層 -->
+
+  <t text="ドゥームヴォイド・ギロチン" sync="ヴォイドウォーカーは「ドゥームヴォイド・ギロチン」の構え。" notice="ボス前後直線範囲攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ニュクス出現" sync="次元の裂け目が開いた……！" notice="触れるな危険">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ドゥームヴォイド・スライサー" sync="ヴォイドウォーカーは「ドゥームヴォイド・スライサー」の構え。" notice="ボス集合">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="シャドーフレイム" sync="ヴォイドウォーカーは「シャドーフレイム」の構え。" notice="MT、STに大ダメージ">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ダークファイガ" sync="ヴォイドウォーカーは「ダークファイガ」を唱えた。" notice="ランダム４名、円形範囲攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ダークホーリー" sync="ヴォイドウォーカーは「ダークホーリー」を唱えた。" notice="頭割り">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エントロピー" sync="ヴォイドウォーカーは「エントロピー」を唱えた。" notice="全体攻撃">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="エレボスの巨腕" sync="次元の裂け目より、エレボスの巨腕が現れた・・・！" notice="外周ノックバック注意">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="シャドウアイ" sync="[pc] gains effect of シャドウアイ" notice="対象者見るな！">
+    <v-notice 
+      duration="5" 
+      duration-visible="false"
+      job-icon="true" />
+  </t>
+
+  <t text="ダークファイガ" sync="[mex] gains effect of ディレイスペル：ダークファイガ" notice="ディレイ・ファイガ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ダークホーリー" sync="[mex] gains effect of ディレイスペル：ダークホーリー" notice="ディレイ・ホーリー。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ヘルウィンド" sync="[mex] gains effect of ディレイスペル：ヘルウィンド" notice="ディレイ・ヘルウィンド。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="シャドウアイ" sync="[pc] gains effect of ディレイスペル：シャドウアイ" notice="ディレイ・シャドウアイ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      job-icon="true" />
+  </t>
+
+  <!-- ノーマル・エデンの園・３層 -->
+
+  <t text="タイダルロア" sync="リヴァイアサンは「タイダルロア」を唱えた。" notice="全体攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="リップカレント" sync="リヴァイアサンは「リップカレント」の構え。" notice="MT直線範囲大ダメージ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="テンポラリーカレント" sync="リヴァイアサンは「テンポラリーカレント」の構え。" notice="広範囲直線攻撃、安置に移動。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="タイダルウェイブ" sync="リヴァイアサンは「タイダルウェイブ」の構え。" notice="外周ノックバック注意">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="アンダーシークエイク" sync="リヴァイアサンは「アンダーシークエイク」の構え。" notice="ボスの首確認">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="大海嘯" sync="リヴァイアサンは「大海嘯」の構え。" notice="ギミック４種類。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="メイルシュトローム" sync="リヴァイアサンは「メイルシュトローム」を唱えた。" notice="踏むな危険。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t sync="リヴァイアサンは「猛烈なる波動」を唱えた。" text="猛烈なる波動">
+   <v-notice order="-2" duration-visible="false" duration="250" stack-visible="true" sync-to-hide="end"/>
+   </t>
+  <t notice="AOE＆散会" sync="increments stacks of 猛烈なる波動 to 1." />
+  <t notice="円形範囲攻撃＆頭割り" sync="increments stacks of 猛烈なる波動 to 2." />
+
+  <!-- ノーマル・エデンの園・４層 -->
+
+  <t text="大地の叫び" sync="タイタンは「大地の叫び」の構え。" notice="全体攻撃">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="イビルアース" sync="タイタンは「イビルアース」の構え。" notice="広がる範囲、１個目安置。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="大地の重み" sync="タイタンは「大地の重み」の構え。" notice="ランダム床範囲攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ロッククラッシュ" sync="タイタンは「ロッククラッシュ」の構え。" notice="MT大ダメージ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="岩盤崩落" sync="タイタンは「岩盤崩落」の構え。" notice="距離減衰攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="サイズミックウェーブ" sync="タイタンは「サイズミックウェーブ」の構え。" notice="岩に隠れて～。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ジオクラッシュ" sync="タイタンは「ジオクラッシュ」の構え。" notice="床からノックバック注意。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="メガ・ランドスライド" sync="タイタンは「メガ・ランドスライド」の構え。" notice="ボス正面直線範囲攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="ボムボルダー" sync="タイタンは「ボムボルダー」の構え。" notice="安置見つけて！">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="フォールトゾーン" sync="タイタンは「フォールトゾーン」の構え。" notice="ノックバック付き、直線範囲攻撃。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="マグニチュード5.0" sync="タイタンは「マグニチュード5.0」の構え。" notice="ボス集合。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+
+
+
+  <!-- エクストラ -->
+
+  <t text="強圧" sync="[mex] gains effect of 強圧の兆し" notice="きょうあつ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="強風" sync="[mex] gains effect of 強風の兆し" notice="きょうふう。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="渦動" sync="[mex] gains effect of 渦動の兆し" notice="かどう。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="溺没" sync="[mex] gains effect of 溺没の兆し" notice="できぼつ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+  <t text="グラビティ" sync="[mex] gains effect of グラビティバースト" notice="グラビティ。">
+    <v-notice 
+      order="-2"
+      duration="5" 
+      duration-visible="false"
+      icon="True.png" />
+  </t>
+
+</timeline>

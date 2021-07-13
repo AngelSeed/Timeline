@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+@{
+  // 最初にデータモデルをキャストしておく
+  var data = Model;
+}
+
+@{
+  /*
+  タイムライン内で使用する変数を定義
+  */
+
+  var ByRoleNotice01 = ""; // レベルチェッカーフェーズのv-notice
+  if (Model.Player.InRole("Healer")) {
+    ByRoleNotice01 = "東西に展開して時計回りに動く" ; // Healer用メモ
+  }else{
+    ByRoleNotice01 = "デバフ秒数の短い順に円を踏む" ; // TANK/DPS用メモ
+  }
+
+  var ByRoleNotice02 = ""; // 波動砲P1回目のv-notice
+  if (Model.Player.InRole("DPS")) {
+    ByRoleNotice02 = "頭割り後、散開してサークル内側" ; // DPS用メモ
+  }else{
+    ByRoleNotice02 = "頭割り後、散開位置で離れる" ; // TANK/Healer用メモ
+  }
+
+  var ByRoleNotice03 = ""; // 波動砲P2回目のv-notice
+  if (Model.Player.InRole("DPS")) {
+    ByRoleNotice03 = "すぐにボスから離れる" ; // DPS用メモ
+  }else{
+    ByRoleNotice03 = "サークル内に入る" ; // TANK/Healer用メモ
+  }
+
+  var ByRoleNotice04 = ""; // 射撃統制システム時のv-notice
+  if (Model.Player.InRole("TANK")) {
+    ByRoleNotice04 = "MT南西、ST南東で待機" ; // DPS用メモ
+  }else{
+    ByRoleNotice04 = "北で頭割り" ; // TANK/Healer用メモ
+  }
+
+}
+
+<timeline>
+  <name>次元の狭間オメガ零式：アルファ編 3層</name>
+  <zone>Alphascape V3.0 (Savage)</zone>
+  <rev></rev>
+  <description>次元の狭間オメガ零式：アルファ編3層 タイムライン
+  Angel Seed版デラックスバージョン with RINGS
+  (C)RINGS, CC BY-SA
+  </description>
+  <locale>JA</locale>
+  <entry>開幕</entry>
+  <start>戦闘開始！</start>
+
+<default target-element="Trigger" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-d" value="Main" />
+  <default target-element="Activity" target-attr="notice-o" value="-3" />
+  <default target-element="Activity" target-attr="sync-s" value="-10" />
+  <default target-element="Activity" target-attr="sync-e" value="10" />
+
+  <!-- 重要なアクティビティを通知するトリガ begin -->
+
+  <t text="アトミックレイ" sync="starts using アトミックレイ on オメガ" >
+    <v-notice 
+      duration="6" 
+      icon="全体強攻撃.png" />
+  </t>
+
+  <t text="マスタードボム\n ➜ ${_pc}" sync="オメガ starts using マスタードボム on [pc]" notice="マスタード。">
+    <v-notice 
+      duration="6" 
+      icon="単体強攻撃.png" />
+  </t>
+
+  <t text="火炎放射\n ➜ アフターバーナー" sync="オメガは「火炎放射」の構え。" notice="火炎放射。" >
+    <v-notice 
+      duration="6" 
+      icon="散開B.png" />
+  </t>
+
+
+  <!-- 重要なアクティビティを通知するトリガ end -->
+
+ <!-- 波動砲の定義 begin -->
+ <!-- 右舷1発目 正方向 -->
+ <t text="右舷 ➔左へ" sync="^14:3262:オメガ starts using 右舷斉射・波動砲" notice="左へ。">
+  <expressions>
+   <set name="take1_right" value="true" ttl="10" />
+  </expressions>
+  <v-notice icon="Arrow7" duration="3" duration-visible="false" />
+ </t>
+ 
+ <!-- 左舷1発目 正方向 -->
+ <t text="左舷 ➔右へ" sync="^14:3264:オメガ starts using 左舷斉射・波動砲" notice="右へ。">
+  <expressions>
+   <set name="take1_left" value="true" ttl="10" />
+  </expressions>
+  <v-notice icon="Arrow3" duration="3" duration-visible="false" />
+ </t>
+ 
+ <!-- 右舷2発目 逆方向 -->
+ <!-- 1発目が右方向だったら反対に移動 -->
+ <t text="右舷 ➔移動" sync="^14:3263:オメガ starts using 右舷斉射・波動砲" notice="反対に移動。">
+  <expressions>
+   <pre name="take1_right" value="true" />
+   <set name="take1_right" value="false" />
+   <set name="take1_left" value="false" />
+  </expressions>
+  <v-notice icon="Avoid" duration="3" duration-visible="false" />
+ </t>
+ 
+ <!-- 1発目が左方向だったら1発目の回避先が安置になる -->
+ <t text="右舷 ➔動かない" sync="^14:3263:オメガ starts using 右舷斉射・波動砲" notice="動かない。">
+  <expressions>
+   <pre name="take1_left" value="true" />
+   <set name="take1_right" value="false" />
+   <set name="take1_left" value="false" />
+  </expressions>
+  <v-notice icon="DontMove" duration="3" duration-visible="false" />
+ </t>
+ 
+ <!-- 左舷2発目 逆方向 -->
+ <!-- 1発目が左方向だったら反対に移動 -->
+ <t text="左舷 ➔移動" sync="^14:3265:オメガ starts using 左舷斉射・波動砲" notice="反対に移動。">
+  <expressions>
+   <pre name="take1_left" value="true" />
+   <set name="take1_right" value="false" />
+   <set name="take1_left" value="false" />
+  </expressions>
+  <v-notice icon="Arrow7" duration="3" duration-visible="false" />
+ </t>
+ 
+ <!-- 1発目が右方向だったら1発目の回避先が安置になる -->
+ <t text="左舷 ➔動かない" sync="^14:3265:オメガ starts using 左舷斉射・波動砲" notice="動かない。">
+  <expressions>
+   <pre name="take1_right" value="true" />
+   <set name="take1_right" value="false" />
+   <set name="take1_left" value="false" />
+  </expressions>
+  <v-notice icon="Arrow7" duration="3" duration-visible="false" />
+ </t>
+ <!-- 波動砲の定義 end -->
+
+  <!-- 零式波動砲の定義 begin -->
+  <t no="141" text="右舷 ➔左➔右" sync="オメガは「右舷斉射・零式波動砲」の構え。" notice="左から右へ。">
+    <v-notice
+      icon="Arrow7.png"
+      duration="8"
+      duration-visible="false" />
+  </t>
+
+  <t no="142" text="左舷 ➔右➔左" sync="オメガは「左舷斉射・零式波動砲」の構え。" notice="右から左へ。">
+    <v-notice
+      icon="Arrow3.png"
+      duration="8"
+      duration-visible="false" />
+  </t>
+  <!-- 零式波動砲の定義 end -->
+
+    <!-- マグネットの判定 begin -->
+  <!--
+    動作には v5.20.4 以降が必要です。
+  -->
+  <!-- フラグの初期化 -->
+  <t no="0" sync="レベルチェッカーの「プログラム実行」">
+    <expressions>
+      <set name="is_odd" value="false" />
+      <set name="is_me_appeared" value="false" />
+      <set name="is_positive" value="false" />
+      <set name="is_pair_positive" value="false" />
+      <set name="is_done" value="false" />
+    </expressions>
+  </t>
+
+  <!-- 現在が奇数行か判定するトリガ -->
+  <t no="1" sync="^1B:[id8]:[pc]:0000:[id4]:(00A2|00A3):">
+    <expressions>
+      <!-- フラグをトグル切替させる -->
+      <set name="is_odd" toggle="true" ttl="3" />
+    </expressions>
+  </t>
+
+  <!-- 自分の極性を保存するトリガ -->
+  <t no="11" sync="^1B:[id8]:[mex]:0000:[id4]:00A2:" text="自分にプラス">
+    <expressions>
+      <pre name="is_done" value="false" />
+      <set name="is_me_appeared" value="true" ttl="3" />
+      <set name="is_positive" value="true" />
+    </expressions>
+    <v-notice
+      icon="Positive.png"
+      duration="8"
+      duration-visible="false" />
+  </t>
+  <t no="12" sync="^1B:[id8]:[mex]:0000:[id4]:00A3:" text="自分にマイナス">
+    <expressions>
+      <pre name="is_done" value="false" />
+      <set name="is_me_appeared" value="true" ttl="3" />
+      <set name="is_positive" value="false" />
+    </expressions>
+    <v-notice
+      icon="Negative.png"
+      duration="8"
+      duration-visible="false" />
+  </t>
+
+  <!-- ペアの極性を保存するトリガ -->
+  <t no="21" sync="^1B:[id8]:[nex]:0000:[id4]:00A2:">
+    <expressions>
+      <pre name="is_done" value="false" />
+      <set name="is_pair_positive" value="true" />
+    </expressions>
+  </t>
+  <t no="22" sync="^1B:[id8]:[nex]:0000:[id4]:00A3:">
+    <expressions>
+      <pre name="is_done" value="false" />
+      <set name="is_pair_positive" value="false" />
+    </expressions>
+  </t>
+
+  <!-- 結果を表示するトリガ -->
+  <!--
+    ・自分がすでに出現している
+    ・現在行が偶数行（奇数業でない）である
+    のとき、保存されている自分の極性と最後に保存した他人の極性で発生する磁力の方向性を判定して良い
+  -->
+  <t no="41" text="反発！" sync="^1B:[id8]:[pc]:0000:[id4]:(00A2|00A3):" notice="反発する。">
+    <expressions>
+      <pre name="is_odd" value="false" />
+      <pre name="is_me_appeared" value="true" />
+      <pre name="is_positive" value="true" />
+      <pre name="is_pair_positive" value="true" />
+      <pre name="is_done" value="false" />
+      <set name="is_done" value="true" />
+    </expressions>
+    <v-notice
+      icon="Knockback.png"
+      order="-1"
+      duration="8"
+      duration-visible="false" />
+  </t>
+
+  <t no="42" text="反発！" sync="^1B:[id8]:[pc]:0000:[id4]:(00A2|00A3):" notice="反発する。">
+    <expressions>
+      <pre name="is_odd" value="false" />
+      <pre name="is_me_appeared" value="true" />
+      <pre name="is_positive" value="false" />
+      <pre name="is_pair_positive" value="false" />
+      <pre name="is_done" value="false" />
+      <set name="is_done" value="true" />
+    </expressions>
+    <v-notice
+      icon="Knockback.png"
+      order="-1"
+      duration="8"
+      duration-visible="false" />
+  </t>
+
+  <t no="43" text="引合う！" sync="^1B:[id8]:[pc]:0000:[id4]:(00A2|00A3):" notice="引合う。">
+    <expressions>
+      <pre name="is_odd" value="false" />
+      <pre name="is_me_appeared" value="true" />
+      <pre name="is_positive" value="true" />
+      <pre name="is_pair_positive" value="false" />
+      <pre name="is_done" value="false" />
+      <set name="is_done" value="true" />
+    </expressions>
+    <v-notice
+      icon="Pull.png"
+      order="-1"
+      duration="8"
+      duration-visible="false" />
+  </t>
+
+  <t no="44" text="引合う！" sync="^1B:[id8]:[pc]:0000:[id4]:(00A2|00A3):" notice="引合う。">
+    <expressions>
+      <pre name="is_odd" value="false" />
+      <pre name="is_me_appeared" value="true" />
+      <pre name="is_positive" value="false" />
+      <pre name="is_pair_positive" value="true" />
+      <pre name="is_done" value="false" />
+      <set name="is_done" value="true" />
+    </expressions>
+    <v-notice
+      icon="Pull.png"
+      order="-1"
+      duration="8"
+      duration-visible="false" />
+  </t>
+
+  <!-- 一応最後にフラグを落としておく -->
+  <t no="50" sync="の「マグネット」">
+    <expressions>
+      <set name="is_odd" value="false" />
+      <set name="is_me_appeared" value="false" />
+      <set name="is_done" value="false" />
+    </expressions>
+  </t>
+  <!-- マグネットの判定 end -->
+  <!-- 重要なアクティビティを通知するトリガ end -->
+
+  <s name="開幕">
+    <a time="000" sync="アナタはアルファであり、ワタシはオメガである。 これは最初であり、最後の検証……記録……開始……。" />
+    <a time="007" text="アトミックレイ" sync="オメガは「アトミックレイ」の構え。" icon="全体強攻撃.png" notice="次は、全体攻撃。" />
+    <a time="018" text="マスタードボム" sync="オメガは「マスタードボム」の構え。" notice="次は、マスタードボム。" icon="単体強攻撃.png"/>
+    <a time="025" text="火炎放射" sync="オメガは「火炎放射」の構え。" icon="散開B.png" />
+    <a time="030" text="アフターバーナー" icon="Arrow3.png" />
+    <a time="034" text="波動砲（左右）" sync="舷斉射・波動砲」の構え。" notice="次は、波動砲2回。" notice-o="-3" />
+    <a time="041" text="波動砲（左右）" sync="舷斉射・波動砲」の構え。" />
+    <a time="053" text="プリントアウト" sync="オメガは「プリントアウト」の構え。" />
+    <a time="062" text="ロケットパンチ着弾" sync="ロケットパンチは「着弾」の構え。" icon="重ね捨て.png" />
+    <a time="067" text="マスタードボム" sync="オメガは「マスタードボム」の構え。" notice="次は、マスタードボム。" icon="単体強攻撃.png"/>
+    <a time="087" text="サークルプログラム" sync="オメガは「サークルプログラム」の構え。" />
+    <a time="100" text="フェーズ移行待機"/>
+
+    <t text="サークルプログラム" sync="オメガの「サークルプログラム」">
+      <load target="レベルチェッカーフェーズ" truncate="true" />
+    </t>
+  </s>
+
+  <s name="レベルチェッカーフェーズ">
+    <a time="14" text="プログラム実行" sync="レベルチェッカーは「プログラム実行」の構え。" />
+    <a time="22" text="マグネット" sync="レベルチェッカーは「マグネット」を唱えた。" icon="マグネット系.png">
+      <v-notice text="東西の円が中：南東スタート, 外：北西スタート" sync="レベルチェッカーは「マグネット」を唱えた。" notice="集合場所確認"
+         duration="24"
+         icon="分岐.png" />
+    </a>
+    <a enabled="false" time="23" text="Marker:00A2" sync="1B:(?&lt;pcid&gt;.{8}):[pc]:0000:0000:00A2:0000:0000:0000:" />
+    <a enabled="false" time="23" text="Marker:00A3" sync="1B:(?&lt;pcid&gt;.{8}):[pc]:0000:0000:00A3:0000:0000:0000:" />
+
+    <a time="36" text="プログラム実行" sync="レベルチェッカーは「プログラム実行」の構え。" >
+        <v-notice text="@ByRoleNotice01"
+           duration="6" />
+    </a>
+
+    <a time="68" text="初期化（周辺円範囲）" sync="レベルチェッカーは「初期化」を唱えた。" notice="次は、外周あんち。" icon="床範囲.png" notice-o="-3" />
+    <a time="75" text="最適化（ドーナツ範囲）" sync="レベルチェッカーは「最適化」を唱えた。" notice="次は、ドーナツ範囲。" icon="床範囲.png" notice-o="-3" />
+    <a time="123" text="強制終了" sync="レベルチェッカーは「強制終了」を唱えた。" />
+    <a time="150" text="フェーズ移行" sync="オメガの「デルタアタック」" call="デルタアタックから後半" icon="無敵受け.png" sync-s="-50" />
+  </s>
+
+  <s name="デルタアタックから後半">
+    <a time="23" text="火炎放射＋ミサイル" sync="オメガは「火炎放射」の構え。" icon="散開B.png" />
+    <a time="28" text="アフターバーナー" icon="Arrow3.png" />
+    <a time="31" text="波動砲（左右）" sync="舷斉射・波動砲」の構え。" notice="次は、波動砲2回。" notice-o="-3" />
+    <a time="39" text="波動砲（左右）" />
+    <a time="52" text="マスタードボム" sync="オメガは「マスタードボム」の構え。" notice="次は、マスタードボム。" icon="単体強攻撃.png"/>
+    <a time="60" text="ブラスター（ST線取り）" icon="マーカー.png" >
+      <v-notice text="ST中心範囲攻撃"
+       duration="6" />
+    </a>
+    <a time="64" text="アトミックレイ" sync="オメガは「アトミックレイ」の構え。" icon="全体強攻撃.png" notice="次は、全体攻撃。" />
+    <a time="77" text="プリントアウト" sync="オメガは「プリントアウト」の構え。" icon="注意.png" />
+    <a time="94" text="ロケットパンチ突進" icon="ノックバック.png" />
+    <a time="96" text="オメガスライド（中央で頭割り）" sync="オメガは「オメガスライド」の構え。" icon="頭割り.png" />
+    <a time="106" text="プリントアウト" sync="オメガは「プリントアウト」の構え。" icon="注意.png" />
+    <a time="120" text="ロケットパンチ突進" icon="ノックバック.png" notice="スプリント。" />
+    <a time="123" text="波動砲（左右）" sync="舷斉射・波動砲」の構え。" notice="次は、波動砲2回。" />
+    <a time="131" text="波動砲（左右）" />
+    <a time="142" text="サークルプログラム更新" sync="オメガの「サークルプログラム更新」" sync-s="-20" />
+    <a time="155" text="火炎放射（DoT有）" sync="オメガは「火炎放射」の構え。" icon="散開B.png" />
+    <a time="160" text="アフターバーナー" sync="オメガ starts using アフターバーナー on オメガ." icon="Arrow3.png" />
+    <a time="164" text="零式波動砲" sync="舷斉射・零式波動砲」の構え。" notice="次は、零式波動砲" notice-o="-3" />
+    <a time="169" text="零式波動砲（逆側に移動）" />
+    <a time="182" text="パントクラトル（ボス背面集合）" sync="オメガは「パントクラトル」の構え。" icon="背面集合.png" >
+       <v-notice text="4つ目のAoE回避先で頭割り"
+         duration="15" />
+    </a>
+    <a time="195" text="高出力波動砲P（頭割り）" icon="頭割り.png" >
+      <v-notice text="@ByRoleNotice02"
+         duration="5" />
+    </a>
+    <a time="207" text="散開＋DPS波動砲誘導" icon="散開B.png" notice="次は、散開。"/>
+    <a time="211" text="波動砲P（1回目）" sync="オメガの「波動砲P」" icon="サンダー系.png" >
+      <v-notice text="@ByRoleNotice03"
+         duration="4" />
+    </a>
+    <a time="214" text="T/H波動砲誘導" icon="散開B.png" />
+    <a time="217" text="波動砲P（2回目）" sync="オメガの「波動砲P」" icon="サンダー系.png" />
+    <a time="218" text="大型ミサイルP：マップ端に移動" sync="オメガ starts using 大型ミサイルp on オメガ." icon="距離減衰.png" />
+    <a time="226" text="大型ミサイルP着弾" icon="距離減衰.png" />
+    <a time="236" text="ブラスター（ST線取り）" icon="マーカー.png" />
+    <a time="247" text="アトミックレイ→中央移動" sync="オメガは「アトミックレイ」の構え。" icon="全体強攻撃.png" notice="次は、全体攻撃。" />
+    <a time="249" text="プリントアウト（タンクLB）" sync="オメガは「プリントアウト」の構え。" icon="無敵受け.png" />
+    <a time="258" text="中央→散開" sync="ロケットパンチは「着弾」の構え。" icon="重ね捨て.png" />
+    <a time="272" text="マスタードボム" sync="オメガは「マスタードボム」の構え。" notice="次は、マスタードボム。" icon="単体強攻撃.png"/>
+    <a time="285" text="アトミックレイ" sync="オメガは「アトミックレイ」の構え。" icon="全体強攻撃.png" notice="次は、全体攻撃。" />
+    <a time="294" text="火炎放射＋ミサイル" sync="オメガは「火炎放射」の構え。" icon="散開B.png" />
+    <a time="298" text="アフターバーナー" icon="Arrow3.png" />
+    <a time="302" text="零式波動砲" sync="舷斉射・零式波動砲」の構え。" notice="次は、零式波動砲" notice-o="-3" />
+    <a time="307" text="零式波動砲（逆側に移動）" />
+    <a time="320" text="パントクラトル（ボス背面集合）" sync="オメガは「パントクラトル」の構え。" icon="背面集合.png" >
+       <v-notice text="火炎放射の方向に注意"
+         duration="15" />
+    </a>
+    <a time="334" text="火炎放射開始" sync="オメガの「火炎放射」" />
+    <a time="346" text="射撃統制システム" icon="背面集合.png" >
+      <v-notice text="@ByRoleNotice04"
+         duration="15" />
+    </a>
+    <a time="351" text="高出力波動砲P（頭割り）" sync="オメガの「高出力波動砲P」" icon="頭割り.png" />
+    <a time="354" text="拡散波動砲Px9" icon="対象範囲攻撃03.png" />
+    <a time="358" text="波動砲P誘導1回目（近接＋H1）" icon="マーカー.png" notice="次は、波動砲誘導"/>
+    <a time="365" text="波動砲P誘導2回目（遠隔＋H2）" icon="マーカー.png" />
+    <a time="370" text="大型ミサイルP：マップ端に移動" sync="オメガ starts using 大型ミサイルp on オメガ." icon="距離減衰.png" />
+    <a time="379" text="大型ミサイルP着弾" icon="距離減衰.png" />
+    <a time="388" text="零式波動砲" sync="舷斉射・零式波動砲」の構え。" notice="次は、零式波動砲2回" notice-o="-3" />
+    <a time="394" text="零式波動砲（逆側に移動）" />
+    <a time="397" text="零式波動砲" />
+    <a time="401" text="零式波動砲（逆側に移動）" />
+    <a time="411" text="ミールストーム" sync="オメガは「ミールストーム」を唱えた。" icon="HP1強制.png" />
+    <a time="424" text="マスタードボム" sync="オメガは「マスタードボム」の構え。" notice="次は、マスタードボム。" icon="単体強攻撃.png"/>
+    <a time="432" text="ブラスター（ST線取り）" icon="マーカー.png" />
+    <a time="435" text="アトミックレイ" sync="オメガは「アトミックレイ」の構え。" icon="全体強攻撃.png" />
+    <a time="441" text="アトミックレイ" sync="オメガは「アトミックレイ」の構え。" icon="全体強攻撃.png" />
+    <a time="447" text="アトミックレイ" sync="オメガは「アトミックレイ」の構え。" icon="全体強攻撃.png" />
+    <a time="454" text="サークル" sync="オメガは「サークル」の構え。" />
+    <a time="490" text="時間切れ" icon="時間切れ.png" />
+  </s>
+
+</timeline>
