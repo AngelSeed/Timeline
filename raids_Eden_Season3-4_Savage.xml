@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編4</name>
-  <rev>rev17</rev>
+  <rev></rev>
   <description>
     希望の園エデン零式： 再生編4 のスペスペたいむ定義です。
     Hojoring v8.1.1 以降を使用してください。EVALおよび正規表現の動的更新が必要だからです。
@@ -531,12 +531,33 @@
 
     <a time="188.0" text="ボム＋マーカー付与１" />
     <a time="193.6" text="マーカー着弾" />
+  <t text="ボム＋マーカー付与１" sync="プロミス・オブ・エデンの「大地の怒り」">
+    <i-notice
+      image="岩１.png"
+      duration="10"
+      scale="0.35"
+      left="3609" top="875" />
+  </t>
 
     <a time="201.1" text="ボム＋マーカー付与２" />
     <a time="206.6" text="マーカー着弾" />
+  <t text="ボム＋マーカー付与２" sync="1B:[id8]:[mex]:0000:0000:(01B2|01B3):">
+    <i-notice
+      image="岩２.png"
+      duration="10"
+      scale="0.35"
+      left="3609" top="875" />
+  </t>
 
     <a time="214.1" text="ボム＋マーカー付与３" />
     <a time="219.7" text="マーカー着弾" />
+  <t text="ボム＋マーカー付与３" sync="1B:[id8]:[mex]:0000:C263:(01B1|01B2|01B3):">
+    <i-notice
+      image="岩３.png"
+      duration="10"
+      scale="0.35"
+      left="3609" top="875" />
+  </t>
 
     <a time="229.0" sync="プロミス・オブ・エデン:なぜ、そっとしておいてくれない？" />
     <a time="239.0" text="マレフィキウム" sync="プロミス・オブ・エデンの「マレフィキウム」" notice="次は、全体攻撃。" />

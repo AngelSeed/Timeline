@@ -44,6 +44,13 @@
 <t name="初期配置" sync="マーカーせぇええええっとおお" exec="scripts\ppas.ps1" args="α4層前半" exec-hidden="true" />
 <t name="安置解除" sync="" exec="scripts\ppoff.ps1" args="" exec-hidden="true" />
 
+    <!-- Raid of Armed-Squad アイキャッチ -->
+ <t name="Raid of Armed-Squad" sync="Raid of Armed-Squad">
+    <i-notice image="RAS02.png"
+     duration="5" 
+     scale="1.8"
+     left="2200" top="115" />
+  </t>
 
   <t text="北" sync="\[EX\] Added new combatant. name=ミストドラゴン X=15.50 Y=13.11" notice="北">
     <v-notice duration="6" order="-5"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline>
   <name>希望の園エデン零式：再生編2</name>
-  <rev>rev6</rev>
+  <rev></rev>
   <description>
     希望の園エデン零式： 再生編2 のスペスペたいむ定義です。
     スペスペのオプションのログフィルタにて 0x26:NetworksStatusResultList のチェックを外してください。
