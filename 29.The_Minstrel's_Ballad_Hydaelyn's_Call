@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+<name>極ハイデリン討滅戦</name>
+<rev></rev>
+<description></description>
+<author>seshirinoshinka</author>
+<license>CC BY-SA</license>
+<zone>The Minstrel's Ballad: Hydaelyn's Call</zone>
+<locale>JA</locale>
+
+
+<!--x秒前通知のデフォルトをセット-->
+<default target-element="Activity" target-attr="notice-o" value="-8" />
+
+<start>0039::戦闘開始！</start>
+<entry>フェーズ1</entry>
+
+<t sync="ハイデリンは「オーレオール」の構え。" notice="オーレオール、左右安置" />
+<t sync="ハイデリンは「サイド・オーレオール」の構え。" notice="サイド・オーレオール、上下安置" />
+
+
+<t sync="ハイデリンに「マゴス・マント」の効果。" notice="離れる：杖" >
+    <v-notice
+      text="杖:離れる"
+      duration="4" />
+</t>
+
+<t sync="ハイデリンに「ムーサ・マント」の効果。" notice="ボスした：踊" >
+    <v-notice
+      text="踊:足元へ"
+      duration="4" />
+</t>
+
+<t sync="ハイデリンに「ヘロイス・マント」の効果。" notice="斜めに離れる：剣" >
+    <v-notice
+      text="剣:斜めに離れる"
+      duration="4" />
+</t>
+
+<t sync="^14:659A" notice="クリスタライズ、水、この後左右あたま割り" >
+    <v-notice
+      text="クリスタライズ:水"
+      duration="4" />
+</t>
+<t sync="^14:6ED5" notice="クリスタライズ、水、この後左右あたま割り" >
+    <v-notice
+      text="クリスタライズ:水"
+      duration="4" />
+</t>
+
+<t sync="^14:659C" notice="クリスタライズ、氷、この後散会" >
+    <v-notice
+      text="クリスタライズ:氷"
+      duration="4" />
+</t>
+<t sync="^14:659D" notice="クリスタライズ、氷、この後散会" >
+    <v-notice
+      text="クリスタライズ:氷"
+      duration="4" />
+</t>
+
+<t sync="^14:659B" notice="クリスタライズ、土、この後ボスしたあたま割り" >
+    <v-notice
+      text="クリスタライズ:土"
+      duration="4" />
+</t>
+
+
+<s name="フェーズ1">
+  <a time="016" text="ヘロイスラジエンス" sync="ハイデリンの「ヘロイスラジエンス」" notice="ヘロイスラジエンス、全体攻撃" />
+  <a time="027" text="シャイニングセイバー" sync="ハイデリンの「シャイニングセイバー」" notice="シャイニングセイバー、あたま割り" />
+  <a time="031" sync="イデリン:クリスタルに託されし力を……！" />
+  <a time="036" text="クリスタライズ" sync="ハイデリンの「クリスタライズ」"/>
+  <a time="130" text="分岐" />
+  
+　<!--分岐-->
+  <t sync="ハイデリンに「マゴス・マント」の効果。">
+    <load target="杖フェーズ1" truncate="true" />
+    <load target="踊フェーズ1" />
+    <load target="フェーズ2" />
+  </t>
+  <t sync="ハイデリンに「ムーサ・マント」の効果。">
+    <load target="踊フェーズ1" truncate="true" />
+    <load target="杖フェーズ1" />
+    <load target="フェーズ2" />
+  </t>
+</s>
+
+<s name="杖フェーズ1">
+  <a time="015" sync="ハイデリンは「マゴスラジエンス」の構え。"  sync-s="-15" />
+  <a time="020" text="マゴスラジエンス" sync="ハイデリンの「マゴスラジエンス」" notice="マゴスラジエンス、全体攻撃" />
+  <a time="031" text="オーレオール" sync="ハイデリンの「オーレオール」" />
+  <a time="040" text="クリスタライズ" sync="ハイデリンの「クリスタライズ」"/>
+</s>
+
+<s name="踊フェーズ1">
+  <a time="015" sync="ハイデリンは「ムーサスコーン」の構え。" sync-s="-15" />
+  <a time="020" text="ムーサスコーン" sync="ハイデリンの「ムーサスコーン」" notice="ムーサスコーン、タンクあたま割り" />
+  <a time="031" text="オーレオール" sync="ハイデリンの「オーレオール」" />
+  <a time="040" text="クリスタライズ" sync="ハイデリンの「クリスタライズ」"/>
+</s>
+
+
+<s name="フェーズ2">
+  <a time="018" sync="イデリン:光のクリスタルよ、ここに！" sync-s="-15" />
+  <a time="034" sync="イデリン:聞いて……" />
+  <a time="040" sync="イデリン:星の彼方より届く唄を……" />
+  <a time="046" sync="イデリン:感じて……" />
+  <a time="052" sync="イデリン:生命の果てにある絶望を……" />
+  <a time="058" sync="イデリン:考えて……" />
+  <a time="064" sync="イデリン:闇の中を進むすべを……" />
+  <a time="132" sync="イデリン:想いの力で超えなさい！" sync-s="-60" />
+  <a time="137" sync="イデリン:さもなくば逃げるがいい……エクソダス！" />
+  <a time="149" sync="イデリンの「エクソダス」" notice="エクソダス、履行攻撃"  goto="フェーズ3" sync-s="-30" />
+</s>
+
+<s name="フェーズ3">
+  <a time="006" sync="イデリン:そう……最後まで歩むことをやめないと……" />
+  <a time="011" sync="イデリン:ならば続けましょう、人が私を超えるまで！" />
+  <a time="022" text="ヘイロー" sync="ハイデリンの「ヘイロー」" notice="ヘイロー、全体攻撃" />
+  <a time="030" text="ライトウェーブ" sync="ハイデリンの「ライトウェーブ」" notice="ライトウェーブ、アンチ確認" />
+  <a time="045" text="ラテラルアーク" sync="ハイデリンは「ラテラルアーク」の構え。" notice="ラテラルアーク、散会" />
+  <a time="051" text="ラテラルアーク3" />
+  <a time="053" text="ラテラルアーク2" />
+  <a time="054" text="ラテラルアーク1" />
+  <a time="060" text="ライトウェーブ" sync="ハイデリンの「ライトウェーブ」" notice="ライトウェーブ、アンチ確認" />
+  <a time="070" text="ヘロイスグローリー" sync="ハイデリンの「ヘロイスグローリー」" notice="ヘロイスグローリー、ボス背面へ" />
+  <a time="089" text="ヘロイスグローリー" sync="ハイデリンの「ヘロイスグローリー」" notice="ヘロイスグローリー、クリスタル背面へ" />
+  <a time="100" text="ヘイロー" sync="ハイデリンの「ヘイロー」" notice="ヘイロー、全体攻撃" />
+  <a time="111" text="ヘロイスサンダリング" sync="ハイデリンの「ヘロイスサンダリング」" notice="ヘロイスサンダリング、タンク扇範囲" />
+  <a time="121" text="シャイニングセイバー" sync="ハイデリンの「シャイニングセイバー」" notice="シャイニングセイバー、あたま割り" />
+  <a time="130" text="分岐" />
+
+  <t sync="ハイデリンに「マゴス・マント」の効果。">
+    <load target="杖フェーズ3" truncate="true" />
+    <load target="踊フェーズ3" />
+    <load target="フェーズ4" />
+  </t>
+  <t sync="ハイデリンに「ムーサ・マント」の効果。">
+    <load target="踊フェーズ3" truncate="true" />
+    <load target="杖フェーズ3" />
+    <load target="フェーズ4" />
+  </t>
+</s>
+
+<s name="踊フェーズ3">
+  <a time="015" sync="ハイデリンの「アントゥヘリオン」" sync-s="-30" />
+  <a time="025" text="ムーサスコーン" sync="ハイデリンの「ムーサスコーン」" notice="ムーサスコーン、タンク頭割り" />
+  <a time="031" text="パルヘリオン" sync="ハイデリンは「パルヘリオン」の構え。" notice="パルヘリオン、チャクラム確認" />
+  <a time="037" text="パルヘリオン3" />
+  <a time="038" text="パルヘリオン2" />
+  <a time="040" text="パルヘリオン1" />
+  <a time="046" text="クリスタライズ" sync="ハイデリンの「クリスタライズ」" />
+  <a time="054" text="サブパルヘリオン" sync="ハイデリンの「サブパルヘリオン」" notice="あたま割り、すぐに移動、オーレオール注意" />
+  <a time="064" text="オーレオール" sync="ハイデリンの「オーレオール」" />
+</s>
+
+<s name="杖フェーズ3">
+  <a time="020" sync="ハイデリンは「マゴスラジエンス」の構え。" sync-s="-30" />
+  <a time="025" text="マゴスラジエンス" sync="ハイデリンの「マゴスラジエンス」" notice="マゴスラジエンス、全体攻撃" />
+  <a time="034" text="クリスタライズ" sync="ハイデリンの「クリスタライズ」" />
+  <a time="045" text="パーヘリックサークル" sync="ハイデリンの「パーヘリックサークル」" notice="パーヘリックサークル、AOE後すぐに散会" />
+  <a time="047" text="幻閃光" sync="幻想光の「幻閃光」"/>
+  <a time="055" text="ブリザガ" notice="散会" />
+  <a time="057" text="オーレオール" sync="ハイデリンの「オーレオール」" />
+</s>
+
+<s name="フェーズ4">
+  <a time="019" text="エクイノックス" sync="ハイデリンの「エクイノックス」" sync-s="-30" />
+  <a time="027" sync="イデリン:まだです！　終焉に勝ちたいのなら……！" sync-s="-30" />
+  <a time="033" text="レディアントヘイロー" sync="ハイデリンの「レディアントヘイロー」" notice="レディアントヘイロー、全体攻撃" />
+
+  <a time="044" text="ライトウェーブ" sync="ハイデリンの「ライトウェーブ」" notice="ライトウェーブ、アンチ確認" />
+  <a time="062" text="エコーズ" sync="ハイデリンの「エコーズ」" notice="エコーズ、連続あたま割り、おわってから散会" />
+  <a time="083" text="クリスタライズ" sync="ハイデリンの「クリスタライズ」" />
+  <a time="091" text="シャイニングセイバー" sync="ハイデリンの「シャイニングセイバー」" notice="シャイニングセイバー、きた方向確認、すぐに左右散会" />
+
+  <a time="112" text="ライトウェーブ" sync="ハイデリンの「ライトウェーブ」" notice="ライトウェーブ" />
+  <a time="132" text="エコーズ" sync="ハイデリンの「エコーズ」" notice="エコーズ、連続あたま割り、おわってから散会" />
+  <a time="153" text="クリスタライズ" sync="ハイデリンの「クリスタライズ」" />
+  <a time="161" text="オーレオール" sync="ハイデリンの「オーレオール」" />
+  <a time="208" text="時間切れ" sync="イデリン:道は決した……逃げて、生きなさい……。" />
+</s>
+</timeline>
